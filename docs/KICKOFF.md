@@ -50,6 +50,11 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
 - Lead source tracking: forms carry UTM/source so the events app can report what worked.
 
 ## Blockers to start on early
+- **URGENT: riverranchlodge.com EXPIRES 2026-10-27** (registry, checked 2026-10-16). Registrar: Network
+  Solutions (registered since 1998); DNS on AWS Route 53; the site runs on Popmenu. If it lapses, the
+  website AND company email (Google Workspace) stop. Alex to confirm renewal / auto-renew and find who
+  holds the Network Solutions and AWS logins. rrbanquets.com (exp. 2026-11-16) and rrweddings.com
+  (exp. 2026-11-09) are at Squarespace Domains: keep them and point them at redirects.
 - **DNS access for riverranchlodge.com.** The Google Workspace admin is unknown (not Alex). Find the
   registrar (lookup.icann.org) and who holds the login; Google's recovery route is in the rr-events
   notes. Without DNS, the site can't launch on the real domain.
