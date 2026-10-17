@@ -1,0 +1,65 @@
+{
+  "corner": {
+    "width": 3060,
+    "height": 4080,
+    "files": [
+      {
+        "w": 1200,
+        "src": "wall/corner-1200.webp"
+      },
+      {
+        "w": 2400,
+        "src": "wall/corner-2400.webp"
+      },
+      {
+        "w": 3060,
+        "src": "wall/corner-3060.webp"
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAACwBwCdASogACsAPtFgo06oJaKiKrgKAQAaCUAVhnRI6sfkdeDvS+kdTTR1IcRAW8eByo1XB75VNtpLNeE2C3RZbceMd4CYAP766dwSuTS7V69w1msRfclMfVmrFdGLXOhZij83X0qMleTE9ej834jfn69orf4w+Iwp3ewQrGTWfo3LZM4/T4pP6A1EtZXQVky7o+Y6TOADL4Hpv85QLZaXh+tX7inYPoKHOOLqfLeG5Gp4xxJR2NBqJFJknFmukWlecYWbZcglW9gMJL6dOOdl04EPjHfWygBrCWc5+9ezZ1PjItFS9JhYgYZuIxtgLPRTt2CAAAA="
+  },
+  "poster": {
+    "width": 3060,
+    "height": 4080,
+    "files": [
+      {
+        "w": 1200,
+        "src": "wall/poster-1200.webp"
+      },
+      {
+        "w": 2400,
+        "src": "wall/poster-2400.webp"
+      },
+      {
+        "w": 3060,
+        "src": "wall/poster-3060.webp"
+      }
+    ],
+    "placeholder": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAAAQBwCdASogACsAPtFUn0uoJKKhsBVdUQAaCWUApeW/gTpIBe5uh4eaVhe8F/Uk0y1xMX9jyuZbpQVMnn4kqYePAAD+9FI+sF7PcbiqxyOMCzS9BPmR7ukT/DRsVYt05KJtgAv13j4Q4phgw2GDBgmA358bkn/UHk2EOqtzsqgbhRDS91/3Fk1+WzT8Q3E+FsHuWxxX3QL+mffSKQWv7CQey+XHVAjljhAMaQWfgq1NvoaVj6wqmMc/EIPhn49c/BtRMhfm5HI/Nwcdg0qeVR8bRqV3VbhebHjw/ZAZgAA="
+  },
+  "wall": {
+    "width": 10150,
+    "height": 3055,
+    "files": [
+      {
+        "w": 1200,
+        "src": "wall/wall-1200.webp"
+      },
+      {
+        "w": 2400,
+        "src": "wall/wall-2400.webp"
+      },
+      {
+        "w": 4096,
+        "src": "wall/wall-4096.webp"
+      }
+    ],
+    "tiles": {
+      "size": 1024,
+      "cols": 10,
+      "rows": 3,
+      "src": "wall/wall/{col}_{row}.webp"
+    },
+    "placeholder": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASogAAoAPtFYpEwoJSOiMAgBABoJYwCw7BuncFDK31zC3DYYAAD+7q8v19FaAH2Ec2EynhEK8gANLNHWqe0sQLISWwhHkq2pMwmEtBx6WuA9YmGHqZfVOadehv/SsMAA"
+  }
+}

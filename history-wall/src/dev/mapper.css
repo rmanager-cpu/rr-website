@@ -1,0 +1,161 @@
+.mp {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  font: 14px system-ui, sans-serif;
+  color: #eee;
+  background: #111;
+}
+.mp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  overflow-y: auto;
+  border-right: 1px solid #333;
+}
+.mp-side h1 {
+  margin: 0;
+  font-size: 18px;
+}
+.mp-side label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mp-side select,
+.mp-side input {
+  padding: 6px 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #1c1c1c;
+  color: #eee;
+  font: inherit;
+}
+.mp-side button {
+  padding: 7px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #222;
+  color: #eee;
+  font: inherit;
+  cursor: pointer;
+}
+.mp-side button.on,
+.mp-save:not(:disabled) {
+  background: #d4b27c;
+  border-color: #d4b27c;
+  color: #1b140c;
+}
+.mp-side button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.mp-modes,
+.mp-row {
+  display: flex;
+  gap: 8px;
+}
+.mp-help {
+  margin: 0;
+  color: #aaa;
+  line-height: 1.45;
+}
+.mp-status {
+  margin: 0;
+  min-height: 1.2em;
+  color: #d4b27c;
+}
+.mp-name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #d4b27c;
+  border-radius: 8px;
+}
+.mp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mp-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.mp-list li.on {
+  background: #2b2418;
+}
+.mp-list li span {
+  color: #888;
+  font-size: 12px;
+}
+.mp-list li input {
+  padding: 3px 6px;
+  min-width: 0;
+}
+.mp-list li button {
+  padding: 2px 8px;
+}
+.mp-stage {
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+.mp-stage.is-adding {
+  cursor: crosshair;
+}
+.mp-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+.mp-layer img,
+.mp-layer svg {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+}
+.mp-layer img {
+  pointer-events: none;
+}
+.mp-poly {
+  fill: rgba(255, 230, 0, 0.08);
+  stroke: #ffe600;
+  cursor: pointer;
+}
+.mp-poly.on {
+  fill: rgba(212, 178, 124, 0.25);
+  stroke: #ff7a00;
+}
+.mp-label {
+  fill: #ffe600;
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 0.25em;
+  text-anchor: middle;
+  pointer-events: none;
+  font-weight: 700;
+}
+.mp-handle {
+  fill: #ff7a00;
+  stroke: #fff;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+  cursor: move;
+}
+.mp-draft {
+  fill: none;
+  stroke: #00e5ff;
+  stroke-dasharray: 6 4;
+}

@@ -1,0 +1,326 @@
+[
+  {
+    "id": "f1",
+    "tag": "1"
+  },
+  {
+    "id": "f2",
+    "tag": "2"
+  },
+  {
+    "id": "f4",
+    "tag": "4"
+  },
+  {
+    "id": "f7",
+    "tag": "7"
+  },
+  {
+    "id": "f9",
+    "tag": "9"
+  },
+  {
+    "id": "f10",
+    "tag": "10"
+  },
+  {
+    "id": "f12",
+    "tag": "12"
+  },
+  {
+    "id": "f13",
+    "tag": "13"
+  },
+  {
+    "id": "f17",
+    "tag": "17"
+  },
+  {
+    "id": "f18",
+    "tag": "18"
+  },
+  {
+    "id": "f19",
+    "tag": "19"
+  },
+  {
+    "id": "f21",
+    "tag": "21"
+  },
+  {
+    "id": "f24",
+    "tag": "24"
+  },
+  {
+    "id": "f26",
+    "tag": "26"
+  },
+  {
+    "id": "f28",
+    "tag": "28"
+  },
+  {
+    "id": "f30",
+    "tag": "30"
+  },
+  {
+    "id": "f31",
+    "tag": "31"
+  },
+  {
+    "id": "f34",
+    "tag": "34"
+  },
+  {
+    "id": "f35",
+    "tag": "35"
+  },
+  {
+    "id": "f37",
+    "tag": "37"
+  },
+  {
+    "id": "f40",
+    "tag": "40"
+  },
+  {
+    "id": "f41",
+    "tag": "41"
+  },
+  {
+    "id": "f42",
+    "tag": "42"
+  },
+  {
+    "id": "f43",
+    "tag": "43"
+  },
+  {
+    "id": "f44",
+    "tag": "44"
+  },
+  {
+    "id": "f45",
+    "tag": "45"
+  },
+  {
+    "id": "f47",
+    "tag": "47"
+  },
+  {
+    "id": "f48",
+    "tag": "48"
+  },
+  {
+    "id": "f49",
+    "tag": "49"
+  },
+  {
+    "id": "f50",
+    "tag": "50"
+  },
+  {
+    "id": "f51",
+    "tag": "51"
+  },
+  {
+    "id": "f52",
+    "tag": "52"
+  },
+  {
+    "id": "f53",
+    "tag": "53"
+  },
+  {
+    "id": "f54",
+    "tag": "54"
+  },
+  {
+    "id": "f55",
+    "tag": "55"
+  },
+  {
+    "id": "f57",
+    "tag": "57"
+  },
+  {
+    "id": "f58",
+    "tag": "58"
+  },
+  {
+    "id": "f59",
+    "tag": "59"
+  },
+  {
+    "id": "f60",
+    "tag": "60"
+  },
+  {
+    "id": "f61",
+    "tag": "61"
+  },
+  {
+    "id": "f62",
+    "tag": "62"
+  },
+  {
+    "id": "f69",
+    "tag": "69"
+  },
+  {
+    "id": "f70",
+    "tag": "70"
+  },
+  {
+    "id": "f71",
+    "tag": "71"
+  },
+  {
+    "id": "f72",
+    "tag": "72"
+  },
+  {
+    "id": "f73",
+    "tag": "73"
+  },
+  {
+    "id": "f74",
+    "tag": "74"
+  },
+  {
+    "id": "f76",
+    "tag": "76"
+  },
+  {
+    "id": "u-anniversary-1992",
+    "notes": "Number tag is hard to read in the current photo; looks like 1992. Rename to f1992 once confirmed."
+  },
+  {
+    "id": "u-bar-crowd",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-bear",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-blacktie-clipping",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-boncafe",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-couple-23",
+    "notes": "Number tag is hard to read in the current photo; looks like 23. Rename to f23 once confirmed."
+  },
+  {
+    "id": "u-dam",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-dark-portrait",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-dogs",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-doorway",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-family-22",
+    "notes": "Number tag is hard to read in the current photo; looks like 22. Rename to f22 once confirmed."
+  },
+  {
+    "id": "u-grand-opening",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-gray-frame",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-group-46",
+    "notes": "Number tag is hard to read in the current photo; looks like 46. Rename to f46 once confirmed."
+  },
+  {
+    "id": "u-group-78",
+    "notes": "Number tag is hard to read in the current photo; looks like 78. Rename to f78 once confirmed."
+  },
+  {
+    "id": "u-lake-clipping",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-laughing-56",
+    "notes": "Number tag is hard to read in the current photo; looks like 56. Rename to f56 once confirmed."
+  },
+  {
+    "id": "u-letter",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-lodge-river",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-men-39",
+    "notes": "Number tag is hard to read in the current photo; looks like 39. Rename to f39 once confirmed."
+  },
+  {
+    "id": "u-patio-umbrella",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-riverhouse",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-sepia-bar",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-ski-nautique",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-skier-14",
+    "notes": "Number tag is hard to read in the current photo; looks like 14. Rename to f14 once confirmed."
+  },
+  {
+    "id": "u-snow-village",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-snowman-small",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-snowroof",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-staff-suspenders",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-subtlety",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-trophy",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-welcome-menu",
+    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+  },
+  {
+    "id": "u-women-38",
+    "notes": "Number tag is hard to read in the current photo; looks like 38. Rename to f38 once confirmed."
+  }
+]

@@ -1,0 +1,72 @@
+:root {
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  background: #14110e;
+  color: #efe6d6;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.page-head {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 64px) 16px clamp(20px, 4vw, 36px);
+  text-align: center;
+}
+.page-kicker {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d4b27c;
+}
+.page-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(54px, 10vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
+.page-lede {
+  max-width: 34ch;
+  margin: 16px auto 0;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.5;
+  color: #a89c88;
+}
+.page-proto {
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(168, 156, 136, 0.7);
+}
+
+@media (max-width: 780px) {
+  .page-head {
+    padding: 18px 16px 14px;
+  }
+  .page-kicker {
+    margin-bottom: 6px;
+    font-size: 10px;
+  }
+  .page-title {
+    font-size: 48px;
+  }
+  .page-lede {
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  /* Header + wall + section strip fit one phone screen. */
+  .hw-stage {
+    height: calc(100svh - 176px) !important;
+    min-height: 360px !important;
+  }
+}
