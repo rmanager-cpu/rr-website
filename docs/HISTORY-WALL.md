@@ -23,7 +23,7 @@ historical societies, a QR code next to the real wall) to collect what people kn
   only for the reward; name and phone stay optional.
   - Redemption: staff scan the QR at the register, a page shows valid / already used, staff mark it
     redeemed and apply 10% in the POS.
-  - Terms (Alex, 2026-10-16): 10% off dining, on tabs up to $200; max one coupon per email
+  - Terms (Alex, 2026-10-16): 10% off dining or lodging, up to $200; max one coupon per email
     (enforced in the database by `supabase/wall_submissions_02_one_reward.sql`). Still proposed,
     not confirmed: expires 90 days after sending, not combinable with other offers.
   - Approval means "useful", not "verified": rewards may attract made-up answers, so codes are never

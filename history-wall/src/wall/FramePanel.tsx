@@ -200,7 +200,7 @@ function AskForm({ frame, section, adapter, lead, onNext, onDone }: AskFormProps
           <input id={ids.contact} name="contact" autoComplete="email" maxLength={160} />
         </div>
       </div>
-      <p className="hw-form-note">Leave an email, and if we use what you share, we’ll send you 10% off dining (on tabs up to $200, one per email). Nothing you send is posted publicly.</p>
+      <p className="hw-form-note">Leave an email, and if we use what you share, we’ll send you 10% off dining or lodging (up to $200, one per email). Nothing you send is posted publicly.</p>
       <input className="hw-hp" name="website" tabIndex={-1} autoComplete="off" aria-hidden />
       {status === 'error' && <p className="hw-form-error" role="alert">That didn’t go through. Please try again.</p>}
       <button type="submit" className="hw-cta" disabled={status === 'sending' || text.trim().length < 3}>
