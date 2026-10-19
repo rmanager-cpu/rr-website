@@ -19,7 +19,8 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
    going to have to get a little artsy on this project, which you and I usually don't do together."
    So: lead with photography, typography and motion; propose 2-3 distinct looks (mood, type, color,
    a hero mock each) and let Alex pick before building pages.
-3. **Editing: still open, leaning custom.** Alex was considering Webflow, then asked "how hard would it
+3. **Editing: custom (Alex, 2026-10-16: "I think custom. I like Webflow aesthetics.").** Framework not
+   settled yet (Alex isn't sold on Astro; Next.js matches the events app). Original notes: Alex was considering Webflow, then asked "how hard would it
    be to make a little backend of my own? A little site builder backend of my own?"
    Claude's take to bring to him:
    - A custom Next.js site on Vercel, plus a small editor of its own for what actually changes (hours,
@@ -68,6 +69,14 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
 - The old booking wizard: `C:\Users\Chef\Downloads\RR_Calendar_Booking_Wizard_2025-12-15_original (2).html`.
 - An inventory of the current sites (pages, copy worth keeping, integrations like the lodging booking
   engine and restaurant reservations, problems, redirects) is being written to `docs/INVENTORY.md`.
+
+## Progress
+- 2026-10-16: The Wall (history wall) built and live; see `docs/HISTORY-WALL.md`.
+- 2026-10-17: three homepage looks to pick from, on Alex's photos (private artifact):
+  https://claude.ai/artifact/4egnsybpV9S3x8Q9QYaVbH — 1 Firelight (winter night, lamplight, Bodoni
+  italic), 2 River Days (summer, river teal + sun, Bricolage), 3 Bulletin (printed matter in the road
+  sign's blue, condensed type, artifacts from The Wall). Photo gap: most winter/night hero shots are
+  only ~1200px wide; a full-screen hero needs ~2400px originals or a new shoot.
 
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
