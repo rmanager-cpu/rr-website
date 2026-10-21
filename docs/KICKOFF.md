@@ -78,6 +78,18 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   sign's blue, condensed type, artifacts from The Wall). Photo gap: most winter/night hero shots are
   only ~1200px wide; a full-screen hero needs ~2400px originals or a new shoot.
 
+- 2026-10-21: the site itself started in `site/` (Next.js 14, App Router, like the events app), built
+  from Alex's "River Ranch Winter Mockups" design canvas
+  (https://claude.ai/artifact/9uK2SbKBpaEjm1riT6JTzb): homepage with the Dawn/Day/Dusk/Night hero
+  (picked from Tahoe City's real sunrise and sunset), Celebrate, Stay, Dine, What's On, Visit. SEO
+  built in (one facts file for name/address/phone/hours, per-page titles and descriptions, LodgingBusiness
+  + Restaurant + FAQ structured data, sitemap, 301s for every old address). Preview, hidden from search:
+  https://river-ranch-site.vercel.app (Vercel project river-ranch-site). Set `SITE_INDEXABLE=true` only
+  at launch on the real domain.
+  Open: Alex doesn't love the phone heroes yet (rework together); copy is a draft; ZIP 96145 vs 96146;
+  breakfast 8–11 vs 8–12; booking engine unknown ("Book" goes to the Stay page's call/email); event room
+  photos and capacities; the private-dinner picker emails events@ until it posts into Leads.
+
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
 2. Settle the editing question with Alex (custom + small editor vs Webflow).

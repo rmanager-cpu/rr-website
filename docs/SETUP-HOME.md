@@ -34,6 +34,15 @@ safe in a web page, but it still stays out of Git.
 the-wall-river-ranch` (team turbohospitalitysolutions), then `npx vercel build --prod` and
 `npx vercel deploy --prebuilt --prod`.
 
+## 3b. The site (`rr-website/site`)
+```
+cd site
+npm install
+npm run dev        # http://localhost:3100
+```
+No secrets needed. Deploy: `npx vercel link --project river-ranch-site`, then `npx vercel deploy --prod`
+(Vercel builds it; a local `--prebuilt` build fails on Windows without symlink permission).
+
 ## 4. The events app (`rr-events`)
 Its `.env.local` holds real secrets (database, Google sign-in, encryption keys, Anthropic). Never put
 it in Git, email or chat. Either:
