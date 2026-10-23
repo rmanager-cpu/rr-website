@@ -25,7 +25,6 @@ const oldSite = [
   r('/items/restaurant-gift-card', '/visit#gift-cards'),
   ...Object.entries(itemRedirects).map(([dish, menu]) => r(`/items/${dish}`, `/menus/${menu}`)),
   r('/items/:slug', '/menus'),
-  r('/order', '/dine'),
   // Celebrate
   r('/private-parties', '/celebrate'),
   r('/weddings', '/celebrate#weddings'),

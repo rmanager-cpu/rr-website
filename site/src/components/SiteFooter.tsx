@@ -48,6 +48,7 @@ export function SiteFooter() {
               <li><Link href="/loyalty">Loyalty</Link></li>
               <li><Link href="/careers">Careers</Link></li>
               <li><Link href="/visit">Visit &amp; directions</Link></li>
+              <li><Link href="/order">Order online</Link></li>
               <li><Link href="/visit#gift-cards">Gift cards</Link></li>
             </ul>
           </nav>
