@@ -1,0 +1,41 @@
+/* Printed menu, "classic" template: cream paper, serif heads, boxed section names. */
+.pm-shell { min-height: 100vh; background: #d9dde2; padding: 24px 16px 60px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.pm-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; padding: 12px 16px; background: #fff; border-radius: 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); font: 500 14px var(--font-sans), system-ui, sans-serif; color: #13233a; }
+.pm-controls label { display: inline-flex; align-items: center; gap: 6px; }
+.pm-controls select { min-height: 36px; padding: 0 8px; font: inherit; }
+.pm-controls button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 4px; background: #e2a65a; color: #13233a; font: 700 14px var(--font-sans), sans-serif; cursor: pointer; }
+.pm-controls details { position: relative; }
+.pm-controls details[open] > :not(summary) { padding: 2px 0; }
+.pm-warn { color: #9b2c1f; font-weight: 700; }
+
+.pm-page { background: #fbf8f1; color: #1d1a16; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25); overflow: hidden; box-sizing: border-box; padding: 0.45in 0.5in; }
+.pm-fit { --pm-scale: 1; font-size: calc(10.5pt * var(--pm-scale)); height: 100%; display: flex; flex-direction: column; gap: 1.1em; }
+.pm-head { text-align: center; display: flex; flex-direction: column; gap: 0.2em; padding-bottom: 0.7em; border-bottom: 1.5px solid #1d1a16; }
+.pm-name { font-family: var(--font-serif), Georgia, serif; font-size: 2.9em; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; }
+.pm-house { font-family: var(--font-serif), Georgia, serif; font-size: 1.15em; letter-spacing: 0.22em; text-transform: uppercase; }
+.pm-when { font-size: 0.95em; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5b5348; margin-top: 0.2em; }
+.pm-intro { margin: 0.3em auto 0; font-style: italic; max-width: 50ch; }
+.pm-body { flex: 1; column-gap: 0.45in; column-fill: balance; }
+.pm-section { break-inside: avoid-column; margin-bottom: 1.1em; }
+.pm-section-name { margin: 0 0 0.5em; padding: 0.3em 0.5em; background: #ece5d6; border: 1px solid #c8bca4; font-family: var(--font-sans), sans-serif; font-size: 0.86em; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; }
+.pm-note { margin: -0.2em 0 0.55em; font-size: 0.85em; font-style: italic; text-align: center; color: #5b5348; }
+.pm-item { break-inside: avoid; margin-bottom: 0.55em; }
+.pm-line { display: flex; justify-content: space-between; gap: 0.8em; align-items: baseline; }
+.pm-dish { font-family: var(--font-serif), Georgia, serif; font-size: 1.12em; }
+.pm-dish sup { font-size: 0.6em; }
+.pm-tags { font-family: var(--font-sans), sans-serif; font-size: 0.62em; font-weight: 700; letter-spacing: 0.06em; color: #5b5348; }
+.pm-price { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pm-desc { margin: 0.1em 0 0; font-size: 0.86em; line-height: 1.35; color: #3d3730; white-space: pre-line; }
+.pm-foot { border-top: 1px solid #c8bca4; padding-top: 0.6em; font-size: 0.72em; line-height: 1.4; color: #5b5348; text-align: center; display: flex; flex-direction: column; gap: 0.25em; }
+.pm-foot p { margin: 0; }
+.pm-stamp { letter-spacing: 0.04em; }
+
+@media print {
+  .pm-shell { padding: 0; background: none; display: block; }
+  .pm-controls { display: none; }
+  .pm-page { box-shadow: none; margin: 0; }
+  html, body { background: #fbf8f1 !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+.pm-line--stack { flex-direction: column; gap: 0.05em; }
+.pm-line--stack .pm-price { white-space: normal; font-size: 0.92em; }

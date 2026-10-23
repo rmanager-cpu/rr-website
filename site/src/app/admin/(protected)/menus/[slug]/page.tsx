@@ -15,7 +15,7 @@ export default async function EditMenu({ params }: { params: { slug: string } })
     <>
       <div className="row-actions" style={{ justifyContent: 'space-between' }}>
         <h1>{menu.name}</h1>
-        <div className="row-actions"><Link href="/admin/menus">← All menus</Link><a href={`/menus/${menu.slug}`} target="_blank">View on the site →</a></div>
+        <div className="row-actions"><Link href="/admin/menus">← All menus</Link><Link href={`/admin/print/menus/${menu.slug}`} className="btn btn--sm btn--navy">Print menu</Link><a href={`/menus/${menu.slug}`} target="_blank">View on the site →</a></div>
       </div>
       {!ready && <p className="note">The menu database isn’t connected yet, so changes can’t save.</p>}
       <p className="help">A dish’s name, description and tags are shared: change them here and they change on every menu the dish is on. Prices are just for this menu.</p>

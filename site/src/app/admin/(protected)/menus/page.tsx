@@ -24,7 +24,7 @@ export default async function MenusAdmin() {
                 <td style={{ fontWeight: 700 }}>{m.name}{!m.active && <span className="tag" style={{ marginLeft: 8 }}>hidden</span>}</td>
                 <td>{m.hours.length ? hoursText(m.hours) : m.servingNote ?? '—'}</td>
                 <td>{m.sections.reduce((n, s) => n + s.items.filter((i) => !i.hidden).length, 0)}</td>
-                <td><Link href={`/admin/menus/${m.slug}`}>Edit</Link> · <a href={`/menus/${m.slug}`} target="_blank">View</a></td>
+                <td><Link href={`/admin/menus/${m.slug}`}>Edit</Link> · <Link href={`/admin/print/menus/${m.slug}`}>Print</Link> · <a href={`/menus/${m.slug}`} target="_blank">View</a></td>
               </tr>
             ))}
           </tbody>
