@@ -392,3 +392,5 @@ html:not([data-tod]) .snow, html[data-tod='day'] .snow, html[data-tod='dusk'] .s
 .cwall__card--a { align-self: flex-end; margin-top: clamp(280px, 34vw, 520px); }
 .cwall__card--c { align-self: flex-start; }
 @media (max-width: 760px) { .cwall__card--a { margin-top: clamp(240px, 64vw, 300px); } }
+.credit { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--sand-dim); }
+.credit img { display: inline-block; }

@@ -64,6 +64,11 @@ export function SiteFooter() {
         <div className="footer-base">
           <span>© {new Date().getFullYear()} {business.name}</span>
           <span>On the Truckee River, Tahoe City, California</span>
+          {/* Builder credit. Becomes a link once turbodevs has its own site. */}
+          <span className="credit">
+            Custom site by
+            <Image src="/photos/turbodevs-logo.png" alt="TurboDevs" width={480} height={127} style={{ width: 96, height: "auto" }} />
+          </span>
         </div>
       </div>
     </footer>
