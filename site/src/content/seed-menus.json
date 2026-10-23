@@ -4,7 +4,7 @@
   {
    "slug": "coffee",
    "name": "Coffee",
-   "description": "Please specify Regular or Decaf, cream & sugar available",
+   "description": "Regular or decaf, cream and sugar available",
    "tags": [],
    "raw": false
   },
@@ -25,7 +25,7 @@
   {
    "slug": "milk",
    "name": "Milk",
-   "description": "Please specify 2% or Whole",
+   "description": "2% or whole milk",
    "tags": [],
    "raw": false
   },
@@ -165,7 +165,7 @@
   {
    "slug": "rotating-na-beer",
    "name": "Rotating NA Beer",
-   "description": "~Please inquire~",
+   "description": null,
    "tags": [],
    "raw": false
   },
@@ -491,7 +491,7 @@
   {
    "slug": "soup-du-jour",
    "name": "Soup Du Jour",
-   "description": "Ask Server",
+   "description": "Ask your server about today’s soup",
    "tags": [],
    "raw": false
   },
@@ -578,7 +578,7 @@
   {
    "slug": "chophouse-burger",
    "name": "Chophouse Burger",
-   "description": "1/2 Pound, Brioche Bun, Bacon, Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "description": "1/2 Pound, Brioche Bun, Bacon, Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\nSubstitute a Beyond Burger or grilled chicken breast",
    "tags": [
     "GM"
    ],
@@ -596,7 +596,7 @@
   {
    "slug": "new-zealand-elk-chops",
    "name": "New Zealand Elk Chops",
-   "description": "Coriander-Crusted, Chimichurri, Chèvre\nFingerling Potatoes, Grilled Asparagus\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "description": "Coriander-Crusted, Chimichurri, Chèvre\nFingerling Potatoes, Grilled Asparagus",
    "tags": [
     "GF"
    ],
@@ -639,7 +639,7 @@
   {
    "slug": "top-sirloin",
    "name": "Top Sirloin",
-   "description": "8oz Prime Baseball Cut, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "description": "8oz Prime Baseball Cut, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms",
    "tags": [
     "GF"
    ],
@@ -648,7 +648,7 @@
   {
    "slug": "ribeye",
    "name": "Ribeye",
-   "description": "16oz Prime, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "description": "16oz Prime, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms",
    "tags": [
     "GF"
    ],
@@ -657,7 +657,7 @@
   {
    "slug": "catch-of-the-day",
    "name": "Catch-Of-The-Day",
-   "description": "~Please Inquire~\n~Market Price~",
+   "description": null,
    "tags": [
     "GF"
    ],
@@ -682,7 +682,7 @@
   {
    "slug": "soup-du-jour-2",
    "name": "Soup Du Jour",
-   "description": "~Ask Your Server~",
+   "description": null,
    "tags": [],
    "raw": false
   },
@@ -879,7 +879,7 @@
   {
    "slug": "oscars-grande-breakfast-burrito",
    "name": "Oscar's Grande Breakfast Burrito",
-   "description": "Flour Tortilla, 3 ^Eggs scrambled with: \nPotato, Onion, Bell Pepper, Cheese, Pico de Gallo\nChoice of: Bacon ~OR~ Chorizo",
+   "description": "Flour Tortilla, 3 ^Eggs scrambled with: \nPotato, Onion, Bell Pepper, Cheese, Pico de Gallo\nChoice of bacon or chorizo",
    "tags": [],
    "raw": false
   },
@@ -1745,7 +1745,7 @@
         }
        ],
        "price_note": null,
-       "description": "~Please Inquire~"
+       "description": null
       },
       {
        "dish": "caesar-salad-b1ad0780",
@@ -1852,7 +1852,7 @@
         }
        ],
        "price_note": null,
-       "description": "1/2 Pound, Brioche Bun, Bacon, Extra Sharp White Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+       "description": "1/2 Pound, Brioche Bun, Bacon, Extra Sharp White Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\nSubstitute a Beyond Burger or grilled chicken breast"
       },
       {
        "dish": "ranch-nachos",
@@ -2043,7 +2043,7 @@
         }
        ],
        "price_note": null,
-       "description": "1/2 Pound, Brioche Bun, Cheddar, Greens, Beefsteak Tomato, ^Sweet Onion Aioli\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+       "description": "1/2 Pound, Brioche Bun, Cheddar, Greens, Beefsteak Tomato, ^Sweet Onion Aioli\nSubstitute a Beyond Burger or grilled chicken breast"
       },
       {
        "dish": "ranch-nachos",
@@ -2324,7 +2324,7 @@
         }
        ],
        "price_note": null,
-       "description": "~Please Inquire~"
+       "description": null
       },
       {
        "dish": "caesar-salad-b1ad0780",
@@ -2442,7 +2442,7 @@
         }
        ],
        "price_note": null,
-       "description": "Brioche Bun, 1/3 Pound, Arugula, Tomato, Bacon, Cheddar\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+       "description": "Brioche Bun, 1/3 Pound, Arugula, Tomato, Bacon, Cheddar"
       },
       {
        "dish": "turkey-club",
