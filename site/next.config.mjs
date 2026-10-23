@@ -16,7 +16,7 @@ const oldSite = [
   r('/files/lodgemapmaster-pdf.pdf', '/stay'),
   // Dine
   r('/menus', '/dine#menus'),
-  r('/menus/happy-hour', '/dine#happy-hour'),
+  r('/menus/happy-hour', '/events/happy-hour'),
   r('/menus/weekend-breakfast', '/dine#breakfast'),
   r('/menus/merchandise', '/visit#gift-cards'),
   r('/menus/:slug', '/dine#menus'),
@@ -27,15 +27,14 @@ const oldSite = [
   // Celebrate
   r('/private-parties', '/celebrate'),
   r('/weddings', '/celebrate#weddings'),
-  r('/events', '/celebrate'),
   // What's on
-  r('/live-music', '/whats-on'),
-  r('/snowfest', '/whats-on'),
+  r('/live-music', '/events/summer-concert-series'),
+  r('/snowfest', '/events'),
+  r('/whats-on', '/events'),
   // Everything else
-  r('/history', '/'),
   r('/reviews', '/'),
   r('/love-your-lodge', '/'),
-  r('/join-our-team', '/visit#jobs'),
+  r('/join-our-team', '/careers'),
   r('/contact', '/visit'),
 ];
 

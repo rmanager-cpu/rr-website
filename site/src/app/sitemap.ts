@@ -1,14 +1,24 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/content/site';
+import { listPages } from '@/lib/events/store';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
-    { path: '/', priority: 1, changeFrequency: 'weekly' },
-    { path: '/stay', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/dine', priority: 0.9, changeFrequency: 'weekly' },
-    { path: '/celebrate', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/whats-on', priority: 0.7, changeFrequency: 'weekly' },
-    { path: '/visit', priority: 0.6, changeFrequency: 'yearly' },
+// Indexable pages only: placeholders (Loyalty, Johanson, empty event pages) are left out until they
+// have content, matching their noindex tags.
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+  const fixed: [string, number, MetadataRoute.Sitemap[number]['changeFrequency']][] = [
+    ['/', 1, 'weekly'],
+    ['/stay', 0.9, 'monthly'],
+    ['/dine', 0.9, 'weekly'],
+    ['/celebrate', 0.9, 'monthly'],
+    ['/events', 0.8, 'daily'],
+    ['/history', 0.6, 'monthly'],
+    ['/careers', 0.5, 'monthly'],
+    ['/visit', 0.6, 'yearly'],
   ];
-  return pages.map((p) => ({ url: `${SITE_URL}${p.path}`, lastModified: new Date(), changeFrequency: p.changeFrequency, priority: p.priority }));
+  const pages = (await listPages()).filter((p) => p.layout !== 'standard' || p.body?.trim() || p.summary?.trim());
+  return [
+    ...fixed.map(([path, priority, changeFrequency]) => ({ url: `${SITE_URL}${path}`, lastModified: now, changeFrequency, priority })),
+    ...pages.map((p) => ({ url: `${SITE_URL}/events/${p.slug}`, lastModified: p.updatedAt ? new Date(p.updatedAt) : now, changeFrequency: 'weekly' as const, priority: 0.6 })),
+  ];
 }

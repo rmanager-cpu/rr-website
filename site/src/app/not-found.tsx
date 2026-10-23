@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export default function NotFound() {
   return (
     <>
+      <main id="main">
       <SiteHeader />
       <section className="section">
         <div className="container stack" style={{ gap: 24 }}>
@@ -17,6 +19,8 @@ export default function NotFound() {
           </div>
         </div>
       </section>
+      </main>
+      <SiteFooter />
     </>
   );
 }

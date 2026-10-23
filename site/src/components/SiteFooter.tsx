@@ -42,9 +42,13 @@ export function SiteFooter() {
               {nav.map((n) => (
                 <li key={n.href}><Link href={n.href}>{n.label}</Link></li>
               ))}
+              <li><Link href="/events/summer-concert-series">Summer Concert Series</Link></li>
+              <li><Link href="/history">History</Link></li>
+              <li><Link href="/johanson-family-wine">Johanson Family Wine</Link></li>
+              <li><Link href="/loyalty">Loyalty</Link></li>
+              <li><Link href="/careers">Careers</Link></li>
               <li><Link href="/visit">Visit &amp; directions</Link></li>
               <li><Link href="/visit#gift-cards">Gift cards</Link></li>
-              <li><Link href="/visit#jobs">Jobs</Link></li>
             </ul>
           </nav>
           <div className="stack" style={{ gap: 10 }}>

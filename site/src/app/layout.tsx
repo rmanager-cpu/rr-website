@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Gloock, Hanken_Grotesk, Protest_Revolution } from 'next/font/google';
-import { SiteFooter } from '@/components/SiteFooter';
 import { photos } from '@/content/photos';
 import { business, SITE_URL } from '@/content/site';
 import { JsonLd, organizationSchema } from '@/lib/schema';
@@ -53,8 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
         <JsonLd data={organizationSchema()} />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        {children}
       </body>
     </html>
   );

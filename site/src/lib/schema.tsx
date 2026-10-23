@@ -83,6 +83,46 @@ export function breadcrumbSchema(name: string, path: string) {
   };
 }
 
+/**
+ * Events Google may show as event rich results. Promotions (happy hour, nightly specials) and holidays
+ * are deliberately left out: Google's event guidelines say not to mark up promotions as events, and
+ * doing so risks a manual penalty. Those stay in openingHoursSpecification / on their pages instead.
+ */
+export const MARKABLE_EVENT_CATEGORIES = new Set(['music', 'community', 'special', 'off-site']);
+
+export function eventSchema(e: {
+  title: string;
+  slug: string;
+  date: string;
+  startTime: string | null;
+  endTime: string | null;
+  description: string | null;
+  image: string | null;
+  offsite: boolean;
+  location: string | null;
+  ticketUrl: string | null;
+}) {
+  const at = (t: string | null) => (t ? `${e.date}T${t}:00` : e.date);
+  const place = e.offsite
+    ? { '@type': 'Place', name: e.location ?? 'Off-site', address: e.location ?? undefined }
+    : { '@type': 'Place', name: business.name, address };
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: e.title,
+    url: abs(`/events/${e.slug}`),
+    startDate: at(e.startTime),
+    ...(e.endTime ? { endDate: at(e.endTime === '23:59' ? '23:59' : e.endTime) } : {}),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: place,
+    ...(e.description ? { description: e.description } : {}),
+    image: [abs(e.image ?? photos.heroDusk.src)],
+    organizer: { '@type': 'Organization', name: business.name, url: SITE_URL },
+    ...(e.ticketUrl ? { offers: { '@type': 'Offer', url: e.ticketUrl, availability: 'https://schema.org/InStock' } } : {}),
+  };
+}
+
 export function JsonLd({ data }: { data: object }) {
   // eslint-disable-next-line react/no-danger
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />;

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ApresSection } from '@/components/ApresSection';
 import { ArrowRight } from '@/components/Icons';
 import { PrivateDinnerPlanner } from '@/components/PrivateDinnerPlanner';
 import { TimeOfDayHero } from '@/components/TimeOfDayHero';
@@ -25,7 +26,7 @@ export default function Home() {
             <li><strong>Weekend breakfast</strong><span>Sat & Sun · {hours.breakfast.time}</span></li>
             <li><strong>Rooms on the river</strong><span>Check-in from 3 PM</span></li>
           </ul>
-          <Link href="/whats-on" className="arrow-link">Full calendar <ArrowRight /></Link>
+          <Link href="/events" className="arrow-link">Full calendar <ArrowRight /></Link>
         </div>
       </section>
 
@@ -107,7 +108,7 @@ export default function Home() {
             <span className="eyebrow">03 · Mornings</span>
             <h2 id="mornings-h" className="slash h-l" style={{ fontSize: 'clamp(46px, 5.8vw, 88px)' }}>Weekend breakfast.</h2>
             <p className="lede">
-              Saturdays and Sundays from 8 AM: steak and eggs, Benedicts, biscuits and gravy, and a Bloody Mary if it&apos;s that kind of morning.
+              Saturdays and Sundays, 8 to 11:30 AM: steak and eggs, Benedicts, biscuits and gravy, and a Bloody Mary if it&apos;s that kind of morning.
             </p>
             <Link href="/dine#breakfast" className="arrow-link">Breakfast menu <ArrowRight /></Link>
           </div>
@@ -162,29 +163,7 @@ export default function Home() {
       </section>
 
       {/* 05 APRÈS */}
-      <section className="apres on-night" aria-labelledby="apres-h">
-        <div className="apres__bg" aria-hidden="true">
-          <Image src={photos.roundBar.src} alt="" fill sizes="100vw" />
-        </div>
-        <div className="apres__shade" aria-hidden="true" />
-        <div className="container stack" style={{ maxWidth: 1440, gap: 40, paddingBlock: '110px 120px' }}>
-          <span className="eyebrow">05 · Après</span>
-          <h2 id="apres-h" className="sr-only">Après and happy hour at the round bar</h2>
-          <div className="apres__word" aria-hidden="true">
-            <span>APRÈS</span>
-            <span>APRÈS</span>
-            <span>APRÈS</span>
-          </div>
-          <div className="row-split" style={{ gap: 40 }}>
-            <div className="stack" style={{ gap: 22, maxWidth: 560 }}>
-              <p className="serif" style={{ margin: 0, fontSize: 'clamp(32px, 3.6vw, 52px)', lineHeight: 1.02 }}>Happy hour, Monday to Friday, 3 to 5.</p>
-              <p className="lede">At the round bar under the log ceiling: wings, poutine, the Chophouse burger, nachos and cold drinks after the last run.</p>
-              <Link href="/dine#happy-hour" className="btn btn--amber" style={{ alignSelf: 'flex-start' }}>Happy hour menu</Link>
-            </div>
-            <Image src={photos.bartender.src} alt={photos.bartender.alt} width={photos.bartender.width} height={photos.bartender.height} sizes="380px" className="tilt" style={{ width: 'min(380px, 100%)', aspectRatio: '4 / 5', objectFit: 'cover' }} />
-          </div>
-        </div>
-      </section>
+      <ApresSection />
     </>
   );
 }
