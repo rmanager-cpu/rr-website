@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import { SiteHeader } from '@/components/SiteHeader';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 
@@ -18,7 +19,7 @@ export default function LoyaltyPage() {
       <section className="section">
         <div className="container stack" style={{ gap: 22 }}>
           <span className="eyebrow">Loyalty</span>
-          <h1 className="slash h-l">Regulars, this one’s for you.</h1>
+          <h1 className="slash h-l">{L.head}</h1>
           <p className="lede">Our loyalty program is on the way. Check back soon.</p>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import { SiteHeader } from '@/components/SiteHeader';
 import { business, fullAddress, hours } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
@@ -19,7 +20,7 @@ export default function VisitPage() {
       <section className="section">
         <div className="container stack" style={{ gap: 28 }}>
           <span className="eyebrow">Visit</span>
-          <h1 className="slash h-l">Find us on the river.</h1>
+          <h1 className="slash h-l">{L.head}</h1>
           <p className="lede">On Highway 89 between Tahoe City and Palisades Tahoe, right on the Truckee River. Free parking on site.</p>
           <div className="btn-row">
             <a href={mapsUrl} className="btn btn--amber" rel="noopener">Get directions</a>
@@ -50,8 +51,8 @@ export default function VisitPage() {
 
       <section className="section bg-frost" id="jobs">
         <div className="container stack" style={{ gap: 14, maxWidth: 820 }}>
-          <h2 className="serif h-s">Work with us</h2>
-          <p className="lede">We hire for the kitchen, the floor, the bar and the front desk. Email <a href={`mailto:${business.email.restaurant}`}>{business.email.restaurant}</a> with the job you’re after.</p>
+          <h2 className="serif h-s">Join our team</h2>
+          <p className="lede"><a href="/careers">Apply on our Careers page.</a></p>
         </div>
       </section>
     </>

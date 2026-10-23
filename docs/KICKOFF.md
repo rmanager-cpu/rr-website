@@ -113,6 +113,22 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   Stripe test mode; instant-booking windows to be set by Alex); menus rebuild (Popmenu research done,
   see the Popmenu notes in the 2026-10-23 session); real copy for History, Johanson, Loyalty.
 
+- 2026-10-23, BookingCenter (Alex): the site must take room bookings and Venio must write to
+  BookingCenter (room blocks for weddings/events). Ask BookingCenter for read AND write API access
+  (ideally separate read and write credentials). Access: sign the mutual NDA
+  (files.bookingcenter.com/API_use_NDA.pdf), email it to info@BookingCenter.com with goals; they send
+  credentials, full docs and a sandbox. APIs: OTA SOAP XML (bookings get/list/new/modify/cancel,
+  availability calendar, rates/inventory push, room stats), webhooks (booking created, payment, status
+  change), GL JSON. Expect a possible certification step or fee for write. Card payments may stay in
+  their booking engine at first.
+- 2026-10-23, loyalty (Alex): one program for lodge AND restaurant, with guest logins ("River Ranch
+  Regulars", ladder 100/250/500/1,000 points at 1 pt per $1 on food and lodging, rewards exclude
+  alcohol until confirmed). Dining via receipt claim (check # + total, matched in Toast), stays via
+  BookingCenter, events via Venio; redemption = one-time code, server taps a "Regulars" discount in
+  Toast; lodging reward applied at checkout. Toast partner Loyalty API later, if it takes off.
+- 2026-10-23, printed menus: a print tool exists (/admin/print/menus/<slug>) but its layout is on hold:
+  it doesn't fit the two-page holders. Alex will describe the required form first.
+
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
 2. Settle the editing question with Alex (custom + small editor vs Webflow).

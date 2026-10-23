@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import { L } from '@/content/lorem';
 import Link from 'next/link';
-import { business, hours, nav } from '@/content/site';
+import { business, hours } from '@/content/site';
 import { photos } from '@/content/photos';
 
 export function SiteFooter() {
@@ -12,7 +13,7 @@ export function SiteFooter() {
           <span className="stack" style={{ gap: 10, maxWidth: 560 }}>
             <span className="eyebrow eyebrow--amber">Our story · The Wall</span>
             <span className="serif" style={{ fontSize: 'clamp(34px, 3.6vw, 52px)', lineHeight: 1.02 }}>
-              Decades of River Ranch, one frame at a time. Recognize a face? Tell us the story.
+              {L.head}
             </span>
           </span>
         </a>
@@ -36,22 +37,6 @@ export function SiteFooter() {
               <li>{hours.breakfast.label}: Sat & Sun, {hours.breakfast.time}</li>
             </ul>
           </div>
-          <nav aria-label="Footer" className="stack" style={{ gap: 10 }}>
-            <span className="footer-label">Explore</span>
-            <ul>
-              {nav.map((n) => (
-                <li key={n.href}><Link href={n.href}>{n.label}</Link></li>
-              ))}
-              <li><Link href="/events/summer-concert-series">Summer Concert Series</Link></li>
-              <li><Link href="/history">History</Link></li>
-              <li><Link href="/johanson-family-wine">Johanson Family Wine</Link></li>
-              <li><Link href="/loyalty">Loyalty</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/visit">Visit &amp; directions</Link></li>
-              <li><Link href="/order">Order online</Link></li>
-              <li><Link href="/visit#gift-cards">Gift cards</Link></li>
-            </ul>
-          </nav>
           <div className="stack" style={{ gap: 10 }}>
             <span className="footer-label">Follow along</span>
             <ul>

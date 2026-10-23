@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -169,8 +170,8 @@ function ConcertPage({ page }: { page: EventPage }) {
               Summer Concert<span>Series.</span>
             </h1>
             <div className="mission">
-              <p>Every summer we turn the patio into a stage. Local bands and touring acts, string lights in the pines, an aerialist over the crowd, and the Truckee running right behind it all.</p>
-              <p>The shows are free, because music on the river should be for everybody: locals, ski bums turned river rats, families, and whoever floated in that afternoon.</p>
+              <p>{L.para}</p>
+              <p>{L.para2}</p>
             </div>
             <p className="thanks-line">
               Made possible by{" "}
@@ -190,8 +191,8 @@ function ConcertPage({ page }: { page: EventPage }) {
             <div className="media-row" style={{ gap: 32, alignItems: "flex-start" }}>
               <div className="grow stack" style={{ gap: 18, flexBasis: 300 }}>
                 <span className="eyebrow eyebrow--amber">Bands &amp; artists</span>
-                <h2 id="play-h" className="slash" style={{ fontSize: "clamp(42px, 5vw, 80px)", lineHeight: 0.95, color: "var(--cream)" }}>Everybody wants to play the river.</h2>
-                <p className="lede">We hear from far more bands than we have summer nights, from Tahoe locals to acts on tour up and down the West Coast. If you want a spot on the patio stage, send us your music. We listen to every request and book the ones that fit the season.</p>
+                <h2 id="play-h" className="slash" style={{ fontSize: "clamp(42px, 5vw, 80px)", lineHeight: 0.95, color: "var(--cream)" }}>{L.head}</h2>
+                <p className="lede">{L.para}</p>
               </div>
               <div className="side" style={{ flexBasis: 380 }}>
                 <BookingForm />

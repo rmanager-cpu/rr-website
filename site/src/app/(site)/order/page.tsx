@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -26,7 +27,7 @@ export default function OrderPage() {
             <span className="eyebrow">Order online</span>
             <h1 className="slash h-l">Online ordering &amp; delivery.</h1>
             <p className="serif" style={{ margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', color: 'var(--amber)' }}>Coming soon.</p>
-            <p className="lede">Pickup and delivery from the River Ranch kitchen are on the way. Until then, come see us, or call ahead.</p>
+            <p className="lede">{L.line}</p>
             <div className="btn-row">
               <Link href="/menus" className="btn btn--amber">See the menus</Link>
               <a href={`tel:${business.phoneE164}`} className="btn btn--navy">{business.phone}</a>

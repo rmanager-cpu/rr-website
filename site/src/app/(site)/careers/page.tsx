@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
@@ -13,11 +14,11 @@ export const metadata: Metadata = {
 };
 
 const TEAMS = [
-  { name: 'Front of house', line: 'Servers, bartenders, hosts and bussers for the dining room, the round bar and the patio.' },
-  { name: 'Back of house', line: 'Cooks, prep and dish, for dinner nightly, weekend breakfast and patio lunch.' },
-  { name: 'Lodge staff', line: 'Front desk and housekeeping for our 19 rooms on the river.' },
-  { name: 'Maintenance', line: 'Keeping a historic lodge, the patio and the grounds in shape, through every season.' },
-  { name: 'Administrative', line: 'Events, office and management support.' },
+  { name: 'Front of house', line: L.line },
+  { name: 'Back of house', line: L.line2 },
+  { name: 'Lodge staff', line: L.line3 },
+  { name: 'Maintenance', line: L.line },
+  { name: 'Administrative', line: L.line2 },
 ];
 
 export default function CareersPage() {
@@ -30,7 +31,7 @@ export default function CareersPage() {
           <div className="grow stack" style={{ gap: 26 }}>
             <span className="eyebrow">Careers</span>
             <h1 className="slash h-l">Join our team.</h1>
-            <p className="lede">Work on the Truckee River, minutes from Palisades Tahoe, with a crew that’s been doing this a long time. Winter and summer seasons, and year-round roles.</p>
+            <p className="lede">{L.line}</p>
             <dl className="facts" style={{ gridTemplateColumns: '1fr' }}>
               {TEAMS.map((t) => (
                 <div key={t.name}>

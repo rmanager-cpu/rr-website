@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from '@/components/Icons';
@@ -78,7 +79,7 @@ export default function CelebratePage() {
             <span className="write">Private dinners,</span>
             <span className="write write--2">parties &amp; weddings.</span>
           </h1>
-          <p>Long tables by the stone fireplace in winter, ceremonies on the riverside patio in summer. Minutes from Palisades Tahoe.</p>
+          <p>{L.line}</p>
         </div>
       </section>
 
@@ -88,17 +89,17 @@ export default function CelebratePage() {
           <div className="occasions">
             <a href="#plan" className="occasion" id="private-dining">
               <span className="occasion__name">Private dining &amp; parties</span>
-              <span className="occasion__line">Birthdays, rehearsal dinners and holiday parties for 13 to 50 guests, with a set menu.</span>
+              <span className="occasion__line">{L.line2}</span>
               <span className="occasion__go"><span className="pill">Plan a dinner</span><ArrowRight size={26} /></span>
             </a>
             <a href="#plan" className="occasion" id="groups">
               <span className="occasion__name">Corporate &amp; groups</span>
-              <span className="occasion__line">Team dinners, off-sites and ski groups staying with us or nearby.</span>
+              <span className="occasion__line">{L.line3}</span>
               <span className="occasion__go"><span className="pill">Plan a dinner</span><ArrowRight size={26} /></span>
             </a>
             <a href={`mailto:${business.email.events}?subject=${encodeURIComponent('Wedding inquiry')}`} className="occasion">
               <span className="occasion__name">Weddings</span>
-              <span className="occasion__line">Ceremonies and receptions by the river, planned with our events team.</span>
+              <span className="occasion__line">{L.line2}</span>
               <span className="occasion__go"><span className="pill pill--line">Start a conversation</span><ArrowRight size={26} /></span>
             </a>
           </div>
@@ -109,7 +110,7 @@ export default function CelebratePage() {
         <div className="container stack" style={{ gap: 44 }}>
           <div className="row-split">
             <h2 id="spaces-h" className="serif h-m">The rooms</h2>
-            <p className="lede" style={{ maxWidth: 420 }}>Two rooms inside, and the riverside patio and The Point outside in summer.</p>
+            <p className="lede" style={{ maxWidth: 420 }}>{L.line}</p>
           </div>
           <div className="space-grid">
             {SPACES.map((s) => (
@@ -131,9 +132,9 @@ export default function CelebratePage() {
         <div className="container media-row" style={{ gap: 40, alignItems: 'flex-start' }}>
           <div className="grow stack">
             <span className="eyebrow">Plan it</span>
-            <h2 className="serif h-m">Tell us your date.</h2>
+            <h2 className="serif h-m">{L.head}</h2>
             <p className="lede">
-              Pick a date, a headcount and a room, and the request goes to our events team. They’ll come back to you with availability, menus and next steps.
+              {L.line3}
             </p>
           </div>
           <div className="side" style={{ flexBasis: 380 }}>
@@ -149,8 +150,8 @@ export default function CelebratePage() {
         <div className="container" style={{ width: '100%', paddingBlock: 80 }}>
           <div className="band__card">
             <span className="eyebrow">Weddings</span>
-            <h2 id="weddings-h" className="serif" style={{ fontSize: 'clamp(40px, 4.6vw, 64px)', lineHeight: 0.98 }}>Say it by the river.</h2>
-            <p className="lede">Ceremonies on the riverside patio, dinner under the string lights, and rooms upstairs for the wedding party.</p>
+            <h2 id="weddings-h" className="serif" style={{ fontSize: 'clamp(40px, 4.6vw, 64px)', lineHeight: 0.98 }}>{L.head2}</h2>
+            <p className="lede">{L.line}</p>
             <a href={`mailto:${business.email.events}?subject=${encodeURIComponent('Wedding inquiry')}`} className="btn btn--amber" style={{ alignSelf: 'flex-start' }}>Start a wedding inquiry</a>
           </div>
         </div>
@@ -174,7 +175,7 @@ export default function CelebratePage() {
         <Link href="/stay" className="container next-door">
           <span className="stack" style={{ gap: 14 }}>
             <span className="eyebrow eyebrow--amber">Next door · Stay</span>
-            <span className="serif" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.98 }}>Keep the party upstairs.</span>
+            <span className="serif" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.98 }}>{L.head3}</span>
           </span>
           <Image src={photos.balconyChairs.src} alt={photos.balconyChairs.alt} width={photos.balconyChairs.width} height={photos.balconyChairs.height} sizes="440px" className="rounded" style={{ width: 'min(440px, 100%)', aspectRatio: '3 / 2', objectFit: 'cover' }} />
         </Link>

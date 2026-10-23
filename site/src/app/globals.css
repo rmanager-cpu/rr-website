@@ -394,3 +394,16 @@ html:not([data-tod]) .snow, html[data-tod='day'] .snow, html[data-tod='dusk'] .s
 @media (max-width: 760px) { .cwall__card--a { margin-top: clamp(240px, 64vw, 300px); } }
 .credit { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--sand-dim); }
 .credit img { display: inline-block; }
+
+/* ---------- header "More" menu ---------- */
+.more { position: relative; }
+.more__btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 0; border: 0; border-bottom: 2px solid transparent; background: none; color: inherit; font: inherit; cursor: pointer; }
+.more__btn[aria-expanded='true'] { border-bottom-color: var(--amber); }
+.more__menu { position: absolute; right: -12px; top: calc(100% + 12px); z-index: 30; min-width: 240px; margin: 0; padding: 8px; list-style: none; background: var(--ice); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 24px 50px -20px rgba(16, 28, 42, 0.45); }
+.more__menu[hidden] { display: none; }
+.more__menu a { display: block; padding: 10px 12px; border-radius: 4px; color: var(--navy) !important; text-decoration: none; font-weight: 600; letter-spacing: 0; border: 0 !important; }
+.more__menu a:hover, .more__menu a[aria-current='page'] { background: var(--frost); }
+.mobile-menu__more { margin: 18px 0 0; padding: 18px 0 0; list-style: none; border-top: 1px solid var(--line-night); display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+.mobile-menu__more a { color: var(--sand); text-decoration: none; font-size: 16px; }
+.mobile-menu__more a:hover { color: var(--amber); }
+.mobile-menu { overflow-y: auto; }

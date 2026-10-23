@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { L } from '@/content/lorem';
 import Link from 'next/link';
 import { ApresSection } from '@/components/ApresSection';
 import { ArrowRight } from '@/components/Icons';
@@ -36,10 +37,10 @@ export default function Home() {
           <div className="row-split">
             <div className="stack" style={{ maxWidth: 760 }}>
               <span className="eyebrow">01 · Celebrate</span>
-              <h2 id="celebrate-h" className="slash h-l">Gather by the fire.</h2>
+              <h2 id="celebrate-h" className="slash h-l">{L.head}</h2>
             </div>
             <p className="lede" style={{ maxWidth: 400 }}>
-              Private dinners for 13 to 50 guests in the Fireplace room and our other dining rooms, plus parties, ski groups and weddings by the river.
+              {L.line}
             </p>
           </div>
           <div className="media-row" style={{ gap: 28, alignItems: 'stretch' }}>
@@ -55,17 +56,17 @@ export default function Home() {
             <Link href="/celebrate#weddings" className="card">
               <span className="card__media"><Image src={photos.weddingArch.src} alt={photos.weddingArch.alt} width={photos.weddingArch.width} height={photos.weddingArch.height} sizes="(max-width: 700px) 100vw, 400px" /></span>
               <span className="card__title">Weddings</span>
-              <span className="card__line">Ceremonies on the riverside patio, dinner under the string lights.</span>
+              <span className="card__line">{L.line2}</span>
             </Link>
             <Link href="/celebrate#private-dining" className="card">
               <span className="card__media"><Image src={photos.fireplaceLongTable.src} alt={photos.fireplaceLongTable.alt} width={photos.fireplaceLongTable.width} height={photos.fireplaceLongTable.height} sizes="(max-width: 700px) 100vw, 400px" /></span>
               <span className="card__title">Private dining &amp; parties</span>
-              <span className="card__line">Birthdays, rehearsal dinners and holiday parties with a set menu.</span>
+              <span className="card__line">{L.line3}</span>
             </Link>
             <Link href="/celebrate#groups" className="card">
               <span className="card__media"><Image src={photos.menuWine.src} alt={photos.menuWine.alt} width={photos.menuWine.width} height={photos.menuWine.height} sizes="(max-width: 700px) 100vw, 400px" /></span>
               <span className="card__title">Corporate &amp; groups</span>
-              <span className="card__line">Team dinners and ski groups, minutes from Palisades Tahoe.</span>
+              <span className="card__line">{L.line2}</span>
             </Link>
           </div>
         </div>
@@ -76,7 +77,7 @@ export default function Home() {
         <div className="container stack" style={{ gap: 56 }}>
           <div className="stack" style={{ maxWidth: 820 }}>
             <span className="eyebrow">02 · Stay</span>
-            <h2 id="stay-h" className="slash h-l">Wake up over the river.</h2>
+            <h2 id="stay-h" className="slash h-l">{L.head2}</h2>
           </div>
           <div className="media-row">
             <div className="grow">
@@ -86,9 +87,9 @@ export default function Home() {
               <Image src={photos.kingRoom.src} alt={photos.kingRoom.alt} width={photos.kingRoom.width} height={photos.kingRoom.height} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 250, objectFit: 'cover' }} />
               <div className="panel">
                 <span className="eyebrow">Ski &amp; stay</span>
-                <p className="panel__title">The closest lodging to Palisades Tahoe.</p>
+                <p className="panel__title">{L.head3}</p>
                 <p className="muted" style={{ fontSize: 15 }}>
-                  {business.rooms} rooms in lodgepole pine and antiques, most looking over the Truckee. Ski Butlers delivers rentals to your room, with 10% off for our guests.
+                  {L.line}
                 </p>
                 <div className="btn-row" style={{ alignItems: 'center', gap: 18 }}>
                   <Link href={business.links.bookRoom} className="btn btn--amber btn--sm">Book a room</Link>
@@ -108,7 +109,7 @@ export default function Home() {
             <span className="eyebrow">03 · Mornings</span>
             <h2 id="mornings-h" className="slash h-l" style={{ fontSize: 'clamp(46px, 5.8vw, 88px)' }}>Weekend breakfast.</h2>
             <p className="lede">
-              Saturdays and Sundays, 8 to 11:30 AM: steak and eggs, Benedicts, biscuits and gravy, and a Bloody Mary if it&apos;s that kind of morning.
+              Saturdays and Sundays, 8 to 11:30 AM. {L.line3}
             </p>
             <Link href="/menus/weekend-breakfast" className="arrow-link">Breakfast menu <ArrowRight /></Link>
           </div>
@@ -118,11 +119,11 @@ export default function Home() {
       {/* THROUGH THE WINDOW: day turns to night */}
       <section className="window-band" aria-labelledby="dine-h">
         <div className="container window-band__inner">
-          <p className="serif" style={{ margin: 0, fontSize: 'clamp(28px, 3.4vw, 46px)', color: 'var(--navy)' }}>When the lifts close, the fire&apos;s going.</p>
+          <p className="serif" style={{ margin: 0, fontSize: 'clamp(28px, 3.4vw, 46px)', color: 'var(--navy)' }}>{L.line2}</p>
           <div className="window">
             <Image src={photos.fireplaceRoom.src} alt={photos.fireplaceRoom.alt} fill sizes="(max-width: 900px) 100vw, 860px" style={{ objectFit: 'cover' }} />
           </div>
-          <h2 id="dine-h" className="slash h-xl" style={{ fontSize: 'clamp(56px, 10vw, 164px)', color: 'var(--amber)' }}>Dinner by the fire.</h2>
+          <h2 id="dine-h" className="slash h-xl" style={{ fontSize: 'clamp(56px, 10vw, 164px)', color: 'var(--amber)' }}>{L.head}</h2>
         </div>
       </section>
 
@@ -132,7 +133,7 @@ export default function Home() {
           <div className="row-split" style={{ paddingTop: 12, borderTop: '1px solid var(--line-night)' }}>
             <span className="eyebrow">04 · Dine</span>
             <p className="lede" style={{ maxWidth: 520 }}>
-              Dinner every night from 5 PM in the Fireplace room and the round dining room over the river. Steaks, seafood and seasonal plates, with a long wine list.
+              Dinner nightly, 5–9 PM. {L.line}
             </p>
           </div>
           <div className="media-row">

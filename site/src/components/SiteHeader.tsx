@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { business, nav } from '@/content/site';
+import { business, moreNav, nav } from '@/content/site';
 import { Close, Menu } from './Icons';
 
 /** Logo, main menu and Book button. `overlay` sits on a hero photo (light text); `solid` sits on ice. */
@@ -13,7 +13,24 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
   const closeRef = useRef<HTMLButtonElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => setOpen(false), [path]);
+  const [more, setMore] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setOpen(false);
+    setMore(false);
+  }, [path]);
+  useEffect(() => {
+    if (!more) return;
+    const onDown = (e: MouseEvent) => !moreRef.current?.contains(e.target as Node) && setMore(false);
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMore(false);
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [more]);
   useEffect(() => {
     if (!open) return;
     closeRef.current?.focus();
@@ -41,6 +58,20 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
               {n.label}
             </Link>
           ))}
+          <div className="more" ref={moreRef}>
+            <button type="button" className="more__btn" aria-expanded={more} aria-controls="more-menu" onClick={() => setMore((v) => !v)}>
+              More <span aria-hidden="true">▾</span>
+            </button>
+            <ul id="more-menu" className="more__menu" hidden={!more}>
+              {moreNav.map((n) => (
+                <li key={n.href}>
+                  <Link href={n.href} aria-current={path === n.href ? 'page' : undefined} onClick={() => setMore(false)}>
+                    {n.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           <Link href={business.links.bookRoom} className="btn btn--amber btn--sm">
             Book
           </Link>
@@ -64,8 +95,12 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
               {n.label}
             </Link>
           ))}
-          <Link href="/visit">Visit</Link>
         </nav>
+        <ul className="mobile-menu__more">
+          {moreNav.map((n) => (
+            <li key={n.href}><Link href={n.href}>{n.label}</Link></li>
+          ))}
+        </ul>
         <div className="mobile-menu__foot">
           <div className="btn-row">
             <Link href={business.links.bookRoom} className="btn btn--amber">Book a room</Link>

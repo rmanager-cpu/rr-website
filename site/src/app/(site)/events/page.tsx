@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -50,8 +51,8 @@ export default async function EventsPage() {
       <section className="section" style={{ paddingBottom: 40 }}>
         <div className="container stack" style={{ gap: 22 }}>
           <span className="eyebrow">Events</span>
-          <h1 className="slash h-l">What&apos;s on at River Ranch.</h1>
-          <p className="lede">Happy hour, Prime Rib Thursdays, live music on the patio and the holidays, on the Truckee River in Tahoe City.</p>
+          <h1 className="slash h-l">{L.head}</h1>
+          <p className="lede">{L.line}</p>
         </div>
       </section>
 
@@ -109,7 +110,7 @@ export default async function EventsPage() {
           <span className="stack" style={{ gap: 14 }}>
             <span className="eyebrow eyebrow--amber">Summer on the patio</span>
             <span id="scs-h" className="slash" style={{ fontSize: 'clamp(44px, 6vw, 88px)', lineHeight: 0.95 }}>Summer Concert Series</span>
-            <span className="lede">Free music on the river. See the recap and stay tuned for next summer’s lineup.</span>
+            <span className="lede">{L.line2}</span>
           </span>
           <Image src="/photos/concerts/aerialist-over-patio-crowd.jpg" alt="An aerialist performs above the patio crowd during a summer concert" width={1277} height={720} sizes="460px" className="rounded" style={{ width: 'min(460px, 100%)', height: 'auto' }} />
         </Link>

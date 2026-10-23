@@ -53,6 +53,20 @@ export const lodging = {
 } as const;
 
 export type NavItem = { href: string; label: string };
+
+/** Everything else, under “More” in the header (the footer no longer carries a sitemap). */
+export const moreNav: NavItem[] = [
+  { href: '/menus', label: 'Menus' },
+  { href: '/events/summer-concert-series', label: 'Summer Concert Series' },
+  { href: '/history', label: 'History' },
+  { href: 'https://the-wall-river-ranch.vercel.app', label: 'The Wall' },
+  { href: '/johanson-family-wine', label: 'Johanson Family Wine' },
+  { href: '/loyalty', label: 'Loyalty' },
+  { href: '/order', label: 'Order online' },
+  { href: '/visit#gift-cards', label: 'Gift cards' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/visit', label: 'Visit & directions' },
+];
 export const nav: NavItem[] = [
   { href: '/stay', label: 'Stay' },
   { href: '/dine', label: 'Dine' },

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { L } from '@/content/lorem';
 import Link from 'next/link';
 import { photos } from '@/content/photos';
 
@@ -8,7 +9,7 @@ export function ApresSection({
   headingLevel = 'h2',
   title = 'Après and happy hour at the round bar',
   line = 'Happy hour, Monday to Friday, 3 to 5.',
-  detail = 'At the round bar under the log ceiling: wings, poutine, the Chophouse burger, nachos and cold drinks after the last run.',
+  detail = L.line,
   cta = { href: '/events/happy-hour', label: 'Happy hour' },
 }: {
   eyebrow?: string;

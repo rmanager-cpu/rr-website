@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { photos, type Photo } from '@/content/photos';
+import { L } from '@/content/lorem';
 import { business } from '@/content/site';
 import { TIMES, timeOfDayAt, type TimeOfDay } from '@/lib/timeOfDay';
 import { Moon, Sun, Sunrise } from './Icons';
@@ -30,16 +31,16 @@ type Mode = {
 };
 
 const MODES: Record<TimeOfDay, Mode> = {
-  dawn: { label: 'Dawn', photo: photos.heroDawn, position: 'center 38%', positionPhone: '32% center', eyebrow: 'Morning on the Truckee River', icon: 'sunrise', cta: { label: 'Book a room', href: business.links.bookRoom } },
-  day: { label: 'Day', photo: photos.heroDay, position: 'center 58%', positionPhone: 'center 40%', eyebrow: 'Minutes from Palisades Tahoe', icon: 'sun', cta: { label: 'Plan an event', href: '/celebrate' } },
-  dusk: { label: 'Dusk', photo: photos.heroDusk, position: 'center 50%', positionPhone: '48% center', eyebrow: 'Happy hour at the round bar', icon: 'moon', cta: { label: 'Happy hour menu', href: '/menus/happy-hour' } },
-  night: { label: 'Night', photo: photos.heroNight, position: 'center 62%', positionPhone: 'center 55%', eyebrow: 'Dinner by the fire, nightly', icon: 'moon', cta: { label: 'Reserve a table', href: business.links.reserveTable, external: true } },
+  dawn: { label: 'Dawn', photo: photos.heroDawn, position: 'center 38%', positionPhone: '32% center', eyebrow: L.head3, icon: 'sunrise', cta: { label: 'Book a room', href: business.links.bookRoom } },
+  day: { label: 'Day', photo: photos.heroDay, position: 'center 58%', positionPhone: 'center 40%', eyebrow: L.head3, icon: 'sun', cta: { label: 'Plan an event', href: '/celebrate' } },
+  dusk: { label: 'Dusk', photo: photos.heroDusk, position: 'center 50%', positionPhone: '48% center', eyebrow: 'Happy hour · Mon–Fri 3–5 PM', icon: 'moon', cta: { label: 'Happy hour menu', href: '/menus/happy-hour' } },
+  night: { label: 'Night', photo: photos.heroNight, position: 'center 62%', positionPhone: 'center 55%', eyebrow: 'Dinner nightly · 5–9 PM', icon: 'moon', cta: { label: 'Reserve a table', href: business.links.reserveTable, external: true } },
 };
 
 const PILLARS = [
-  { key: 'stay', name: 'Stay', href: '/stay', line: `${business.rooms} rooms over the Truckee River, minutes from Palisades Tahoe.` },
-  { key: 'dine', name: 'Dine', href: '/dine', line: 'Dinner nightly by the stone fireplace, and a round bar for après.' },
-  { key: 'celebrate', name: 'Celebrate', href: '/celebrate', line: 'Private dinners, parties and weddings by the river.' },
+  { key: 'stay', name: 'Stay', href: '/stay', line: L.line },
+  { key: 'dine', name: 'Dine', href: '/dine', line: L.line2 },
+  { key: 'celebrate', name: 'Celebrate', href: '/celebrate', line: L.line3 },
 ];
 
 const ICONS = { sunrise: Sunrise, sun: Sun, moon: Moon };
@@ -115,7 +116,7 @@ export function TimeOfDayHero() {
           );
         })}
         <div className="tod-headline">
-          <h1 className="slash h-xl">Lodge, dinner &amp; après on the Truckee.</h1>
+          <h1 className="slash h-xl">{L.head}</h1>
           <div className="btn-row">
             {TIMES.map((t) => {
               const c = MODES[t].cta;

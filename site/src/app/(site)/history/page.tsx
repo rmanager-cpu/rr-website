@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
@@ -22,11 +23,11 @@ export default function HistoryPage() {
       <section className="section">
         <div className="container stack" style={{ gap: 26, maxWidth: 980 }}>
           <span className="eyebrow">Our history</span>
-          <h1 className="slash h-l">Decades of Tahoe tradition.</h1>
+          <h1 className="slash h-l">{L.head}</h1>
           <div className="prose">
-            <p>River Ranch sits on the Truckee River at the entrance to Alpine Meadows, between Tahoe City and the mountain. Generations of skiers, rafters, racers and locals have ended their day here, and a lot of them ended up on the wall.</p>
+            <p>{L.para}</p>
             <p>That wall, by the host stand, holds dozens of old photographs, clippings and menus: the grand opening announcement, a 1992 party poster celebrating “20 years of Tahoe tradition” with a hundred regulars’ nicknames, signed photos from ski racers, and black-tie nights on the mountain.</p>
-            <p>Many of those stories walked out the door years ago. We’re collecting them again, one frame at a time.</p>
+            <p>{L.para2}</p>
           </div>
           <div className="btn-row">
             <a href={business.links.theWall} className="btn btn--amber">Explore The Wall</a>

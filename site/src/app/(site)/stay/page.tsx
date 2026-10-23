@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
@@ -39,7 +40,7 @@ export default function StayPage() {
         <div className="page-hero__shade" aria-hidden="true" />
         <div className="container page-hero__body">
           <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>Rooms on the Truckee River.</h1>
-          <p>{business.rooms} rooms in Tahoe City, most looking over the river, and the closest lodging to Palisades Tahoe.</p>
+          <p>{L.line}</p>
         </div>
       </section>
 
@@ -47,7 +48,7 @@ export default function StayPage() {
         <div className="container media-row" style={{ gap: 48, alignItems: 'flex-start' }}>
           <div className="grow stack" style={{ gap: 28 }}>
             <span className="eyebrow">The rooms</span>
-            <h2 id="rooms-h" className="serif h-m">Lodgepole pine, antiques and the sound of the river.</h2>
+            <h2 id="rooms-h" className="serif h-m">{L.head2}</h2>
             <div className="prose">
               <p>Each of our {business.rooms} rooms is furnished in lodgepole pine, hickory, birch and antiques, and most have a view of the Truckee. Seven open onto balconies, three onto decks, nine welcome dogs, and three are budget rooms for skiers who just need a bed.</p>
               <p>Rooms have an en-suite bath, a flatscreen TV, free Wi-Fi, a Keurig and a mini-fridge. The bar and restaurant are downstairs, open every night.</p>
@@ -76,7 +77,7 @@ export default function StayPage() {
       <section className="section" aria-labelledby="nearby-h">
         <div className="container stack" style={{ gap: 28 }}>
           <span className="eyebrow">Out the door</span>
-          <h2 id="nearby-h" className="serif h-m">Ski, raft and ride from here.</h2>
+          <h2 id="nearby-h" className="serif h-m">{L.head3}</h2>
           <ul className="list-dots" style={{ maxWidth: '68ch' }}>
             <li><strong>Skiing:</strong> <a href={business.links.palisades} rel="noopener">Palisades Tahoe</a> is minutes up the road. <a href={business.links.skiButlers} rel="noopener">Ski Butlers</a> delivers rentals to your room, with 10% off for our guests.</li>
             <li><strong>Rafting:</strong> float the Truckee from Tahoe City and finish on our patio, May to September, weather permitting.</li>
@@ -89,7 +90,7 @@ export default function StayPage() {
         <div className="container stack" style={{ gap: 22, maxWidth: 900 }}>
           <span className="eyebrow">Book a room</span>
           <h2 id="book-h" className="serif h-m">Call or email the front desk.</h2>
-          <p className="lede">Online booking is coming to this page. Until then, the front desk will find you the right room.</p>
+          <p className="lede">{L.line2}</p>
           <div className="btn-row">
             <a href={`tel:${business.phoneE164}`} className="btn btn--amber">{business.phone}</a>
             <a href={`mailto:${business.email.lodge}`} className="btn btn--ghost-cream">{business.email.lodge}</a>

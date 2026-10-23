@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { hoursText } from '@/components/menus/MenuView';
@@ -30,7 +31,7 @@ export default async function DinePage() {
         </div>
         <div className="page-hero__shade" aria-hidden="true" />
         <div className="container page-hero__body">
-          <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>Dinner by the fire.</h1>
+          <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>{L.head}</h1>
           <p>The restaurant and bar at River Ranch, on the Truckee River in Tahoe City. Dinner every night from 5 PM.</p>
         </div>
       </section>
@@ -58,7 +59,7 @@ export default async function DinePage() {
           <div className="row-split">
             <div className="stack">
               <span className="eyebrow">Menus</span>
-              <h2 id="menus-h" className="serif h-m">From the kitchen</h2>
+              <h2 id="menus-h" className="serif h-m">Menus</h2>
             </div>
             <p className="lede" style={{ maxWidth: 460 }}>Every menu, with prices. They change with the season.</p>
           </div>
@@ -80,8 +81,8 @@ export default async function DinePage() {
           <Image src={photos.roundBar.src} alt={photos.roundBar.alt} width={photos.roundBar.width} height={photos.roundBar.height} sizes="(max-width: 900px) 100vw, 760px" className="rounded grow" style={{ width: '100%', height: 'auto' }} />
           <div className="side stack">
             <span className="eyebrow">The bar</span>
-            <h2 id="bar-h" className="serif h-s">A round bar under a log ceiling.</h2>
-            <p className="lede">Après, happy hour and a nightcap by the fire, with a wine list of about 80 bottles from California, Oregon and Champagne.</p>
+            <h2 id="bar-h" className="serif h-s">{L.head2}</h2>
+            <p className="lede">{L.line}</p>
           </div>
         </div>
       </section>
