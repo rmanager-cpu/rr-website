@@ -367,3 +367,28 @@ html:not([data-tod]) .snow, html[data-tod='day'] .snow, html[data-tod='dusk'] .s
 .thanks-line { margin: 0; padding: 12px 16px; align-self: flex-start; border: 1px solid var(--line-night); border-radius: 3px; font-size: 15px; color: var(--cream); }
 .thanks-line a { color: var(--amber); font-weight: 700; text-decoration: none; }
 .thanks-line a:hover { text-decoration: underline; color: var(--amber); }
+.mission { max-width: 62ch; display: grid; gap: 14px; }
+.mission p { margin: 0; font-family: var(--font-serif), Georgia, serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; color: var(--cream); }
+.concert-video { width: 100%; max-width: 1100px; aspect-ratio: 16 / 9; background: #000; border-radius: 3px; box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8); }
+.concert-hero .planner { color: var(--navy); }
+
+/* ---------- concert poster wall: collage fills the page, cards pinned over it ---------- */
+.cwall { display: grid; position: relative; }
+.cwall > * { grid-area: 1 / 1; }
+.cwall__collage { padding-inline: max(12px, env(safe-area-inset-left, 0px)); }
+.cwall__collage .cc { padding-block: 10px 80px; max-width: 1500px; margin: 0 auto; }
+.cwall__content { position: relative; z-index: 20; display: flex; flex-direction: column; gap: clamp(240px, 34vw, 460px); padding-block: clamp(30px, 6vw, 90px) 140px; pointer-events: none; }
+.cwall__card { pointer-events: auto; background: rgba(16, 28, 42, 0.95); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); padding: clamp(22px, 3.4vw, 48px); border-radius: 4px; box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(241, 231, 212, 0.08); }
+.cwall__card--a { max-width: 680px; transform: rotate(-0.8deg); }
+.cwall__card--b { max-width: 980px; align-self: center; transform: rotate(0.6deg); }
+.cwall__card--c { max-width: 1040px; align-self: flex-end; transform: rotate(0.7deg); }
+.cwall__card--d { max-width: 760px; transform: rotate(-0.5deg); }
+@media (max-width: 760px) {
+  .cwall__content { gap: 260px; padding-inline: 12px; }
+  .cwall__card, .cwall__card--a, .cwall__card--c, .cwall__card--d { transform: none; max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .cwall__card { transform: none !important; } }
+/* The aerialist stays uncovered: the first card starts below/right of it. */
+.cwall__card--a { align-self: flex-end; margin-top: clamp(280px, 34vw, 520px); }
+.cwall__card--c { align-self: flex-start; }
+@media (max-width: 760px) { .cwall__card--a { margin-top: clamp(240px, 64vw, 300px); } }

@@ -12,6 +12,7 @@ export default function Protected({ children }: { children: React.ReactNode }) {
           <Link href="/admin">Calendar</Link>
           <Link href="/admin/events/new">Add event</Link>
           <Link href="/admin/applications">Applications</Link>
+          <Link href="/admin/bookings">Band requests</Link>
           <Link href="/" target="_blank">View site</Link>
           <form action={signOut}><button type="submit" className="btn btn--sm" style={{ background: 'transparent', color: 'var(--ice)', border: '1px solid rgba(245,247,249,.4)', minHeight: 36 }}>Sign out</button></form>
         </nav>

@@ -192,3 +192,42 @@ export async function setApplicationStatus(id: string, status: JobApplication['s
   await needDb();
   await db().query('update site_job_applications set status=$1 where id=$2', [status, id]);
 }
+
+// ---------- band booking requests ----------
+
+export type BookingRequest = {
+  id: string;
+  createdAt: string;
+  actName: string;
+  contact: string;
+  email: string | null;
+  phone: string | null;
+  genre: string | null;
+  hometown: string | null;
+  links: string | null;
+  dates: string | null;
+  message: string | null;
+  status: 'new' | 'reviewing' | 'booked' | 'passed';
+};
+
+export async function addBookingRequest(b: Omit<BookingRequest, 'id' | 'createdAt' | 'status'>) {
+  await needDb();
+  await db().query(
+    'insert into site_booking_requests (act_name, contact, email, phone, genre, hometown, links, dates, message) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
+    [b.actName, b.contact, b.email, b.phone, b.genre, b.hometown, b.links, b.dates, b.message],
+  );
+}
+
+export async function listBookingRequests(): Promise<BookingRequest[]> {
+  if (!(await hasDb())) return [];
+  const { rows } = await db().query('select * from site_booking_requests order by created_at desc limit 500');
+  return rows.map((r) => ({
+    id: String(r.id), createdAt: new Date(r.created_at).toISOString(), actName: r.act_name, contact: r.contact, email: r.email, phone: r.phone,
+    genre: r.genre, hometown: r.hometown, links: r.links, dates: r.dates, message: r.message, status: r.status,
+  }));
+}
+
+export async function setBookingStatus(id: string, status: BookingRequest['status']) {
+  await needDb();
+  await db().query('update site_booking_requests set status=$1 where id=$2', [status, id]);
+}

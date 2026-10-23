@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { ApresSection } from '@/components/ApresSection';
 import { CONCERT_RECAP, ConcertCollage } from '@/components/ConcertCollage';
 import { SiteHeader } from '@/components/SiteHeader';
+import { BookingForm } from './BookingForm';
 import { business, hours } from '@/content/site';
 import { breadcrumbSchema, eventSchema, JsonLd, MARKABLE_EVENT_CATEGORIES } from '@/lib/schema';
 import { addDays, datesOf, formatDate, holidayDates, todayInTahoe, whenPhrase } from '@/lib/events/recurrence';
@@ -143,45 +144,80 @@ function HappyHourPage({ page, mine }: { page: EventPage; mine: EventSeries[] })
   );
 }
 
+/**
+ * The recap video. Set this once the video is ready (file in public/video/, plus a poster frame);
+ * while it's null the slot isn't shown. When set, the page also tells Google about it (VideoObject).
+ */
+const RECAP_VIDEO: { src: string; poster: string; title: string; uploadDate: string } | null = null;
+
 function ConcertPage({ page }: { page: EventPage }) {
+  // A poster wall: the collage fills the whole page, and the words and the form are pinned over it.
   return (
     <div className="concert-hero">
+      {RECAP_VIDEO && (
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "VideoObject", name: RECAP_VIDEO.title, description: page.summary ?? "Summer Concert Series at River Ranch", thumbnailUrl: RECAP_VIDEO.poster, contentUrl: RECAP_VIDEO.src, uploadDate: RECAP_VIDEO.uploadDate }} />
+      )}
       <SiteHeader variant="overlay" />
-      <section className="container stack" style={{ gap: 24, paddingBlock: '40px 20px' }}>
-        <span className="eyebrow eyebrow--amber">Free music on the river</span>
-        <h1 className="slash concert-title">
-          Summer Concert<span>Series.</span>
-        </h1>
-        <p className="lede" style={{ maxWidth: 560 }}>
-          {page.summary ?? 'Free shows on the River Ranch patio all summer.'} Next summer&apos;s lineup is on the way. Stay tuned.
-        </p>
-        <p className="thanks-line">
-          Made possible by{' '}
-          <a href="https://www.tincupwhiskey.com" rel="noopener">TINCUP Whiskey</a>,{' '}
-          <a href="https://www.diageo.com" rel="noopener">Diageo</a> and the{' '}
-          <a href="https://www.northtahoechamber.com" rel="noopener">North Tahoe Chamber</a>. Thank you.
-        </p>
-      </section>
-      <section className="container">
-        <ConcertCollage />
-      </section>
-      <section className="section" aria-labelledby="recap-h">
-        <div className="container stack" style={{ gap: 30 }}>
-          <h2 id="recap-h" className="serif h-m">The recap</h2>
-          <div className="recap">
-            {CONCERT_RECAP.map((r) => (
-              <div key={r.year}>
-                <h3>{r.year}</h3>
-                <ul>{r.shows.map((x) => <li key={x}>{x}</li>)}</ul>
-              </div>
-            ))}
-          </div>
-          <div className="btn-row">
-            <a href={business.social.instagram} className="btn btn--amber" rel="noopener">Follow for the lineup</a>
-            <Link href="/stay" className="btn btn--ghost-cream">Stay the night</Link>
-          </div>
+      <div className="cwall">
+        <div className="cwall__collage">
+          <ConcertCollage />
         </div>
-      </section>
+        <div className="cwall__content container">
+          <section className="cwall__card cwall__card--a stack" style={{ gap: 22 }}>
+            <span className="eyebrow eyebrow--amber">Free music on the river</span>
+            <h1 className="slash concert-title">
+              Summer Concert<span>Series.</span>
+            </h1>
+            <div className="mission">
+              <p>Every summer we turn the patio into a stage. Local bands and touring acts, string lights in the pines, an aerialist over the crowd, and the Truckee running right behind it all.</p>
+              <p>The shows are free, because music on the river should be for everybody: locals, ski bums turned river rats, families, and whoever floated in that afternoon.</p>
+            </div>
+            <p className="thanks-line">
+              Made possible by{" "}
+              <a href="https://www.tincupwhiskey.com" rel="noopener">TINCUP Whiskey</a>,{" "}
+              <a href="https://www.diageo.com" rel="noopener">Diageo</a> and the{" "}
+              <a href="https://www.northtahoechamber.com" rel="noopener">North Tahoe Chamber</a>. Thank you.
+            </p>
+          </section>
+
+          {RECAP_VIDEO && (
+            <section className="cwall__card cwall__card--b" aria-label="Video recap">
+              <video className="concert-video" src={RECAP_VIDEO.src} poster={RECAP_VIDEO.poster} controls playsInline preload="none" title={RECAP_VIDEO.title} />
+            </section>
+          )}
+
+          <section className="cwall__card cwall__card--c" aria-labelledby="play-h" id="play">
+            <div className="media-row" style={{ gap: 32, alignItems: "flex-start" }}>
+              <div className="grow stack" style={{ gap: 18, flexBasis: 300 }}>
+                <span className="eyebrow eyebrow--amber">Bands &amp; artists</span>
+                <h2 id="play-h" className="slash" style={{ fontSize: "clamp(42px, 5vw, 80px)", lineHeight: 0.95, color: "var(--cream)" }}>Everybody wants to play the river.</h2>
+                <p className="lede">We hear from far more bands than we have summer nights, from Tahoe locals to acts on tour up and down the West Coast. If you want a spot on the patio stage, send us your music. We listen to every request and book the ones that fit the season.</p>
+              </div>
+              <div className="side" style={{ flexBasis: 380 }}>
+                <BookingForm />
+              </div>
+            </div>
+          </section>
+
+          <section className="cwall__card cwall__card--d" aria-labelledby="recap-h">
+            <div className="stack" style={{ gap: 26 }}>
+              <h2 id="recap-h" className="serif h-m">The recap</h2>
+              <div className="recap">
+                {CONCERT_RECAP.map((r) => (
+                  <div key={r.year}>
+                    <h3>{r.year}</h3>
+                    <ul>{r.shows.map((x) => <li key={x}>{x}</li>)}</ul>
+                  </div>
+                ))}
+              </div>
+              <div className="btn-row">
+                <a href={business.social.instagram} className="btn btn--amber" rel="noopener">Follow for the lineup</a>
+                <Link href="/stay" className="btn btn--ghost-cream">Stay the night</Link>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   );
 }

@@ -183,3 +183,10 @@ export async function setApplication(id: string, status: JobApplication['status'
   await setApplicationStatus(id, status);
   revalidatePath('/admin/applications');
 }
+
+export async function setBooking(id: string, status: 'new' | 'reviewing' | 'booked' | 'passed') {
+  guard();
+  const { setBookingStatus } = await import('@/lib/events/store');
+  await setBookingStatus(id, status);
+  revalidatePath('/admin/bookings');
+}

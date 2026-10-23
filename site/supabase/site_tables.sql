@@ -84,6 +84,26 @@ create table if not exists public.site_job_applications (
 );
 create index if not exists site_job_applications_new_idx on public.site_job_applications (created_at desc);
 
+-- ---------- band booking requests (Summer Concert Series page) ----------
+create table if not exists public.site_booking_requests (
+  id          uuid primary key default gen_random_uuid(),
+  created_at  timestamptz not null default now(),
+  act_name    text not null check (char_length(btrim(act_name)) between 1 and 140),
+  contact     text not null check (char_length(btrim(contact)) between 1 and 120),
+  email       text check (email is null or char_length(email) <= 160),
+  phone       text check (phone is null or char_length(phone) <= 40),
+  genre       text check (genre is null or char_length(genre) <= 140),
+  hometown    text check (hometown is null or char_length(hometown) <= 140),
+  links       text check (links is null or char_length(links) <= 1000),
+  dates       text check (dates is null or char_length(dates) <= 400),
+  message     text check (message is null or char_length(message) <= 4000),
+  status      text not null default 'new' check (status in ('new', 'reviewing', 'booked', 'passed')),
+  notes       text,
+  check (email is not null or phone is not null)
+);
+create index if not exists site_booking_requests_new_idx on public.site_booking_requests (created_at desc);
+alter table public.site_booking_requests enable row level security;
+
 alter table public.site_event_pages enable row level security;
 alter table public.site_events enable row level security;
 alter table public.site_job_applications enable row level security;
@@ -101,6 +121,7 @@ end $$;
 grant usage on schema public to rr_site_app;
 grant select, insert, update, delete on public.site_event_pages, public.site_events to rr_site_app;
 grant select, insert, update on public.site_job_applications to rr_site_app;
+grant select, insert, update on public.site_booking_requests to rr_site_app;
 grant select on public.site_event_closures to rr_site_app;
 
 -- Venio reads closures from here (only if Venio's login exists in this database).
@@ -130,5 +151,7 @@ drop policy if exists site_events_app on public.site_events;
 create policy site_events_app on public.site_events for all to rr_site_app using (true) with check (true);
 drop policy if exists site_job_applications_app on public.site_job_applications;
 create policy site_job_applications_app on public.site_job_applications for all to rr_site_app using (true) with check (true);
+drop policy if exists site_booking_requests_app on public.site_booking_requests;
+create policy site_booking_requests_app on public.site_booking_requests for all to rr_site_app using (true) with check (true);
 
 commit;
