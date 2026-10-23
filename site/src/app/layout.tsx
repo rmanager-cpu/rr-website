@@ -5,6 +5,7 @@ import { business, SITE_URL } from '@/content/site';
 import { JsonLd, organizationSchema } from '@/lib/schema';
 import { timeOfDayBootScript } from '@/lib/timeOfDay';
 import './globals.css';
+import './menus.css';
 
 // Self-hosted by Next.js (no request to Google at page load), swapped in without blocking text.
 const display = Protest_Revolution({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-display', adjustFontFallback: false });

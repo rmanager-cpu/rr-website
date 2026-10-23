@@ -10,7 +10,7 @@ import { business } from '@/content/site';
  * No prices or availability are shown until they come from that engine, so nothing here can be wrong.
  */
 
-const ROOMS = ['Fireplace room', 'Riverview room', 'The Pit', 'The Point', 'Not sure yet'];
+const ROOMS = ['Fireplace room', 'Riverview room', 'Full Patio', 'The Point', 'Not sure yet'];
 
 export function PrivateDinnerPlanner({ heading = 'Plan a private dinner', headingLevel = 'h3' }: { heading?: string; headingLevel?: 'h2' | 'h3' }) {
   const ids = { date: useId(), guests: useId(), name: useId() };

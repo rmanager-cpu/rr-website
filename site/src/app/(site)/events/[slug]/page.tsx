@@ -128,7 +128,7 @@ function HappyHourPage({ page, mine }: { page: EventPage; mine: EventSeries[] })
         title="Happy hour at the River Ranch round bar"
         line={`Monday to Friday, ${hours.happyHour.time}.`}
         detail={page.body ?? ''}
-        cta={{ href: '/dine#happy-hour', label: 'Happy hour menu' }}
+        cta={{ href: '/menus/happy-hour', label: 'Happy hour menu' }}
       />
       <section className="section on-night" style={{ paddingTop: 0 }}>
         <div className="container stack" style={{ gap: 18 }}>

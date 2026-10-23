@@ -1,0 +1,4402 @@
+{
+ "_about": "Starting menus, imported from the old Popmenu site on 2026-10-23 (prices as listed there; check before launch). Dishes are shared across menus; prices are per menu.",
+ "dishes": [
+  {
+   "slug": "coffee",
+   "name": "Coffee",
+   "description": "Please specify Regular or Decaf, cream & sugar available",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "hot-chocolate",
+   "name": "Hot Chocolate",
+   "description": "Served with whipped cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "hot-cider",
+   "name": "Hot Cider",
+   "description": "Whipped cream available upon request",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "milk",
+   "name": "Milk",
+   "description": "Please specify 2% or Whole",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "shirley-temple",
+   "name": "Shirley Temple",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "roy-rogers",
+   "name": "Roy Rogers",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "cranberry-juice",
+   "name": "Cranberry Juice",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "grapefruit-juice",
+   "name": "Grapefruit Juice",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "orange-juice",
+   "name": "Orange Juice",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pineapple-juice",
+   "name": "Pineapple Juice",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "iced-tea",
+   "name": "Iced Tea",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "lemonade",
+   "name": "Lemonade",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "starry",
+   "name": "Starry",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "ginger-ale",
+   "name": "Ginger Ale",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "ginger-beer",
+   "name": "Ginger Beer",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "root-beer",
+   "name": "Root Beer",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pepsi",
+   "name": "Pepsi",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "diet-pepsi",
+   "name": "Diet Pepsi",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pellegrino-small",
+   "name": "Pellegrino Small",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pellegrino-large",
+   "name": "Pellegrino Large",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "mango-lemonade",
+   "name": "Mango Lemonade",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "blood-orange-lemonade",
+   "name": "Blood Orange Lemonade",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "martinellis-sparkling-cider",
+   "name": "Martinelli's Sparkling Cider",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "rotating-na-beer",
+   "name": "Rotating NA Beer",
+   "description": "~Please inquire~",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "downtown-brown-ale",
+   "name": "Downtown Brown Ale",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "revision-ipa-can",
+   "name": "Revision IPA Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "golden-state-cider-can",
+   "name": "Golden State Cider Can",
+   "description": "Gingergrass",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "sincere-dry-cider-can",
+   "name": "Sincere Dry Cider Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "50-50-donner-party-porter-can",
+   "name": "50/50 Donner Party Porter Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "guinness-can",
+   "name": "Guinness Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "almanac-sour-can",
+   "name": "Almanac Sour Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "blue-moon-bottle",
+   "name": "Blue Moon Bottle",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "budweiser-bottle",
+   "name": "Budweiser Bottle",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "coors-light-bottle",
+   "name": "Coors Light Bottle",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "stella-artois-bottle",
+   "name": "Stella Artois Bottle",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "truly-hard-seltzer-can",
+   "name": "Truly Hard Seltzer Can",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "river-ranch-irish-coffee",
+   "name": "River Ranch Irish Coffee",
+   "description": "Roe & Co Irish Whiskey, Coffee, Sugar, Whipped Cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "summit-screwball",
+   "name": "Summit Screwball",
+   "description": "Screwball Peanut Butter Whiskey, Hot Chocolate, Whipped Cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "boomerang-bulleit",
+   "name": "Boomerang Bulleit",
+   "description": "Bulleit Bourbon, King's Ginger, Chamomile Honey, Fresh Lemon",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "hidden-knolls-hot-chocolate",
+   "name": "Hidden Knoll's Hot Chocolate",
+   "description": "Bourbon, Hazelnut Liqueur, Hot Chocolate, Whipped Cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "apres-apple-cider",
+   "name": "Après Apple Cider",
+   "description": "Dark Rum, Angostura Bitters, Hot Apple Cider, Whipped Cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "roundhouse-rum",
+   "name": "Roundhouse Rum",
+   "description": "Spiced Rum, House-Blend Hot Buttered Rum",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "toddy-traverse",
+   "name": "Toddy Traverse",
+   "description": "Brandy, Agave, Fresh Lemon",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "our-father",
+   "name": "Our Father",
+   "description": "Tequila, Kahlua, Baileys, Hot Chocolate, Whipped Cream",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "old-fashioned-river-ranch",
+   "name": "Old Fashioned River Ranch",
+   "description": "Bulleit Rye, Orange Bitters, Aromatic Bitters, Sugar",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "the-ranch-manhattan",
+   "name": "The Ranch Manhattan",
+   "description": "Bourbon, Carpano Antica Sweet Vermouth, Aromatic Bitters",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "banana-bread-old-fashioned",
+   "name": "Banana Bread Old Fashioned",
+   "description": "Bulleit Bourbon, Banana Liqueur, Brown Sugar, Bitters",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pumpkin-pie-old-fashioned",
+   "name": "Pumpkin Pie Old Fashioned",
+   "description": "Four Roses Bourbon, Pumpkin Brown Sugar, Aromatic Bitters",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "barrel-aged-boulevardier",
+   "name": "Barrel-Aged Boulevardier",
+   "description": "Tincup Mountain Whiskey, Sweet Vermouth, Campari",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "skinny-old-fashioned",
+   "name": "Skinny Old Fashioned",
+   "description": "Jameson, Orange Bitters, Aromatic Bitters, Agave",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "the-wolverine-2",
+   "name": "The Wolverine",
+   "description": "Maker's Mark, Fresh Lemon, Maple Syrup, Egg White",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bourbon-blossom",
+   "name": "Bourbon Blossom",
+   "description": "Makers Mark, Cherry, Fresh Lemon, Egg White",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "henrik-harlaut",
+   "name": "Henrik Harlaut",
+   "description": "Hendrick's Gin, St. Germain, Fresh Cucumber, Fresh Lemon",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "indigo-martini",
+   "name": "Indigo Martini",
+   "description": "Empress 1908 Gin, Lavender, Fresh Lemon, Egg White",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "first-chair-2",
+   "name": "First Chair",
+   "description": "Cold Brew Coffee Liqueur, Carmel Vodka, Vanilla Vodka, Baileys",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "large-marg",
+   "name": "Large Marg",
+   "description": "Hornitos Reposado, Grand Marnier, Agave, Fresh Lime",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "party-island-mojito",
+   "name": "Party Island Mojito",
+   "description": "House-Infused Mint Rum, Coconut Water, Fresh Lime",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "snowgrass-mule",
+   "name": "Snowgrass Mule",
+   "description": "Blood Orange & Lemongrass-Infused Tito's Vodka, Ginger Beer, Fresh Lemon",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "grahams-fine-ruby-porto-portugal",
+   "name": "Graham's Fine Ruby Porto, Portugal",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bodegas-dios-baco-oloroso-jerez-xeres-sherry-spain",
+   "name": "Bodegas Dios Baco Oloroso Jerez-Xérès-Sherry, Spain",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "penfolds-club-tawny-australia",
+   "name": "Penfolds Club Tawny, Australia",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "chateau-laribotte-sauternes-france",
+   "name": "Château Laribotte Sauternes, France",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "creme-brulee",
+   "name": "Crème Brûlée",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "flourless-chocolate-torte",
+   "name": "Flourless Chocolate Torte",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "lemon-blueberry-cake",
+   "name": "Lemon- Blueberry Cake",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "ny-cheesecake",
+   "name": "NY Cheesecake",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "orange-phyllo-cake",
+   "name": "Orange Phyllo Cake",
+   "description": null,
+   "tags": [
+    "CD",
+    "CE",
+    "CG"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "seasonal-fruit-crisp",
+   "name": "Seasonal Fruit Crisp",
+   "description": "2-person portion, à la mode",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "a-la-mode",
+   "name": "à la mode",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "soup-du-jour",
+   "name": "Soup Du Jour",
+   "description": "Ask Server",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "caesar-salad-b1ad0780",
+   "name": "Caesar Salad",
+   "description": "Whole Leaf Lettuce, Classic Caesar Dressing, Parmesan, Candied Lemon, Meyer Lemon Oil, Croutons",
+   "tags": [
+    "GM"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "greek-salad",
+   "name": "Greek Salad",
+   "description": "Mixed Greens, Kalamata Olives, Cherry Tomatoes, Cucumber, Feta, Candied Walnuts, Pickled Red Onion, Lemon Vinaigrette",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "wedge-salad",
+   "name": "Wedge Salad",
+   "description": "Iceberg, Bacon, Cherry Tomato, Blue Cheese Crumble, Blue Cheese Dressing",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "crispy-brussels-and-shishitos",
+   "name": "Crispy Brussels & Shishitos",
+   "description": "Twice-Cooked Brussels & Peppers, Balsamic Glaze, Garlic, Parmesan, ^Sweet Onion Aioli",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "roasted-garlic-hummus-plate",
+   "name": "Roasted Garlic Hummus Plate",
+   "description": "Carrots, Celery, Shishito Peppers, Naan Bread",
+   "tags": [
+    "CG",
+    "DF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "ahi-poke",
+   "name": "Ahi Poke",
+   "description": "Hawaiian Ahi Tuna, Poke Sauce, Avocado, Toasted Macadamia Nuts, Red Onion, Ginger, Wakame, Wontons",
+   "tags": [
+    "GM"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "calamari",
+   "name": "Calamari",
+   "description": "Rings & Tentacles, Lemon Aioli",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "wings",
+   "name": "Wings",
+   "description": "Choice of: Buffalo, Spicy Peach Chili, Sriracha Honey, or Teriyaki, Crudité",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "poutine",
+   "name": "Poutine",
+   "description": "Crispy Fries, Mushroom Gravy, Cheese Curds",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "chophouse-burger",
+   "name": "Chophouse Burger",
+   "description": "1/2 Pound, Brioche Bun, Bacon, Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "tags": [
+    "GM"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "ranch-nachos",
+   "name": "Ranch Nachos",
+   "description": "Mountain of Local Corn Chips, Cheese, Black Beans, Jalapeño, Pico de Gallo, Sour Cream, Guacamole",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "new-zealand-elk-chops",
+   "name": "New Zealand Elk Chops",
+   "description": "Coriander-Crusted, Chimichurri, Chèvre\nFingerling Potatoes, Grilled Asparagus\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "tags": [
+    "GF"
+   ],
+   "raw": true
+  },
+  {
+   "slug": "dayboat-diver-scallops",
+   "name": "Dayboat Diver Scallops",
+   "description": "Pan-Seared, Corn Cream, Pancetta, Fingerling Potato\nGrilled Corn, Tomato Confit",
+   "tags": [
+    "GF"
+   ],
+   "raw": true
+  },
+  {
+   "slug": "marys-half-chicken",
+   "name": "Mary's Half Chicken",
+   "description": "Organic, Pan-Seared, Sherry-Leek Pan Jus\nFingerling Potatoes, Sweet Summer Corn, Wild Mushrooms",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "ranch-stroganoff",
+   "name": "Ranch Stroganoff",
+   "description": "Fresh Local Egg Noodles, Crema, Red Wine, Chive",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bison-short-ribs",
+   "name": "Bison Short Ribs",
+   "description": "Bourbon Slow-Braised, Soy & Citrus Pan Glaze\nMashed Baby Red Potatoes, Brussels Sprouts",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "top-sirloin",
+   "name": "Top Sirloin",
+   "description": "8oz Prime Baseball Cut, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "tags": [
+    "GF"
+   ],
+   "raw": true
+  },
+  {
+   "slug": "ribeye",
+   "name": "Ribeye",
+   "description": "16oz Prime, Blue Cheese Butter, Veal Jus\nMashed Baby Red Potatoes, Mushrooms\n\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE",
+   "tags": [
+    "GF"
+   ],
+   "raw": true
+  },
+  {
+   "slug": "catch-of-the-day",
+   "name": "Catch-Of-The-Day",
+   "description": "~Please Inquire~\n~Market Price~",
+   "tags": [
+    "GF"
+   ],
+   "raw": true
+  },
+  {
+   "slug": "summer-bounty",
+   "name": "Summer Bounty",
+   "description": "Summer Squash, Grilled Corn, Asparagus, Quinoa, Romesco",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "lemon-ricotta-ravioli",
+   "name": "Lemon Ricotta Ravioli",
+   "description": "Arugula Pesto Cream, Summer Squash, Cherry Tomato, Sweet Corn, Spinach",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "soup-du-jour-2",
+   "name": "Soup Du Jour",
+   "description": "~Ask Your Server~",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "fries",
+   "name": "Fries",
+   "description": null,
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "6-well-drinks",
+   "name": "$6 Well Drinks",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "5-draught-beers",
+   "name": "$5 Draught Beers",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "8-wines-by-the-glass",
+   "name": "$8 Wines-by-the-Glass",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "10-cocktails",
+   "name": "$10 Cocktails",
+   "description": "Pirate Booty Mai Tai\nParty Island Mojito\nRiver Ranch Irish Coffee",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "nachos",
+   "name": "Nachos",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "grilled-cheese",
+   "name": "Grilled Cheese",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "buttered-noodles",
+   "name": "Buttered Noodles",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "chicken-strips-with-french-fries",
+   "name": "Chicken Strips with French Fries",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "hamburger-with-french-fries",
+   "name": "Hamburger with French Fries",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "cheeseburger-with-french-fries",
+   "name": "Cheeseburger with French Fries",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "lobster-roll",
+   "name": "Lobster Roll",
+   "description": "New England style, brioche roll",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pulled-pork-sandwich",
+   "name": "Pulled Pork Sandwich",
+   "description": "Brioche Bun, Smoked Pork, Spicy Peach Chili Sauce, Coleslaw, Pickles\nChoice of Side: Potato Chips, Potato Salad, Pasta Salad, Coleslaw",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "turkey-club",
+   "name": "Turkey Club",
+   "description": "Toasted White Bread, Turkey, ^Chimichurri Aioli, Lettuce, Tomato\nChoice of Side: Potato Chips, Potato Salad, Pasta Salad, Coleslaw",
+   "tags": [
+    "GM"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "classic-blt",
+   "name": "Classic BLT",
+   "description": "Toasted White Bread, Bacon, Lettuce, Tomato\nChoice of Side: Potato Chips, Potato Salad, Pasta Salad, Coleslaw, or +$3 Fries",
+   "tags": [
+    "GM"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "tacos-chicken-birria",
+   "name": "Tacos (Chicken/ Birria)",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "nathans-famous-hot-dog",
+   "name": "Nathan's Famous Hot Dog",
+   "description": "1/4 Pound, Pickles\nChoice of Side: Potato Chips, Potato Salad, Pasta Salad, Coleslaw",
+   "tags": [
+    "GM",
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "caesar-salad",
+   "name": "Caesar Salad",
+   "description": "Chopped Romaine Lettuce, Classic Caesar Dressing, Shaved Asiago, Croutons",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "sides-5",
+   "name": "SIDES $5",
+   "description": "One included with select meals",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "autumn-farm-salad",
+   "name": "Autumn Farm Salad",
+   "description": "Arugula, Frisée, Shaved Carrot, Apple, Grape, Chèvre, Candied Walnut, Lemon Vinaigrette",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "artisan-cheese-plate",
+   "name": "Artisan Cheese Plate",
+   "description": "3 Cheese Varieties, Fig Jam, Seasonal Fruit, Flatbread Crackers",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "roberts-rigatoni",
+   "name": "Robert's Rigatoni",
+   "description": "Tomato Herb Sauce, Stewed Peppers, Cherry Tomatoes, Kalamata Olives, Grana Parma",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "steak-and-eggs",
+   "name": "Steak & Eggs",
+   "description": "8oz Prime Ribeye 2 ^Eggs-Your-Way",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "canadian-bacon-eggs-benedict",
+   "name": "Canadian Bacon Eggs Benedict.",
+   "description": "English muffin- Hollandaise",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "chevre-stuffed-french-toast",
+   "name": "Chevre Stuffed French Toast",
+   "description": "Grand Marnier Batter, Blueberry Compote, Meyer Lemon Drizzle",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "oscars-grande-breakfast-burrito",
+   "name": "Oscar's Grande Breakfast Burrito",
+   "description": "Flour Tortilla, 3 ^Eggs scrambled with: \nPotato, Onion, Bell Pepper, Cheese, Pico de Gallo\nChoice of: Bacon ~OR~ Chorizo",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "classic-breakfast",
+   "name": "Classic Breakfast",
+   "description": "2 ^Eggs-Your-Way,",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "chilaquiles",
+   "name": "Chilaquiles",
+   "description": "2 Eggs-Your-Way, Green Chile, Pork Shoulder, Tortilla Chips",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "strawberry-banana-pancakes",
+   "name": "Strawberry Banana Pancakes",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "biscuits-and-mushroom-gravy",
+   "name": "Biscuits and Mushroom Gravy",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "granola-yogurt-and-berries",
+   "name": "Granola, Yogurt & Berries",
+   "description": null,
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "sausage-links",
+   "name": "Sausage Links",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "home-fries",
+   "name": "Home Fries",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bacon",
+   "name": "Bacon",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "sourdough-toast",
+   "name": "Sourdough Toast",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "fruit-cup",
+   "name": "Fruit Cup",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "weekend-special-spicy-meatball-sub",
+   "name": "Weekend Special - Spicy Meatball Sub",
+   "description": "6 oz. meatballs, house-made Calabrian chili marinara, fresh mozzarella, crispy fried onions, finished with grated pecorino on an Amoroso roll",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "farm-salad",
+   "name": "Farm Salad",
+   "description": null,
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "steak-frites",
+   "name": "Steak Frites",
+   "description": "Gremolata, Peppercorn Sauce",
+   "tags": [
+    "GF"
+   ],
+   "raw": false
+  },
+  {
+   "slug": "whispering-angel-rose-provence-france",
+   "name": "Whispering Angel Rosé, Provence France",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bisol-jeio-prosecco-italy",
+   "name": "Bisol \"Jeio\" Prosecco, Italy",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "carra-sparkling-rose-italy",
+   "name": "Carra Sparkling Rosé, Italy",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "taittinger-brut-reims-nv",
+   "name": "Taittinger Brut, Reims NV",
+   "description": "½ bottle",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "j-vineyards-cuvee-sonoma-county",
+   "name": "J. Vineyards Cuvée, Sonoma County",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "schramsberg-blanc-de-blancs-2018-napa",
+   "name": "Schramsberg Blanc de Blancs 2018, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "gosset-grand-reserve-ay-nv",
+   "name": "Gosset Grand Reserve, Aÿ NV",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "bollinger-special-cuvee-brut-ay-nv",
+   "name": "Bollinger Special Cuvée Brut, Aÿ NV",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "la-crema-sonoma-coast",
+   "name": "La Crema, Sonoma Coast",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "on-q-russian-river-valley",
+   "name": "On Q, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "frank-family-2023-carneros",
+   "name": "Frank Family 2023, Carneros",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "talbott-kali-hart-vineyard-2019-santa-lucia",
+   "name": "Talbott Kali Hart Vineyard 2019, Santa Lucia",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "chateau-montelena-2021-napa",
+   "name": "Chateau Montelena 2021, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "dumol-wester-reach-vineyard-2021-russian-river-valley",
+   "name": "DuMOL Wester Reach Vineyard 2021, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "miraval-cotes-de-france-rose-2020-provence",
+   "name": "Miraval Côtes De France Rosé 2020, Provence",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "rombauer-sauvignon-blanc-napa",
+   "name": "Rombauer Sauvignon Blanc, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "whitehaven-sauvignon-blanc-new-zealand",
+   "name": "Whitehaven Sauvignon Blanc, New Zealand",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "whitehall-lane-sauvignon-blanc-2022-napa",
+   "name": "Whitehall Lane Sauvignon Blanc 2022, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "balletto-gewurztraminer-2020-russian-river-valley",
+   "name": "Balletto Gewürztraminer 2020, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "foris-riesling-2017-rogue-valley",
+   "name": "Foris Riesling 2017, Rogue Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "blue-quail-dry-riesling-2021-potter-valley",
+   "name": "Blue Quail Dry Riesling 2021, Potter Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "duck-pond-pinot-gris-2021-willamette-valley",
+   "name": "Duck Pond Pinot Gris 2021, Willamette Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "kettmeir-pinot-grigio-alto-adige-italy",
+   "name": "Kettmeir Pinot Grigio, Alto Adige Italy",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "cordant-resolution-2021-paso-robles",
+   "name": "Cordant Resolution 2021, Paso Robles",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "johanson-cabernet-sauvignon-2021-napa",
+   "name": "Johanson Cabernet Sauvignon 2021, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "johanson-family-cabernet-sauvignon-2019-napa",
+   "name": "Johanson Family Cabernet Sauvignon 2019, Napa",
+   "description": "Organically grown; rich flavors of wild blackberry, ripe cherry, chocolate, and baking spices.",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "raymond-reserve-2020-napa",
+   "name": "Raymond Reserve 2020, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pine-ridge-2022-napa",
+   "name": "Pine Ridge 2022, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "gundlach-bundschu-2021-sonoma",
+   "name": "Gundlach Bundschu 2021, Sonoma",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "hall-2019-napa",
+   "name": "HALL 2019, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "round-pond-2019-napa",
+   "name": "Round Pond 2019, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "trefethen-2020-napa",
+   "name": "Trefethen 2020, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "chateau-montelena-2021-napa-2",
+   "name": "Chateau Montelena 2021, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "joseph-phelps-2019-napa",
+   "name": "Joseph Phelps 2019, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "stags-leap-2022-napa",
+   "name": "Stag's Leap 2022, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "pedroncelli-2022-sonoma",
+   "name": "Pedroncelli 2022, Sonoma",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "ketcham-estate-russian-river-valley",
+   "name": "Ketcham Estate, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "artesa-2020-carneros",
+   "name": "Artesa 2020, Carneros",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "dutton-goldfield-2022-russian-river-valley",
+   "name": "Dutton-Goldfield 2022, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "walt-santa-rita-hills",
+   "name": "WALT, Santa Rita Hills",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "belle-gloss-2019-central-coast",
+   "name": "Belle Gloss 2019, Central Coast",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "domaine-drouhin-2022-willamette-valley",
+   "name": "Domaine Drouhin 2022, Willamette Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "cakebread-cellars-2022-anderson-valley",
+   "name": "Cakebread Cellars 2022, Anderson Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "dumol-wester-reach-vineyard-2022-russian-river-valley",
+   "name": "DuMOL Wester Reach Vineyard 2022, Russian River Valley",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "marietta-2021-north-coast",
+   "name": "Marietta 2021, North Coast",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "seghesio-sonoma",
+   "name": "Seghesio, Sonoma",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "baca-2022-dusi-vineyard",
+   "name": "BACA 2022, Dusi Vineyard",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "rombauer-2022-napa",
+   "name": "Rombauer 2022, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "jeff-runquist-1448-red-blend-california",
+   "name": "Jeff Runquist 1448 Red Blend, California",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "penfolds-maxs-shiraz-2020-south-au",
+   "name": "Penfold's \"Max's\" Shiraz 2020, South AU",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "lava-cap-syrah-2019-el-dorado",
+   "name": "Lava Cap Syrah 2019, El Dorado",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "colome-estate-malbec-2020-salta-ar",
+   "name": "Colomé Estate Malbec 2020, Salta AR",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "j-lohr-pure-paso-2021-paso-robles",
+   "name": "J. Lohr Pure Paso 2021, Paso Robles",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "ridge-three-valleys-2020-sonoma",
+   "name": "Ridge Three Valleys 2020, Sonoma",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "amendment-2020-napa",
+   "name": "Amendment 2020, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "the-prisoner-2022-california",
+   "name": "The Prisoner 2022, California",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "st-supery-elu-meritage-2018-napa",
+   "name": "St. Supéry \"Élu\" Meritage 2018, Napa",
+   "description": null,
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "elkhorn-peak-cellars-2018-chardonnay",
+   "name": "Elkhorn Peak Cellars 2018 Chardonnay",
+   "description": "Tropical and stone fruit aroma with a hint of spice and oaky finish.",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "elkhorn-peak-cellars-2018-pinot-noir",
+   "name": "Elkhorn Peak Cellars 2018 Pinot Noir",
+   "description": "Soft floral notes with a fruity finish.",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "migliavacca-wines-2018-sangiovese",
+   "name": "Migliavacca Wines 2018 Sangiovese",
+   "description": "Cherry and orange notes with a black tea and allspice finish.",
+   "tags": [],
+   "raw": false
+  },
+  {
+   "slug": "cadle-family-wines-2018-super-tuscan-blend",
+   "name": "Cadle Family Wines 2018 Super Tuscan Blend",
+   "description": "A blend of cherry, blackberry, and dried fig finished with notes of rose petals and vanilla bean.  45% Cabernet Sauvignon/ 45% Sangiovese/ 10% Merlot.",
+   "tags": [],
+   "raw": false
+  }
+ ],
+ "menus": [
+  {
+   "slug": "dinner",
+   "name": "Dinner",
+   "sort": 1,
+   "intro": null,
+   "hours": [
+    {
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "start": "17:00",
+     "end": "21:00",
+     "label": "Nightly"
+    }
+   ],
+   "serving_note": null,
+   "footer": "* Denotes Gluten Friendly. Please Specify when placing order.\n\nOrders of 6 or more entrées subject to 18% gratuity.\n\n^Item may be cooked to order or contains raw/undercooked ingredients. \n Consuming raw or under-cooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions.",
+   "sections": [
+    {
+     "name": "Alpine Starters & Shareables",
+     "note": "Add Bacon $3.00 /Chicken $7.00 / Prawn $12.00 / ^Tenderloin $12.00",
+     "items": [
+      {
+       "dish": "soup-du-jour",
+       "prices": [
+        {
+         "label": "Cup",
+         "price": 9
+        },
+        {
+         "label": "Bowl",
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "caesar-salad-b1ad0780",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "greek-salad",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wedge-salad",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "crispy-brussels-and-shishitos",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "roasted-garlic-hummus-plate",
+       "prices": [
+        {
+         "label": null,
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ahi-poke",
+       "prices": [
+        {
+         "label": null,
+         "price": 25
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "calamari",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wings",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "poutine",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chophouse-burger",
+       "prices": [
+        {
+         "label": null,
+         "price": 24
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ranch-nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "River Ranch Signature Entrées",
+     "note": null,
+     "items": [
+      {
+       "dish": "new-zealand-elk-chops",
+       "prices": [
+        {
+         "label": "Single Chop",
+         "price": 47
+        },
+        {
+         "label": "Two Chops",
+         "price": 72
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "dayboat-diver-scallops",
+       "prices": [
+        {
+         "label": null,
+         "price": 55
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "marys-half-chicken",
+       "prices": [
+        {
+         "label": null,
+         "price": 40
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ranch-stroganoff",
+       "prices": [
+        {
+         "label": "Mushrooms",
+         "price": 26
+        },
+        {
+         "label": "Mushrooms & ^Tenderloin",
+         "price": 36
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bison-short-ribs",
+       "prices": [
+        {
+         "label": null,
+         "price": 46
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "top-sirloin",
+       "prices": [
+        {
+         "label": null,
+         "price": 45
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ribeye",
+       "prices": [
+        {
+         "label": null,
+         "price": 70
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "catch-of-the-day",
+       "prices": [],
+       "price_note": "Market Price",
+       "description": null
+      },
+      {
+       "dish": "summer-bounty",
+       "prices": [
+        {
+         "label": null,
+         "price": 26
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "lemon-ricotta-ravioli",
+       "prices": [
+        {
+         "label": null,
+         "price": 27
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "tuesday-dinner-menu",
+   "name": "Tuesday Dinner",
+   "sort": 2,
+   "intro": null,
+   "hours": [
+    {
+     "days": [
+      2
+     ],
+     "start": "17:00",
+     "end": "21:00",
+     "label": "Tuesdays"
+    }
+   ],
+   "serving_note": null,
+   "footer": "* Denotes Gluten Friendly. Please Specify when placing order.\n\nOrders of 6 or more entrées subject to 18% gratuity.\n\n^Item may be cooked to order or contains raw/undercooked ingredients. \n Consuming raw or under-cooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions.",
+   "sections": [
+    {
+     "name": "Alpine Starters & Shareables",
+     "note": "Add Chicken $7.00 | Prawn $12.00| ^Tenderloin $12.00",
+     "items": [
+      {
+       "dish": "soup-du-jour",
+       "prices": [
+        {
+         "label": "Cup",
+         "price": 9
+        },
+        {
+         "label": "Bowl",
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": "~Please Inquire~"
+      },
+      {
+       "dish": "caesar-salad-b1ad0780",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "autumn-farm-salad",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wedge-salad",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "crispy-brussels-and-shishitos",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "artisan-cheese-plate",
+       "prices": [
+        {
+         "label": null,
+         "price": 22
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ahi-poke",
+       "prices": [
+        {
+         "label": null,
+         "price": 25
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "calamari",
+       "prices": [
+        {
+         "label": null,
+         "price": 23
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wings",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": "Spicy Peach Chili Sauce, Crudité"
+      },
+      {
+       "dish": "chophouse-burger",
+       "prices": [
+        {
+         "label": null,
+         "price": 24
+        }
+       ],
+       "price_note": null,
+       "description": "1/2 Pound, Brioche Bun, Bacon, Extra Sharp White Cheddar, Arugula, Beefsteak Tomato, ^Sweet Onion Aioli, Fries\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+      },
+      {
+       "dish": "ranch-nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "River Ranch Signature Entrées",
+     "note": null,
+     "items": [
+      {
+       "dish": "catch-of-the-day",
+       "prices": [],
+       "price_note": "Market Price",
+       "description": null
+      },
+      {
+       "dish": "bison-short-ribs",
+       "prices": [
+        {
+         "label": null,
+         "price": 46
+        }
+       ],
+       "price_note": null,
+       "description": "Bourbon Slow-Braised, Soy & Citrus Pan Glace\nSmashed Baby Red Potatoes, Root Vegetable Hash"
+      },
+      {
+       "dish": "marys-half-chicken",
+       "prices": [
+        {
+         "label": null,
+         "price": 40
+        }
+       ],
+       "price_note": null,
+       "description": "Organic, Pan-Seared, Sherry-Leek Pan Jus\nFingerling Potatoes, Roasted Squash, Spinach"
+      },
+      {
+       "dish": "ranch-stroganoff",
+       "prices": [
+        {
+         "label": "Mushrooms",
+         "price": 26
+        },
+        {
+         "label": "Mushrooms & ^Tenderloin",
+         "price": 36
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "roberts-rigatoni",
+       "prices": [
+        {
+         "label": "Vegetarian",
+         "price": 24
+        },
+        {
+         "label": "Italian Sausage",
+         "price": 30
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "happy-hour",
+   "name": "Happy Hour",
+   "sort": 3,
+   "intro": null,
+   "hours": [
+    {
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "start": "15:00",
+     "end": "17:00",
+     "label": "Monday–Friday"
+    }
+   ],
+   "serving_note": null,
+   "footer": "-- In-House Only. No Happy Hour To-Go.\nParties of 6 or more subject to 18% gratuity --\n--^Item may be cooked to order or contains raw/undercooked ingredients.\nConsuming raw or under-cooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions.--",
+   "sections": [
+    {
+     "name": "River Ranch Happy Hour",
+     "note": "3-5 PM Monday-Friday\n(No HH Holidays)\nDINE-IN ONLY, NO TAKEOUT",
+     "items": []
+    },
+    {
+     "name": "Happy Hour Food Specials",
+     "note": null,
+     "items": [
+      {
+       "dish": "soup-du-jour-2",
+       "prices": [
+        {
+         "label": "Cup",
+         "price": 6
+        },
+        {
+         "label": "Bowl",
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "caesar-salad-b1ad0780",
+       "prices": [
+        {
+         "label": null,
+         "price": 11
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "crispy-brussels-and-shishitos",
+       "prices": [
+        {
+         "label": null,
+         "price": 11
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "fries",
+       "prices": [
+        {
+         "label": null,
+         "price": 6
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "poutine",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wings",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": "Choice of: Buffalo, Spicy Peach Chili, Sriracha Honey, or Teriyaki"
+      },
+      {
+       "dish": "chophouse-burger",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": "1/2 Pound, Brioche Bun, Cheddar, Greens, Beefsteak Tomato, ^Sweet Onion Aioli\n<Substitute Beyond Burger Or Grilled Chicken Breast>\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+      },
+      {
+       "dish": "ranch-nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 15
+        }
+       ],
+       "price_note": null,
+       "description": "Mountain of Local Corn Chips, Cheese, Black Beans, Jalapeño, Pico de Gallo, Sour Cream"
+      }
+     ]
+    },
+    {
+     "name": "Happy Hour Drink Specials",
+     "note": null,
+     "items": [
+      {
+       "dish": "6-well-drinks",
+       "prices": [],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "5-draught-beers",
+       "prices": [],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "8-wines-by-the-glass",
+       "prices": [],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "10-cocktails",
+       "prices": [],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "weekend-breakfast",
+   "name": "Weekend Breakfast",
+   "sort": 4,
+   "intro": null,
+   "hours": [
+    {
+     "days": [
+      6,
+      7
+     ],
+     "start": "08:00",
+     "end": "11:30",
+     "label": "Saturday & Sunday"
+    }
+   ],
+   "serving_note": null,
+   "footer": null,
+   "sections": [
+    {
+     "name": "Weekend Breakfast Menu",
+     "note": "8AM-11AM Saturdays & Sundays. Each main comes with a choice of two sides.",
+     "items": [
+      {
+       "dish": "steak-and-eggs",
+       "prices": [
+        {
+         "label": null,
+         "price": 36
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "canadian-bacon-eggs-benedict",
+       "prices": [
+        {
+         "label": null,
+         "price": 25
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chevre-stuffed-french-toast",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "oscars-grande-breakfast-burrito",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "classic-breakfast",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chilaquiles",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "strawberry-banana-pancakes",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "biscuits-and-mushroom-gravy",
+       "prices": [
+        {
+         "label": null,
+         "price": 14
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "granola-yogurt-and-berries",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "SIDES",
+     "note": "Permitted 2 sides per order",
+     "items": [
+      {
+       "dish": "sausage-links",
+       "prices": [
+        {
+         "label": null,
+         "price": 0
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "home-fries",
+       "prices": [
+        {
+         "label": null,
+         "price": 0
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bacon",
+       "prices": [
+        {
+         "label": null,
+         "price": 0
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "sourdough-toast",
+       "prices": [
+        {
+         "label": null,
+         "price": 0
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "fruit-cup",
+       "prices": [
+        {
+         "label": null,
+         "price": 0
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "weekend-lunch",
+   "name": "Weekend Lunch",
+   "sort": 5,
+   "intro": null,
+   "hours": [
+    {
+     "days": [
+      6,
+      7
+     ],
+     "start": "12:00",
+     "end": "17:00",
+     "label": "Saturday & Sunday"
+    }
+   ],
+   "serving_note": null,
+   "footer": "* Denotes Gluten Friendly w/ modification. Please specify with Server. \nParties of 6 or more subject to 18% gratuity.\n-- ^Item may be cooked to order or contains raw/undercooked ingredients. \n Consuming raw or under-cooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions. --",
+   "sections": [
+    {
+     "name": "Weekend Lunch Menu",
+     "note": "12-5 SATURDAY & SUNDAY",
+     "items": [
+      {
+       "dish": "weekend-special-spicy-meatball-sub",
+       "prices": [
+        {
+         "label": null,
+         "price": 22
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "soup-du-jour",
+       "prices": [
+        {
+         "label": "Cup",
+         "price": 9
+        },
+        {
+         "label": "Bowl",
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": "~Please Inquire~"
+      },
+      {
+       "dish": "caesar-salad-b1ad0780",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "farm-salad",
+       "prices": [
+        {
+         "label": "Half",
+         "price": 12
+        },
+        {
+         "label": "Full",
+         "price": 17
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "wings",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ranch-nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "calamari",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": "Lemon Aioli"
+      },
+      {
+       "dish": "crispy-brussels-and-shishitos",
+       "prices": [
+        {
+         "label": null,
+         "price": 15
+        }
+       ],
+       "price_note": null,
+       "description": "Balsamic Glaze, Garlic Aioli, Parmesan"
+      },
+      {
+       "dish": "ahi-poke",
+       "prices": [
+        {
+         "label": null,
+         "price": 25
+        }
+       ],
+       "price_note": null,
+       "description": "Wontons, Wakame"
+      },
+      {
+       "dish": "poutine",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": "Mushroom Gravy, Cheese Curds"
+      },
+      {
+       "dish": "steak-frites",
+       "prices": [
+        {
+         "label": null,
+         "price": 22
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chophouse-burger",
+       "prices": [
+        {
+         "label": null,
+         "price": 24
+        }
+       ],
+       "price_note": null,
+       "description": "Brioche Bun, 1/3 Pound, Arugula, Tomato, Bacon, Cheddar\n*Please specify desired cooking temp in the notes: WELL, MEDIUM WELL, MEDIUM, MEDIUM RARE, RARE"
+      },
+      {
+       "dish": "turkey-club",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": "Sourdough, Lemon Aioli, Bacon, Oven Dried Tomatoes, Arugula"
+      },
+      {
+       "dish": "classic-blt",
+       "prices": [
+        {
+         "label": null,
+         "price": 15
+        }
+       ],
+       "price_note": null,
+       "description": "Toasted Sourdough"
+      },
+      {
+       "dish": "pulled-pork-sandwich",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": "Pulled Pork, Spicy Chili Sauce, Slaw, Pickles"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "patio-lunch",
+   "name": "Patio Lunch",
+   "sort": 6,
+   "intro": null,
+   "hours": [],
+   "serving_note": "Summer, on the riverside patio",
+   "footer": "* Denotes Gluten Friendly w/ modifications\n-- PRICES INCLUDE TAX -- \n-- Item may be cooked to order or contains raw/undercooked ingredients. \n Consuming raw or under-cooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions. --",
+   "sections": [
+    {
+     "name": "PATIO LUNCH",
+     "note": "OPEN DAILY at 11AM\nCounter-Service; Open-Seating\n(No Reservations)\nDogs Welcome on Leash\nNO BIKES ON THE PATIO",
+     "items": [
+      {
+       "dish": "lobster-roll",
+       "prices": [
+        {
+         "label": null,
+         "price": 29
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pulled-pork-sandwich",
+       "prices": [
+        {
+         "label": null,
+         "price": 19
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ahi-poke",
+       "prices": [
+        {
+         "label": null,
+         "price": 20
+        }
+       ],
+       "price_note": null,
+       "description": "Hawaiian Ahi Tuna, Avocado, Ginger, Wakame, Wontons"
+      },
+      {
+       "dish": "ranch-nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "turkey-club",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "classic-blt",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "tacos-chicken-birria",
+       "prices": [
+        {
+         "label": "2 Tacos",
+         "price": 16
+        },
+        {
+         "label": "3 Tacos",
+         "price": 22
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "nathans-famous-hot-dog",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "caesar-salad",
+       "prices": [
+        {
+         "label": null,
+         "price": 15
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "sides-5",
+       "prices": [],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "kids-menu",
+   "name": "Kids",
+   "sort": 7,
+   "intro": null,
+   "hours": [],
+   "serving_note": "During dinner service",
+   "footer": null,
+   "sections": [
+    {
+     "name": "Kids' Menu",
+     "note": "DINNER SERVICE ONLY",
+     "items": [
+      {
+       "dish": "nachos",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "grilled-cheese",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "buttered-noodles",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chicken-strips-with-french-fries",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hamburger-with-french-fries",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "cheeseburger-with-french-fries",
+       "prices": [
+        {
+         "label": null,
+         "price": 13
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "dessert",
+   "name": "Dessert",
+   "sort": 8,
+   "intro": null,
+   "hours": [],
+   "serving_note": null,
+   "footer": null,
+   "sections": [
+    {
+     "name": "Dessert",
+     "note": null,
+     "items": [
+      {
+       "dish": "creme-brulee",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "flourless-chocolate-torte",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "lemon-blueberry-cake",
+       "prices": [
+        {
+         "label": null,
+         "price": 9
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ny-cheesecake",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "orange-phyllo-cake",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "seasonal-fruit-crisp",
+       "prices": [
+        {
+         "label": null,
+         "price": 14
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "a-la-mode",
+       "prices": [
+        {
+         "label": null,
+         "price": 2
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Dessert Wines & Ports",
+     "note": null,
+     "items": [
+      {
+       "dish": "chateau-laribotte-sauternes-france",
+       "prices": [
+        {
+         "label": null,
+         "price": 14
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bodegas-dios-baco-oloroso-jerez-xeres-sherry-spain",
+       "prices": [
+        {
+         "label": null,
+         "price": 10
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "penfolds-club-tawny-australia",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "grahams-fine-ruby-porto-portugal",
+       "prices": [
+        {
+         "label": null,
+         "price": 10
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Hot Cocktails",
+     "note": null,
+     "items": [
+      {
+       "dish": "river-ranch-irish-coffee",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "boomerang-bulleit",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "apres-apple-cider",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "toddy-traverse",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "summit-screwball",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hidden-knolls-hot-chocolate",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": "Bulleit Bourbon, Hazelnut Liqueur, Hot Chocolate, Whipped Cream"
+      },
+      {
+       "dish": "roundhouse-rum",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "our-father",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "beverages",
+   "name": "Cocktails & Beer",
+   "sort": 9,
+   "intro": null,
+   "hours": [],
+   "serving_note": null,
+   "footer": null,
+   "sections": [
+    {
+     "name": "NA Beverages",
+     "note": null,
+     "items": [
+      {
+       "dish": "coffee",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hot-chocolate",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hot-cider",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "milk",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "shirley-temple",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "roy-rogers",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "cranberry-juice",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "grapefruit-juice",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "orange-juice",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pineapple-juice",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "iced-tea",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "lemonade",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "starry",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ginger-ale",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ginger-beer",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "root-beer",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pepsi",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "diet-pepsi",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pellegrino-small",
+       "prices": [
+        {
+         "label": null,
+         "price": 5
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pellegrino-large",
+       "prices": [
+        {
+         "label": null,
+         "price": 10
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "mango-lemonade",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "blood-orange-lemonade",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "martinellis-sparkling-cider",
+       "prices": [
+        {
+         "label": null,
+         "price": 6
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "rotating-na-beer",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Cans & Bottled Beer",
+     "note": null,
+     "items": [
+      {
+       "dish": "downtown-brown-ale",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "revision-ipa-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "golden-state-cider-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "sincere-dry-cider-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "50-50-donner-party-porter-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "guinness-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 8
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "almanac-sour-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "blue-moon-bottle",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "budweiser-bottle",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "coors-light-bottle",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "stella-artois-bottle",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "truly-hard-seltzer-can",
+       "prices": [
+        {
+         "label": null,
+         "price": 7
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Hot Cocktails",
+     "note": "Hand-Crafted Hot Cocktails",
+     "items": [
+      {
+       "dish": "river-ranch-irish-coffee",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "summit-screwball",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "boomerang-bulleit",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hidden-knolls-hot-chocolate",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "apres-apple-cider",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "roundhouse-rum",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "toddy-traverse",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "our-father",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Whiskey & Other Specialty Cocktails",
+     "note": "Hand-Crafted Specialty Cocktails",
+     "items": [
+      {
+       "dish": "old-fashioned-river-ranch",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "the-ranch-manhattan",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "banana-bread-old-fashioned",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pumpkin-pie-old-fashioned",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "barrel-aged-boulevardier",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "skinny-old-fashioned",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "the-wolverine-2",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bourbon-blossom",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "henrik-harlaut",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "indigo-martini",
+       "prices": [
+        {
+         "label": null,
+         "price": 18
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "first-chair-2",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "large-marg",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "party-island-mojito",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "snowgrass-mule",
+       "prices": [
+        {
+         "label": null,
+         "price": 16
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Dessert Wines & Ports",
+     "note": null,
+     "items": [
+      {
+       "dish": "grahams-fine-ruby-porto-portugal",
+       "prices": [
+        {
+         "label": null,
+         "price": 10
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bodegas-dios-baco-oloroso-jerez-xeres-sherry-spain",
+       "prices": [
+        {
+         "label": null,
+         "price": 10
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "penfolds-club-tawny-australia",
+       "prices": [
+        {
+         "label": null,
+         "price": 12
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chateau-laribotte-sauternes-france",
+       "prices": [
+        {
+         "label": null,
+         "price": 14
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "wine-list",
+   "name": "Wine List",
+   "sort": 10,
+   "intro": null,
+   "hours": [],
+   "serving_note": null,
+   "footer": "Corkage 20\nCorkage on listed wines 30\nVintages and availability subject to change",
+   "sections": [
+    {
+     "name": "Champagne, Rosé & Sparkling Wines",
+     "note": null,
+     "items": [
+      {
+       "dish": "whispering-angel-rose-provence-france",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bisol-jeio-prosecco-italy",
+       "prices": [
+        {
+         "label": null,
+         "price": 48
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "carra-sparkling-rose-italy",
+       "prices": [
+        {
+         "label": null,
+         "price": 36
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "taittinger-brut-reims-nv",
+       "prices": [
+        {
+         "label": null,
+         "price": 50
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "j-vineyards-cuvee-sonoma-county",
+       "prices": [
+        {
+         "label": null,
+         "price": 54
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "schramsberg-blanc-de-blancs-2018-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 70
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "gosset-grand-reserve-ay-nv",
+       "prices": [
+        {
+         "label": null,
+         "price": 81
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "bollinger-special-cuvee-brut-ay-nv",
+       "prices": [
+        {
+         "label": null,
+         "price": 140
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Chardonnay",
+     "note": null,
+     "items": [
+      {
+       "dish": "la-crema-sonoma-coast",
+       "prices": [
+        {
+         "label": null,
+         "price": 56
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "on-q-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 60
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "frank-family-2023-carneros",
+       "prices": [
+        {
+         "label": null,
+         "price": 72
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "talbott-kali-hart-vineyard-2019-santa-lucia",
+       "prices": [
+        {
+         "label": null,
+         "price": 77
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chateau-montelena-2021-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 125
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "dumol-wester-reach-vineyard-2021-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 130
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Other Whites & Blends",
+     "note": null,
+     "items": [
+      {
+       "dish": "miraval-cotes-de-france-rose-2020-provence",
+       "prices": [
+        {
+         "label": null,
+         "price": 50
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "rombauer-sauvignon-blanc-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 56
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "whitehaven-sauvignon-blanc-new-zealand",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "whitehall-lane-sauvignon-blanc-2022-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 58
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "balletto-gewurztraminer-2020-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 40
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "foris-riesling-2017-rogue-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 40
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "blue-quail-dry-riesling-2021-potter-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "duck-pond-pinot-gris-2021-willamette-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 45
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "kettmeir-pinot-grigio-alto-adige-italy",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "cordant-resolution-2021-paso-robles",
+       "prices": [
+        {
+         "label": null,
+         "price": 65
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Cabernet Sauvignon",
+     "note": null,
+     "items": [
+      {
+       "dish": "johanson-cabernet-sauvignon-2021-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 85
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "johanson-family-cabernet-sauvignon-2019-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 56
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "raymond-reserve-2020-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 85
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pine-ridge-2022-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 96
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "gundlach-bundschu-2021-sonoma",
+       "prices": [
+        {
+         "label": null,
+         "price": 100
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "hall-2019-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 120
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "round-pond-2019-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 120
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "trefethen-2020-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 120
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "chateau-montelena-2021-napa-2",
+       "prices": [
+        {
+         "label": null,
+         "price": 142
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "joseph-phelps-2019-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 170
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Merlot",
+     "note": null,
+     "items": [
+      {
+       "dish": "stags-leap-2022-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 60
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "pedroncelli-2022-sonoma",
+       "prices": [
+        {
+         "label": null,
+         "price": 85
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Pinot Noir",
+     "note": null,
+     "items": [
+      {
+       "dish": "ketcham-estate-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "artesa-2020-carneros",
+       "prices": [
+        {
+         "label": null,
+         "price": 54
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "dutton-goldfield-2022-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 80
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "walt-santa-rita-hills",
+       "prices": [
+        {
+         "label": null,
+         "price": 85
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "belle-gloss-2019-central-coast",
+       "prices": [
+        {
+         "label": null,
+         "price": 96
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "domaine-drouhin-2022-willamette-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 96
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "cakebread-cellars-2022-anderson-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 120
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "dumol-wester-reach-vineyard-2022-russian-river-valley",
+       "prices": [
+        {
+         "label": null,
+         "price": 170
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Zinfandel",
+     "note": null,
+     "items": [
+      {
+       "dish": "marietta-2021-north-coast",
+       "prices": [
+        {
+         "label": null,
+         "price": 45
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "seghesio-sonoma",
+       "prices": [
+        {
+         "label": null,
+         "price": 64
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "baca-2022-dusi-vineyard",
+       "prices": [
+        {
+         "label": null,
+         "price": 65
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "rombauer-2022-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 96
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Other Reds & Blends",
+     "note": null,
+     "items": [
+      {
+       "dish": "jeff-runquist-1448-red-blend-california",
+       "prices": [
+        {
+         "label": null,
+         "price": 44
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "penfolds-maxs-shiraz-2020-south-au",
+       "prices": [
+        {
+         "label": null,
+         "price": 48
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "lava-cap-syrah-2019-el-dorado",
+       "prices": [
+        {
+         "label": null,
+         "price": 50
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "colome-estate-malbec-2020-salta-ar",
+       "prices": [
+        {
+         "label": null,
+         "price": 56
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "j-lohr-pure-paso-2021-paso-robles",
+       "prices": [
+        {
+         "label": null,
+         "price": 64
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "ridge-three-valleys-2020-sonoma",
+       "prices": [
+        {
+         "label": null,
+         "price": 64
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "amendment-2020-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 70
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "the-prisoner-2022-california",
+       "prices": [
+        {
+         "label": null,
+         "price": 95
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "st-supery-elu-meritage-2018-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 120
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    },
+    {
+     "name": "Wines from The (Napa) Valley",
+     "note": null,
+     "items": [
+      {
+       "dish": "johanson-family-cabernet-sauvignon-2019-napa",
+       "prices": [
+        {
+         "label": null,
+         "price": 60
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "elkhorn-peak-cellars-2018-chardonnay",
+       "prices": [
+        {
+         "label": null,
+         "price": 50
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "elkhorn-peak-cellars-2018-pinot-noir",
+       "prices": [
+        {
+         "label": null,
+         "price": 65
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "migliavacca-wines-2018-sangiovese",
+       "prices": [
+        {
+         "label": null,
+         "price": 65
+        }
+       ],
+       "price_note": null,
+       "description": null
+      },
+      {
+       "dish": "cadle-family-wines-2018-super-tuscan-blend",
+       "prices": [
+        {
+         "label": null,
+         "price": 65
+        }
+       ],
+       "price_note": null,
+       "description": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

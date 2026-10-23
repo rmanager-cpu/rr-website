@@ -51,7 +51,7 @@ const FAQ = [
 const SPACES = [
   { name: 'Fireplace room', photo: photos.fireplaceRoom },
   { name: 'Riverview room', photo: null },
-  { name: 'The Pit', photo: null },
+  { name: 'Full Patio', photo: photos.patioNight },
   { name: 'The Point', photo: null },
 ];
 
@@ -109,7 +109,7 @@ export default function CelebratePage() {
         <div className="container stack" style={{ gap: 44 }}>
           <div className="row-split">
             <h2 id="spaces-h" className="serif h-m">The rooms</h2>
-            <p className="lede" style={{ maxWidth: 420 }}>Four rooms for private events, each with its own character, plus the patio in summer.</p>
+            <p className="lede" style={{ maxWidth: 420 }}>Two rooms inside, and the riverside patio and The Point outside in summer.</p>
           </div>
           <div className="space-grid">
             {SPACES.map((s) => (

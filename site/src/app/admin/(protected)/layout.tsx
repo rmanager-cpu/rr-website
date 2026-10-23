@@ -11,6 +11,7 @@ export default function Protected({ children }: { children: React.ReactNode }) {
         <nav aria-label="Staff">
           <Link href="/admin">Calendar</Link>
           <Link href="/admin/events/new">Add event</Link>
+          <Link href="/admin/menus">Menus</Link>
           <Link href="/admin/applications">Applications</Link>
           <Link href="/admin/bookings">Band requests</Link>
           <Link href="/" target="_blank">View site</Link>

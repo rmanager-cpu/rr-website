@@ -32,7 +32,7 @@ type Mode = {
 const MODES: Record<TimeOfDay, Mode> = {
   dawn: { label: 'Dawn', photo: photos.heroDawn, position: 'center 38%', positionPhone: '32% center', eyebrow: 'Morning on the Truckee River', icon: 'sunrise', cta: { label: 'Book a room', href: business.links.bookRoom } },
   day: { label: 'Day', photo: photos.heroDay, position: 'center 58%', positionPhone: 'center 40%', eyebrow: 'Minutes from Palisades Tahoe', icon: 'sun', cta: { label: 'Plan an event', href: '/celebrate' } },
-  dusk: { label: 'Dusk', photo: photos.heroDusk, position: 'center 50%', positionPhone: '48% center', eyebrow: 'Happy hour at the round bar', icon: 'moon', cta: { label: 'Happy hour menu', href: '/dine#happy-hour' } },
+  dusk: { label: 'Dusk', photo: photos.heroDusk, position: 'center 50%', positionPhone: '48% center', eyebrow: 'Happy hour at the round bar', icon: 'moon', cta: { label: 'Happy hour menu', href: '/menus/happy-hour' } },
   night: { label: 'Night', photo: photos.heroNight, position: 'center 62%', positionPhone: 'center 55%', eyebrow: 'Dinner by the fire, nightly', icon: 'moon', cta: { label: 'Reserve a table', href: business.links.reserveTable, external: true } },
 };
 

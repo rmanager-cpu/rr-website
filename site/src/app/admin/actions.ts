@@ -190,3 +190,87 @@ export async function setBooking(id: string, status: 'new' | 'reviewing' | 'book
   await setBookingStatus(id, status);
   revalidatePath('/admin/bookings');
 }
+
+// ---------- menus ----------
+const menuRefresh = (slug?: string) => {
+  revalidatePath('/menus');
+  if (slug) revalidatePath(`/menus/${slug}`);
+  revalidatePath('/admin/menus');
+};
+
+export async function saveMenuItemAction(itemId: string, menuSlug: string, _prev: FormState, f: FormData): Promise<FormState> {
+  guard();
+  const { saveItem, parsePrices } = await import('@/lib/menus/store');
+  try {
+    const name = str(f, 'name');
+    if (!name) throw new Invalid('name', 'Give the dish a name.');
+    await saveItem(itemId, {
+      name,
+      description: opt(f, 'description'),
+      tags: f.getAll('tags').map(String),
+      raw: str(f, 'raw') === 'yes',
+      prices: parsePrices(str(f, 'prices')),
+      priceNote: opt(f, 'price_note'),
+      hidden: str(f, 'hidden') === 'yes',
+      sort: Number(str(f, 'sort')) || 0,
+    });
+  } catch (e) {
+    return e instanceof Invalid ? { ok: false, message: e.message } : { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
+  }
+  menuRefresh(menuSlug);
+  return { ok: true, message: 'Saved' };
+}
+
+export async function addMenuItemAction(sectionId: string, menuSlug: string, _prev: FormState, f: FormData): Promise<FormState> {
+  guard();
+  const { addItem, parsePrices } = await import('@/lib/menus/store');
+  try {
+    const name = str(f, 'name');
+    if (!name) throw new Invalid('name', 'Give the dish a name.');
+    await addItem(sectionId, { name, slug: await slugify(name), description: opt(f, 'description'), prices: parsePrices(str(f, 'prices')) });
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
+  }
+  menuRefresh(menuSlug);
+  return { ok: true, message: 'Added' };
+}
+
+export async function saveSectionAction(sectionId: string, menuSlug: string, _prev: FormState, f: FormData): Promise<FormState> {
+  guard();
+  const { saveSection } = await import('@/lib/menus/store');
+  try {
+    await saveSection(sectionId, { name: str(f, 'name') || 'Section', note: opt(f, 'note'), sort: Number(str(f, 'sort')) || 0 });
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
+  }
+  menuRefresh(menuSlug);
+  return { ok: true, message: 'Saved' };
+}
+
+export async function addSectionAction(menuId: string, menuSlug: string, f: FormData) {
+  guard();
+  const { addSection } = await import('@/lib/menus/store');
+  const name = str(f, 'name');
+  if (name) await addSection(menuId, name);
+  menuRefresh(menuSlug);
+}
+
+export async function saveMenuAction(menuId: string, menuSlug: string, _prev: FormState, f: FormData): Promise<FormState> {
+  guard();
+  const { saveMenu } = await import('@/lib/menus/store');
+  try {
+    const hours = [0, 1, 2].flatMap((n) => {
+      const days = f.getAll(`h${n}_days`).map(Number).filter((d) => d >= 1 && d <= 7);
+      const start = str(f, `h${n}_start`), end = str(f, `h${n}_end`);
+      if (!days.length || !TIME.test(start) || !TIME.test(end)) return [];
+      return [{ days, start, end, label: str(f, `h${n}_label`) || 'Hours' }];
+    });
+    const showUntil = opt(f, 'show_until');
+    if (showUntil && !DATE.test(showUntil)) throw new Invalid('show_until', 'Check the “show until” date.');
+    await saveMenu(menuId, { name: str(f, 'name') || 'Menu', intro: opt(f, 'intro'), servingNote: opt(f, 'serving_note'), footer: opt(f, 'footer'), active: str(f, 'active') === 'yes', showUntil, hours });
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
+  }
+  menuRefresh(menuSlug);
+  return { ok: true, message: 'Saved. The menu is updated on the site.' };
+}

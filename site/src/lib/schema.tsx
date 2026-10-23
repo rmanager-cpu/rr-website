@@ -36,7 +36,8 @@ export function organizationSchema() {
     servesCuisine: ['American', 'Steakhouse', 'Seafood'],
     priceRange: '$$$',
     acceptsReservations: business.links.reserveTable,
-    menu: abs('/dine#menus'),
+    menu: abs('/menus'),
+    hasMenu: ['dinner', 'happy-hour', 'weekend-breakfast', 'weekend-lunch', 'wine-list'].map((s) => abs(`/menus/${s}`)),
     openingHoursSpecification: openingHours(),
     image: [abs(photos.fireplaceRoom.src), abs(photos.roundBar.src)],
   };
@@ -120,6 +121,40 @@ export function eventSchema(e: {
     image: [abs(e.image ?? photos.heroDusk.src)],
     organizer: { '@type': 'Organization', name: business.name, url: SITE_URL },
     ...(e.ticketUrl ? { offers: { '@type': 'Offer', url: e.ticketUrl, availability: 'https://schema.org/InStock' } } : {}),
+  };
+}
+
+/** One menu as schema.org Menu → MenuSection → MenuItem, each price an Offer (sizes kept). */
+export function menuSchema(m: {
+  slug: string;
+  name: string;
+  sections: { name: string; items: { hidden: boolean; description: string | null; prices: { label: string | null; price: number }[]; dish: { name: string; description: string | null; tags: string[] } }[] }[];
+}) {
+  const diet: Record<string, string> = { GF: 'https://schema.org/GlutenFreeDiet', V: 'https://schema.org/VegetarianDiet', VG: 'https://schema.org/VeganDiet' };
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Menu',
+    '@id': `${SITE_URL}/menus/${m.slug}#menu`,
+    name: `${m.name} · ${business.shortName}`,
+    url: abs(`/menus/${m.slug}`),
+    inLanguage: 'en-US',
+    hasMenuSection: m.sections.map((s) => ({
+      '@type': 'MenuSection',
+      name: s.name,
+      hasMenuItem: s.items
+        .filter((i) => !i.hidden)
+        .map((i) => {
+          const d = i.description ?? i.dish.description;
+          const diets = i.dish.tags.filter((t) => diet[t]).map((t) => diet[t]);
+          return {
+            '@type': 'MenuItem',
+            name: i.dish.name,
+            ...(d ? { description: d } : {}),
+            ...(i.prices.length ? { offers: i.prices.filter((p) => typeof p.price === 'number').map((p) => ({ '@type': 'Offer', price: p.price.toFixed(2), priceCurrency: 'USD', ...(p.label ? { name: p.label } : {}) })) } : {}),
+            ...(diets.length ? { suitableForDiet: diets } : {}),
+          };
+        }),
+    })),
   };
 }
 

@@ -110,7 +110,7 @@ export default function Home() {
             <p className="lede">
               Saturdays and Sundays, 8 to 11:30 AM: steak and eggs, Benedicts, biscuits and gravy, and a Bloody Mary if it&apos;s that kind of morning.
             </p>
-            <Link href="/dine#breakfast" className="arrow-link">Breakfast menu <ArrowRight /></Link>
+            <Link href="/menus/weekend-breakfast" className="arrow-link">Breakfast menu <ArrowRight /></Link>
           </div>
         </div>
       </section>
@@ -157,7 +157,7 @@ export default function Home() {
           </div>
           <div className="btn-row">
             <a href={business.links.reserveTable} className="btn btn--amber" rel="noopener">Reserve a table</a>
-            <Link href="/dine#menus" className="btn btn--ghost-cream">Dinner menu</Link>
+            <Link href="/menus/dinner" className="btn btn--ghost-cream">Dinner menu</Link>
           </div>
         </div>
       </section>

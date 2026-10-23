@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { hoursText } from '@/components/menus/MenuView';
 import { SiteHeader } from '@/components/SiteHeader';
+import { listMenus } from '@/lib/menus/store';
 import { photos } from '@/content/photos';
 import { business, hours } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
@@ -12,24 +15,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/dine' },
 };
 
-// Dish names from the current menus. Prices and full menus come from the staff editor once it exists,
-// so this page never shows a stale price.
-const DINNER = ['Seared scallops over risotto', 'Herb-crusted lamb', 'Halibut with chickpeas and grilled zucchini', 'Prime top sirloin', 'Ranch Stroganoff', 'Ahi poke', 'Brussels sprouts & shishitos', 'Skillet cobbler with ice cream'];
-const HAPPY = ['Soup of the day', 'Brussels sprouts & shishitos', 'Alpine poutine', 'Chophouse burger', 'Caesar salad', 'Wings', 'Famous ranch nachos', 'Fries'];
-const BREAKFAST = ['Steak & eggs', 'Eggs Benedict', 'Biscuits & gravy', 'House granola', 'Bloody Marys'];
+export const revalidate = 300;
 
-function MenuList({ id, title, when, items, note }: { id: string; title: string; when: string; items: string[]; note?: string }) {
-  return (
-    <section id={id} className="stack" style={{ gap: 14 }} aria-labelledby={`${id}-h`}>
-      <h3 id={`${id}-h`} className="serif" style={{ fontSize: 34, lineHeight: 1.05 }}>{title}</h3>
-      <p className="muted" style={{ margin: 0, fontSize: 15, fontWeight: 600 }}>{when}</p>
-      <ul className="list-dots">{items.map((i) => <li key={i}>{i}</li>)}</ul>
-      {note && <p className="muted" style={{ margin: 0, fontSize: 14 }}>{note}</p>}
-    </section>
-  );
-}
-
-export default function DinePage() {
+export default async function DinePage() {
+  const menus = await listMenus();
   return (
     <>
       <JsonLd data={breadcrumbSchema('Dine', '/dine')} />
@@ -71,12 +60,17 @@ export default function DinePage() {
               <span className="eyebrow">Menus</span>
               <h2 id="menus-h" className="serif h-m">From the kitchen</h2>
             </div>
-            <p className="lede" style={{ maxWidth: 460 }}>A few favorites from the current menus. The full menus change with the season.</p>
+            <p className="lede" style={{ maxWidth: 460 }}>Every menu, with prices. They change with the season.</p>
           </div>
-          <div className="card-grid" style={{ gap: 48 }}>
-            <MenuList id="dinner" title="Dinner" when={`${hours.dinner.days}, ${hours.dinner.time}`} items={DINNER} />
-            <MenuList id="happy-hour" title="Happy hour" when={`${hours.happyHour.days}, ${hours.happyHour.time}`} items={HAPPY} note={hours.happyHour.note} />
-            <MenuList id="breakfast" title="Weekend breakfast" when={`${hours.breakfast.days}, ${hours.breakfast.time}`} items={BREAKFAST} />
+          <div className="menu-cards">
+            {menus.map((m) => (
+              <Link key={m.slug} href={`/menus/${m.slug}`} className="ev-card">
+                <span className="ev-card__title">{m.name}</span>
+                {m.hours.length > 0 && <span className="ev-card__when">{hoursText(m.hours)}</span>}
+                {m.servingNote && <span className="ev-card__when">{m.servingNote}</span>}
+                <span className="muted" style={{ fontSize: 15 }}>{m.sections.flatMap((x) => x.items.filter((i) => !i.hidden).map((i) => i.dish.name)).slice(0, 4).join(" · ")}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

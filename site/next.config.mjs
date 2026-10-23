@@ -1,6 +1,9 @@
 // Redirects keep every old address working, so rankings and old links carry over (see docs/INVENTORY.md
 // §6). All are 301 (permanent). Popmenu's ~247 /items/* pages fold into the menus; rrbanquets.com and
 // rrweddings.com map onto /celebrate once those domains point here.
+import { readFileSync } from 'node:fs';
+
+const itemRedirects = JSON.parse(readFileSync(new URL('./src/content/item-redirects.json', import.meta.url), 'utf8'));
 const r = (source, destination) => ({ source, destination, statusCode: 301 });
 
 const oldSite = [
@@ -15,14 +18,13 @@ const oldSite = [
   r('/files/lodge-map-pdf.pdf', '/stay'),
   r('/files/lodgemapmaster-pdf.pdf', '/stay'),
   // Dine
-  r('/menus', '/dine#menus'),
-  r('/menus/happy-hour', '/events/happy-hour'),
-  r('/menus/weekend-breakfast', '/dine#breakfast'),
+  // Menus keep their old Popmenu addresses (/menus/dinner etc.); only the retired ones move.
   r('/menus/merchandise', '/visit#gift-cards'),
-  r('/menus/:slug', '/dine#menus'),
+  r('/menus/mothers-day-brunch-2022', '/menus'),
   r('/items/lodge-gift-certificate', '/visit#gift-cards'),
   r('/items/restaurant-gift-card', '/visit#gift-cards'),
-  r('/items/:slug', '/dine#menus'),
+  ...Object.entries(itemRedirects).map(([dish, menu]) => r(`/items/${dish}`, `/menus/${menu}`)),
+  r('/items/:slug', '/menus'),
   r('/order', '/dine'),
   // Celebrate
   r('/private-parties', '/celebrate'),
