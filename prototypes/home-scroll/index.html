@@ -1,0 +1,669 @@
+<title>River Ranch Home</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="River Ranch Lodge & Restaurant, Tahoe City. Stay, dine and celebrate on the Truckee River.">
+<style>
+/* Layout: one sticky stage that opens as a still blue-hour hero, then scroll pulls the lodge into a frame and the Stay composition assembles around it; normal sections follow. */
+@font-face{font-family:"Knewave";src:url("fonts/knewave-latin-400-normal.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Figtree";src:url("fonts/figtree-latin-wght-normal.woff2") format("woff2");font-weight:300 900;font-display:swap}
+:root{
+  --snow-paper:#F6F5EC; --glacier:#E6F1F6; --powder:#AAD9F8; --cobalt:#1760C4;
+  --navy:#10263B; --evergreen:#294B40; --sugar-pine:#B2895B; --amber:#F2AD5C; --charcoal:#151D22;
+  --brush:"Knewave","Marker Felt","Segoe Print",cursive;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gutter-l:max(6vw,16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(6vw,16px,env(safe-area-inset-right,0px));
+  --nav-ink:var(--snow-paper);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--snow-paper);color:var(--navy);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--top-band,var(--navy))}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:4px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;z-index:50;top:env(safe-area-inset-top,0px);left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding-block:22px;padding-left:var(--gutter-l);padding-right:var(--gutter-r);color:var(--nav-ink);transition:color .35s,background-color .35s,padding .35s}
+.nav.is-light{--nav-ink:var(--navy)}
+.nav.is-solid{background:color-mix(in srgb,var(--snow-paper) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-block:14px}
+.nav.is-solid.is-dark{background:color-mix(in srgb,var(--navy) 92%,transparent)}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.01em;text-decoration:none;font-variation-settings:"opsz" 72}
+.nav__links{display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);font-weight:600;font-size:15px}
+.nav__links a{text-decoration:none}
+.nav__links a:not(.btn):hover{text-decoration:underline;text-underline-offset:5px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:2px;font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .2s,background-color .2s,color .2s}
+.btn--amber{background:var(--amber);color:var(--navy)}
+.btn--amber:hover{background:#f6bd7a}
+.btn--line{border-color:currentColor;background:transparent}
+.btn:active{transform:translateY(1px)}
+
+/* ---------- The story: hero → Stay ---------- */
+.track{position:relative;height:880vh;height:880svh}
+.barbg{position:absolute;inset:0;z-index:1;opacity:0;will-change:opacity,transform}
+.frame2{position:absolute;z-index:2;overflow:hidden;border:var(--fw-main) solid var(--fb);border-radius:3px;box-shadow:0 30px 70px rgba(10,16,18,.45);opacity:0;will-change:transform,opacity}
+.frame2 img{width:100%;height:100%;object-fit:cover;object-position:45% 50%}
+.pondbg{position:absolute;inset:0;z-index:1;opacity:0;will-change:opacity,transform}
+.pondbg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(1.08)}
+.pondbg__wash{position:absolute;inset:0;opacity:0;background:
+    linear-gradient(90deg,rgba(12,22,38,.72) 0%,rgba(12,22,38,.42) 34%,rgba(12,22,38,.06) 62%,rgba(12,22,38,0) 100%)}
+.frame3{position:absolute;z-index:2;overflow:hidden;border:var(--fw-main) solid var(--fc);border-radius:3px;box-shadow:0 30px 70px rgba(6,12,22,.5);opacity:0;will-change:transform,opacity}
+.frame3 img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.cel-copy{position:absolute;z-index:6;left:var(--gutter-l);top:50%;transform:translateY(-46%);width:min(32vw,470px);display:flex;flex-direction:column;gap:18px;color:var(--snow-paper);opacity:0;pointer-events:none}
+.cel-copy.is-on{pointer-events:auto}
+.cel-copy__word{font-family:var(--brush);font-weight:400;font-size:clamp(60px,min(7.6vw,16vh),124px);line-height:.92;padding-bottom:.24em;margin:0;filter:url(#rough);text-shadow:0 3px 30px rgba(6,12,22,.5)}
+.cel-copy .stay-copy__sub{color:var(--snow-paper);margin-top:-.2em}
+.cel-copy p{margin:0;font-size:17px;line-height:1.6;color:color-mix(in srgb,var(--snow-paper) 86%,transparent);max-width:40ch}
+.barbg img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;filter:brightness(1.1) saturate(1.05)}
+.barbg__wash{position:absolute;inset:0;opacity:0;background:
+    linear-gradient(270deg,rgba(21,29,34,.74) 0%,rgba(21,29,34,.46) 34%,rgba(21,29,34,.08) 62%,rgba(21,29,34,0) 100%)}
+.dine-copy{position:absolute;z-index:6;left:58vw;right:var(--gutter-r);top:50%;transform:translateY(-46%);max-width:470px;display:flex;flex-direction:column;gap:18px;color:var(--snow-paper);opacity:0;pointer-events:none}
+.dine-copy.is-on{pointer-events:auto}
+.dine-copy__word{font-family:var(--brush);font-weight:400;font-size:clamp(96px,min(12.5vw,22vh),200px);line-height:.92;padding-bottom:.24em;margin:0;filter:url(#rough);text-shadow:0 3px 30px rgba(10,20,24,.5)}
+.dine-copy .stay-copy__sub{color:var(--snow-paper);margin-top:-.2em}
+.dine-copy p{margin:0;font-size:17px;line-height:1.6;color:color-mix(in srgb,var(--snow-paper) 86%,transparent);max-width:40ch}
+.site-foot{background:var(--charcoal);color:color-mix(in srgb,var(--snow-paper) 80%,transparent);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));padding-left:var(--gutter-l);padding-right:var(--gutter-r);display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline;justify-content:space-between;font-size:14px}
+.site-foot .wordmark{color:var(--snow-paper);font-size:24px}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--navy);isolation:isolate}
+.pano{position:absolute;inset:-8% 0;z-index:0;opacity:0;will-change:transform,opacity}
+.pano img{width:100%;height:100%;object-fit:cover;object-position:64% 40%}
+.frame{position:absolute;z-index:2;left:0;top:0;width:100%;height:100%;overflow:hidden;border:0 solid var(--fa);will-change:left,top,width,height}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame__hero{object-position:58% 60%;filter:saturate(.92) contrast(1.04);transform-origin:62% 55%}
+.frame__entrance{object-position:50% 60%;opacity:0}
+.frame__grade{position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(16,38,59,.6) 0%,rgba(16,38,59,.34) 30%,rgba(16,38,59,0) 58%),
+    linear-gradient(180deg,rgba(16,38,59,.42) 0%,rgba(16,38,59,0) 20%,rgba(16,38,59,0) 75%,rgba(16,38,59,.3) 100%),
+    linear-gradient(0deg,rgba(80,120,170,.1),rgba(80,120,170,.1))}
+.pano::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(230,241,246,.9) 0%,rgba(230,241,246,.62) 34%,rgba(230,241,246,.12) 62%,rgba(230,241,246,0) 100%),
+    linear-gradient(0deg,rgba(170,217,248,.18),rgba(170,217,248,.18))}
+.flakes{position:absolute;inset:0;z-index:4;pointer-events:none;width:100%;height:100%}
+
+.float{position:absolute;z-index:3;margin:0;padding:var(--fw);background:var(--fa);border-radius:3px;overflow:hidden;box-shadow:0 18px 40px rgba(16,38,59,.28),0 2px 6px rgba(16,38,59,.12);will-change:transform;pointer-events:none}
+.float img{width:100%;height:100%;object-fit:cover}
+
+/* Hero doors */
+.doors{position:absolute;z-index:6;left:var(--gutter-l);top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(6px,1.4vh,16px);padding-top:clamp(70px,9vh,110px);padding-bottom:4vh;margin:0;list-style:none}
+.door{display:block;text-decoration:none;color:var(--snow-paper);width:max-content;max-width:88vw}
+.door__word{display:block;font-family:var(--brush);font-weight:400;font-size:clamp(58px,min(10.5vw,15.5vh),176px);line-height:.92;padding-bottom:.24em;letter-spacing:.005em;filter:url(#rough);text-shadow:0 3px 26px rgba(10,24,38,.35);transform-origin:0 0;will-change:transform}
+.door__sub{display:flex;align-items:center;gap:12px;margin-top:-.4vh;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:var(--snow-paper);opacity:.92}
+.door__sub::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--amber);flex:none}
+.door:hover .door__word{color:#fff}
+.door:hover .door__sub::before{width:40px;transition:width .25s}
+.door--stay .door__word{position:relative}
+.scroll-cue{position:absolute;z-index:6;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));width:1px;height:46px;background:linear-gradient(var(--snow-paper),transparent);opacity:.7}
+
+/* Stay composition (final frame of the story) */
+.stay-copy{position:absolute;z-index:6;left:var(--gutter-l);top:50%;transform:translateY(-46%);width:min(28vw,430px);display:flex;flex-direction:column;gap:18px;opacity:0;pointer-events:none}
+.stay-copy.is-on{pointer-events:auto}
+.stay-copy__slot{font-family:var(--brush);font-size:clamp(96px,min(12.5vw,22vh),200px);line-height:.92;padding-bottom:.24em;visibility:hidden;width:max-content}
+.stay-copy__sub{display:flex;align-items:center;gap:12px;font-weight:600;font-size:19px;margin:0}
+.stay-copy__sub::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--amber);flex:none}
+.stay-copy p{margin:0;font-size:17px;line-height:1.6;color:color-mix(in srgb,var(--navy) 82%,transparent);max-width:40ch}
+.stay-copy__actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:6px}
+.btn--ghost{color:var(--navy);border-color:var(--navy);background:color-mix(in srgb,var(--snow-paper) 55%,transparent)}
+.btn--ghost:hover{background:var(--snow-paper)}
+.text-link{font-weight:700;font-size:15px;text-decoration:none;border-bottom:2px solid var(--powder);padding-bottom:2px}
+.text-link:hover{border-color:var(--cobalt)}
+
+/* ---------- Stay links ---------- */
+.stay-more{background:var(--snow-paper);padding-block:clamp(40px,7vh,90px) clamp(70px,12vh,140px);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,36px);max-width:1440px;margin:0 auto}
+.card{display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--navy);min-width:0}
+.card__img{aspect-ratio:4/3;overflow:hidden;border-radius:2px;background:var(--glacier)}
+.card__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card__img img{transform:scale(1.045)}
+.card__row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.card h3{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.01em;font-variation-settings:"opsz" 72}
+.card__arrow{font-size:20px;color:var(--cobalt);transition:transform .25s}
+.card:hover .card__arrow{transform:translate(3px,-3px)}
+.card p{margin:0;color:color-mix(in srgb,var(--navy) 75%,transparent)}
+@supports (animation-timeline: view()){
+  .card{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+  .card:nth-child(2){animation-range:entry 8% entry 78%}
+  .card:nth-child(3){animation-range:entry 16% entry 86%}
+  @keyframes rise{from{transform:translateY(60px)}to{transform:none}}
+}
+
+/* ---------- Dine (next round) ---------- */
+.dine{background:var(--evergreen);color:var(--snow-paper);padding-block:clamp(70px,14vh,150px);padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.dine__inner{max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.dine__word{font-family:var(--brush);font-size:clamp(84px,12vw,190px);line-height:.85;margin:0;font-weight:400;filter:url(#rough)}
+.dine .stay-copy__sub{color:var(--snow-paper)}
+
+/* White photo frames, kept as an option for review. */
+.float{box-shadow:0 26px 56px rgba(8,14,20,.42),0 4px 10px rgba(8,14,20,.22)!important}
+/* Photo frames: snow white on Stay, evergreen on Dine. */
+.dine-copy p,.cel-copy p,.dine-copy .stay-copy__sub,.cel-copy .stay-copy__sub{text-shadow:0 1px 2px rgba(8,12,16,.7),0 0 18px rgba(8,12,16,.65)}
+body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:clamp(6px,.6vw,10px);--fw-main:9px}
+[data-floatb]{background:var(--fb)}
+[data-floatc]{background:var(--fc)}
+.float img{border-radius:1px}
+
+/* ---------- Visit: hours, address, email ---------- */
+.visit{background:var(--navy);color:var(--snow-paper);padding-block:clamp(64px,11vh,120px) calc(clamp(64px,11vh,120px) + env(safe-area-inset-bottom,0px));padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.visit__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(32px,5vw,80px)}
+.visit h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,2.6vw,38px);letter-spacing:-.01em;margin:0 0 20px;font-variation-settings:"opsz" 72}
+.hours{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-variant-numeric:tabular-nums}
+.hours dt{font-weight:600}
+.hours dd{margin:0;color:color-mix(in srgb,var(--snow-paper) 82%,transparent)}
+.visit address{font-style:normal;line-height:1.7;color:color-mix(in srgb,var(--snow-paper) 88%,transparent)}
+.visit__links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:18px}
+.visit .text-link{border-color:var(--amber)}
+.signup{display:flex;flex-direction:column;gap:12px}
+.signup p{margin:0;color:color-mix(in srgb,var(--snow-paper) 82%,transparent)}
+.signup__row{display:flex;gap:8px;flex-wrap:wrap}
+.signup input{flex:1 1 180px;min-width:0;padding:13px 14px;border-radius:2px;border:1px solid color-mix(in srgb,var(--snow-paper) 35%,transparent);background:transparent;color:var(--snow-paper);font:inherit}
+.signup input::placeholder{color:color-mix(in srgb,var(--snow-paper) 55%,transparent)}
+.hours-today{margin:2px 0 0;font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--snow-paper)}
+.hours-today::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:9px;vertical-align:1px}
+@media (max-width:860px){.visit__inner{grid-template-columns:1fr;gap:44px}}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;z-index:70;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--charcoal);color:var(--snow-paper);padding:12px 18px;border-radius:3px;font-size:14px;font-weight:500;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;max-width:calc(100vw - 32px)}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Phone ---------- */
+@media (max-width:860px){
+  .door__word{font-size:clamp(56px,17vw,96px)}
+  .door__sub{font-size:15px}
+  .doors{padding-top:96px}
+  .frame__grade{background:
+    linear-gradient(90deg,rgba(16,38,59,.7) 0%,rgba(16,38,59,.35) 60%,rgba(16,38,59,.2) 100%),
+    linear-gradient(180deg,rgba(16,38,59,.5) 0%,rgba(16,38,59,0) 25%,rgba(16,38,59,.1) 70%,rgba(16,38,59,.5) 100%)}
+  .frame__hero{object-position:57% 60%}
+  .stay-copy{top:auto;bottom:calc(5vh + env(safe-area-inset-bottom,0px));transform:none;width:auto;right:var(--gutter-r);gap:12px}
+  .stay-copy__slot{font-size:clamp(70px,20vw,110px)}
+  .dine-copy{left:var(--gutter-l);top:auto;bottom:calc(6vh + env(safe-area-inset-bottom,0px));transform:none;gap:12px}
+  .dine-copy__word{font-size:clamp(76px,22vw,120px)}
+  .dine-copy p{font-size:15px;line-height:1.5}
+  .barbg img{object-position:50% 45%}
+  .cel-copy{top:auto;bottom:calc(6vh + env(safe-area-inset-bottom,0px));transform:none;width:auto;right:var(--gutter-r);gap:12px}
+  .cel-copy__word{font-size:clamp(56px,16vw,92px)}
+  .cel-copy p{font-size:15px;line-height:1.5}
+  .pondbg__wash{background:linear-gradient(0deg,rgba(12,22,38,.84) 0%,rgba(12,22,38,.5) 42%,rgba(12,22,38,.04) 100%)}
+  .barbg__wash{background:linear-gradient(0deg,rgba(21,29,34,.84) 0%,rgba(21,29,34,.5) 42%,rgba(21,29,34,.04) 100%)}
+  .stay-copy p{font-size:15px;line-height:1.5}
+  .cards{grid-template-columns:1fr;gap:34px}
+  .nav__links .nav__whats-on{display:none}
+  .btn{padding:12px 18px}
+}
+@media (max-width:860px) and (max-height:700px){.stay-copy p{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .card{animation:none!important}
+  .card__img img,.toast{transition:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="rough" x="-5%" y="-10%" width="110%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="wordmark" href="#top">River Ranch</a>
+  <nav class="nav__links" aria-label="Main">
+    <a class="nav__whats-on" href="#whats-on" data-soon="What's On is a later round.">What's On</a>
+    <a class="btn btn--amber" href="#book" data-soon="Booking connects here on the live site.">Book</a>
+  </nav>
+</header>
+
+<main id="top">
+  <h1 class="sr-only">River Ranch Lodge &amp; Restaurant, Tahoe City, California</h1>
+
+  <section class="track" id="story" aria-label="Stay, Dine, Celebrate">
+    <div class="stage" id="stage">
+      <div class="pano" id="pano" aria-hidden="true"><img src="img/panorama.jpg" alt=""></div>
+      <div class="barbg" id="barbg"><img src="img/bar.jpg" alt="The round bar at River Ranch under its wagon-wheel timber ceiling" loading="lazy"><div class="barbg__wash" id="barWash"></div></div>
+      <div class="pondbg" id="pondbg"><img src="img/pond.jpg" alt="The river below River Ranch on a winter night, snow on the banks and the lodge lights reflected in the water" loading="lazy"><div class="pondbg__wash" id="pondWash"></div></div>
+
+      <div class="frame" id="frame">
+        <img class="frame__hero" id="heroImg" src="img/hero.jpg" alt="River Ranch lodge under deep snow at blue hour, lights glowing along the porch" fetchpriority="high">
+        <img class="frame__entrance" id="entranceImg" src="img/entrance.jpg" alt="The River Ranch lodge entrance after a storm, flags up and icicles on the eaves" loading="lazy">
+        <div class="frame__grade" id="grade"></div>
+      </div>
+
+      <figure class="float" data-float="skiers"><img src="img/skiers-lake.jpg" alt="Two skiers stopped at the top of a run looking out over Lake Tahoe" loading="lazy"></figure>
+      <figure class="float" data-float="porch"><img src="img/porch.jpg" alt="Late light on the river from a snowy lodge porch" loading="lazy"></figure>
+      <figure class="float" data-float="skiroom"><img src="img/ski-room.jpg" alt="A lodge room with skis by the balcony door and snow falling outside" loading="lazy"></figure>
+
+      <div class="frame2" id="frame2"><img src="img/dining.jpg" alt="The River Ranch dining room on a winter night, garland over the windows and candles on white tablecloths" loading="lazy"></div>
+      <figure class="float" data-floatb="lamb"><img src="img/lamb.jpg" alt="Rack of lamb with roasted potatoes, radish and cherries" loading="lazy"></figure>
+      <figure class="float" data-floatb="server"><img src="img/server.jpg" alt="A server pouring red wine at a table in front of the stone fireplace" loading="lazy"></figure>
+      <figure class="float" data-floatb="bartender"><img src="img/bartender.jpg" alt="The bartender holding up a cream cocktail at the round bar" loading="lazy"></figure>
+
+      <div class="frame3" id="frame3"><img src="img/ring.jpg" alt="A bride laughing during the ring exchange under a sunflower arch at River Ranch" loading="lazy"></div>
+      <figure class="float" data-floatc="cake"><img src="img/cake.jpg" alt="A couple laughing as they cut their wedding cake on the patio at night" loading="lazy"></figure>
+      <figure class="float" data-floatc="lights"><img src="img/string-lights.jpg" alt="Guests at an evening reception under string lights and paper lanterns by the river" loading="lazy"></figure>
+
+      <canvas class="flakes" id="flakes" aria-hidden="true"></canvas>
+
+      <ul class="doors" id="doors">
+        <li><a class="door door--stay" href="#stay" data-go="stay"><span class="door__word" id="stayWord">Stay</span><span class="door__sub" data-fade>[One line about the rooms]</span></a></li>
+        <li data-fade><a class="door" href="#dine" data-go="dine"><span class="door__word">Dine</span><span class="door__sub">[One line about dinner and the bar]</span></a></li>
+        <li data-fade><a class="door" href="#celebrate" data-go="celebrate"><span class="door__word">Celebrate</span><span class="door__sub">[One line about events]</span></a></li>
+      </ul>
+      <div class="scroll-cue" id="cue" aria-hidden="true"></div>
+
+      <div class="stay-copy" id="stayCopy">
+        <h2 class="sr-only" id="stay">Stay</h2>
+        <span class="stay-copy__slot" id="staySlot" aria-hidden="true">Stay</span>
+        <p class="stay-copy__sub">[One line about the rooms]</p>
+        <p>[Two or three sentences about staying here: rooms on the Truckee River, minutes from Palisades Tahoe, dinner and the bar downstairs.]</p>
+        <div class="stay-copy__actions">
+          <a class="btn btn--amber" href="#lodge" data-soon="The Lodge page comes later.">Check Out the Lodge</a>
+        </div>
+      </div>
+
+      <div class="dine-copy" id="dineCopy">
+        <h2 class="dine-copy__word" id="dine">Dine</h2>
+        <p class="stay-copy__sub">[One line about dinner and the bar]</p>
+        <p>[Two or three sentences about dinner by the fire, the round bar and après, and breakfast and lunch on the river.]</p>
+        <div class="stay-copy__actions">
+          <a class="btn btn--amber" href="#restaurant" data-soon="The Restaurant page comes later.">Check Out the Restaurant</a>
+        </div>
+        <p class="hours-today">Dinner tonight from [5:00 PM] · Bar from [3:00 PM]</p>
+      </div>
+
+      <div class="cel-copy" id="celCopy">
+        <h2 class="cel-copy__word" id="celebrate">Celebrate</h2>
+        <p class="stay-copy__sub">[One line about events]</p>
+        <p>[Two or three sentences about weddings on the river, corporate and group events, and private dining.]</p>
+        <div class="stay-copy__actions">
+          <a class="btn btn--amber" href="#events" data-soon="Event planning connects to Venio on the live site.">Plan Your Event</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<section class="visit" id="visit" aria-labelledby="visitTitle">
+  <div class="visit__inner">
+    <div>
+      <h2 id="visitTitle">Hours</h2>
+      <dl class="hours">
+        <dt>Dinner</dt><dd>[Days] · [5:00–9:00 PM]</dd>
+        <dt>Bar &amp; Après</dt><dd>[Days] · [3:00 PM–close]</dd>
+        <dt>Breakfast &amp; Lunch</dt><dd>[Days] · [8:00 AM–2:00 PM]</dd>
+        <dt>Lodge Front Desk</dt><dd>[Hours]</dd>
+      </dl>
+    </div>
+    <div>
+      <h2>Find Us</h2>
+      <address>River Ranch Lodge &amp; Restaurant<br>2285 River Road<br>Tahoe City, CA 96145<br>[Phone]</address>
+      <div class="visit__links">
+        <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=River+Ranch+Lodge+2285+River+Road+Tahoe+City+CA" target="_blank" rel="noopener">Get Directions</a>
+        <a class="text-link" href="#story-page" data-soon="Our Story comes later.">Our Story</a>
+        <a class="text-link" href="#gifts" data-soon="Gifts &amp; Perks comes later.">Gifts &amp; Perks</a>
+        <a class="text-link" href="#careers" data-soon="Careers comes later.">Careers</a>
+      </div>
+    </div>
+    <form class="signup" id="signup" novalidate>
+      <h2>Stay in the Loop</h2>
+      <p>[One line about what the email list is for]</p>
+      <div class="signup__row">
+        <label class="sr-only" for="signupEmail">Email address</label>
+        <input id="signupEmail" type="email" placeholder="you@example.com" autocomplete="email">
+        <button class="btn btn--amber" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t * t * (3 - 2 * t);
+  const seg = (p, a, b) => ease(clamp((p - a) / (b - a)));
+  const hex = h => h.match(/\w\w/g).map(x => parseInt(x, 16));
+  const mix = (a, b, t) => { const A = hex(a), B = hex(b); return `rgb(${A.map((c, i) => Math.round(lerp(c, B[i], t))).join(',')})`; };
+  const C = { navy: '10263B', glacier: 'E6F1F6', paper: 'F6F5EC', cream: 'F6F5EC', ink: '10263B', charcoal: '1B2A2A' };
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FRAME_W = 9;
+  const track = $('#story'), stage = $('#stage'), frame = $('#frame'), grade = $('#grade');
+  const heroImg = $('#heroImg'), entranceImg = $('#entranceImg'), pano = $('#pano');
+  const stayWord = $('#stayWord'), staySlot = $('#staySlot'), stayCopy = $('#stayCopy');
+  const fades = [...document.querySelectorAll('[data-fade]')], cue = $('#cue'), nav = $('#nav');
+  const barbg = $('#barbg'), barWash = $('#barWash'), dineCopy = $('#dineCopy'), frame2 = $('#frame2');
+  const floatsB = [...document.querySelectorAll('[data-floatb]')];
+  // Dine's resting spots, mirrored from Stay: frame on the left, words on the right.
+  const LAYOUT_B = {
+    wide: {
+      frame: { l: 5, t: 11, w: 48, h: 78 },
+      bartender: { l: 1.5, t: 5, w: 21, ar: .766, r: -4, d: .48, s: 175 },
+      server:    { l: 42, t: 19, w: 14, ar: 1.5, r: 4, d: .52, s: 150 },
+      lamb:      { l: 29, t: 63, w: 25, ar: .667, r: -3, d: .56, s: 120 }
+    },
+    narrow: {
+      frame: { l: 6, t: 10, w: 88, h: 38 },
+      lamb:      { l: 3, t: 32, w: 50, ar: .667, r: -4, d: .48, s: 120 },
+      server:    { l: 63, t: 12, w: 32, ar: 1.5, r: 4, d: .54, s: 150 },
+      bartender: { hide: true }
+    }
+  };
+  let LB = LAYOUT_B.wide;
+  const pondbg = $('#pondbg'), pondWash = $('#pondWash'), celCopy = $('#celCopy'), frame3 = $('#frame3');
+  const floatsC = [...document.querySelectorAll('[data-floatc]')];
+  // Celebrate flips back: words on the left, the ceremony frame on the right.
+  const LAYOUT_C = {
+    wide: {
+      frame: { l: 48.5, t: 16, w: 47.5, h: 67 },
+      cake:   { l: 39.5, t: 63, w: 23, ar: .667, r: -4, d: .48, s: 120 },
+      lights: { l: 83, t: 55, w: 14, ar: 1.5, r: 5, d: .53, s: 175 }
+    },
+    narrow: {
+      frame: { l: 6, t: 10, w: 88, h: 38 },
+      cake:   { l: 46, t: 33, w: 50, ar: .667, r: 4, d: .48, s: 120 },
+      lights: { l: 4, t: 9, w: 28, ar: 1.5, r: -5, d: .53, s: 170 }
+    }
+  };
+  let LC = LAYOUT_C.wide;
+  const placeRect = (el, r) => Object.assign(el.style, { left: r.l * vw / 100 + 'px', top: r.t * vh / 100 + 'px', width: r.w * vw / 100 + 'px', height: r.h * vh / 100 + 'px' });
+  const floats = [...document.querySelectorAll('[data-float]')];
+
+  // Final resting spots for the supporting photos, in viewport units. d = when it starts arriving, s = how far below it starts (speed).
+  const LAYOUT = {
+    wide: {
+      frame: { l: 45, t: 10, w: 50, h: 83 },
+      skiers: { l: 78, t: 9, w: 19, ar: .667, r: 4, d: .30, s: 170 },
+      porch:  { l: 33.5, t: 57, w: 25, ar: .75, r: -4, d: .34, s: 115 },
+      skiroom:{ l: 75.5, t: 59, w: 23.5, ar: .75, r: 5, d: .40, s: 135 }
+    },
+    narrow: {
+      frame: { l: 6, t: 10, w: 88, h: 39 },
+      skiers: { l: 60, t: 9.5, w: 37, ar: .667, r: 4, d: .30, s: 170 },
+      skiroom:{ l: 44, t: 33, w: 52, ar: .75, r: -4, d: .38, s: 130 },
+      porch:  { hide: true }
+    }
+  };
+  let L = LAYOUT.wide, vw = 0, vh = 0, flip = { x: 0, y: 0, s: 1 }, progress = 0, lastP = 0;
+
+  function measure() {
+    vw = innerWidth; vh = stage.clientHeight || innerHeight;
+    L = vw <= 860 ? LAYOUT.narrow : LAYOUT.wide;
+    floats.forEach(f => {
+      const c = L[f.dataset.float];
+      f.hidden = !!c.hide;
+      if (c.hide) return;
+      const w = c.w * vw / 100;
+      f.style.width = w + 'px'; f.style.height = (w * c.ar) + 'px';
+      f.style.left = c.l * vw / 100 + 'px'; f.style.top = c.t * vh / 100 + 'px';
+    });
+    LB = vw <= 860 ? LAYOUT_B.narrow : LAYOUT_B.wide;
+    const fb = LB.frame;
+    Object.assign(frame2.style, { left: fb.l * vw / 100 + 'px', top: fb.t * vh / 100 + 'px', width: fb.w * vw / 100 + 'px', height: fb.h * vh / 100 + 'px' });
+    floatsB.forEach(f => {
+      const c = LB[f.dataset.floatb];
+      f.hidden = !!c.hide;
+      if (c.hide) return;
+      const w = c.w * vw / 100;
+      f.style.width = w + 'px'; f.style.height = (w * c.ar) + 'px';
+      f.style.left = c.l * vw / 100 + 'px'; f.style.top = c.t * vh / 100 + 'px';
+    });
+    LC = vw <= 860 ? LAYOUT_C.narrow : LAYOUT_C.wide;
+    placeRect(frame3, LC.frame);
+    floatsC.forEach(f => {
+      const c = LC[f.dataset.floatc];
+      const w = c.w * vw / 100;
+      f.style.width = w + 'px'; f.style.height = (w * c.ar) + 'px';
+      f.style.left = c.l * vw / 100 + 'px'; f.style.top = c.t * vh / 100 + 'px';
+    });
+    // FLIP: the hero "Stay" travels to the Stay heading slot.
+    const prev = stayWord.style.transform; stayWord.style.transform = 'none';
+    const prevShift = stayCopy.style.translate; stayCopy.style.translate = '0 0';
+    const a = stayWord.getBoundingClientRect(), b = staySlot.getBoundingClientRect();
+    stayWord.style.transform = prev; stayCopy.style.translate = prevShift;
+    flip = { x: b.left - a.left, y: b.top - a.top, s: b.height / a.height };
+    sizeCanvas();
+  }
+
+  // The story track has three acts: hero -> Stay, through the entrance doors -> Dine, through a dining-room window -> Celebrate.
+  const SPLIT = 1 / 3, SPLIT2 = 2 / 3;   // three equal acts, each as long as hero -> Stay
+  let actB = 0, actC = 0;
+
+  function render(p) {
+    if (reduce) p = p < SPLIT * .5 ? 0 : p < (SPLIT + SPLIT2) / 2 ? SPLIT : p < (SPLIT2 + 1) / 2 ? SPLIT2 : 1;
+    const pa = clamp(p / SPLIT), pb = clamp((p - SPLIT) / (SPLIT2 - SPLIT)), pc = clamp((p - SPLIT2) / (1 - SPLIT2));
+    actB = pb; actC = pc;
+    renderA(pa, pb);
+    renderB(pb, pc);
+    renderC(pc);
+  }
+
+  function renderA(p, pb) {
+    const out = seg(p, 0, .16), shrink = seg(p, .06, .5), swap = seg(p, .34, .52);
+    const day = seg(p, .22, .62), copy = seg(p, .68, .92), move = seg(p, .1, .62);
+    // The panorama stays as a soft backdrop behind the Stay composition.
+    const panoIn = seg(p, .12, .32) * (1 - .42 * seg(p, .56, .82));
+    const leave = seg(pb, .02, .26);   // Stay pieces clearing out at the start of act two
+
+    const G = hex(C.navy).map((c, i) => lerp(lerp(c, hex(C.glacier)[i], day), hex(C.paper)[i], copy));
+    stage.style.backgroundColor = `rgb(${G.map(Math.round).join(',')})`;
+
+    const f = L.frame;
+    // The left edge clears first so the lettering lands on light ground, not on the photo.
+    frame.style.left = lerp(0, f.l * vw / 100, L === LAYOUT.wide ? seg(p, .04, .3) : shrink) + 'px';
+    frame.style.top = lerp(0, f.t * vh / 100, shrink) + 'px';
+    frame.style.width = (lerp(vw, (f.l + f.w) * vw / 100, shrink) - parseFloat(frame.style.left)) + 'px';
+    frame.style.height = lerp(vh, f.h * vh / 100, shrink) + 'px';
+    frame.style.borderWidth = lerp(0, FRAME_W, shrink) + 'px';
+    frame.style.borderRadius = shrink > .5 ? '3px' : '0';
+    frame.style.boxShadow = `0 30px 70px rgba(16,38,59,${(.32 * shrink).toFixed(3)})`;
+    grade.style.opacity = (1 - shrink).toFixed(3);
+    heroImg.style.transform = `scale(${lerp(1, 1.08, seg(p, 0, .4)).toFixed(4)})`;
+    entranceImg.style.opacity = swap.toFixed(3);
+    heroImg.style.opacity = (1 - swap * .999).toFixed(3);
+
+    pano.style.opacity = (panoIn * .95 * (1 - seg(pb, .14, .34))).toFixed(3);
+    pano.style.transform = `translateY(${lerp(6, -5, p).toFixed(2)}vh) scale(${lerp(1.18, 1.04, p).toFixed(3)})`;
+
+    fades.forEach(el => { el.style.opacity = (1 - out).toFixed(3); el.style.transform = `translateY(${(-out * 5).toFixed(2)}vh)`; });
+    cue.style.opacity = (.7 * (1 - seg(p, 0, .05))).toFixed(3);
+    stayWord.style.transform = `translate(${(flip.x * move).toFixed(1)}px, ${(flip.y * move - leave * vh * .22).toFixed(1)}px) scale(${lerp(1, flip.s, move).toFixed(4)})`;
+    stayWord.style.color = mix(C.cream, C.ink, L === LAYOUT.wide ? seg(p, .13, .27) : seg(p, .3, .44));
+    stayWord.style.textShadow = `0 3px 26px rgba(10,24,38,${(.35 * (1 - day)).toFixed(3)})`;
+    stayWord.style.opacity = (1 - seg(pb, .02, .16)).toFixed(3);
+
+    floats.forEach((el, i) => {
+      const c = L[el.dataset.float]; if (c.hide) return;
+      const t = seg(p, c.d, c.d + .42);
+      const drift = (1 - t) * c.s - leave * (110 + i * 45);   // they fly off upward at different speeds
+      el.style.transform = `translate3d(0, ${drift.toFixed(2)}vh, 0) rotate(${lerp(c.r * 2.2, c.r, t).toFixed(2)}deg)`;
+    });
+
+    stayCopy.style.opacity = (copy * (1 - seg(pb, .02, .14))).toFixed(3);
+    stayCopy.style.translate = `0 ${((1 - copy) * 18 - seg(pb, .02, .2) * vh * .18).toFixed(1)}px`;
+    stayCopy.classList.toggle('is-on', copy > .6 && pb < .05);
+    snowAmount = reduce ? 0 : seg(p, .005, .06) * (1 - seg(p, .45, .7));
+  }
+
+  // Every section change uses the hero -> Stay move: the current frame opens to full screen,
+  // dissolves into the next section's main photo, and that photo shrinks into its own frame
+  // while the next backdrop fades in behind it.
+  const px = v => v + 'px';
+  function setRect(el, l, t, w, h) { el.style.left = px(l); el.style.top = px(t); el.style.width = px(w); el.style.height = px(h); }
+  // Shrink from full screen into a target rect. The edge facing the words clears first.
+  function shrinkRect(r, t, tFast, wordsOnLeft) {
+    const L0 = r.l * vw / 100, T0 = r.t * vh / 100, R0 = (r.l + r.w) * vw / 100, B0 = (r.t + r.h) * vh / 100;
+    const left = lerp(0, L0, wordsOnLeft ? tFast : t), right = lerp(vw, R0, wordsOnLeft ? t : tFast);
+    return [left, lerp(0, T0, t), right - left, lerp(vh, B0, t) - lerp(0, T0, t)];
+  }
+  function growRect(r, t) {
+    const L0 = r.l * vw / 100, T0 = r.t * vh / 100, W0 = r.w * vw / 100, H0 = r.h * vh / 100;
+    return [lerp(L0, 0, t), lerp(T0, 0, t), lerp(W0, vw, t), lerp(H0, vh, t)];
+  }
+  const wide = () => L === LAYOUT.wide;
+
+  function renderB(pb, pc) {
+    if (pb <= 0) {
+      frame.style.opacity = '1';
+      barbg.style.opacity = '0'; barWash.style.opacity = '0'; dineCopy.style.opacity = '0'; dineCopy.classList.remove('is-on');
+      frame2.style.opacity = '0'; floatsB.forEach(el => { el.style.transform = 'translate3d(0,200vh,0)'; });
+      return;
+    }
+    const grow = seg(pb, .04, .3), swap = seg(pb, .26, .4);
+    const shrink = seg(pb, .38, .76), fast = seg(pb, .38, .6);
+    const back = seg(pb, .36, .62), copy = seg(pb, .64, .88), night = seg(pb, .2, .4);
+
+    // Stay's frame opens back up to full screen.
+    setRect(frame, ...growRect(L.frame, grow));
+    frame.style.borderWidth = px(lerp(FRAME_W, 0, grow));
+    frame.style.boxShadow = `0 30px 70px rgba(16,38,59,${(.32 * (1 - grow)).toFixed(3)})`;
+    frame.style.opacity = (1 - swap).toFixed(3);
+
+    // The dining room takes over the screen, then shrinks into Dine's frame.
+    if (pc <= 0) {
+      setRect(frame2, ...shrinkRect(LB.frame, shrink, fast, false));
+      frame2.style.borderWidth = px(lerp(0, FRAME_W, shrink));
+      frame2.style.opacity = swap.toFixed(3);
+      frame2.style.transform = 'none';
+    }
+
+    // The bar fades in behind it as the backdrop.
+    const gone = seg(pc, .36, .6);
+    barbg.style.opacity = (back * .86 * (1 - gone)).toFixed(3);
+    barbg.style.transform = `scale(${lerp(1.12, 1.03, back).toFixed(4)})`;
+    barWash.style.opacity = (back * (1 - gone)).toFixed(3);
+
+    const G = hex(C.paper).map((c, i) => lerp(c, hex(C.charcoal)[i], night));
+    stage.style.backgroundColor = `rgb(${G.map(Math.round).join(',')})`;
+
+    const leave = seg(pc, .02, .24);
+    floatsB.forEach((el, i) => {
+      const c = LB[el.dataset.floatb]; if (c.hide) return;
+      const t = seg(pb, c.d, c.d + .3);
+      el.style.transform = `translate3d(0, ${((1 - t) * c.s - leave * (110 + i * 45)).toFixed(2)}vh, 0) rotate(${lerp(c.r * 2.2, c.r, t).toFixed(2)}deg)`;
+    });
+
+    dineCopy.style.opacity = (copy * (1 - seg(pc, .02, .14))).toFixed(3);
+    dineCopy.style.translate = `${((1 - copy) * 6).toFixed(2)}vw ${(-seg(pc, .02, .2) * 18).toFixed(2)}vh`;
+    dineCopy.classList.toggle('is-on', copy > .6 && pc < .05);
+  }
+
+  function renderC(pc) {
+    if (pc <= 0) {
+      pondbg.style.opacity = '0'; pondWash.style.opacity = '0'; celCopy.style.opacity = '0'; celCopy.classList.remove('is-on');
+      frame3.style.opacity = '0'; floatsC.forEach(el => { el.style.transform = 'translate3d(0,200vh,0)'; });
+      return;
+    }
+    const grow = seg(pc, .04, .3), swap = seg(pc, .26, .4);
+    const shrink = seg(pc, .38, .76), fast = seg(pc, .38, .6);
+    const back = seg(pc, .36, .62), copy = seg(pc, .64, .88);
+
+    // Dine's frame opens back up to full screen...
+    setRect(frame2, ...growRect(LB.frame, grow));
+    frame2.style.borderWidth = px(lerp(FRAME_W, 0, grow));
+    frame2.style.transform = 'none';
+    frame2.style.opacity = (1 - swap).toFixed(3);
+
+    // ...dissolves into the ceremony, which shrinks into Celebrate's frame.
+    setRect(frame3, ...shrinkRect(LC.frame, shrink, fast, true));
+    frame3.style.borderWidth = px(lerp(0, FRAME_W, shrink));
+    frame3.style.opacity = swap.toFixed(3);
+    frame3.style.transform = 'none';
+
+    // The river at night fades in behind it.
+    pondbg.style.opacity = (back * .88).toFixed(3);
+    pondbg.style.transform = `scale(${lerp(1.12, 1.03, back).toFixed(4)})`;
+    pondWash.style.opacity = back.toFixed(3);
+    const G = hex(C.charcoal).map((c, i) => lerp(c, hex('0C1626')[i], seg(pc, .2, .4)));
+    stage.style.backgroundColor = `rgb(${G.map(Math.round).join(',')})`;
+
+    floatsC.forEach(el => {
+      const c = LC[el.dataset.floatc];
+      const t = seg(pc, c.d, c.d + .3);
+      el.style.transform = `translate3d(0, ${((1 - t) * c.s).toFixed(2)}vh, 0) rotate(${lerp(c.r * 2.2, c.r, t).toFixed(2)}deg)`;
+    });
+
+    celCopy.style.opacity = copy.toFixed(3);
+    celCopy.style.translate = `${(-(1 - copy) * 6).toFixed(2)}vw 0`;
+    celCopy.classList.toggle('is-on', copy > .6);
+  }
+
+  function navTone() {
+    const r = track.getBoundingClientRect();
+    const inStory = r.bottom > vh + 2;
+    const light = inStory ? (progress > SPLIT * (L === LAYOUT.wide ? .24 : .4) && actB < .2 && actC <= 0) : false;
+    nav.classList.toggle('is-light', light);
+    nav.classList.toggle('is-solid', !inStory);
+    nav.classList.toggle('is-dark', !inStory);
+    document.body.style.setProperty('--top-band', light ? 'var(--snow-paper)' : 'var(--navy)');
+  }
+
+  let pending = false;
+  function onScroll() { if (!pending) { pending = true; requestAnimationFrame(update); } }
+  function update() {
+    pending = false;
+    const r = track.getBoundingClientRect();
+    const len = Math.max(r.height - vh, 1);
+    lastP = progress;
+    progress = clamp(-r.top / len);
+    scrollSpeed = Math.min(Math.abs(progress - lastP) * 60, 3);
+    render(progress);
+    navTone();
+    if (snowAmount > 0 && !snowRunning) startSnow();
+  }
+
+  // ---------- Snow, only once the visitor starts scrolling ----------
+  const cv = $('#flakes'), ctx = cv.getContext('2d');
+  let flakes = [], snowAmount = 0, snowRunning = false, scrollSpeed = 0, dpr = 1;
+  function sizeCanvas() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = vw * dpr; cv.height = vh * dpr;
+    const n = vw < 860 ? 70 : 150;
+    flakes = Array.from({ length: n }, () => ({ x: Math.random() * vw, y: Math.random() * vh, r: Math.random() * 2.2 + .6, v: Math.random() * .6 + .35, w: Math.random() * Math.PI * 2 }));
+  }
+  function startSnow() { snowRunning = true; requestAnimationFrame(tick); }
+  function tick() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, vw, vh);
+    if (snowAmount <= 0.001) { snowRunning = false; return; }
+    ctx.fillStyle = `rgba(246,245,236,${(.85 * snowAmount).toFixed(3)})`;
+    const boost = 1 + scrollSpeed * 2.5;
+    for (const f of flakes) {
+      f.w += .01; f.y += f.v * boost * (f.r * .55); f.x += Math.sin(f.w) * .35;
+      if (f.y > vh + 4) { f.y = -4; f.x = Math.random() * vw; }
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2); ctx.fill();
+    }
+    scrollSpeed *= .92;
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- Links ----------
+  const toast = $('#toast'); let toastT;
+  function say(msg) { toast.textContent = msg; toast.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('is-on'), 2600); }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a'); if (!a) return;
+    if (a.dataset.soon) { e.preventDefault(); say(a.dataset.soon); return; }
+    const go = a.dataset.go;
+    if (!go) return;
+    e.preventDefault();
+    let y;
+    if (go === 'stay') y = track.offsetTop + Math.round((track.offsetHeight - vh) * SPLIT);
+    else if (go === 'dine') y = track.offsetTop + Math.round((track.offsetHeight - vh) * SPLIT2);
+    else if (go === 'celebrate') y = track.offsetTop + track.offsetHeight - vh;
+    scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  $('#signup').addEventListener('submit', e => { e.preventDefault(); say('Email signup connects to your email platform on the live site.'); });
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { measure(); update(); }, { passive: true });
+  const ready = () => { measure(); update(); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(ready); else ready();
+  ready();
+})();
+</script>
