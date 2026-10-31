@@ -339,3 +339,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .mobile-menu__more a { color: var(--sand); text-decoration: none; font-size: 16px; }
 .mobile-menu__more a:hover { color: var(--amber); }
 .mobile-menu { overflow-y: auto; }
+
+/* ---------- The Wall, embedded on History ---------- */
+.wall-embed { display: block; width: 100%; height: clamp(520px, 82svh, 900px); border: 0; border-radius: 6px; background: #14110e; }
+@media (max-width: 760px) { .wall-embed { height: 74svh; min-height: 460px; } }
