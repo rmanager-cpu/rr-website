@@ -60,8 +60,18 @@ Add or edit its entry in `src/data/frames.json`. Everything except `id` is optio
 Frames with an action other than `ask` get a gold outline in "outline every photo" mode. A frame with
 a story still offers "Know more about this one?", so the box never goes away.
 
-`closeup` is optional: put a straight-on photo of the frame in `public/frames/` and it replaces the
-crop from the wall photo.
+## Close-ups
+
+Tapping a frame shows its close-up. `npm run closeups` cuts one for every traced frame from the
+full-resolution originals in `source/` (the site's wall images stop at 4096px, so cutting from those
+loses more than half the detail), straightened from the four traced corners, into `public/frames/`
+and `src/data/closeups.json`. Run it again after re-tracing outlines or replacing a wall photo.
+
+The sharpest close-ups come from a straight-on phone photo of the single frame: save it in
+`source/closeups/` named by the tag number (`41.jpg` for No. 41) or the id (`u-letter.jpg`), then
+`npm run closeups`. Tips: stand square to the frame, fill the screen with it, no flash (it glares on
+the glass); turn off the overhead light behind you if it reflects. A `closeup` set by hand in
+`frames.json` overrides both.
 
 ## Adding or replacing a wall photo
 
