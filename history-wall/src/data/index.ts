@@ -2,6 +2,7 @@ import type { Frame, Hotspot, Section, SectionImage } from '../wall/types';
 import sectionList from './sections.json';
 import images from './images.json';
 import frameList from './frames.json';
+import closeups from './closeups.json';
 
 // One geometry file per section: src/data/geometry/<sectionId>.json
 const geometry = import.meta.glob<{ section: string; hotspots: Hotspot[] }>('./geometry/*.json', {
@@ -27,6 +28,8 @@ export function loadFrames(): Record<string, Frame> {
       const m = h.frame.match(/^f(\d+)$/);
       out[h.frame] ??= { id: h.frame, ...(m ? { tag: m[1] } : {}) };
     }
+  // Generated close-ups (npm run closeups) first; a hand-picked one in frames.json wins.
+  for (const [id, closeup] of Object.entries(closeups as Record<string, string>)) if (out[id]) out[id] = { ...out[id], closeup };
   for (const f of frameList as Frame[]) out[f.id] = { ...out[f.id], ...f };
   return out;
 }
