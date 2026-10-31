@@ -11,22 +11,31 @@ One sticky scroll track in three equal acts, after a still hero:
 1. **Hero** (no motion until the first scroll). Blue-hour snow lodge, stacked brush lettering:
    Stay / Dine / Celebrate, each with a one-line placeholder and a link to its section.
 2. **Hero to Stay.** The lodge photo shrinks into a frame and dissolves into the entrance photo;
-   the faded Tahoe panorama comes up behind it; three photos float in; "Stay" slides from the hero
+   the faded Tahoe panorama comes up behind it; one photo floats in; "Stay" slides from the hero
    into place as the heading. CTA: Check Out the Lodge.
 3. **Stay to Dine** and **Dine to Celebrate** use the same move: the current frame opens to full
    screen, dissolves into the next section's main photo, and that photo shrinks into its frame
    while the next backdrop fades in behind it. No zooming. Then the floats and words land.
 
-| Section   | Backdrop (faded)        | Main frame             | Floats                                   | Frame color | CTA                      |
-|-----------|-------------------------|------------------------|------------------------------------------|-------------|--------------------------|
-| Stay      | Tahoe panorama (stock)  | Lodge entrance          | Skiers over the lake, snowy porch, ski room | Snow Paper  | Check Out the Lodge      |
-| Dine      | The round bar           | Dining room at night    | Server by the fire, lamb                 | Evergreen   | Check Out the Restaurant |
-| Celebrate | The river at night      | Ring exchange           | Cake cutting, string-lights reception    | Sugar Pine  | Plan Your Event          |
+| Section   | Backdrop (faded)            | Main frame            | Support photo  | Word color     | Frame color | CTA                                 |
+|-----------|-----------------------------|-----------------------|----------------|----------------|-------------|-------------------------------------|
+| Stay      | Tahoe panorama (stock)      | Lodge entrance        | Ski room       | Alpine Navy    | Snow Paper  | Check Out the Lodge (amber)         |
+| Dine      | The round bar               | Dining room at night  | Elk chops      | Firelight Amber| Evergreen   | Check Out the Restaurant (cream)    |
+| Celebrate | Ceremony chairs by the river| Couple, nose to nose  | Cake cutting   | Snow Paper     | Sugar Pine  | Plan Your Event (amber)             |
+
+Rules this settled on:
+- **Backdrop, main photo, one support photo.** No more. Everything else is saved for the inside pages.
+- **All three main frames are the same size** (48vw x 78vh, 11vh from the top); only the side changes.
+- **Each section owns a color world:** Stay snowy blue and white, Dine warm wood and firelight,
+  Celebrate summer greens and gold. No two adjacent sections share a word color.
+- Layout alternates: Stay words left, Dine words right, Celebrate words left.
 
 After the story: a Visit section with hours by department, address, directions and the email signup.
-Layout alternates: Stay words left, Dine words right, Celebrate words left. Phones get the same story
-with fewer floats. The bartender shot was cut from Dine (flash snapshot next to pro-shoot photos);
-it suits a future Bar & Après page.
+Dine also shows a "Dinner tonight from..." line under its button.
+
+Photos held for inside pages: skiers over the lake and snowy porch (Lodge); server by the fire and
+the bartender (Restaurant / Bar & Après); ring exchange, cheering toast, hug, string-lights reception,
+long table on the river (Weddings); the winter pond at night (Lodge or a winter backdrop).
 
 ## Design tokens
 
@@ -38,9 +47,9 @@ rough-edge SVG filter (a stand-in; final lettering not chosen yet).
 ## Before this goes live
 
 - **Original photo files.** These are AI-upscaled from small web copies and should be replaced:
-  hero (snow lodge at dusk), bar, night dining room, night pond. The ring exchange is cropped out
-  of the pricing packet; the original is needed.
-- Stock photos (panorama, skiers over the lake): confirm the licenses allow commercial use.
+  hero (snow lodge at dusk), bar, night dining room. (The Celebrate couple photo is an original.)
+- Stock photo (panorama): confirm the license allows commercial use.
+- **Mobile hero:** a vertical shot of the lodge would show it better on phones than the wide photo.
 - **Lettering:** final choice, or real hand lettering for the three words.
 - **Copy:** every bracketed line is a placeholder. No AI taglines.
 - **Hours:** placeholders. Hours should be staff-editable (not layout).

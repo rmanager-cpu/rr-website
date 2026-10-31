@@ -39,6 +39,8 @@ a{color:inherit}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:2px;font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .2s,background-color .2s,color .2s}
 .btn--amber{background:var(--amber);color:var(--navy)}
 .btn--amber:hover{background:#f6bd7a}
+.btn--cream{background:var(--snow-paper);color:var(--charcoal)}
+.btn--cream:hover{background:#fff}
 .btn--line{border-color:currentColor;background:transparent}
 .btn:active{transform:translateY(1px)}
 
@@ -48,11 +50,11 @@ a{color:inherit}
 .frame2{position:absolute;z-index:2;overflow:hidden;border:var(--fw-main) solid var(--fb);border-radius:3px;box-shadow:0 30px 70px rgba(10,16,18,.45);opacity:0;will-change:transform,opacity}
 .frame2 img{width:100%;height:100%;object-fit:cover;object-position:45% 50%}
 .pondbg{position:absolute;inset:0;z-index:1;opacity:0;will-change:opacity,transform}
-.pondbg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(1.08)}
+.pondbg img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:brightness(1.04) saturate(1.05)}
 .pondbg__wash{position:absolute;inset:0;opacity:0;background:
-    linear-gradient(90deg,rgba(12,22,38,.72) 0%,rgba(12,22,38,.42) 34%,rgba(12,22,38,.06) 62%,rgba(12,22,38,0) 100%)}
+    linear-gradient(90deg,rgba(20,32,24,.78) 0%,rgba(20,32,24,.5) 34%,rgba(20,32,24,.08) 62%,rgba(20,32,24,0) 100%)}
 .frame3{position:absolute;z-index:2;overflow:hidden;border:var(--fw-main) solid var(--fc);border-radius:3px;box-shadow:0 30px 70px rgba(6,12,22,.5);opacity:0;will-change:transform,opacity}
-.frame3 img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.frame3 img{width:100%;height:100%;object-fit:cover;object-position:30% 60%}
 .cel-copy{position:absolute;z-index:6;left:var(--gutter-l);top:50%;transform:translateY(-46%);width:min(32vw,470px);display:flex;flex-direction:column;gap:18px;color:var(--snow-paper);opacity:0;pointer-events:none}
 .cel-copy.is-on{pointer-events:auto}
 .cel-copy__word{font-family:var(--brush);font-weight:400;font-size:clamp(60px,min(7.6vw,16vh),124px);line-height:.92;padding-bottom:.24em;margin:0;filter:url(#rough);text-shadow:0 3px 30px rgba(6,12,22,.5)}
@@ -63,7 +65,7 @@ a{color:inherit}
     linear-gradient(270deg,rgba(21,29,34,.74) 0%,rgba(21,29,34,.46) 34%,rgba(21,29,34,.08) 62%,rgba(21,29,34,0) 100%)}
 .dine-copy{position:absolute;z-index:6;left:58vw;right:var(--gutter-r);top:50%;transform:translateY(-46%);max-width:470px;display:flex;flex-direction:column;gap:18px;color:var(--snow-paper);opacity:0;pointer-events:none}
 .dine-copy.is-on{pointer-events:auto}
-.dine-copy__word{font-family:var(--brush);font-weight:400;font-size:clamp(96px,min(12.5vw,22vh),200px);line-height:.92;padding-bottom:.24em;margin:0;filter:url(#rough);text-shadow:0 3px 30px rgba(10,20,24,.5)}
+.dine-copy__word{font-family:var(--brush);font-weight:400;font-size:clamp(96px,min(12.5vw,22vh),200px);line-height:.92;padding-bottom:.24em;margin:0;color:var(--amber);filter:url(#rough);text-shadow:0 2px 24px rgba(10,16,18,.6)}
 .dine-copy .stay-copy__sub{color:var(--snow-paper);margin-top:-.2em}
 .dine-copy p{margin:0;font-size:17px;line-height:1.6;color:color-mix(in srgb,var(--snow-paper) 86%,transparent);max-width:40ch}
 .site-foot{background:var(--charcoal);color:color-mix(in srgb,var(--snow-paper) 80%,transparent);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));padding-left:var(--gutter-l);padding-right:var(--gutter-r);display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline;justify-content:space-between;font-size:14px}
@@ -144,6 +146,7 @@ a{color:inherit}
 body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:clamp(6px,.6vw,10px);--fw-main:9px}
 [data-floatb]{background:var(--fb)}
 [data-floatc]{background:var(--fc)}
+[data-floatb="lamb"] img{object-position:38% 55%}
 .float img{border-radius:1px}
 
 /* ---------- Visit: hours, address, email ---------- */
@@ -187,7 +190,7 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
   .cel-copy{top:auto;bottom:calc(6vh + env(safe-area-inset-bottom,0px));transform:none;width:auto;right:var(--gutter-r);gap:12px}
   .cel-copy__word{font-size:clamp(56px,16vw,92px)}
   .cel-copy p{font-size:15px;line-height:1.5}
-  .pondbg__wash{background:linear-gradient(0deg,rgba(12,22,38,.84) 0%,rgba(12,22,38,.5) 42%,rgba(12,22,38,.04) 100%)}
+  .pondbg__wash{background:linear-gradient(0deg,rgba(20,32,24,.86) 0%,rgba(20,32,24,.52) 42%,rgba(20,32,24,.04) 100%)}
   .barbg__wash{background:linear-gradient(0deg,rgba(21,29,34,.84) 0%,rgba(21,29,34,.5) 42%,rgba(21,29,34,.04) 100%)}
   .stay-copy p{font-size:15px;line-height:1.5}
   .cards{grid-template-columns:1fr;gap:34px}
@@ -223,25 +226,20 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
     <div class="stage" id="stage">
       <div class="pano" id="pano" aria-hidden="true"><img src="img/panorama.jpg" alt=""></div>
       <div class="barbg" id="barbg"><img src="img/bar.jpg" alt="The round bar at River Ranch under its wagon-wheel timber ceiling" loading="lazy"><div class="barbg__wash" id="barWash"></div></div>
-      <div class="pondbg" id="pondbg"><img src="img/pond.jpg" alt="The river below River Ranch on a winter night, snow on the banks and the lodge lights reflected in the water" loading="lazy"><div class="pondbg__wash" id="pondWash"></div></div>
+      <div class="pondbg" id="pondbg"><img src="img/ceremony.jpg" alt="Rows of ceremony chairs on the riverside patio, wildflowers along the aisle and the river beyond" loading="lazy"><div class="pondbg__wash" id="pondWash"></div></div>
 
       <div class="frame" id="frame">
         <img class="frame__hero" id="heroImg" src="img/hero.jpg" alt="River Ranch lodge under deep snow at blue hour, lights glowing along the porch" fetchpriority="high">
         <img class="frame__entrance" id="entranceImg" src="img/entrance.jpg" alt="The River Ranch lodge entrance after a storm, flags up and icicles on the eaves" loading="lazy">
         <div class="frame__grade" id="grade"></div>
       </div>
-
-      <figure class="float" data-float="skiers"><img src="img/skiers-lake.jpg" alt="Two skiers stopped at the top of a run looking out over Lake Tahoe" loading="lazy"></figure>
-      <figure class="float" data-float="porch"><img src="img/porch.jpg" alt="Late light on the river from a snowy lodge porch" loading="lazy"></figure>
       <figure class="float" data-float="skiroom"><img src="img/ski-room.jpg" alt="A lodge room with skis by the balcony door and snow falling outside" loading="lazy"></figure>
 
       <div class="frame2" id="frame2"><img src="img/dining.jpg" alt="The River Ranch dining room on a winter night, garland over the windows and candles on white tablecloths" loading="lazy"></div>
-      <figure class="float" data-floatb="lamb"><img src="img/lamb.jpg" alt="Rack of lamb with roasted potatoes, radish and cherries" loading="lazy"></figure>
-      <figure class="float" data-floatb="server"><img src="img/server.jpg" alt="A server pouring red wine at a table in front of the stone fireplace" loading="lazy"></figure>
+      <figure class="float" data-floatb="lamb"><img src="img/lamb.jpg" alt="Elk chops with roasted potatoes, radish and cherries" loading="lazy"></figure>
 
-      <div class="frame3" id="frame3"><img src="img/ring.jpg" alt="A bride laughing during the ring exchange under a sunflower arch at River Ranch" loading="lazy"></div>
+      <div class="frame3" id="frame3"><img src="img/ring.jpg" alt="A bride and groom nose to nose in an embrace at their River Ranch wedding" loading="lazy"></div>
       <figure class="float" data-floatc="cake"><img src="img/cake.jpg" alt="A couple laughing as they cut their wedding cake on the patio at night" loading="lazy"></figure>
-      <figure class="float" data-floatc="lights"><img src="img/string-lights.jpg" alt="Guests at an evening reception under string lights and paper lanterns by the river" loading="lazy"></figure>
 
       <canvas class="flakes" id="flakes" aria-hidden="true"></canvas>
 
@@ -267,7 +265,7 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
         <p class="stay-copy__sub">[One line about dinner and the bar]</p>
         <p>[Two or three sentences about dinner by the fire, the round bar and après, and breakfast and lunch on the river.]</p>
         <div class="stay-copy__actions">
-          <a class="btn btn--amber" href="#restaurant" data-soon="The Restaurant page comes later.">Check Out the Restaurant</a>
+          <a class="btn btn--cream" href="#restaurant" data-soon="The Restaurant page comes later.">Check Out the Restaurant</a>
         </div>
         <p class="hours-today">Dinner tonight from [5:00 PM] · Bar from [3:00 PM]</p>
       </div>
@@ -344,11 +342,11 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
     wide: {
       frame: { l: 5, t: 11, w: 48, h: 78 },
       server:    { l: 1.5, t: 13, w: 16, ar: 1.5, r: -4, d: .48, s: 175 },
-      lamb:      { l: 32, t: 61, w: 24, ar: .667, r: 3, d: .54, s: 120 }
+      lamb:      { l: 1.5, t: 55, w: 24, ar: .86, r: -3, d: .5, s: 120 }
     },
     narrow: {
-      frame: { l: 6, t: 10, w: 88, h: 38 },
-      lamb:      { l: 3, t: 31, w: 55, ar: .667, r: -4, d: .48, s: 120 },
+      frame: { l: 6, t: 10, w: 88, h: 39 },
+      lamb:      { l: 2, t: 28, w: 52, ar: .86, r: -4, d: .48, s: 120 },
       server:    { l: 60, t: 11, w: 36, ar: 1.5, r: 4, d: .54, s: 150 },
     }
   };
@@ -358,13 +356,13 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
   // Celebrate flips back: words on the left, the ceremony frame on the right.
   const LAYOUT_C = {
     wide: {
-      frame: { l: 48.5, t: 16, w: 47.5, h: 67 },
-      cake:   { l: 39.5, t: 63, w: 23, ar: .667, r: -4, d: .48, s: 120 },
+      frame: { l: 47, t: 11, w: 48, h: 78 },
+      cake:   { l: 76, t: 63, w: 22, ar: .667, r: 4, d: .48, s: 120 },
       lights: { l: 83, t: 55, w: 14, ar: 1.5, r: 5, d: .53, s: 175 }
     },
     narrow: {
-      frame: { l: 6, t: 10, w: 88, h: 38 },
-      cake:   { l: 46, t: 33, w: 50, ar: .667, r: 4, d: .48, s: 120 },
+      frame: { l: 6, t: 10, w: 88, h: 39 },
+      cake:   { l: 50, t: 37, w: 47, ar: .667, r: 4, d: .48, s: 120 },
       lights: { l: 4, t: 9, w: 28, ar: 1.5, r: -5, d: .53, s: 170 }
     }
   };
@@ -375,15 +373,15 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
   // Final resting spots for the supporting photos, in viewport units. d = when it starts arriving, s = how far below it starts (speed).
   const LAYOUT = {
     wide: {
-      frame: { l: 45, t: 10, w: 50, h: 83 },
+      frame: { l: 46, t: 11, w: 48, h: 78 },
       skiers: { l: 78, t: 9, w: 19, ar: .667, r: 4, d: .30, s: 170 },
       porch:  { l: 33.5, t: 57, w: 25, ar: .75, r: -4, d: .34, s: 115 },
-      skiroom:{ l: 75.5, t: 59, w: 23.5, ar: .75, r: 5, d: .40, s: 135 }
+      skiroom:{ l: 72.5, t: 60, w: 26, ar: .75, r: 4, d: .36, s: 135 }
     },
     narrow: {
       frame: { l: 6, t: 10, w: 88, h: 39 },
       skiers: { l: 60, t: 9.5, w: 37, ar: .667, r: 4, d: .30, s: 170 },
-      skiroom:{ l: 44, t: 33, w: 52, ar: .75, r: -4, d: .38, s: 130 },
+      skiroom:{ l: 38, t: 34, w: 59, ar: .75, r: -4, d: .38, s: 130 },
       porch:  { hide: true }
     }
   };
@@ -577,7 +575,7 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
     pondbg.style.opacity = (back * .88).toFixed(3);
     pondbg.style.transform = `scale(${lerp(1.12, 1.03, back).toFixed(4)})`;
     pondWash.style.opacity = back.toFixed(3);
-    const G = hex(C.charcoal).map((c, i) => lerp(c, hex('0C1626')[i], seg(pc, .2, .4)));
+    const G = hex(C.charcoal).map((c, i) => lerp(c, hex('18241C')[i], seg(pc, .2, .4)));
     stage.style.backgroundColor = `rgb(${G.map(Math.round).join(',')})`;
 
     floatsC.forEach(el => {
