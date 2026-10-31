@@ -16,7 +16,7 @@
  */
 
 type Rect = { l: number; t: number; w: number; h: number };
-type Float = { l: number; t: number; w: number; ar: number; r: number; d: number; s: number; hide?: boolean };
+type Float = { l: number; b: number; w: number; ar: number; r: number; d: number; s: number; hide?: boolean };
 type Layout = { frame: Rect } & Record<string, Rect | Float>;
 
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -32,20 +32,32 @@ const C = { navy: '10263B', glacier: 'E6F1F6', paper: 'F6F5EC', ink: '10263B', c
 const FRAME_W = 9;
 const NARROW = 860;
 
-// Resting spots in viewport units. d = when a float starts arriving, s = how far below it starts.
+// Resting spots in viewport units. Every section uses the same kit, mirrored: one main frame and one
+// supporting photo of the same size and shape (4:3), overlapping the frame's lower outside corner and
+// tilted outward. Stay and Celebrate: words left, frame right. Dine: words right, frame left.
+// l = left edge (vw), b = bottom edge (vh), w = width (vw), ar = height / width, r = tilt (deg),
+// d = when it starts arriving (share of the act), s = how far below it starts (vh).
+const FRAME_RIGHT: Rect = { l: 46, t: 11, w: 48, h: 78 };
+const FRAME_LEFT: Rect = { l: 6, t: 11, w: 48, h: 78 };
+const FRAME_PHONE: Rect = { l: 6, t: 10, w: 88, h: 39 };
+const SUPPORT = { w: 24, ar: 0.75, b: 93, s: 130 };
+const SUPPORT_PHONE = { w: 50, ar: 0.75, b: 54, s: 130 };
+const onRight = (d: number): Float => ({ ...SUPPORT, l: 100 - SUPPORT.w - 2, r: 3, d });
+const onLeft = (d: number): Float => ({ ...SUPPORT, l: 2, r: -3, d });
+const phoneRight = (d: number): Float => ({ ...SUPPORT_PHONE, l: 100 - SUPPORT_PHONE.w - 3, r: 3, d });
+const phoneLeft = (d: number): Float => ({ ...SUPPORT_PHONE, l: 3, r: -3, d });
+
 const LAYOUT_A: Record<'wide' | 'narrow', Layout> = {
-  wide: { frame: { l: 46, t: 11, w: 48, h: 78 }, skiroom: { l: 72.5, t: 60, w: 26, ar: 0.75, r: 4, d: 0.36, s: 135 } },
-  narrow: { frame: { l: 6, t: 10, w: 88, h: 39 }, skiroom: { l: 42, t: 29, w: 54, ar: 0.75, r: -4, d: 0.38, s: 130 } },
+  wide: { frame: FRAME_RIGHT, skiroom: onRight(0.38) },
+  narrow: { frame: FRAME_PHONE, skiroom: phoneRight(0.38) },
 };
-// Dine mirrors Stay: frame on the left, words on the right.
 const LAYOUT_B: Record<'wide' | 'narrow', Layout> = {
-  wide: { frame: { l: 5, t: 11, w: 48, h: 78 }, lamb: { l: 1.5, t: 55, w: 24, ar: 0.86, r: -3, d: 0.5, s: 120 } },
-  narrow: { frame: { l: 6, t: 10, w: 88, h: 39 }, lamb: { l: 2, t: 28, w: 52, ar: 0.86, r: -4, d: 0.48, s: 120 } },
+  wide: { frame: FRAME_LEFT, lamb: onLeft(0.5) },
+  narrow: { frame: FRAME_PHONE, lamb: phoneLeft(0.5) },
 };
-// Celebrate flips back: words on the left, the couple's frame on the right.
 const LAYOUT_C: Record<'wide' | 'narrow', Layout> = {
-  wide: { frame: { l: 47, t: 11, w: 48, h: 78 }, cake: { l: 76, t: 63, w: 22, ar: 0.667, r: 4, d: 0.48, s: 120 } },
-  narrow: { frame: { l: 6, t: 10, w: 88, h: 39 }, cake: { l: 50, t: 37, w: 47, ar: 0.667, r: 4, d: 0.48, s: 120 } },
+  wide: { frame: FRAME_RIGHT, cake: onRight(0.5) },
+  narrow: { frame: FRAME_PHONE, cake: phoneRight(0.5) },
 };
 const SPLIT = 1 / 3, SPLIT2 = 2 / 3;
 
@@ -93,8 +105,8 @@ export function startStory(root: HTMLElement): () => void {
       const c = lay[f.dataset[key]!] as Float;
       f.hidden = !!c.hide;
       if (c.hide) return;
-      const w = (c.w * vw) / 100;
-      setRect(f, (c.l * vw) / 100, (c.t * vh) / 100, w, w * c.ar);
+      const w = (c.w * vw) / 100, h = w * c.ar;
+      setRect(f, (c.l * vw) / 100, (c.b * vh) / 100 - h, w, h);
     });
   }
   function measure() {
@@ -166,7 +178,7 @@ export function startStory(root: HTMLElement): () => void {
     floatsA.forEach((el, i) => {
       const c = LA[el.dataset.float!] as Float;
       if (c.hide) return;
-      const t = seg(p, c.d, c.d + 0.42);
+      const t = seg(p, c.d, c.d + 0.3);
       const drift = (1 - t) * c.s - leave * (110 + i * 45);
       el.style.transform = `translate3d(0, ${drift.toFixed(2)}vh, 0) rotate(${lerp(c.r * 2.2, c.r, t).toFixed(2)}deg)`;
     });

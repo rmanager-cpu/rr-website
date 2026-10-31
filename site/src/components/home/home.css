@@ -75,7 +75,7 @@
 .hs-float--c { background: var(--hs-fc); }
 .hs-float__in { position: relative; width: 100%; height: 100%; border-radius: 1px; overflow: hidden; }
 .hs-float img { object-fit: cover; }
-.hs-float--b img { object-position: 38% 55%; }
+.hs-float--b img { object-position: 42% 55%; }
 
 .hs-flakes { position: absolute; inset: 0; z-index: 4; pointer-events: none; width: 100%; height: 100%; }
 
@@ -98,7 +98,7 @@
 .hs-copy__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 6px; }
 .hs-copy__word { font-family: var(--hs-brush-f); font-weight: 400; line-height: 0.92; padding-bottom: 0.24em; margin: 0; filter: url(#hs-rough); }
 
-.hs-copy--stay { left: var(--hs-gl); width: min(28vw, 430px); }
+.hs-copy--stay { left: var(--hs-gl); width: min(32vw, 470px); }
 .hs-copy--stay p { color: color-mix(in srgb, var(--hs-navy) 82%, transparent); }
 .hs-copy--stay .hs-copy__sub { color: var(--hs-navy); }
 .hs-copy__slot { font-family: var(--hs-brush-f); font-size: clamp(96px, min(12.5vw, 22vh), 200px); line-height: 0.92; padding-bottom: 0.24em; visibility: hidden; width: max-content; }
@@ -106,11 +106,11 @@
 .hs-copy--dine, .hs-copy--cel { color: var(--hs-paper); }
 .hs-copy--dine p, .hs-copy--cel p { color: color-mix(in srgb, var(--hs-paper) 90%, transparent); text-shadow: 0 1px 2px rgba(8, 12, 16, 0.75), 0 0 18px rgba(8, 12, 16, 0.7); }
 .hs-copy--dine .hs-copy__sub, .hs-copy--cel .hs-copy__sub { color: var(--hs-paper); margin-top: -0.2em; }
-.hs-copy--dine { left: 58vw; right: var(--hs-gr); max-width: 470px; }
+.hs-copy--dine { left: 62vw; width: min(32vw, 470px); }
 .hs-copy__word--dine { font-size: clamp(96px, min(12.5vw, 22vh), 200px); color: var(--hs-amber); text-shadow: 0 2px 24px rgba(10, 16, 18, 0.6); }
 .hs-copy--cel { left: var(--hs-gl); width: min(32vw, 470px); }
 .hs-copy--cel .hs-copy__word { font-size: clamp(60px, min(7.6vw, 16vh), 124px); text-shadow: 0 3px 30px rgba(6, 12, 22, 0.5); }
-.hs-today { font-size: 14px !important; font-weight: 600; letter-spacing: 0.02em; color: var(--hs-paper) !important; }
+.hs-today { max-width: none !important; font-size: 14px !important; font-weight: 600; letter-spacing: 0.02em; color: var(--hs-paper) !important; }
 .hs-today::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hs-amber); margin-right: 9px; vertical-align: 1px; }
 
 /* ---------- Visit ---------- */
@@ -147,7 +147,7 @@
   .hs-copy__sub { font-size: 17px !important; }
   .hs-copy--stay { bottom: calc(5vh + env(safe-area-inset-bottom, 0px)); width: auto; right: var(--hs-gr); }
   .hs-copy__slot { font-size: clamp(70px, 20vw, 110px); }
-  .hs-copy--dine { left: var(--hs-gl); }
+  .hs-copy--dine { left: var(--hs-gl); width: auto; right: var(--hs-gr); }
   .hs-copy__word--dine { font-size: clamp(76px, 22vw, 120px); }
   .hs-copy--cel { width: auto; right: var(--hs-gr); }
   .hs-copy--cel .hs-copy__word { font-size: clamp(56px, 16vw, 92px); }
