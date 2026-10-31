@@ -129,6 +129,15 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
 - 2026-10-23, printed menus: a print tool exists (/admin/print/menus/<slug>) but its layout is on hold:
   it doesn't fit the two-page holders. Alex will describe the required form first.
 
+- 2026-10-31, homepage: the scroll-story home (Stay / Dine / Celebrate, then Visit) from the
+  `prototype/home-scroll` branch is now the real home page (`site/src/components/home/`). Brush, serif
+  and sans fonts are home-only for now (Knewave, Fraunces, Figtree). Old home sections retired: the
+  time-of-day hero, "This week", Mornings and Après (the planner, breakfast and happy hour live on
+  /celebrate, /dine and /events/happy-hour). Lighthouse, phone: 93 (simulated) / 98 (measured),
+  SEO 100 with indexing on; the old home was 57 / 97. Open: real copy (lorem `L.` placeholders),
+  email sign-up isn't wired to a platform yet, hours come from `content/site.ts` until the editor
+  covers them, and the rest of the site still wears the earlier look.
+
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
 2. Settle the editing question with Alex (custom + small editor vs Webflow).

@@ -3,7 +3,7 @@ import { L } from '@/content/lorem';
 import Link from 'next/link';
 import { photos } from '@/content/photos';
 
-/** The APRÈS / happy hour section from the design canvas. Used on the homepage and the Happy Hour page. */
+/** The APRÈS / happy hour section from the design canvas. Used on the Happy Hour page. */
 export function ApresSection({
   eyebrow = '05 · Après',
   headingLevel = 'h2',
