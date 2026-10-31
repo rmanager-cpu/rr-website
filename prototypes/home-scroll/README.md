@@ -20,12 +20,13 @@ One sticky scroll track in three equal acts, after a still hero:
 | Section   | Backdrop (faded)        | Main frame             | Floats                                   | Frame color | CTA                      |
 |-----------|-------------------------|------------------------|------------------------------------------|-------------|--------------------------|
 | Stay      | Tahoe panorama (stock)  | Lodge entrance          | Skiers over the lake, snowy porch, ski room | Snow Paper  | Check Out the Lodge      |
-| Dine      | The round bar           | Dining room at night    | Bartender, server by the fire, lamb      | Evergreen   | Check Out the Restaurant |
+| Dine      | The round bar           | Dining room at night    | Server by the fire, lamb                 | Evergreen   | Check Out the Restaurant |
 | Celebrate | The river at night      | Ring exchange           | Cake cutting, string-lights reception    | Sugar Pine  | Plan Your Event          |
 
 After the story: a Visit section with hours by department, address, directions and the email signup.
 Layout alternates: Stay words left, Dine words right, Celebrate words left. Phones get the same story
-with fewer floats.
+with fewer floats. The bartender shot was cut from Dine (flash snapshot next to pro-shoot photos);
+it suits a future Bar & Après page.
 
 ## Design tokens
 

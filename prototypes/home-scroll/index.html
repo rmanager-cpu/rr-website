@@ -238,7 +238,6 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
       <div class="frame2" id="frame2"><img src="img/dining.jpg" alt="The River Ranch dining room on a winter night, garland over the windows and candles on white tablecloths" loading="lazy"></div>
       <figure class="float" data-floatb="lamb"><img src="img/lamb.jpg" alt="Rack of lamb with roasted potatoes, radish and cherries" loading="lazy"></figure>
       <figure class="float" data-floatb="server"><img src="img/server.jpg" alt="A server pouring red wine at a table in front of the stone fireplace" loading="lazy"></figure>
-      <figure class="float" data-floatb="bartender"><img src="img/bartender.jpg" alt="The bartender holding up a cream cocktail at the round bar" loading="lazy"></figure>
 
       <div class="frame3" id="frame3"><img src="img/ring.jpg" alt="A bride laughing during the ring exchange under a sunflower arch at River Ranch" loading="lazy"></div>
       <figure class="float" data-floatc="cake"><img src="img/cake.jpg" alt="A couple laughing as they cut their wedding cake on the patio at night" loading="lazy"></figure>
@@ -344,15 +343,13 @@ body{--fa:var(--snow-paper);--fb:var(--evergreen);--fc:var(--sugar-pine);--fw:cl
   const LAYOUT_B = {
     wide: {
       frame: { l: 5, t: 11, w: 48, h: 78 },
-      bartender: { l: 1.5, t: 5, w: 21, ar: .766, r: -4, d: .48, s: 175 },
-      server:    { l: 42, t: 19, w: 14, ar: 1.5, r: 4, d: .52, s: 150 },
-      lamb:      { l: 29, t: 63, w: 25, ar: .667, r: -3, d: .56, s: 120 }
+      server:    { l: 1.5, t: 13, w: 16, ar: 1.5, r: -4, d: .48, s: 175 },
+      lamb:      { l: 32, t: 61, w: 24, ar: .667, r: 3, d: .54, s: 120 }
     },
     narrow: {
       frame: { l: 6, t: 10, w: 88, h: 38 },
-      lamb:      { l: 3, t: 32, w: 50, ar: .667, r: -4, d: .48, s: 120 },
-      server:    { l: 63, t: 12, w: 32, ar: 1.5, r: 4, d: .54, s: 150 },
-      bartender: { hide: true }
+      lamb:      { l: 3, t: 31, w: 55, ar: .667, r: -4, d: .48, s: 120 },
+      server:    { l: 60, t: 11, w: 36, ar: 1.5, r: 4, d: .54, s: 150 },
     }
   };
   let LB = LAYOUT_B.wide;
