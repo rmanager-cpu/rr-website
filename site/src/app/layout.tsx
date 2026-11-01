@@ -1,17 +1,17 @@
 import type { Metadata, Viewport } from 'next';
-import { Gloock, Hanken_Grotesk, Protest_Revolution } from 'next/font/google';
+import localFont from 'next/font/local';
 import { photos } from '@/content/photos';
 import { business, SITE_URL } from '@/content/site';
 import { JsonLd, organizationSchema } from '@/lib/schema';
 import './globals.css';
 import './menus.css';
 
-// Self-hosted by Next.js (no request to Google at page load), swapped in without blocking text.
-// Display and serif aren't preloaded: the homepage doesn't use them (it has its own fonts), and on
-// other pages the browser finds them in the CSS straight away anyway.
-const display = Protest_Revolution({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-display', adjustFontFallback: false, preload: false });
-const serif = Gloock({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-serif', preload: false });
-const sans = Hanken_Grotesk({ subsets: ['latin'], display: 'swap', variable: '--font-sans' });
+// The homepage's fonts on every page (docs/SITEMAP.md): Knewave brush for headings, Fraunces serif,
+// Figtree sans. Self-hosted, swapped in without blocking text. Brush and serif aren't preloaded: the
+// browser finds them in the CSS straight away, and the homepage preloads its own copies.
+const display = localFont({ src: '../fonts/knewave-latin-400-normal.woff2', weight: '400', display: 'swap', variable: '--font-display', preload: false });
+const serif = localFont({ src: '../fonts/fraunces-latin-wght-normal.woff2', weight: '100 900', display: 'swap', variable: '--font-serif', preload: false });
+const sans = localFont({ src: '../fonts/figtree-latin-wght-normal.woff2', weight: '300 900', display: 'swap', variable: '--font-sans' });
 
 const description =
   'A riverside lodge, restaurant and bar on the Truckee River in Tahoe City, minutes from Palisades Tahoe. 19 rooms, dinner nightly by the fire, happy hour and private events.';

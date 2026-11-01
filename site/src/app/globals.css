@@ -1,12 +1,13 @@
-/* River Ranch: winter palette from the design canvas. Day sections on ice, night sections on navy. */
+/* River Ranch: the homepage palette (Snow Paper, Alpine Navy, Firelight Amber, Glacier Ice) on every page.
+   Day sections on paper, night sections on navy. */
 :root {
-  --navy: #13233a;
+  --navy: #10263b;
   --ink-2: #24364f;
   --slate: #4a5a70;
-  --ice: #f5f7f9;
-  --frost: #e9eef3;
+  --ice: #f6f5ec;
+  --frost: #e6f1f6;
   --white: #ffffff;
-  --amber: #e2a65a;
+  --amber: #f2ad5c;
   --night: #101c2a;
   --night-deep: #0b1520;
   --cream: #f1e7d4;
@@ -38,7 +39,7 @@ a:hover { color: var(--sky); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* ---------- type ---------- */
-.slash { display: inline-block; font-family: var(--font-display), 'Trebuchet MS', system-ui, sans-serif; font-weight: 400; transform: skewX(-10deg); transform-origin: 0 100%; -webkit-text-stroke: 0.022em currentColor; paint-order: stroke fill; text-wrap: balance; }
+.slash { display: inline-block; font-family: var(--font-display), 'Marker Felt', 'Segoe Print', cursive; font-weight: 400; line-height: 0.95; padding-bottom: 0.12em; letter-spacing: 0.005em; text-wrap: balance; }
 .serif { font-family: var(--font-serif), Georgia, serif; font-weight: 400; }
 .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--slate); }
 .on-night .eyebrow, .eyebrow--amber { color: var(--amber); }
@@ -58,7 +59,10 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .bg-ice { background: var(--ice); }
 .bg-frost { background: var(--frost); }
 .on-night { background: var(--night); color: var(--cream); }
-.rounded { border-radius: 2px; }
+/* Photos framed like prints, in the section's frame color (paper outside Dine and Celebrate). */
+.rounded { border: clamp(6px, 0.6vw, 10px) solid var(--frame, var(--paper)); border-radius: 3px; box-shadow: 0 26px 56px -12px rgba(8, 14, 20, 0.34), 0 4px 10px rgba(8, 14, 20, 0.12); }
+:root:has(.section-tabs--dine) { --frame: var(--evergreen); }
+:root:has(.section-tabs--celebrate) { --frame: var(--pine); }
 .cover { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- buttons ---------- */
@@ -81,7 +85,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .site-header { position: relative; z-index: 5; }
 .site-header__bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 22px; }
 .brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
-.brand__name { font-family: var(--font-serif), Georgia, serif; font-size: 28px; line-height: 1; }
+.brand__name { font-family: var(--font-serif), Georgia, serif; font-weight: 600; font-variation-settings: 'opsz' 72; letter-spacing: -0.01em; font-size: 28px; line-height: 1; }
 .brand__tag { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.9; }
 .site-nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); font-size: 15px; font-weight: 600; letter-spacing: 0.04em; }
 .site-nav a:not(.btn) { text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }
