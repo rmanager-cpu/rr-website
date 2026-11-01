@@ -53,23 +53,55 @@ export const lodging = {
 } as const;
 
 export type NavItem = { href: string; label: string };
+export type SectionKey = 'stay' | 'dine' | 'celebrate';
+export type Section = NavItem & { key: SectionKey; tabs: NavItem[]; action: NavItem };
 
-/** Everything else, under “More” in the header (the footer no longer carries a sitemap). */
-export const moreNav: NavItem[] = [
-  { href: '/menus', label: 'Menus' },
-  { href: '/events/summer-concert-series', label: 'Summer Concert Series' },
+/** The three sections in the header. Inside one, a slim second row shows its tabs and its main
+ *  button (docs/SITEMAP.md). */
+export const sections: Section[] = [
+  {
+    key: 'stay',
+    href: '/stay',
+    label: 'Stay',
+    tabs: [
+      { href: '/stay/rooms', label: 'Rooms' },
+      { href: '/stay/packages', label: 'Packages' },
+      { href: '/stay/guest-info', label: 'Guest Info' },
+    ],
+    action: { href: business.links.bookRoom, label: 'Book a Room' },
+  },
+  {
+    key: 'dine',
+    href: '/dine',
+    label: 'Dine',
+    tabs: [
+      { href: '/dine/menus', label: 'Menus' },
+      { href: '/dine/wine', label: 'Wine' },
+      { href: '/dine/happening', label: 'Happening' },
+    ],
+    action: { href: business.links.reserveTable, label: 'Reserve a Table' },
+  },
+  {
+    key: 'celebrate',
+    href: '/celebrate',
+    label: 'Celebrate',
+    tabs: [
+      { href: '/celebrate/weddings', label: 'Weddings' },
+      { href: '/celebrate/spaces', label: 'Spaces' },
+      { href: '/celebrate/plan', label: 'Plan' },
+    ],
+    action: { href: '/celebrate/plan', label: 'Plan Your Event' },
+  },
+];
+
+/** The shared pages: the header's “More” menu and the footer. */
+export const sharedNav: NavItem[] = [
   { href: '/history', label: 'History' },
-  { href: 'https://the-wall-river-ranch.vercel.app', label: 'The Wall' },
-  { href: '/johanson-family-wine', label: 'Johanson Family Wine' },
-  { href: '/loyalty', label: 'Loyalty' },
-  { href: '/order', label: 'Order online' },
-  { href: '/visit#gift-cards', label: 'Gift cards' },
+  { href: '/loyalty-and-gift-cards', label: 'Loyalty & Gift Cards' },
   { href: '/careers', label: 'Careers' },
-  { href: '/visit', label: 'Visit & directions' },
+  { href: '/visit', label: 'Visit' },
 ];
-export const nav: NavItem[] = [
-  { href: '/stay', label: 'Stay' },
-  { href: '/dine', label: 'Dine' },
-  { href: '/celebrate', label: 'Celebrate' },
-  { href: '/events', label: 'Events' },
-];
+
+export function sectionFor(path: string): Section | undefined {
+  return sections.find((s) => path === s.href || path.startsWith(`${s.href}/`));
+}

@@ -30,6 +30,12 @@ export const photos = {
   roundBar: p('round-bar-log-ceiling', 1200, 800, 'The round bar under its spoked log ceiling'),
   bartender: p('bartender-cocktail', 1614, 1076, 'A bartender holding up a cocktail at the River Ranch bar'),
   theWall: p('the-wall-old-photos', 1800, 1200, 'The wall of old River Ranch photographs by the host stand'),
+  roomSnowshoes: p('room-snowshoes-on-the-wall', 1800, 1200, 'Old wooden snowshoes and ski poles hung on a guest room wall'),
+  roomBearQuilt: p('room-king-bear-quilt-new-floors', 1200, 800, 'A guest room with a bear quilt, a log bed and vintage skis on the wall'),
+  roomPlaidQuilt: p('room-plaid-quilt-ski-decor', 1200, 800, 'A guest room with a pine-tree quilt, a log bed and old skis over the bed'),
+  ceremonyAisle: p('patio-ceremony-aisle-empty', 1800, 1350, 'White ceremony chairs and a petal-lined aisle on the riverside patio'),
+  fireplaceTableSet: p('fireplace-room-table-set', 1800, 1200, 'A long table set with candles and wine by the stone fireplace'),
+  snowyRiverLodge: p('snowy-river-lodge-blue-sky', 1800, 1350, 'The snowy Truckee River running past the lodge under a blue sky'),
 } satisfies Record<string, Photo>;
 
 /** The homepage scroll story (Stay, Dine, Celebrate). Files live in /photos/home/. */

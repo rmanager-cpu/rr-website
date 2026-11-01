@@ -3,10 +3,9 @@ import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from '@/components/Icons';
-import { PrivateDinnerPlanner } from '@/components/PrivateDinnerPlanner';
 import { SiteHeader } from '@/components/SiteHeader';
+import { SpaceGrid } from '@/components/SpaceGrid';
 import { photos } from '@/content/photos';
-import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 
 export const metadata: Metadata = {
@@ -49,13 +48,6 @@ const FAQ = [
   },
 ];
 
-const SPACES = [
-  { name: 'Fireplace room', photo: photos.fireplaceRoom },
-  { name: 'Riverview room', photo: null },
-  { name: 'Full Patio', photo: photos.patioNight },
-  { name: 'The Point', photo: null },
-];
-
 export default function CelebratePage() {
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -87,21 +79,21 @@ export default function CelebratePage() {
         <div className="container stack" style={{ gap: 40 }}>
           <span className="eyebrow">Choose your occasion</span>
           <div className="occasions">
-            <a href="#plan" className="occasion" id="private-dining">
+            <Link href="/celebrate/plan#private" className="occasion" id="private-dining">
               <span className="occasion__name">Private dining &amp; parties</span>
               <span className="occasion__line">{L.line2}</span>
               <span className="occasion__go"><span className="pill">Plan a dinner</span><ArrowRight size={26} /></span>
-            </a>
-            <a href="#plan" className="occasion" id="groups">
+            </Link>
+            <Link href="/celebrate/plan#corporate" className="occasion" id="groups">
               <span className="occasion__name">Corporate &amp; groups</span>
               <span className="occasion__line">{L.line3}</span>
-              <span className="occasion__go"><span className="pill">Plan a dinner</span><ArrowRight size={26} /></span>
-            </a>
-            <a href={`mailto:${business.email.events}?subject=${encodeURIComponent('Wedding inquiry')}`} className="occasion">
+              <span className="occasion__go"><span className="pill">Plan an event</span><ArrowRight size={26} /></span>
+            </Link>
+            <Link href="/celebrate/weddings" className="occasion">
               <span className="occasion__name">Weddings</span>
               <span className="occasion__line">{L.line2}</span>
-              <span className="occasion__go"><span className="pill pill--line">Start a conversation</span><ArrowRight size={26} /></span>
-            </a>
+              <span className="occasion__go"><span className="pill pill--line">See weddings</span><ArrowRight size={26} /></span>
+            </Link>
           </div>
         </div>
       </section>
@@ -109,36 +101,21 @@ export default function CelebratePage() {
       <section className="section bg-frost" aria-labelledby="spaces-h">
         <div className="container stack" style={{ gap: 44 }}>
           <div className="row-split">
-            <h2 id="spaces-h" className="serif h-m">The rooms</h2>
+            <h2 id="spaces-h" className="serif h-m">The spaces</h2>
             <p className="lede" style={{ maxWidth: 420 }}>{L.line}</p>
           </div>
-          <div className="space-grid">
-            {SPACES.map((s) => (
-              <div key={s.name} className="space">
-                {s.photo ? (
-                  <Image src={s.photo.src} alt={s.photo.alt} width={s.photo.width} height={s.photo.height} sizes="(max-width: 600px) 100vw, 300px" />
-                ) : (
-                  <div className="ph" role="img" aria-label={`Photo coming soon: the ${s.name}`}>Photo coming soon</div>
-                )}
-                <h3 className="space__name">{s.name}</h3>
-                <span className="muted" style={{ fontSize: 15 }}>Ask us about capacity and layout</span>
-              </div>
-            ))}
-          </div>
+          <SpaceGrid />
+          <Link href="/celebrate/spaces" className="arrow-link" style={{ alignSelf: 'flex-start' }}>All the spaces <ArrowRight size={18} /></Link>
         </div>
       </section>
 
-      <section className="section" id="plan" aria-label="Plan a private dinner">
-        <div className="container media-row" style={{ gap: 40, alignItems: 'flex-start' }}>
-          <div className="grow stack">
-            <span className="eyebrow">Plan it</span>
-            <h2 className="serif h-m">{L.head}</h2>
-            <p className="lede">
-              {L.line3}
-            </p>
-          </div>
-          <div className="side" style={{ flexBasis: 380 }}>
-            <PrivateDinnerPlanner heading="Request a private dinner" />
+      <section className="section" id="plan" aria-labelledby="plan-h">
+        <div className="container stack" style={{ gap: 22, maxWidth: 900 }}>
+          <span className="eyebrow">Plan it</span>
+          <h2 id="plan-h" className="serif h-m">{L.head}</h2>
+          <p className="lede">{L.line3}</p>
+          <div className="btn-row">
+            <Link href="/celebrate/plan" className="btn btn--amber">Plan your event</Link>
           </div>
         </div>
       </section>
@@ -152,7 +129,7 @@ export default function CelebratePage() {
             <span className="eyebrow">Weddings</span>
             <h2 id="weddings-h" className="serif" style={{ fontSize: 'clamp(40px, 4.6vw, 64px)', lineHeight: 0.98 }}>{L.head2}</h2>
             <p className="lede">{L.line}</p>
-            <a href={`mailto:${business.email.events}?subject=${encodeURIComponent('Wedding inquiry')}`} className="btn btn--amber" style={{ alignSelf: 'flex-start' }}>Start a wedding inquiry</a>
+            <Link href="/celebrate/weddings" className="btn btn--amber" style={{ alignSelf: 'flex-start' }}>Weddings at River Ranch</Link>
           </div>
         </div>
       </section>

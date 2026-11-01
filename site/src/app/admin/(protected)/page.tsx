@@ -40,7 +40,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { save
                     {s.closedPrivate && <span className="tag tag--warn">No private events</span>} {s.closedRegular && <span className="tag tag--warn">Closed to public</span>}
                     {s.venioSpaces.length > 0 && <div className="help">{s.venioSpaces.join(', ')}</div>}
                   </td>
-                  <td>{p ? <><Link href={`/admin/pages/${p.id}`}>Edit page</Link> · <a href={`/events/${p.slug}`} target="_blank">View</a></> : '—'}</td>
+                  <td>{p ? <><Link href={`/admin/pages/${p.id}`}>Edit page</Link> · <a href={`/dine/happening/${p.slug}`} target="_blank">View</a></> : '—'}</td>
                 </tr>
               );
             })}

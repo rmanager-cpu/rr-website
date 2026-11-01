@@ -12,7 +12,7 @@ export default async function EditPage({ params }: { params: { id: string } }) {
     <>
       <div className="row-actions" style={{ justifyContent: 'space-between' }}>
         <h1>Page: {page.title}</h1>
-        <a href={`/events/${page.slug}`} target="_blank">View on the site →</a>
+        <a href={`/dine/happening/${page.slug}`} target="_blank">View on the site →</a>
       </div>
       <PageForm action={savePage.bind(null, page.id)} page={page} dbReady={ready} />
     </>

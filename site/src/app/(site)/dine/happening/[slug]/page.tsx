@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: page.slug === 'summer-concert-series' ? 'Summer Concert Series: Free Music on the River' : page.title,
     description: page.summary ?? `${page.title} at River Ranch Lodge & Restaurant in Tahoe City.`,
-    alternates: { canonical: `/events/${page.slug}` },
+    alternates: { canonical: `/dine/happening/${page.slug}` },
     ...(page.heroImage ? { openGraph: { images: [page.heroImage] } } : {}),
     ...(isEmpty(page) ? { robots: { index: false, follow: true } } : {}),
   };
@@ -50,7 +50,7 @@ export default async function EventDetail({ params }: { params: { slug: string }
 
   return (
     <>
-      <JsonLd data={breadcrumbSchema(page.title, `/events/${page.slug}`)} />
+      <JsonLd data={breadcrumbSchema(page.title, `/dine/happening/${page.slug}`)} />
       {ld.map((d, i) => (
         <JsonLd key={i} data={d} />
       ))}
@@ -88,7 +88,7 @@ function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSe
       <section className="section">
         <div className="container media-row" style={{ gap: 48, alignItems: 'flex-start' }}>
           <div className="grow stack" style={{ gap: 24 }}>
-            <Link href="/events" className="arrow-link" style={{ fontSize: 12 }}>← All events</Link>
+            <Link href="/dine/happening" className="arrow-link" style={{ fontSize: 12 }}>← All events</Link>
             <span className="eyebrow">{s?.offsite ? 'Off-site' : s?.category === 'holiday' ? 'Holiday' : 'At River Ranch'}</span>
             <h1 className="slash h-l">{page.title}</h1>
             <When mine={mine} upcoming={upcoming} />
@@ -129,7 +129,7 @@ function HappyHourPage({ page, mine }: { page: EventPage; mine: EventSeries[] })
         title="Happy hour at the River Ranch round bar"
         line={`Monday to Friday, ${hours.happyHour.time}.`}
         detail={page.body ?? ''}
-        cta={{ href: '/menus/happy-hour', label: 'Happy hour menu' }}
+        cta={{ href: '/dine/menus/happy-hour', label: 'Happy hour menu' }}
       />
       <section className="section on-night" style={{ paddingTop: 0 }}>
         <div className="container stack" style={{ gap: 18 }}>

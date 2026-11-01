@@ -8,14 +8,14 @@ import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 export const metadata: Metadata = {
   title: 'Johanson Family Wine',
   description: 'Johanson Family Wine at River Ranch Lodge & Restaurant, Tahoe City.',
-  alternates: { canonical: '/johanson-family-wine' },
+  alternates: { canonical: '/dine/wine' },
   robots: { index: false, follow: true },
 };
 
 export default function JohansonPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema('Johanson Family Wine', '/johanson-family-wine')} />
+      <JsonLd data={breadcrumbSchema('Wine', '/dine/wine')} />
       <SiteHeader />
       <section className="section">
         <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>

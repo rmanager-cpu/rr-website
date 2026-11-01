@@ -160,8 +160,7 @@ export function HomeStory() {
             <div className="hs-visit__links">
               <a className="hs-link" href={MAPS} target="_blank" rel="noopener">Get Directions</a>
               <Link className="hs-link" href="/history">Our Story</Link>
-              <Link className="hs-link" href="/visit#gift-cards">Gift Cards</Link>
-              <Link className="hs-link" href="/loyalty">Loyalty</Link>
+              <Link className="hs-link" href="/loyalty-and-gift-cards">Loyalty &amp; Gift Cards</Link>
               <Link className="hs-link" href="/careers">Careers</Link>
             </div>
           </div>

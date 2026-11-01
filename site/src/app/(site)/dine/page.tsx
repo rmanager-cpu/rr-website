@@ -65,7 +65,7 @@ export default async function DinePage() {
           </div>
           <div className="menu-cards">
             {menus.map((m) => (
-              <Link key={m.slug} href={`/menus/${m.slug}`} className="ev-card">
+              <Link key={m.slug} href={`/dine/menus/${m.slug}`} className="ev-card">
                 <span className="ev-card__title">{m.name}</span>
                 {m.hours.length > 0 && <span className="ev-card__when">{hoursText(m.hours)}</span>}
                 {m.servingNote && <span className="ev-card__when">{m.servingNote}</span>}

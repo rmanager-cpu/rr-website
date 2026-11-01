@@ -2,13 +2,29 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { business, moreNav, nav } from '@/content/site';
+import { useEffect, useRef, useState } from 'react';
+import { business, sectionFor, sections, sharedNav, type NavItem } from '@/content/site';
 import { Close, Menu } from './Icons';
 
-/** Logo, main menu and Book button. `overlay` sits on a hero photo (light text); `solid` sits on ice. */
-export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' | 'solid'; extra?: ReactNode }) {
+const isCurrent = (path: string, href: string) => path === href || path.startsWith(`${href}/`);
+
+/** A link that leaves the site (booking engine, OpenTable) is a plain <a>; the rest use Link. */
+function Go({ item, className, onClick }: { item: NavItem; className?: string; onClick?: () => void }) {
+  return item.href.startsWith('/') ? (
+    <Link href={item.href} className={className} onClick={onClick}>{item.label}</Link>
+  ) : (
+    <a href={item.href} className={className} rel="noopener">{item.label}</a>
+  );
+}
+
+/**
+ * Logo, the three sections, “More” (the shared pages) and Book. Inside a section, a slim second row
+ * shows that section's tabs and its main button, in the section's color from the homepage frames.
+ * `overlay` sits on a hero photo (light text); `solid` is the navy bar every other page uses.
+ */
+export function SiteHeader({ variant = 'solid' }: { variant?: 'overlay' | 'solid' }) {
   const path = usePathname();
+  const section = sectionFor(path);
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
@@ -52,10 +68,9 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
           <span className="brand__tag">{business.tagline}</span>
         </Link>
         <nav className="site-nav" aria-label="Main">
-          {extra}
-          {nav.map((n) => (
-            <Link key={n.href} href={n.href} aria-current={path === n.href ? 'page' : undefined}>
-              {n.label}
+          {sections.map((s) => (
+            <Link key={s.key} href={s.href} aria-current={path === s.href ? 'page' : section?.key === s.key ? 'true' : undefined}>
+              {s.label}
             </Link>
           ))}
           <div className="more" ref={moreRef}>
@@ -63,7 +78,7 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
               More <span aria-hidden="true">▾</span>
             </button>
             <ul id="more-menu" className="more__menu" hidden={!more}>
-              {moreNav.map((n) => (
+              {sharedNav.map((n) => (
                 <li key={n.href}>
                   <Link href={n.href} aria-current={path === n.href ? 'page' : undefined} onClick={() => setMore(false)}>
                     {n.label}
@@ -72,14 +87,34 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
               ))}
             </ul>
           </div>
-          <Link href={business.links.bookRoom} className="btn btn--amber btn--sm">
+          <a href={business.links.bookRoom} className="btn btn--amber btn--sm" rel="noopener">
             Book
-          </Link>
+          </a>
         </nav>
         <button ref={menuBtnRef} type="button" className="menu-btn" aria-label="Open menu" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}>
           <Menu />
         </button>
       </div>
+
+      {section && variant === 'solid' && (
+        <nav className={`section-tabs section-tabs--${section.key}`} aria-label={`${section.label} pages`}>
+          <div className="container section-tabs__inner">
+            <Link href={section.href} className="section-tabs__home" aria-current={path === section.href ? 'page' : undefined}>
+              {section.label}
+            </Link>
+            <ul className="section-tabs__list">
+              {section.tabs.map((t) => (
+                <li key={t.href}>
+                  <Link href={t.href} aria-current={path === t.href ? 'page' : isCurrent(path, t.href) ? 'true' : undefined}>
+                    {t.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Go item={section.action} className="btn btn--sm section-tabs__action" />
+          </div>
+        </nav>
+      )}
 
       <div id="mobile-menu" className="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden={!open}>
         <div className="mobile-menu__top">
@@ -89,21 +124,26 @@ export function SiteHeader({ variant = 'solid', extra }: { variant?: 'overlay' |
           </button>
         </div>
         <nav aria-label="Main (menu)">
-          <Link href="/">Home</Link>
-          {nav.map((n) => (
-            <Link key={n.href} href={n.href}>
-              {n.label}
-            </Link>
+          <Link href="/" className="mm-top">Home</Link>
+          {sections.map((s) => (
+            <div key={s.key} className="mm-group">
+              <Link href={s.href} className="mm-top">{s.label}</Link>
+              <ul className="mm-sub">
+                {s.tabs.map((t) => (
+                  <li key={t.href}><Link href={t.href}>{t.label}</Link></li>
+                ))}
+              </ul>
+            </div>
           ))}
         </nav>
         <ul className="mobile-menu__more">
-          {moreNav.map((n) => (
+          {sharedNav.map((n) => (
             <li key={n.href}><Link href={n.href}>{n.label}</Link></li>
           ))}
         </ul>
         <div className="mobile-menu__foot">
           <div className="btn-row">
-            <Link href={business.links.bookRoom} className="btn btn--amber">Book a room</Link>
+            <a href={business.links.bookRoom} className="btn btn--amber" rel="noopener">Book a room</a>
             <a href={business.links.reserveTable} className="btn btn--ghost-cream" rel="noopener">Reserve a table</a>
           </div>
           <a href={`tel:${business.phoneE164}`} style={{ color: 'var(--cream)' }}>{business.phone}</a>

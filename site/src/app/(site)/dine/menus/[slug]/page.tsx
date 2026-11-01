@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${m.name} Menu`,
     description: `${m.name} at River Ranch in Tahoe City${when}: ${dishes} and more.`.slice(0, 160),
-    alternates: { canonical: `/menus/${m.slug}` },
+    alternates: { canonical: `/dine/menus/${m.slug}` },
   };
 }
 
@@ -29,7 +29,7 @@ export default async function MenuPage({ params }: { params: { slug: string } })
   if (!menu) notFound();
   return (
     <>
-      <JsonLd data={breadcrumbSchema(`${menu.name} menu`, `/menus/${menu.slug}`)} />
+      <JsonLd data={breadcrumbSchema(`${menu.name} menu`, `/dine/menus/${menu.slug}`)} />
       <JsonLd data={menuSchema(menu)} />
       <SiteHeader />
       <section className="section" style={{ paddingBottom: 20 }}>

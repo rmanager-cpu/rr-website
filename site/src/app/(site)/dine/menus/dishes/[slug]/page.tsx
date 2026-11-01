@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const on = await find(params.slug);
   if (!on) return {};
   const d = on[0].item.dish;
-  return { title: d.name, description: (d.description ?? `${d.name} at River Ranch in Tahoe City.`).slice(0, 160), alternates: { canonical: `/menus/dishes/${d.slug}` } };
+  return { title: d.name, description: (d.description ?? `${d.name} at River Ranch in Tahoe City.`).slice(0, 160), alternates: { canonical: `/dine/menus/dishes/${d.slug}` } };
 }
 
 export default async function DishPage({ params }: { params: { slug: string } }) {
@@ -36,12 +36,12 @@ export default async function DishPage({ params }: { params: { slug: string } })
   const d = on[0].item.dish;
   return (
     <>
-      <JsonLd data={breadcrumbSchema(d.name, `/menus/dishes/${d.slug}`)} />
+      <JsonLd data={breadcrumbSchema(d.name, `/dine/menus/dishes/${d.slug}`)} />
       <SiteHeader />
       <section className="section">
         <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
           <div className="grow stack" style={{ gap: 20 }}>
-            <Link href={`/menus/${on[0].menu.slug}`} className="arrow-link" style={{ fontSize: 12 }}>← {on[0].menu.name} menu</Link>
+            <Link href={`/dine/menus/${on[0].menu.slug}`} className="arrow-link" style={{ fontSize: 12 }}>← {on[0].menu.name} menu</Link>
             <h1 className="slash h-l">{d.name}</h1>
             {d.description && <p className="lede" style={{ whiteSpace: 'pre-line' }}>{d.description}</p>}
             <dl className="facts">

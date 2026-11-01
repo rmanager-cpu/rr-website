@@ -121,9 +121,9 @@ const friendly = (e: unknown): FormState => {
 };
 
 function refresh(slug?: string) {
-  revalidatePath('/events');
+  revalidatePath('/dine/happening');
   revalidatePath('/');
-  if (slug) revalidatePath(`/events/${slug}`);
+  if (slug) revalidatePath(`/dine/happening/${slug}`);
   revalidatePath('/admin');
 }
 
@@ -193,8 +193,8 @@ export async function setBooking(id: string, status: 'new' | 'reviewing' | 'book
 
 // ---------- menus ----------
 const menuRefresh = (slug?: string) => {
-  revalidatePath('/menus');
-  if (slug) revalidatePath(`/menus/${slug}`);
+  revalidatePath('/dine/menus');
+  if (slug) revalidatePath(`/dine/menus/${slug}`);
   revalidatePath('/admin/menus');
 };
 

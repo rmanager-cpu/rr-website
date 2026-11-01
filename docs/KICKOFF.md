@@ -138,6 +138,27 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   email sign-up isn't wired to a platform yet, hours come from `content/site.ts` until the editor
   covers them, and the rest of the site still wears the earlier look.
 
+- 2026-11-01, site map built (docs/SITEMAP.md), on branch `sitemap-build`:
+  - Header River Ranch · Stay · Dine · Celebrate · More · Book; inside a section a second row in its
+    frame color (Stay snow paper, Dine evergreen, Celebrate sugar pine) with its tabs and main button.
+  - New: /stay/rooms, /stay/packages, /stay/guest-info, /celebrate/weddings, /celebrate/spaces
+    (noindex until capacities and photos arrive), /celebrate/plan, /loyalty-and-gift-cards. Moved:
+    /menus → /dine/menus, /order → /dine/menus/order, /events → /dine/happening, /johanson-family-wine
+    → /dine/wine. Every old address 301s straight to its final page; breadcrumbs nest by section.
+  - The Plan form asks "What are you planning?" and emails events@ until Venio's Leads endpoint exists.
+  - Spaces (Alex): the Riverview room is the round dining room. The Point is the river end of the
+    patio; booking it gets The Point, and a small section of the patio stays open for regular diners.
+  - Booking (Alex): BookingCenter's own booking page is fine until the API keys arrive (NDA sent).
+  - Still the earlier look below the header: fonts and colors on the inner pages aren't the homepage's yet.
+- 2026-11-01, Vercel: GitHub is connected but every Git build failed because the project's Root
+  Directory is the repo top, not `site`. Fix in the Vercel dashboard (Settings → Build and Deployment →
+  Root Directory: `site`), then redeploy. After that, every merge to main goes live and every branch
+  gets a preview link; stop deploying from a local machine.
+- 2026-11-01, domain: riverranchlodge.com was renewed to 2027-10-27, but Network Solutions left its
+  nameservers on NS1/NS2.PENDINGRENEWALDELETION.COM, so the old site and company email were down. The
+  Route 53 zone is intact (Google MX, Popmenu A records); the fix is setting the nameservers back to
+  ns-279.awsdns-34.com, ns-764.awsdns-31.net, ns-1503.awsdns-59.org, ns-1993.awsdns-57.co.uk.
+
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
 2. Settle the editing question with Alex (custom + small editor vs Webflow).

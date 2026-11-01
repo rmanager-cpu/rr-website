@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { L } from '@/content/lorem';
+import Link from 'next/link';
 import { SiteHeader } from '@/components/SiteHeader';
 import { business, fullAddress, hours } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
@@ -45,7 +46,7 @@ export default function VisitPage() {
       <section className="section" id="gift-cards">
         <div className="container stack" style={{ gap: 14, maxWidth: 820 }}>
           <h2 className="serif h-s">Gift cards</h2>
-          <p className="lede">Restaurant gift cards and lodge gift certificates are available. Call {business.phone} or ask at the front desk.</p>
+          <p className="lede">Restaurant gift cards and lodge gift certificates: see <Link href="/loyalty-and-gift-cards">Loyalty &amp; Gift Cards</Link>.</p>
         </div>
       </section>
 

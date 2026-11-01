@@ -1,6 +1,6 @@
 // Structured data (schema.org JSON-LD): tells Google and AI tools the facts directly — this is a
 // lodge with a restaurant, here are the address, phone, hours, menu and reservation links.
-import { business, hours, SITE_URL } from '@/content/site';
+import { business, hours, sectionFor, SITE_URL } from '@/content/site';
 import { photos } from '@/content/photos';
 
 const address = {
@@ -36,8 +36,8 @@ export function organizationSchema() {
     servesCuisine: ['American', 'Steakhouse', 'Seafood'],
     priceRange: '$$$',
     acceptsReservations: business.links.reserveTable,
-    menu: abs('/menus'),
-    hasMenu: ['dinner', 'happy-hour', 'weekend-breakfast', 'weekend-lunch', 'wine-list'].map((s) => abs(`/menus/${s}`)),
+    menu: abs('/dine/menus'),
+    hasMenu: ['dinner', 'happy-hour', 'weekend-breakfast', 'weekend-lunch', 'wine-list'].map((s) => abs(`/dine/menus/${s}`)),
     openingHoursSpecification: openingHours(),
     image: [abs(photos.fireplaceRoom.src), abs(photos.roundBar.src)],
   };
@@ -73,14 +73,20 @@ export function organizationSchema() {
 }
 
 /** Breadcrumbs for an inner page (Home › Page). */
+/** Home › section › tab › page, worked out from the path, so every page nests under its section. */
 export function breadcrumbSchema(name: string, path: string) {
+  const trail = [{ name: 'Home', item: SITE_URL }];
+  const section = sectionFor(path);
+  if (section && section.href !== path) {
+    trail.push({ name: section.label, item: abs(section.href) });
+    const tab = section.tabs.find((t) => path.startsWith(`${t.href}/`));
+    if (tab) trail.push({ name: tab.label, item: abs(tab.href) });
+  }
+  trail.push({ name, item: abs(path) });
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name, item: abs(path) },
-    ],
+    itemListElement: trail.map((t, i) => ({ '@type': 'ListItem', position: i + 1, ...t })),
   };
 }
 
@@ -111,7 +117,7 @@ export function eventSchema(e: {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: e.title,
-    url: abs(`/events/${e.slug}`),
+    url: abs(`/dine/happening/${e.slug}`),
     startDate: at(e.startTime),
     ...(e.endTime ? { endDate: at(e.endTime === '23:59' ? '23:59' : e.endTime) } : {}),
     eventStatus: 'https://schema.org/EventScheduled',
@@ -134,9 +140,9 @@ export function menuSchema(m: {
   return {
     '@context': 'https://schema.org',
     '@type': 'Menu',
-    '@id': `${SITE_URL}/menus/${m.slug}#menu`,
+    '@id': `${SITE_URL}/dine/menus/${m.slug}#menu`,
     name: `${m.name} · ${business.shortName}`,
-    url: abs(`/menus/${m.slug}`),
+    url: abs(`/dine/menus/${m.slug}`),
     inLanguage: 'en-US',
     hasMenuSection: m.sections.map((s) => ({
       '@type': 'MenuSection',

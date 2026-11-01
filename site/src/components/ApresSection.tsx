@@ -10,7 +10,7 @@ export function ApresSection({
   title = 'Après and happy hour at the round bar',
   line = 'Happy hour, Monday to Friday, 3 to 5.',
   detail = L.line,
-  cta = { href: '/events/happy-hour', label: 'Happy hour' },
+  cta = { href: '/dine/happening/happy-hour', label: 'Happy hour' },
 }: {
   eyebrow?: string;
   headingLevel?: 'h1' | 'h2';

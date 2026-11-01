@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   title: 'Menus: Dinner, Happy Hour, Weekend Breakfast & Wine',
   description:
     'River Ranch menus in Tahoe City: dinner nightly 5–9 PM, happy hour Monday–Friday 3–5 PM, weekend breakfast and lunch, patio lunch in summer, desserts, cocktails and a wine list.',
-  alternates: { canonical: '/menus' },
+  alternates: { canonical: '/dine/menus' },
 };
 
 export default async function MenusIndex() {
   const menus = await listMenus();
   return (
     <>
-      <JsonLd data={breadcrumbSchema('Menus', '/menus')} />
+      <JsonLd data={breadcrumbSchema('Menus', '/dine/menus')} />
       <SiteHeader />
       <section className="section" style={{ paddingBottom: 30 }}>
         <div className="container stack" style={{ gap: 22 }}>
@@ -32,7 +32,7 @@ export default async function MenusIndex() {
       <section className="section bg-frost" style={{ paddingTop: 50 }}>
         <div className="container menu-cards">
           {menus.map((m) => (
-            <Link key={m.slug} href={`/menus/${m.slug}`} className="ev-card">
+            <Link key={m.slug} href={`/dine/menus/${m.slug}`} className="ev-card">
               <span className="ev-card__title">{m.name}</span>
               {m.hours.length > 0 && <span className="ev-card__when">{hoursText(m.hours)}</span>}
               {m.servingNote && <span className="ev-card__when">{m.servingNote}</span>}

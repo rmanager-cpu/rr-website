@@ -13,7 +13,7 @@ export function MenuTabs({ menus, current }: { menus: Menu[]; current?: string }
   return (
     <nav className="menu-tabs" aria-label="Menus">
       {menus.map((m) => (
-        <Link key={m.slug} href={`/menus/${m.slug}`} aria-current={m.slug === current ? 'page' : undefined}>
+        <Link key={m.slug} href={`/dine/menus/${m.slug}`} aria-current={m.slug === current ? 'page' : undefined}>
           {m.name}
         </Link>
       ))}
@@ -49,7 +49,7 @@ export function MenuView({ menu }: { menu: Menu }) {
                   <li key={i.id} className="menu-item">
                     <div className="menu-item__top">
                       <span className="menu-item__name">
-                        {i.dish.signature ? <Link href={`/menus/dishes/${i.dish.slug}`}>{i.dish.name}</Link> : i.dish.name}
+                        {i.dish.signature ? <Link href={`/dine/menus/dishes/${i.dish.slug}`}>{i.dish.name}</Link> : i.dish.name}
                         {i.dish.raw && <sup className="menu-raw" aria-label="served raw or undercooked">^</sup>}
                       </span>
                       <span className="menu-item__dots" aria-hidden="true" />

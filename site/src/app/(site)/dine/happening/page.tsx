@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Events, Live Music & Happy Hour in Tahoe City',
   description:
     'What’s on at River Ranch in Tahoe City: happy hour Monday to Friday 3–5 PM, Prime Rib Thursdays, live music on the riverside patio, holiday dinners and community events.',
-  alternates: { canonical: '/events' },
+  alternates: { canonical: '/dine/happening' },
 };
 
 export default async function EventsPage() {
@@ -42,7 +42,7 @@ export default async function EventsPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumbSchema('Events', '/events')} />
+      <JsonLd data={breadcrumbSchema('Happening', '/dine/happening')} />
       {ld.map((d, i) => (
         <JsonLd key={i} data={d} />
       ))}
@@ -79,7 +79,7 @@ export default async function EventsPage() {
               {list.map((o) => {
                 const p = pageOf.get(o.series.pageId);
                 return (
-                  <Link key={`${o.series.id}-${o.date}`} href={`/events/${p?.slug ?? ''}`} className="ev-row">
+                  <Link key={`${o.series.id}-${o.date}`} href={`/dine/happening/${p?.slug ?? ''}`} className="ev-row">
                     <span className="ev-date">
                       <b>{Number(o.date.slice(8))}</b>
                       <span>{formatDate(o.date, { weekday: 'short' })}</span>
@@ -106,7 +106,7 @@ export default async function EventsPage() {
       </section>
 
       <section className="concert-hero" aria-labelledby="scs-h">
-        <Link href="/events/summer-concert-series" className="container next-door" style={{ color: 'var(--cream)' }}>
+        <Link href="/dine/happening/summer-concert-series" className="container next-door" style={{ color: 'var(--cream)' }}>
           <span className="stack" style={{ gap: 14 }}>
             <span className="eyebrow eyebrow--amber">Summer on the patio</span>
             <span id="scs-h" className="slash" style={{ fontSize: 'clamp(44px, 6vw, 88px)', lineHeight: 0.95 }}>Summer Concert Series</span>
@@ -121,7 +121,7 @@ export default async function EventsPage() {
 
 function WeeklyCard({ s, page, next }: { s: EventSeries; page?: EventPage; next: string | null }) {
   return (
-    <Link href={`/events/${page?.slug ?? ''}`} className="ev-card">
+    <Link href={`/dine/happening/${page?.slug ?? ''}`} className="ev-card">
       <span className="ev-card__title">{s.title}</span>
       <span className="ev-card__when">{whenPhrase(s)}</span>
       {page?.summary && <span className="muted" style={{ fontSize: 15 }}>{page.summary}</span>}

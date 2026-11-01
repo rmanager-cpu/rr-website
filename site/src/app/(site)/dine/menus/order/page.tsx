@@ -12,14 +12,14 @@ import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 export const metadata: Metadata = {
   title: 'Online Ordering & Delivery',
   description: 'Online ordering and delivery from River Ranch in Tahoe City, coming soon.',
-  alternates: { canonical: '/order' },
+  alternates: { canonical: '/dine/menus/order' },
   robots: { index: false, follow: true },
 };
 
 export default function OrderPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema('Order online', '/order')} />
+      <JsonLd data={breadcrumbSchema('Order online', '/dine/menus/order')} />
       <SiteHeader />
       <section className="section">
         <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
@@ -29,7 +29,7 @@ export default function OrderPage() {
             <p className="serif" style={{ margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', color: 'var(--amber)' }}>Coming soon.</p>
             <p className="lede">{L.line}</p>
             <div className="btn-row">
-              <Link href="/menus" className="btn btn--amber">See the menus</Link>
+              <Link href="/dine/menus" className="btn btn--amber">See the menus</Link>
               <a href={`tel:${business.phoneE164}`} className="btn btn--navy">{business.phone}</a>
             </div>
           </div>

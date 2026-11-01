@@ -13,6 +13,11 @@
   --sand: #d8cdb9;
   --sand-dim: #b9ae9c;
   --sky: #4c8fd6;
+  /* The homepage's frame colors, one per section: Stay snow paper, Dine evergreen, Celebrate sugar pine. */
+  --paper: #f6f5ec;
+  --evergreen: #294b40;
+  --pine: #b2895b;
+  --alpine: #10263b;
   --line: rgba(19, 35, 58, 0.14);
   --line-night: rgba(241, 231, 212, 0.16);
   --gutter: clamp(20px, 5vw, 72px);
@@ -83,9 +88,32 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .site-nav a[aria-current='page'] { border-bottom-color: var(--amber); }
 .site-header--overlay { color: var(--ice); }
 .site-header--overlay a:not(.btn):hover { color: var(--amber); }
-.site-header--solid { color: var(--navy); border-bottom: 1px solid var(--line); background: var(--ice); }
+.site-header--solid { color: var(--paper); background: var(--alpine); }
+.site-header--solid a:not(.btn):hover, .site-header--solid .more__btn:hover { color: var(--amber); }
+.site-nav a[aria-current='true'] { border-bottom-color: color-mix(in srgb, var(--amber) 55%, transparent); }
 .menu-btn { display: none; width: 48px; height: 48px; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: rgba(16, 28, 42, 0.5); color: var(--ice); cursor: pointer; }
-.site-header--solid .menu-btn { background: var(--frost); color: var(--navy); }
+.site-header--solid .menu-btn { background: rgba(246, 245, 236, 0.12); color: var(--paper); }
+
+/* Section tabs: the slim second row inside Stay, Dine and Celebrate, in the section's frame color. */
+.section-tabs { --tab-bg: var(--paper); --tab-ink: var(--alpine); --tab-mark: var(--amber); background: var(--tab-bg); color: var(--tab-ink); border-bottom: 1px solid rgba(16, 38, 59, 0.12); }
+.section-tabs--dine { --tab-bg: var(--evergreen); --tab-ink: var(--paper); }
+.section-tabs--celebrate { --tab-bg: var(--pine); --tab-ink: var(--alpine); --tab-mark: var(--alpine); }
+.section-tabs__inner { display: flex; align-items: center; gap: 4px 28px; min-height: 58px; }
+.section-tabs a { color: inherit; text-decoration: none; }
+.section-tabs a:not(.btn):hover { color: inherit; opacity: 0.75; }
+.section-tabs__home { flex: none; font-family: var(--font-serif), Georgia, serif; font-size: 22px; line-height: 1; padding-right: 26px; border-right: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
+.section-tabs__list { display: flex; gap: 0 26px; flex: 1 1 auto; min-width: 0; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
+.section-tabs__list::-webkit-scrollbar { display: none; }
+.section-tabs__list a { display: block; padding: 18px 0 15px; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; border-bottom: 3px solid transparent; }
+.section-tabs__list a[aria-current] { border-bottom-color: var(--tab-mark); }
+.section-tabs__action { flex: none; background: var(--tab-ink); color: var(--tab-bg) !important; }
+.section-tabs__action:hover { background: var(--amber); color: var(--alpine) !important; }
+@media (max-width: 860px) {
+  .section-tabs__inner { min-height: 52px; gap: 4px 20px; }
+  .section-tabs__home { font-size: 19px; padding-right: 18px; }
+  .section-tabs__list { gap: 0 20px; }
+  .section-tabs__action { display: none; }
+}
 .mobile-menu { position: fixed; inset: 0; z-index: 50; background: var(--night); color: var(--cream); display: flex; flex-direction: column; padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(28px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
 .mobile-menu[hidden] { display: none; }
 .mobile-menu__top { display: flex; align-items: center; justify-content: space-between; padding-block: 2px 28px; }
@@ -339,6 +367,11 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .mobile-menu__more a { color: var(--sand); text-decoration: none; font-size: 16px; }
 .mobile-menu__more a:hover { color: var(--amber); }
 .mobile-menu { overflow-y: auto; }
+.mobile-menu nav { gap: 14px; }
+.mobile-menu nav a.mm-top { font-size: 40px; line-height: 1.05; }
+.mm-sub { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 0; padding: 0; list-style: none; }
+.mobile-menu .mm-sub a { font-family: var(--font-sans), system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: var(--sand); }
+.mobile-menu .mm-sub a:hover { color: var(--amber); }
 
 /* ---------- The Wall, embedded on History ---------- */
 .wall-embed { display: block; width: 100%; height: clamp(520px, 82svh, 900px); border: 0; border-radius: 6px; background: #14110e; }
