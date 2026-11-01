@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 const FAQ = [
+  { q: 'How do I book a room?', a: `Book online any time, or call the front desk at ${business.phone}.` },
   { q: 'What time is check-in and check-out?', a: `Check-in is at ${lodging.checkIn} and check-out is at ${lodging.checkOut}. Arriving after 5 PM? Give the front desk a call.` },
   { q: 'Are dogs allowed?', a: 'Yes, in our dog-friendly rooms: up to two dogs, $25 plus tax per night, arranged in advance. Dogs can’t be left alone in the room.' },
   { q: 'Is breakfast included?', a: 'Hotel guests get a complimentary grab-and-go breakfast when occupancy allows. The restaurant serves a full breakfast on Saturdays and Sundays.' },
@@ -41,6 +42,9 @@ export default function StayPage() {
         <div className="container page-hero__body">
           <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>Rooms on the Truckee River.</h1>
           <p>{L.line}</p>
+          <div className="btn-row">
+            <a href={business.links.bookRoom} className="btn btn--amber" rel="noopener">Book a room</a>
+          </div>
         </div>
       </section>
 
@@ -89,10 +93,11 @@ export default function StayPage() {
       <section className="section on-night" id="book" aria-labelledby="book-h">
         <div className="container stack" style={{ gap: 22, maxWidth: 900 }}>
           <span className="eyebrow">Book a room</span>
-          <h2 id="book-h" className="serif h-m">Call or email the front desk.</h2>
+          <h2 id="book-h" className="serif h-m">Book online, or call the front desk.</h2>
           <p className="lede">{L.line2}</p>
           <div className="btn-row">
-            <a href={`tel:${business.phoneE164}`} className="btn btn--amber">{business.phone}</a>
+            <a href={business.links.bookRoom} className="btn btn--amber" rel="noopener">Book online</a>
+            <a href={`tel:${business.phoneE164}`} className="btn btn--ghost-cream">{business.phone}</a>
             <a href={`mailto:${business.email.lodge}`} className="btn btn--ghost-cream">{business.email.lodge}</a>
           </div>
         </div>
