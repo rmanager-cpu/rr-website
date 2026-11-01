@@ -3,13 +3,14 @@ import { Gloock, Hanken_Grotesk, Protest_Revolution } from 'next/font/google';
 import { photos } from '@/content/photos';
 import { business, SITE_URL } from '@/content/site';
 import { JsonLd, organizationSchema } from '@/lib/schema';
-import { timeOfDayBootScript } from '@/lib/timeOfDay';
 import './globals.css';
 import './menus.css';
 
 // Self-hosted by Next.js (no request to Google at page load), swapped in without blocking text.
-const display = Protest_Revolution({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-display', adjustFontFallback: false });
-const serif = Gloock({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-serif' });
+// Display and serif aren't preloaded: the homepage doesn't use them (it has its own fonts), and on
+// other pages the browser finds them in the CSS straight away anyway.
+const display = Protest_Revolution({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-display', adjustFontFallback: false, preload: false });
+const serif = Gloock({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-serif', preload: false });
 const sans = Hanken_Grotesk({ subsets: ['latin'], display: 'swap', variable: '--font-sans' });
 
 const description =
@@ -46,10 +47,6 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${serif.variable} ${sans.variable}`} suppressHydrationWarning>
-      <head>
-        {/* Picks the hero (dawn, day, dusk, night) from Tahoe City's sunrise and sunset before first paint. */}
-        <script dangerouslySetInnerHTML={{ __html: timeOfDayBootScript }} />
-      </head>
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
         <JsonLd data={organizationSchema()} />

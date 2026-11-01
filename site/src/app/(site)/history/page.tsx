@@ -30,8 +30,24 @@ export default function HistoryPage() {
             <p>{L.para2}</p>
           </div>
           <div className="btn-row">
-            <a href={business.links.theWall} className="btn btn--amber">Explore The Wall</a>
+            <a href="#the-wall" className="btn btn--amber">Explore The Wall</a>
           </div>
+        </div>
+      </section>
+      {/* The Wall, embedded: the interactive photo wall (its own app, history-wall/), loaded only when
+          the visitor scrolls near it so it never slows the page down. */}
+      <section className="section on-night" id="the-wall" aria-labelledby="wall-h">
+        <div className="container stack" style={{ gap: 22 }}>
+          <h2 id="wall-h" className="serif h-m">The Wall</h2>
+          <p className="lede" style={{ maxWidth: 620 }}>{L.line}</p>
+          <iframe
+            src={`${business.links.theWall}/?embed`}
+            title="The Wall: the old photographs by the host stand. Tap any frame to see it up close."
+            loading="lazy"
+            allow="fullscreen"
+            className="wall-embed"
+          />
+          <a href={business.links.theWall} className="arrow-link" target="_blank" rel="noopener">Open The Wall full screen</a>
         </div>
       </section>
       <section className="section bg-frost">

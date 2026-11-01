@@ -70,3 +70,9 @@ body {
     min-height: 360px !important;
   }
 }
+
+/* Embedded in the main site's History page: no title block, the wall fills the frame. */
+.embed .hw-stage {
+  height: calc(100vh - 92px) !important;
+  min-height: 300px !important;
+}

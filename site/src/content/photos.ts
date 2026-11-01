@@ -31,3 +31,19 @@ export const photos = {
   bartender: p('bartender-cocktail', 1614, 1076, 'A bartender holding up a cocktail at the River Ranch bar'),
   theWall: p('the-wall-old-photos', 1800, 1200, 'The wall of old River Ranch photographs by the host stand'),
 } satisfies Record<string, Photo>;
+
+/** The homepage scroll story (Stay, Dine, Celebrate). Files live in /photos/home/. */
+const h = (name: string, width: number, height: number, alt: string): Photo => ({ src: `/photos/home/${name}.jpg`, width, height, alt });
+
+export const homePhotos = {
+  hero: h('lodge-snow-blue-hour', 2400, 1800, 'River Ranch lodge under deep snow at blue hour, lights glowing along the porch'),
+  entrance: h('entrance-after-storm', 1200, 1530, 'The River Ranch lodge entrance after a storm, flags up and icicles on the eaves'),
+  panorama: h('tahoe-panorama-winter', 2400, 1016, ''),
+  skiRoom: h('room-skis-snowfall', 864, 648, 'A lodge room with skis by the balcony door and snow falling outside'),
+  bar: h('round-bar-wagon-wheel', 2400, 1600, 'The round bar at River Ranch under its wagon-wheel timber ceiling'),
+  dining: h('dining-room-winter-night', 2000, 1504, 'The River Ranch dining room on a winter night, garland over the windows and candles on white tablecloths'),
+  elk: h('elk-chops', 1400, 934, 'Elk chops with roasted potatoes, radish and cherries'),
+  ceremony: h('riverside-ceremony-chairs', 1200, 1800, 'Rows of ceremony chairs on the riverside patio, wildflowers along the aisle and the river beyond'),
+  couple: h('wedding-couple-embrace', 1599, 1066, 'A bride and groom nose to nose in an embrace at their River Ranch wedding'),
+  cake: h('wedding-cake-cutting-night', 1300, 867, 'A couple laughing as they cut their wedding cake on the patio at night'),
+} satisfies Record<string, Photo>;
