@@ -88,7 +88,7 @@ function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSe
       <section className="section">
         <div className="container media-row" style={{ gap: 48, alignItems: 'flex-start' }}>
           <div className="grow stack" style={{ gap: 24 }}>
-            <Link href="/dine/happening" className="arrow-link" style={{ fontSize: 12 }}>← All events</Link>
+            <Link href="/dine/happening" className="arrow-link" style={{ fontSize: 12 }}>← Everything happening</Link>
             <span className="eyebrow">{s?.offsite ? 'Off-site' : s?.category === 'holiday' ? 'Holiday' : 'At River Ranch'}</span>
             <h1 className="slash h-l">{page.title}</h1>
             <When mine={mine} upcoming={upcoming} />

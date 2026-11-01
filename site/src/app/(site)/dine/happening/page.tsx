@@ -50,7 +50,7 @@ export default async function EventsPage() {
 
       <section className="section" style={{ paddingBottom: 40 }}>
         <div className="container stack" style={{ gap: 22 }}>
-          <span className="eyebrow">Events</span>
+          <span className="eyebrow">Happening</span>
           <h1 className="slash h-l">{L.head}</h1>
           <p className="lede">{L.line}</p>
         </div>
