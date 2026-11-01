@@ -8,7 +8,7 @@ export function SpaceGrid() {
       {spaces.map((s) => (
         <div key={s.name} className="space">
           {s.photo ? (
-            <Image src={s.photo.src} alt={s.photo.alt} width={s.photo.width} height={s.photo.height} sizes="(max-width: 600px) 100vw, 300px" />
+            <Image src={s.photo.src} alt={s.photo.alt} width={s.photo.width} height={s.photo.height} sizes="(max-width: 600px) 100vw, 300px" style={s.focus ? { objectPosition: s.focus } : undefined} />
           ) : (
             <div className="ph" role="img" aria-label={`Photo coming soon: ${s.name}`}>Photo coming soon</div>
           )}

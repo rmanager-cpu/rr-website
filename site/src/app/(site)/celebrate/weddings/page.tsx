@@ -46,7 +46,7 @@ export default function WeddingsPage() {
             </dl>
           </div>
           <div className="side">
-            <Image src={photos.fireplaceLongTable.src} alt={photos.fireplaceLongTable.alt} width={photos.fireplaceLongTable.width} height={photos.fireplaceLongTable.height} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto' }} />
+            <Image src={photos.patioRoundsSails.src} alt={photos.patioRoundsSails.alt} width={photos.patioRoundsSails.width} height={photos.patioRoundsSails.height} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto' }} />
           </div>
         </div>
       </section>

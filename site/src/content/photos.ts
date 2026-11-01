@@ -36,6 +36,10 @@ export const photos = {
   ceremonyAisle: p('patio-ceremony-aisle-empty', 1800, 1350, 'White ceremony chairs and a petal-lined aisle on the riverside patio'),
   fireplaceTableSet: p('fireplace-room-table-set', 1800, 1200, 'A long table set with candles and wine by the stone fireplace'),
   snowyRiverLodge: p('snowy-river-lodge-blue-sky', 1800, 1350, 'The snowy Truckee River running past the lodge under a blue sky'),
+  pointCeremony: p('the-point-ceremony-arch', 2400, 1800, 'Ceremony chairs on The Point, facing a flower-topped arch on the river wall'),
+  patioRoundsSails: p('patio-reception-rounds-sails', 2400, 1800, 'Round tables set for a reception under the sails on the patio, the Riverview room behind'),
+  patioRoundsHeaters: p('patio-reception-rounds-heaters', 2400, 1800, 'Round tables set for a reception among the heaters on the riverside patio'),
+  riverviewRapids: p('riverview-room-over-rapids', 2400, 1600, 'The round Riverview room cantilevered over the Truckee River rapids in summer'),
 } satisfies Record<string, Photo>;
 
 /** The homepage scroll story (Stay, Dine, Celebrate). Files live in /photos/home/. */
