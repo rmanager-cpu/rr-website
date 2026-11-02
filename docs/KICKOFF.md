@@ -128,6 +128,11 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   Toast; lodging reward applied at checkout. Toast partner Loyalty API later, if it takes off.
 - 2026-10-23, printed menus: a print tool exists (/admin/print/menus/<slug>) but its layout is on hold:
   it doesn't fit the two-page holders. Alex will describe the required form first.
+  Update 2026-11-02: replaced by Alex's Menu Maker (`site/src/lib/print-menu`). One editor at /admin/menus
+  drives the website and the print PDF, in four styles. Banquet menus: three courses, custom heading and
+  subheading, no prices, never public. Holiday menus: own prices, public while on, "show until" hides them.
+  Still open: the same menus in Venio (Alex wants both), posting hours and menus to Google, then DoorDash
+  and Uber Eats. PDFs on Vercel use @sparticuz/chromium, untested there until the preview works.
 
 - 2026-10-31, homepage: the scroll-story home (Stay / Dine / Celebrate, then Visit) from the
   `prototype/home-scroll` branch is now the real home page (`site/src/components/home/`). Brush, serif

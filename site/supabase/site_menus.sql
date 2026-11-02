@@ -52,6 +52,13 @@ create table if not exists public.site_menu_items (
   description text check (description is null or char_length(description) <= 2000), -- this menu only
   hidden      boolean not null default false
 );
+-- Printed menus share all of the above. These add the layout, and what kind of menu it is:
+-- regular (website), holiday (website while on, own prices), banquet (staff-only, never priced).
+alter table public.site_menus add column if not exists kind text not null default 'regular' check (kind in ('regular', 'holiday', 'banquet'));
+alter table public.site_menus add column if not exists print jsonb;
+alter table public.site_menu_sections add column if not exists print jsonb;
+alter table public.site_menu_items add column if not exists print jsonb;
+
 create index if not exists site_menu_items_section_idx on public.site_menu_items (section_id, sort);
 create index if not exists site_menu_sections_menu_idx on public.site_menu_sections (menu_id, sort);
 

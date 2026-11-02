@@ -72,6 +72,11 @@ const oldDomains = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    serverComponentsExternalPackages: ['@sparticuz/chromium', 'playwright-core', 'pdf-lib'],
+    // Read at run time by the menu PDF route.
+    outputFileTracingIncludes: { '/admin/print/menus/*/pdf': ['./print-fonts/**', './src/lib/print-menu/fit.js'] },
+  },
   trailingSlash: false,
   images: {
     formats: ['image/avif', 'image/webp'],

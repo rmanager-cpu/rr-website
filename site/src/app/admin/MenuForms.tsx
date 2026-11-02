@@ -20,14 +20,14 @@ const Msg = ({ s }: { s: FormState }) => (s ? <span className={s.ok ? 'tag' : 'e
 export type ItemInit = { name: string; description: string; tags: string[]; raw: boolean; prices: string; priceNote: string; hidden: boolean; sort: number; elsewhere: string; mismatch: boolean };
 
 /** One dish on one menu. Name, description and tags are the dish's (shared by every menu); prices are this menu's. */
-export function ItemRow({ action, init }: { action: (p: FormState, f: FormData) => Promise<FormState>; init: ItemInit }) {
+export function ItemRow({ action, init, noPrices }: { action: (p: FormState, f: FormData) => Promise<FormState>; init: ItemInit; noPrices?: boolean }) {
   const [state, run] = useFormState(action, null);
   return (
     <form action={run} className="mi-row" style={init.hidden ? { opacity: 0.55 } : undefined}>
       <div className="mi-grid">
         <label className="f">Dish<input type="text" name="name" defaultValue={init.name} required maxLength={160} /></label>
-        <label className="f">Price<input type="text" name="prices" defaultValue={init.prices} placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>
-        <label className="f">Or note<input type="text" name="price_note" defaultValue={init.priceNote} placeholder="Market Price" maxLength={60} /></label>
+        {!noPrices && <label className="f">Price<input type="text" name="prices" defaultValue={init.prices} placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>}
+        {!noPrices && <label className="f">Or note<input type="text" name="price_note" defaultValue={init.priceNote} placeholder="Market Price" maxLength={60} /></label>}
         <label className="f mi-order">Order<input type="text" name="sort" defaultValue={String(init.sort)} inputMode="numeric" maxLength={4} /></label>
       </div>
       <label className="f">Description<textarea name="description" defaultValue={init.description} rows={2} maxLength={2000} /></label>
@@ -44,13 +44,13 @@ export function ItemRow({ action, init }: { action: (p: FormState, f: FormData) 
   );
 }
 
-export function AddItem({ action }: { action: (p: FormState, f: FormData) => Promise<FormState> }) {
+export function AddItem({ action, noPrices }: { action: (p: FormState, f: FormData) => Promise<FormState>; noPrices?: boolean }) {
   const [state, run] = useFormState(action, null);
   return (
     <form action={run} className="mi-row mi-add">
       <div className="mi-grid">
         <label className="f">New dish<input type="text" name="name" required maxLength={160} /></label>
-        <label className="f">Price<input type="text" name="prices" placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>
+        {!noPrices && <label className="f">Price<input type="text" name="prices" placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>}
         <label className="f" style={{ gridColumn: 'span 2' }}>Description<input type="text" name="description" maxLength={2000} /></label>
       </div>
       <div className="row-actions"><Msg s={state} /><Btn label="Add dish" small /></div>
@@ -70,23 +70,47 @@ export function SectionHead({ action, name, note, sort }: { action: (p: FormStat
   );
 }
 
-export type MenuInit = { name: string; intro: string; servingNote: string; footer: string; active: boolean; showUntil: string; hours: { days: number[]; start: string; end: string; label: string }[] };
+export type MenuInit = { name: string; intro: string; servingNote: string; footer: string; active: boolean; showUntil: string; theme: string; kind: 'regular' | 'holiday' | 'banquet'; hours: { days: number[]; start: string; end: string; label: string }[] };
+
+const THEMES = [['classic', 'Classic'], ['fireside', 'Fireside'], ['trailhead', 'Trailhead'], ['band', 'Band']];
+
+/** Heading and subheading for a new holiday or banquet menu, copied from that kind's template. */
+export function NewEventMenu({ action, label }: { action: (p: FormState, f: FormData) => Promise<FormState>; label: string }) {
+  const [state, run] = useFormState(action, null);
+  return (
+    <form action={run} className="adm-grid" style={{ alignItems: 'end' }}>
+      <label className="f">Heading<input type="text" name="name" required maxLength={80} /></label>
+      <label className="f">Subheading<input type="text" name="intro" maxLength={1000} /></label>
+      <div className="row-actions"><Msg s={state} /><Btn label={label} small /></div>
+    </form>
+  );
+}
 
 export function MenuSettings({ action, init }: { action: (p: FormState, f: FormData) => Promise<FormState>; init: MenuInit }) {
   const [state, run] = useFormState(action, null);
   const rows = [0, 1, 2].map((n) => init.hours[n] ?? { days: [], start: '', end: '', label: '' });
+  const event = init.kind !== 'regular';
+  const banquet = init.kind === 'banquet';
   return (
     <form action={run} className="adm-card">
-      <h2>Menu settings</h2>
+      <h2>{event ? 'Heading and settings' : 'Menu settings'}</h2>
       {state && <p className={state.ok ? 'ok' : 'err'}>{state.message}</p>}
       <div className="adm-grid">
-        <label className="f">Menu name<input type="text" name="name" defaultValue={init.name} required maxLength={80} /></label>
-        <label className="f">Serving note (when there are no set hours)<input type="text" name="serving_note" defaultValue={init.servingNote} maxLength={200} placeholder="Summer, on the riverside patio" /></label>
-        <label className="f">Show until (optional, for seasonal menus)<input type="date" name="show_until" defaultValue={init.showUntil} /></label>
-        <label className="f">On the site?<select name="active" defaultValue={init.active ? 'yes' : 'no'}><option value="yes">Yes</option><option value="no">Hidden</option></select></label>
+        <label className="f">{event ? 'Heading' : 'Menu name'}<input type="text" name="name" defaultValue={init.name} required maxLength={80} /></label>
+        <label className="f">Print style<select name="theme" defaultValue={init.theme}>{THEMES.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
+        {banquet ? (
+          <input type="hidden" name="active" value="no" />
+        ) : (
+          <>
+            <label className="f">Serving note (when there are no set hours)<input type="text" name="serving_note" defaultValue={init.servingNote} maxLength={200} placeholder="Summer, on the riverside patio" /></label>
+            <label className="f">Show until (optional, it hides itself after this date)<input type="date" name="show_until" defaultValue={init.showUntil} /></label>
+            <label className="f">On the site?<select name="active" defaultValue={init.active ? 'yes' : 'no'}><option value="yes">Yes</option><option value="no">Hidden</option></select></label>
+          </>
+        )}
       </div>
-      <label className="f">Intro line (optional)<input type="text" name="intro" defaultValue={init.intro} maxLength={1000} /></label>
-      <fieldset style={{ border: 0, padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <label className="f">{event ? 'Subheading' : 'Intro line (optional)'}<input type="text" name="intro" defaultValue={init.intro} maxLength={1000} /></label>
+      {banquet && <p className="help" style={{ margin: 0 }}>Banquet menus are for printing and sending. They never appear on the website and never show prices.</p>}
+      <fieldset style={{ border: 0, padding: 0, margin: 0, display: event ? 'none' : 'flex', flexDirection: 'column', gap: 10 }}>
         <legend className="q">Serving hours (used for the page, “serving now” and Google)</legend>
         {rows.map((h, n) => (
           <div key={n} className="adm-card" style={{ padding: 12, gap: 8 }}>

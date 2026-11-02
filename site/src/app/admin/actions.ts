@@ -267,10 +267,34 @@ export async function saveMenuAction(menuId: string, menuSlug: string, _prev: Fo
     });
     const showUntil = opt(f, 'show_until');
     if (showUntil && !DATE.test(showUntil)) throw new Invalid('show_until', 'Check the “show until” date.');
-    await saveMenu(menuId, { name: str(f, 'name') || 'Menu', intro: opt(f, 'intro'), servingNote: opt(f, 'serving_note'), footer: opt(f, 'footer'), active: str(f, 'active') === 'yes', showUntil, hours });
+    const theme = ['classic', 'fireside', 'trailhead', 'band'].includes(str(f, 'theme')) ? str(f, 'theme') : 'classic';
+    await saveMenu(menuId, { name: str(f, 'name') || 'Menu', intro: opt(f, 'intro'), servingNote: opt(f, 'serving_note'), footer: opt(f, 'footer'), active: str(f, 'active') === 'yes', showUntil, hours, theme });
   } catch (e) {
     return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
   }
   menuRefresh(menuSlug);
-  return { ok: true, message: 'Saved. The menu is updated on the site.' };
+  return { ok: true, message: 'Saved.' };
+}
+
+export async function newEventMenuAction(kind: 'holiday' | 'banquet', _prev: FormState, f: FormData): Promise<FormState> {
+  guard();
+  const { newEventMenu } = await import('@/lib/menus/store');
+  const name = str(f, 'name');
+  if (!name) return { ok: false, message: 'Give it a heading.' };
+  let slug: string;
+  try {
+    slug = await newEventMenu(kind, name, opt(f, 'intro'), await slugify(name));
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
+  }
+  menuRefresh();
+  redirect(`/admin/menus/${slug}`);
+}
+
+export async function deleteEventMenuAction(menuId: string) {
+  guard();
+  const { deleteEventMenu } = await import('@/lib/menus/store');
+  await deleteEventMenu(menuId);
+  menuRefresh();
+  redirect('/admin/menus');
 }

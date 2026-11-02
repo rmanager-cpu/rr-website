@@ -40,21 +40,26 @@ lines.push('commit;', '');
 const menuSql = readFileSync('supabase/site_menus.sql', 'utf8');
 const menus = JSON.parse(readFileSync('src/content/seed-menus.json', 'utf8'));
 const j = (v) => `'${JSON.stringify(v).replace(/'/g, "''")}'::jsonb`;
+const pj = (v) => (v ? j(v) : 'null');
 const ml = ['', '-- ---------- starting menus; skipped if any menu already exists ----------', 'begin;', 'do $$', 'begin', 'if not exists (select 1 from public.site_menus) then'];
 for (const d of menus.dishes) {
   ml.push(`insert into public.site_dishes (slug, name, description, tags, raw) values (${q(d.slug)}, ${q(d.name)}, ${q(d.description)}, ${arr(d.tags.map((t) => `"${t}"`), 'text')}, ${d.raw ? 'true' : 'false'}) on conflict (slug) do nothing;`);
 }
 for (const m of menus.menus) {
-  ml.push(`insert into public.site_menus (slug, name, sort, intro, hours, serving_note, footer) values (${q(m.slug)}, ${q(m.name)}, ${m.sort}, ${q(m.intro)}, ${j(m.hours)}, ${q(m.serving_note)}, ${q(m.footer)});`);
+  ml.push(`insert into public.site_menus (slug, name, sort, intro, hours, serving_note, footer, active, kind, print) values (${q(m.slug)}, ${q(m.name)}, ${m.sort}, ${q(m.intro)}, ${j(m.hours)}, ${q(m.serving_note)}, ${q(m.footer)}, ${m.active === false ? 'false' : 'true'}, ${q(m.kind ?? 'regular')}, ${pj(m.print)});`);
   m.sections.forEach((s, si) => {
-    ml.push(`insert into public.site_menu_sections (menu_id, name, note, sort) select id, ${q(s.name)}, ${q(s.note)}, ${si} from public.site_menus where slug = ${q(m.slug)};`);
+    ml.push(`insert into public.site_menu_sections (menu_id, name, note, sort, print) select id, ${q(s.name)}, ${q(s.note)}, ${si}, ${pj(s.print)} from public.site_menus where slug = ${q(m.slug)};`);
     s.items.forEach((it, ii) => {
-      ml.push(`insert into public.site_menu_items (section_id, dish_id, sort, prices, price_note, description) select s.id, d.id, ${ii}, ${j(it.prices)}, ${q(it.price_note)}, ${q(it.description)} from public.site_menu_sections s join public.site_menus m on m.id = s.menu_id, public.site_dishes d where m.slug = ${q(m.slug)} and s.sort = ${si} and d.slug = ${q(it.dish)};`);
+      // An empty description is kept: it means "no description on this menu". q() would turn it into null.
+      const desc = it.description === '' ? "''" : q(it.description);
+      ml.push(`insert into public.site_menu_items (section_id, dish_id, sort, prices, price_note, description, print) select s.id, d.id, ${ii}, ${j(it.prices)}, ${q(it.price_note)}, ${desc}, ${pj(it.print)} from public.site_menu_sections s join public.site_menus m on m.id = s.menu_id, public.site_dishes d where m.slug = ${q(m.slug)} and s.sort = ${si} and d.slug = ${q(it.dish)};`);
     });
   });
 }
 ml.push('end if;', 'end $$;', 'commit;', '');
 lines.push(menuSql, ...ml);
-const header = `-- RR - PASTE: website calendar, event pages and careers (generated ${new Date().toISOString().slice(0, 10)}).\n-- Contains the website's database password: don't share or commit this file.\n\n`;
-writeFileSync(out, header + sql + lines.join('\n'));
+const header = `-- RR - PASTE: website calendar, event pages, careers and menus (generated ${new Date().toISOString().slice(0, 10)}).\n-- Contains the website's database password: don't share or commit this file.\n-- One transaction: it all goes in, or none of it does. Safe to run again.\n\n`;
+// The pieces each carry their own begin/commit; one transaction wraps them all here.
+const body = (sql + lines.join('\n')).replace(/^(begin|commit);[ \t]*\r?$/gm, '');
+writeFileSync(out, `${header}begin;\n${body}\ncommit;\n`);
 console.log(`wrote ${out}: ${seed.pages.length} pages, ${seed.events.length} events`);

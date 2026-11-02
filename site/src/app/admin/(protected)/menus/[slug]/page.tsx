@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { dbReady } from '@/lib/db/pool';
 import { appearances, listMenus, priceText } from '@/lib/menus/store';
-import { addMenuItemAction, addSectionAction, saveMenuAction, saveMenuItemAction, saveSectionAction } from '../../../actions';
+import { addMenuItemAction, addSectionAction, deleteEventMenuAction, saveMenuAction, saveMenuItemAction, saveSectionAction } from '../../../actions';
 import { AddItem, ItemRow, MenuSettings, SectionHead } from '../../../MenuForms';
 
 export default async function EditMenu({ params }: { params: { slug: string } }) {
@@ -11,12 +11,15 @@ export default async function EditMenu({ params }: { params: { slug: string } })
   const menu = menus.find((m) => m.slug === params.slug);
   if (!menu) notFound();
   const seen = appearances(menus);
+  const banquet = menu.kind === 'banquet';
+  const template = menu.slug.endsWith('-template');
   return (
     <>
       <div className="row-actions" style={{ justifyContent: 'space-between' }}>
         <h1>{menu.name}</h1>
-        <div className="row-actions"><Link href="/admin/menus">← All menus</Link><Link href={`/admin/print/menus/${menu.slug}`} className="btn btn--sm btn--navy">Print menu</Link><a href={`/dine/menus/${menu.slug}`} target="_blank">View on the site →</a></div>
+        <div className="row-actions"><Link href="/admin/menus">← All menus</Link><Link href={`/admin/print/menus/${menu.slug}`} className="btn btn--sm btn--navy">Print or send</Link>{!banquet && menu.active && <a href={`/dine/menus/${menu.slug}`} target="_blank">View on the site →</a>}</div>
       </div>
+      {template && <p className="note">This is the template. New {menu.kind} menus start as a copy of it, so changes here only affect future menus.</p>}
       {!ready && <p className="note">The menu database isn’t connected yet, so changes can’t save.</p>}
       <p className="help">A dish’s name, description and tags are shared: change them here and they change on every menu the dish is on. Prices are just for this menu.</p>
 
@@ -29,6 +32,7 @@ export default async function EditMenu({ params }: { params: { slug: string } })
             return (
               <ItemRow
                 key={i.id}
+                noPrices={banquet}
                 action={saveMenuItemAction.bind(null, i.id, menu.slug)}
                 init={{
                   name: i.dish.name,
@@ -45,7 +49,7 @@ export default async function EditMenu({ params }: { params: { slug: string } })
               />
             );
           })}
-          <AddItem action={addMenuItemAction.bind(null, s.id, menu.slug)} />
+          <AddItem noPrices={banquet} action={addMenuItemAction.bind(null, s.id, menu.slug)} />
         </section>
       ))}
 
@@ -56,8 +60,14 @@ export default async function EditMenu({ params }: { params: { slug: string } })
 
       <MenuSettings
         action={saveMenuAction.bind(null, menu.id, menu.slug)}
-        init={{ name: menu.name, intro: menu.intro ?? '', servingNote: menu.servingNote ?? '', footer: menu.footer ?? '', active: menu.active, showUntil: menu.showUntil ?? '', hours: menu.hours }}
+        init={{ name: menu.name, intro: menu.intro ?? '', servingNote: menu.servingNote ?? '', footer: menu.footer ?? '', active: menu.active, showUntil: menu.showUntil ?? '', theme: menu.print?.theme ?? 'classic', kind: menu.kind, hours: menu.hours }}
       />
+
+      {menu.kind !== 'regular' && !template && (
+        <form action={deleteEventMenuAction.bind(null, menu.id)}>
+          <button type="submit" className="btn btn--sm">Delete this menu</button>
+        </form>
+      )}
     </>
   );
 }
