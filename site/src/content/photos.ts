@@ -40,6 +40,7 @@ export const photos = {
   patioRoundsSails: p('patio-reception-rounds-sails', 2400, 1800, 'Round tables set for a reception under the sails on the patio, the Riverview room behind'),
   patioRoundsHeaters: p('patio-reception-rounds-heaters', 2400, 1800, 'Round tables set for a reception among the heaters on the riverside patio'),
   riverviewRapids: p('riverview-room-over-rapids', 2400, 1600, 'The round Riverview room cantilevered over the Truckee River rapids in summer'),
+  aerialSpaces: p('aerial-riverview-room-and-patio', 2400, 1800, 'From above: the round Riverview room over the Truckee River, the patio beside it and The Point at its river end'),
 } satisfies Record<string, Photo>;
 
 /** The homepage scroll story (Stay, Dine, Celebrate). Files live in /photos/home/. */
