@@ -11,7 +11,7 @@ import { StayBook } from './StayBook';
 export const metadata: Metadata = {
   title: 'Tahoe City Lodging near Palisades Tahoe',
   description:
-    '19 lodge rooms on the Truckee River in Tahoe City, most with river views, some with balconies and dog-friendly options. The closest lodging to Palisades Tahoe.',
+    '19 lodge rooms on the Truckee River in Tahoe City, most with river views, some with balconies and dog-friendly options. The closest lodging to Palisades Tahoe’s Alpine Meadows base.',
   alternates: { canonical: '/stay' },
 };
 
