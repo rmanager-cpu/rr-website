@@ -73,7 +73,11 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
-  images: { formats: ['image/avif', 'image/webp'], deviceSizes: [390, 640, 828, 1080, 1440, 1920, 2400] },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [390, 640, 828, 1080, 1440, 1920, 2400],
+    remotePatterns: [{ protocol: 'https', hostname: 'images.bookingcenter.com', pathname: '/RIVERR/images/**' }],
+  },
   async redirects() {
     return [...oldDomains, ...oldSite, ...moved];
   },

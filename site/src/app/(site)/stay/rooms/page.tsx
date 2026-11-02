@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { L } from '@/content/lorem';
 import Image from 'next/image';
+import { RoomFinder } from '@/components/RoomBooking';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
@@ -14,7 +15,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/stay/rooms' },
 };
 
-// One page per room type comes once the room-by-room list is in (types, beds, which rooms have balconies).
 const GALLERY = [photos.kingRoom, photos.roomBearQuilt, photos.roomPlaidQuilt, photos.balconySnowyRiver, photos.roomSnowshoes, photos.balconyChairs];
 
 export default function RoomsPage() {
@@ -53,7 +53,14 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section className="section bg-frost" aria-labelledby="in-room-h">
+      <section className="section bg-frost" aria-labelledby="types-h">
+        <div className="container stack" style={{ gap: 28 }}>
+          <h2 id="types-h" className="serif h-m">Choose your dates and room</h2>
+          <RoomFinder />
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="in-room-h">
         <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
           <Image src={photos.roomBearQuilt.src} alt={photos.roomBearQuilt.alt} width={photos.roomBearQuilt.width} height={photos.roomBearQuilt.height} sizes="(max-width: 900px) 100vw, 720px" className="rounded grow" style={{ width: '100%', height: 'auto' }} />
           <div className="side stack" style={{ gap: 18 }}>

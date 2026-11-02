@@ -29,8 +29,8 @@ export const business = {
   links: {
     // Restaurant reservations (OpenTable listing, restaurant id 27631).
     reserveTable: 'https://www.opentable.com/river-ranch-lodge-and-restaurant',
-    // Lodging booking engine: BookingCenter (for now), the same link the old site used.
-    bookRoom: 'https://book.bookingcenter.com/02/?site=RIVERR',
+    // Our date picker, which hands off to BookingCenter with the dates applied (lib/bookingcenter.ts).
+    bookRoom: '/stay#book',
     theWall: 'https://the-wall-river-ranch.vercel.app',
     skiButlers: 'https://www.skibutlers.com/portal/riverranchlodge',
     palisades: 'https://www.palisadestahoe.com',

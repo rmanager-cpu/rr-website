@@ -1,3 +1,4 @@
+import { StayDates } from '@/components/RoomBooking';
 import { L } from '@/content/lorem';
 import { business } from '@/content/site';
 
@@ -9,8 +10,8 @@ export function StayBook() {
         <span className="eyebrow">Book a room</span>
         <h2 id="book-h" className="serif h-m">Book online, or call the front desk.</h2>
         <p className="lede">{L.line2}</p>
+        <div style={{ maxWidth: 560 }}><StayDates /></div>
         <div className="btn-row">
-          <a href={business.links.bookRoom} className="btn btn--amber" rel="noopener">Book online</a>
           <a href={`tel:${business.phoneE164}`} className="btn btn--ghost-cream">{business.phone}</a>
           <a href={`mailto:${business.email.lodge}`} className="btn btn--ghost-cream">{business.email.lodge}</a>
         </div>
