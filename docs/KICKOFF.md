@@ -149,6 +149,8 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   - Spaces (Alex): the Riverview room is the round dining room. The Point is the river end of the
     patio; booking it gets The Point, and a small section of the patio stays open for regular diners.
   - Booking (Alex): BookingCenter's own booking page is fine until the API keys arrive (NDA sent).
+    Update 2026-11-02: built as our own date picker and room list that open BookingCenter's results with
+    the dates applied (`chk_availability.php`, from Alex's Zombie Crawl link).
   - Still the earlier look below the header: fonts and colors on the inner pages aren't the homepage's yet.
 - 2026-11-01, Vercel: GitHub is connected but every Git build failed because the project's Root
   Directory is the repo top, not `site`. Fix in the Vercel dashboard (Settings → Build and Deployment →
@@ -157,7 +159,10 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
 - 2026-11-01, domain: riverranchlodge.com was renewed to 2027-10-27, but Network Solutions left its
   nameservers on NS1/NS2.PENDINGRENEWALDELETION.COM, so the old site and company email were down. The
   Route 53 zone is intact (Google MX, Popmenu A records); the fix is setting the nameservers back to
-  ns-279.awsdns-34.com, ns-764.awsdns-31.net, ns-1503.awsdns-59.org, ns-1993.awsdns-57.co.uk.
+  ns-279.awsdns-34.com, ns-764.awsdns-31.net, ns-1503.awsdns-59.org, ns-1993.awsdns-57.co.uk. Correction, same day: the
+  2027 expiry date does not prove the domain was paid, since a .com date rolls forward at expiry. It likely
+  needs renewing first, and it looks to sit in an older Network Solutions account, not the one management
+  was invited to.
 
 ## First steps for this session
 1. Read `docs/INVENTORY.md` when it lands.
