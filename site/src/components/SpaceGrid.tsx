@@ -14,6 +14,7 @@ export function SpaceGrid() {
           )}
           <h3 className="space__name">{s.name}</h3>
           <p className="muted" style={{ margin: 0, fontSize: 15, lineHeight: 1.5 }}>{s.line}</p>
+          {s.capacity && <p style={{ margin: 0, fontSize: 15, fontWeight: 600 }}>{s.capacity}</p>}
         </div>
       ))}
     </div>

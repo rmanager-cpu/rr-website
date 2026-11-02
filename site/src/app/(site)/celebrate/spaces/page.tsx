@@ -11,7 +11,7 @@ import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 // left out of the sitemap until then.
 export const metadata: Metadata = {
   title: 'Event Spaces',
-  description: 'The Riverview room, the Fireplace room, The Point and the full riverside patio at River Ranch in Tahoe City.',
+  description: 'The Riverview room, the Alpine Dining Room, The Point and the full riverside patio at River Ranch in Tahoe City.',
   alternates: { canonical: '/celebrate/spaces' },
   robots: { index: false, follow: true },
 };
@@ -29,7 +29,7 @@ export default function SpacesPage() {
             <p className="lede">{L.line}</p>
           </div>
           <SpaceGrid />
-          <p className="muted" style={{ margin: 0 }}>Capacities and layouts for each space are coming soon. Ask us in the meantime.</p>
+          <p className="muted" style={{ margin: 0 }}>Capacities for the other spaces, and layouts for all of them, are coming soon. Ask us in the meantime.</p>
           <figure className="figure">
             <Image src={photos.aerialSpaces.src} alt={photos.aerialSpaces.alt} width={photos.aerialSpaces.width} height={photos.aerialSpaces.height} sizes="(max-width: 1280px) 100vw, 1180px" className="rounded" style={{ width: '100%', height: 'auto' }} />
             <figcaption>The Riverview room over the river, the patio beside it, and The Point at its river end.</figcaption>
