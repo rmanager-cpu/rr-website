@@ -13,8 +13,8 @@ export type RoomType = {
 const bcPhoto = (file: string) => `https://images.bookingcenter.com/RIVERR/images/${file}.jpg`;
 
 export const roomTypes: RoomType[] = [
-  { code: 'RIVDD', name: '2 Queen beds, balcony over river', line: 'Two Queen beds and a balcony over the river.', sleeps: 4, photo: bcPhoto('23237') },
-  { code: 'RIVQ', name: 'Cal King bed, balcony over river', line: 'A California King bed and a balcony over the river.', sleeps: 2, photo: bcPhoto('34447') },
+  { code: 'RIVDD', name: '2 Queen beds, balcony over river', line: 'Two Queen beds and a balcony over the river.', sleeps: 4, photo: bcPhoto('23723') },
+  { code: 'RIVQ', name: 'Cal King bed, balcony over river', line: 'A California King bed and a balcony over the river.', sleeps: 2, photo: '/photos/room-10-cal-king.jpg' },
   { code: 'KVIEW', name: 'Cal King bed, balcony over patio', line: 'A California King bed and a balcony over the patio, with a partial river view.', sleeps: 2, photo: bcPhoto('34453') },
   { code: 'KDVIEW', name: 'King bed, deck on terrace', line: 'One King bed and a deck on the terrace.', sleeps: 2, dogFriendly: true, photo: bcPhoto('34468') },
   { code: '2Q', name: '2 Queen beds, over patio', line: 'Two Queen beds on the second floor, over the patio.', sleeps: 4, dogFriendly: true, photo: bcPhoto('34437') },
