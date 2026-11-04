@@ -3,6 +3,7 @@ import { L } from '@/content/lorem';
 import Image from 'next/image';
 import { RoomFinder } from '@/components/RoomBooking';
 import { SiteHeader } from '@/components/SiteHeader';
+import { fetchRoomPhotos } from '@/lib/bookingcenter-api';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
@@ -17,7 +18,11 @@ export const metadata: Metadata = {
 
 const GALLERY = [photos.kingRoom, photos.roomBearQuilt, photos.roomPlaidQuilt, photos.balconySnowyRiver, photos.roomSnowshoes, photos.balconyChairs];
 
-export default function RoomsPage() {
+// Room photos from BookingCenter are refreshed hourly, and the page still works without them.
+export const revalidate = 3600;
+
+export default async function RoomsPage() {
+  const roomPhotos = await fetchRoomPhotos();
   return (
     <>
       <JsonLd data={breadcrumbSchema('Rooms', '/stay/rooms')} />
@@ -56,7 +61,7 @@ export default function RoomsPage() {
       <section className="section bg-frost" aria-labelledby="types-h">
         <div className="container stack" style={{ gap: 28 }}>
           <h2 id="types-h" className="serif h-m">Choose your dates and room</h2>
-          <RoomFinder />
+          <RoomFinder photos={roomPhotos} />
         </div>
       </section>
 

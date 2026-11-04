@@ -383,3 +383,21 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 /* ---------- The Wall, embedded on History ---------- */
 .wall-embed { display: block; width: 100%; height: clamp(520px, 82svh, 900px); border: 0; border-radius: 6px; background: #14110e; }
 @media (max-width: 760px) { .wall-embed { height: 74svh; min-height: 460px; } }
+
+/* ---------- live room rates ---------- */
+.live-test { margin: 0; padding: 8px 12px; border-radius: 3px; background: #fbe9d0; color: var(--navy); font-size: 14px; font-weight: 700; }
+.live-rate { display: flex; flex-direction: column; gap: 4px; }
+.live-rate p { margin: 0; }
+.live-rate__price { font-size: 16px; color: var(--navy); }
+.live-rate__price b { font-size: 22px; }
+.live-rate__sub { font-size: 14px; color: var(--slate); }
+.live-rate__policy { font-size: 14px; color: var(--slate); }
+.live-rate__policy summary, .room-photos summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; font-weight: 600; font-size: 14px; }
+.live-rate__policy p { margin-top: 6px; line-height: 1.5; }
+.live-list { display: flex; flex-direction: column; gap: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.live-list__room { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.live-list__room + .live-list__room { padding-top: 18px; border-top: 1px solid var(--line); }
+.live-list__name { margin: 0; font-family: var(--font-serif), Georgia, serif; font-size: 24px; line-height: 1.15; color: var(--navy); }
+.live-list__all { font-size: 14px; font-weight: 600; color: var(--navy); }
+.room-photos__strip { display: flex; gap: 10px; overflow-x: auto; padding: 6px 0; }
+.space .room-photos__strip img { flex: none; width: 240px; height: 180px; aspect-ratio: auto; }
