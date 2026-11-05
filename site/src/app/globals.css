@@ -60,7 +60,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .bg-frost { background: transparent; }
 .season-wash { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .season-wash img { object-fit: cover; }
-.season-wash::after { content: ''; position: absolute; inset: 0; background: rgba(244, 247, 246, 0.88); }
+.season-wash::after { content: ''; position: absolute; inset: 0; background: rgba(244, 247, 246, 0.85); }
 .on-night { background: var(--night); color: var(--cream); }
 /* Photos framed like prints, in the section's frame color (paper outside Dine and Celebrate). */
 .rounded { border: clamp(6px, 0.6vw, 10px) solid var(--frame, var(--paper)); border-radius: 3px; box-shadow: 0 26px 56px -12px rgba(8, 14, 20, 0.34), 0 4px 10px rgba(8, 14, 20, 0.12); }

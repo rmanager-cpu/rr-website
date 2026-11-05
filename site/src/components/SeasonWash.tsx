@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 
 // Each section of the site has its own ski photo; anything else falls back to the slopes.
 const washFor = (path: string) => {
-  if (path.startsWith('/dine')) return '/photos/home/wash-gondola.jpg';
-  if (path.startsWith('/celebrate')) return '/photos/home/wash-skier.jpg';
+  if (path.startsWith('/stay')) return '/photos/home/wash-gondola.jpg';
+  if (path.startsWith('/dine')) return '/photos/home/wash-skier.jpg';
   return '/photos/home/wash-slopes.jpg';
 };
 
