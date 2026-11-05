@@ -51,6 +51,15 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
 - Lead source tracking: forms carry UTM/source so the events app can report what worked.
 
 ## Blockers to start on early
+- **DECIDED 2026-11-03: launch on a new domain.** The site no longer waits on riverranchlodge.com. Popmenu
+  stays paid as infrastructure and redirects the old site to the new domain. Alex keeps pursuing ownership
+  of the old domain and decides in about three months whether the new one is permanent. Email stays on
+  @riverranchlodge.com. Status of the old domain: nameservers and mail records restored 2026-11-03, registry
+  expiry 2029-10-27, still no login to the Network Solutions account or the AWS DNS account.
+- **UPDATE 2026-11-04: riverranchlodge.com is back.** The previous holder released it; DNS now runs on
+  Cloudflare (records copied from the old AWS zone, all "DNS only"), and a transfer to Cloudflare Registrar
+  was requested 2026-11-05. So the new-domain plan above is likely moot: the new site launches on
+  www.riverranchlodge.com when it's ready.
 - **URGENT: riverranchlodge.com EXPIRES 2026-10-27** (registry, checked 2026-10-16). Registrar: Network
   Solutions (registered since 1998); DNS on AWS Route 53; the site runs on Popmenu. If it lapses, the
   website AND company email (Google Workspace) stop. Alex to confirm renewal / auto-renew and find who
