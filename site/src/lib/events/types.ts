@@ -14,6 +14,9 @@ export const CATEGORY_LABEL: Record<Category, string> = {
 export const LAYOUTS = ['standard', 'apres', 'collage'] as const;
 export type Layout = (typeof LAYOUTS)[number];
 
+/** A link to another site, shown on the event's page. */
+export type EventLink = { label: string; url: string };
+
 /** An event's page. Every event series has exactly one; recurring events share it. */
 export type EventPage = {
   id: string;
@@ -21,7 +24,9 @@ export type EventPage = {
   title: string;
   summary: string | null;
   body: string | null;
-  heroImage: string | null;
+  heroImage: string | null; // the first of photos
+  photos: string[];
+  links: EventLink[];
   layout: Layout;
   updatedAt: string;
 };
@@ -45,6 +50,7 @@ export type EventSeries = {
   location: string | null;
   note: string | null;
   ticketUrl: string | null;
+  highlighted: boolean;
   // Venio feed
   closedPrivate: boolean;
   closedRegular: boolean;

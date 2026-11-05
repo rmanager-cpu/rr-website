@@ -103,6 +103,13 @@ function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSe
               {s?.ticketUrl && <a href={s.ticketUrl} className="btn btn--amber" rel="noopener">Get tickets</a>}
               {!s?.offsite && <a href={business.links.reserveTable} className="btn btn--navy" rel="noopener">Reserve a table</a>}
             </div>
+            {page.links.length > 0 && (
+              <ul className="stack" style={{ gap: 10, listStyle: 'none', margin: 0, padding: 0 }}>
+                {page.links.map((l) => (
+                  <li key={l.url}><a href={l.url} className="arrow-link" rel="noopener">{l.label} →</a></li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="side">
             {flyer ? (
@@ -110,6 +117,13 @@ function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSe
             ) : page.heroImage ? (
               <Image src={page.heroImage} alt={`${page.title} at River Ranch`} width={1800} height={1200} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto' }} />
             ) : null}
+            {page.photos.length > 1 && (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 10 }}>
+                {page.photos.slice(1).map((src, i) => (
+                  <Image key={src} src={src} alt={`${page.title} at River Ranch, photo ${i + 2}`} width={600} height={450} sizes="(max-width: 900px) 50vw, 200px" className="rounded" style={{ width: '100%', height: 'auto', aspectRatio: '4 / 3', objectFit: 'cover' }} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
