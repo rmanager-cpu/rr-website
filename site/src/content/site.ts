@@ -32,7 +32,6 @@ export const business = {
     // Our date picker, which hands off to BookingCenter with the dates applied (lib/bookingcenter.ts).
     bookRoom: '/stay#book',
     theWall: 'https://the-wall-river-ranch.vercel.app',
-    skiButlers: 'https://www.skibutlers.com/portal/riverranchlodge',
     palisades: 'https://www.palisadestahoe.com',
   },
   rooms: 19,

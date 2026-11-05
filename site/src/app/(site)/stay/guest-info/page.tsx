@@ -62,7 +62,7 @@ export default function GuestInfoPage() {
           <span className="eyebrow">Out the door</span>
           <h2 id="nearby-h" className="serif h-m">What’s nearby</h2>
           <ul className="list-dots" style={{ maxWidth: '68ch' }}>
-            <li><strong>Skiing:</strong> <a href={business.links.palisades} rel="noopener">Palisades Tahoe</a> is minutes up the road. <a href={business.links.skiButlers} rel="noopener">Ski Butlers</a> delivers rentals to your room, with 10% off for our guests. See <Link href="/stay/packages">Ski &amp; Stay</Link>.</li>
+            <li><strong>Skiing:</strong> <a href={business.links.palisades} rel="noopener">Palisades Tahoe</a> is minutes up the road. See<Link href="/stay/packages">Ski &amp; Stay</Link>.</li>
             <li><strong>Rafting:</strong> float the Truckee from Tahoe City and finish on our patio, May to September, weather permitting.</li>
             <li><strong>Biking:</strong> the paved river trail runs past the lodge, about 3.5 miles each way to Tahoe City.</li>
           </ul>

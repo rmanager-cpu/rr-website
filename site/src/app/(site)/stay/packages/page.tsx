@@ -11,7 +11,7 @@ import { StayBook } from '../StayBook';
 export const metadata: Metadata = {
   title: 'Ski & Stay Packages near Palisades Tahoe',
   description:
-    'Ski & stay at the closest lodging to Palisades Tahoe’s Alpine Meadows base: rooms on the Truckee River, ski lockers, rentals delivered to your room by Ski Butlers, and happy hour at the round bar after the lifts close.',
+    'Ski & stay at the closest lodging to Palisades Tahoe’s Alpine Meadows base: rooms on the Truckee River, ski lockers, and happy hour at the round bar after the lifts close.',
   alternates: { canonical: '/stay/packages' },
 };
 
@@ -41,7 +41,6 @@ export default function PackagesPage() {
               <p>We’re on the Truckee River between Tahoe City and the mountain, and <a href={business.links.palisades} rel="noopener">Palisades Tahoe</a> is minutes up the road.</p>
             </div>
             <dl className="facts">
-              <div><dt>Rentals</dt><dd><a href={business.links.skiButlers} rel="noopener">Ski Butlers</a> delivers to your room, with 10% off for our guests</dd></div>
               <div><dt>Ski lockers</dt><dd>In winter. Skis and boards stay out of the rooms.</dd></div>
               <div><dt>Breakfast</dt><dd>Grab-and-go for hotel guests when occupancy allows; full breakfast {hours.breakfast.days}, {hours.breakfast.time}</dd></div>
               <div><dt>Après</dt><dd>{hours.happyHour.label} {hours.happyHour.days}, {hours.happyHour.time}, at the bar</dd></div>
