@@ -218,7 +218,8 @@ Checks: the Markham line is confirmed in his book California the Wonderful (1914
 | An annual Summer Concert Series was running by June 2011 (Zepparella, Great American Taxi) | Sierra Sun, June 20, 2011; Moonshine Ink, 2012 (Renegade Productions); 2017 listing |
 | Live bands played River Ranch by 1997: Leftover Salmon (July 9, 1997), String Cheese Incident (Aug. 27, 1997), Garaj Mahal (2002), Umphrey's McGee (July 2, 2003), Tea Leaf Green (2004, "River Ranch Patio"), Hot Buttered Rum (2006) | Recordings on the Internet Archive Live Music Archive; etree for Leftover Salmon; the Umphrey's fan database for 2003; Songkick |
 | Moonalice, Melvin Seals & JGB and Zepparella played in 2012 | Renegade Productions lineup announcement; Songkick |
-| The series sat out the pandemic, came back in 2025, and ran again in 2026 | Tahoe.com; management, first hand |
+| The series sat out the pandemic, came back in 2025, and ran again in 2026 | Tahoe.com (June 11, 2026: "the first year River Ranch brought its live concert series back since the Covid pandemic"); management, first hand |
+| The comeback is backed by the North Tahoe Community Alliance's Event Funding Sponsorship (2026 contract for "River Ranch: Patio Concert Series") | Office inbox. NTCA's visitor brand was Go Tahoe North; it became Lake Tahoe Travel on Oct. 1, 2025, and gotahoenorth.com now redirects to laketahoetravel.com. The 2025 funding is per management; only the 2026 contract is in the inbox |
 
 **Good but not airtight**
 
@@ -226,6 +227,7 @@ Checks: the Markham line is confirmed in his book California the Wonderful (1914
 |---|---|
 | Grand opening as River Ranch, Sunday, November 22, 1964 | The year is inferred, now strongly. The ad says Sunday, Nov. 22, at the entrance to Alpine Meadows (opened 1961); Nov. 22 was a Sunday in 1964 and 1970; Time said in July 1965 that it "opened only one year ago"; the governor's letter says River Ranch in March 1965. The newspaper date at the top of the ad should settle it, but it's unreadable in the current photo |
 | Deer Park Lodge, built in the thirties, stood on the River Ranch site; the Deer Park Inn was its predecessor | Bon Appetit, 1966; Palisades Tahoe (2021) agrees. Not checked against deeds or old local papers |
+| A summer concert series since about 1993 | Lake Tahoe News, June 15, 2010: "River Ranch Lodge has its 18th Annual Under the Stars Concert Series ... beginning June 24." One listing, probably from the lodge's own release, and the count assumes no skipped years. It does mean Renegade (2012) didn't start the series |
 | Time magazine named River Ranch to its list of best resorts, July 1965 | Quoted in Bon Appetit, 1966, and on the old site as "top 10, 1967," whose wording and year look garbled. Check Time's archive |
 
 **Lore: only the lodge's own telling, or press repeating it**
@@ -248,6 +250,7 @@ Checks: the Markham line is confirmed in his book California the Wonderful (1914
 - 1980s: patio and second dining room built (Sierra Sun, 2013); Riverview Room added 1986 (Moonshine Ink, 2012).
 - 1982: after the avalanche closed Highway 89, one employee cooked and served dinner alone and customers bussed their own tables (Moonshine Ink, 2012).
 - About 1989: snow sculpture contest begins; inferred, since a 2020 listing calls it the 32nd annual (Visit Tahoe City).
+- About 1993: the Under the Stars Concert Series begins; inferred, since 2010 was the 18th annual (Lake Tahoe News).
 - About 2004: Truckee Duckee Derbee begins; inferred, since 2010 was the seventh (Lake Tahoe News).
 - 2024: Alpine Meadows alumni reunion on the patio, with live '80s music (Palisades Tahoe).
 - May 2000: the patio already hosts weddings and receptions, up to 150 guests (archived site).
