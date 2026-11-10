@@ -1,0 +1,139 @@
+/* Celebrate (/celebrate, /celebrate/weddings, /celebrate/spaces, /celebrate/plan) in Fireside.
+   Bands, type, buttons, frames, rows and fields come from globals.css; this file only adds the page
+   blocks. Everything here is prefixed cel- so nothing leaks into other pages. Light surfaces are snow
+   white or frost, never cream. */
+
+/* ---------- page heroes ---------- */
+.cel-hero .page-hero__media > img { object-position: 50% 30%; filter: brightness(0.82) saturate(0.95); }
+.cel-hero--bright .page-hero__media > img { object-position: 50% 60%; filter: brightness(0.74) saturate(0.95); }
+.cel-hero--night .page-hero__media > img { object-position: 50% 50%; filter: brightness(0.8); }
+@media (max-width: 700px) {
+  .cel-hero .page-hero__media > img { object-position: 66% 26%; filter: brightness(0.7) saturate(0.95); }
+}
+
+/* ---------- aperture: the aerial photo opens from a slit to full bleed as you scroll in (Aperture.tsx) ---------- */
+.cel-ap { position: relative; display: grid; place-items: center; min-height: min(104vh, 980px); padding: var(--section) 0; overflow: hidden; isolation: isolate; text-align: center; }
+.cel-ap__media { position: absolute; inset: 0; z-index: 0; will-change: clip-path; }
+.cel-ap__media > img { object-fit: cover; object-position: 50% 55%; filter: brightness(0.42) saturate(0.8) sepia(0.12); will-change: transform; }
+.cel-ap__media::after { content: ''; position: absolute; inset: 0; background: radial-gradient(90% 70% at 50% 50%, rgba(14, 13, 11, 0.25) 0%, rgba(14, 13, 11, 0.78) 100%); }
+.cel-ap__copy { position: relative; z-index: 3; display: grid; gap: 24px; justify-items: center; width: 100%; max-width: calc(980px + var(--gutter) * 2); padding-inline: var(--gutter); }
+.cel-ap__copy > * { margin: 0; }
+.cel-ap__copy .lede { max-width: 30em; }
+.cel-ap .chip-row { justify-content: center; margin-top: 6px; }
+.cel-ap .chip--plain { color: var(--cream); border-color: rgba(239, 230, 214, 0.3); }
+
+/* ---------- the four spaces: the hovered or focused row wipes its photo onto the stage (SpacePicker.tsx) ---------- */
+.cel-spaces { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: clamp(32px, 5.5vw, 96px); align-items: start; }
+.cel-spaces__list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--fg); }
+.cel-space { border-bottom: 1px solid var(--rule); }
+.cel-space__head { position: relative; display: grid; gap: 12px; justify-items: start; padding: clamp(22px, 2.6vw, 38px) 0; opacity: 0.42; transition: opacity 900ms var(--ease), transform 1100ms var(--ease); }
+.cel-space__head > * { margin: 0; }
+.cel-space__name { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 5vw, 4.7rem); line-height: 0.94; letter-spacing: -0.02em; }
+.cel-space__name button { padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
+/* the whole row is the hit area */
+.cel-space__name button::after { content: ''; position: absolute; inset: 0; }
+.cel-space__name em { font-style: italic; transition: color 900ms var(--ease); }
+.cel-space__note { max-width: 30em; font-size: 1.05rem; line-height: 1.55; color: var(--muted); }
+.cel-space.is-active .cel-space__head { opacity: 1; transform: translateX(12px); }
+.cel-space.is-active .cel-space__name em { color: var(--accent); }
+.cel-space__photo { display: none; }
+.cel-spaces__more { margin: clamp(26px, 3vw, 40px) 0 0; }
+.cel-spaces__stage { position: sticky; top: calc(var(--header-h) + 24px); }
+.cel-spaces__screen { position: relative; aspect-ratio: 4 / 5; max-height: calc(100vh - var(--header-h) - 96px); width: 100%; overflow: hidden; background: var(--bark); box-shadow: 0 40px 100px rgba(20, 17, 14, 0.22); }
+.cel-spaces__screen > img { object-fit: cover; clip-path: inset(100% 0 0 0); z-index: 0; }
+.cel-spaces__screen > img.is-prev { clip-path: inset(0 0 0 0); z-index: 1; }
+.cel-spaces__screen > img.is-active { clip-path: inset(0 0 0 0); z-index: 2; transition: clip-path 1300ms var(--ease); }
+.cel-spaces__cap { display: flex; justify-content: space-between; gap: 16px; margin: 14px 0 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 860px) {
+  .cel-spaces { grid-template-columns: minmax(0, 1fr); }
+  .cel-spaces__stage { display: none; }
+  .cel-space__head { opacity: 1; padding-bottom: 20px; }
+  .cel-space.is-active .cel-space__head { transform: none; }
+  .cel-space__name em { color: var(--accent); }
+  .cel-space__name button { cursor: default; }
+  .cel-space__photo { display: block; margin-bottom: 26px; }
+}
+
+/* a little more air before a list of rows or a button row inside a text stack */
+.cel-stack > .rows, .cel-stack > .fl-facts { margin-top: 2.4rem; }
+.cel-stack > .btn-row { margin-top: 2.2rem; }
+
+/* ---------- weddings (dark) ---------- */
+.cel-wed .frame--arch { max-width: 520px; width: 100%; justify-self: center; }
+.cel-wed .frame--arch > img { object-position: 42% 50%; }
+.cel-rows2 > li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); padding: 18px 0; }
+.cel-rows2 .row__title { font-size: clamp(1.35rem, 1.9vw, 1.75rem); }
+@media (max-width: 720px) { .cel-rows2 > li { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- dinners and parties (ember) ---------- */
+.cel-parties > li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); padding: 22px 0; }
+.cel-party__body { display: grid; gap: 14px; justify-items: start; }
+.cel-party__body > * { margin: 0; }
+.cel-parties .row__note { color: var(--muted); }
+@media (max-width: 720px) { .cel-parties > li { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- gallery (a drag row) ---------- */
+.cel-gal-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; margin-bottom: clamp(32px, 4vw, 56px); }
+.cel-gal-head > div > * + * { margin-top: 14px; }
+.cel-gal-hint { display: inline-flex; align-items: center; gap: 14px; }
+.cel-gal-hint::after { content: ''; width: 56px; height: 1px; background: var(--amber); }
+.cel-gallery .drag-gallery__track { align-items: flex-end; }
+.cel-gallery .frame > img { object-fit: cover; }
+
+/* ---------- three steps (frost): a rule draws over each step as it rises in ---------- */
+.cel-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3.4vw, 56px); margin: 0; padding: 0; list-style: none; }
+.cel-step { position: relative; display: grid; gap: 14px; align-content: start; padding-top: 30px; }
+.cel-step > * { margin: 0; }
+.cel-step::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--fg); transform-origin: left; transition: transform 1500ms var(--ease) var(--d, 0ms); }
+html.fl-motion .cel-step:not([data-revealed])::before { transform: scaleX(0); }
+.cel-step__when { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.2rem, 6vw, 5.6rem); line-height: 0.9; color: var(--accent); }
+.cel-step__what { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.08; }
+@media (max-width: 860px) { .cel-steps { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
+
+/* ---------- FAQ (snow) ---------- */
+.cel-faq { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+@media (max-width: 860px) { .cel-faq { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- plan (dark): contact and the calendar spot beside a bark panel ---------- */
+.cel-plan__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
+.cel-plan__side { display: grid; gap: 26px; }
+.cel-plan__side > * { margin: 0; }
+.cel-mail { display: inline-block; padding-bottom: 4px; border-bottom: 1px solid var(--rule); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.2; color: var(--fg); text-decoration: none; overflow-wrap: anywhere; transition: color var(--quick) var(--ease), border-color var(--quick) var(--ease); }
+.cel-mail:hover { color: var(--amber); border-color: var(--amber); }
+.cel-contact a { color: var(--fg); }
+.cel-contact a:hover { color: var(--amber); }
+.cel-slot { min-height: 300px; gap: 10px; align-content: center; }
+.cel-slot small { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
+.cel-slot__label { margin: 0 0 12px; }
+.cel-kinds { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.cel-kinds a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.15; color: var(--fg); text-decoration: none; transition: color var(--quick) var(--ease); }
+.cel-kinds a span { transition: transform 900ms var(--ease); }
+.cel-kinds a::after { content: ''; flex: none; width: 28px; height: 1px; background: currentColor; transform-origin: right; transition: transform 900ms var(--ease); }
+.cel-kinds a:hover { color: var(--amber); }
+.cel-kinds a:hover span { transform: translateX(10px); }
+.cel-kinds a:hover::after { transform: scaleX(1.7); }
+@media (max-width: 860px) { .cel-plan__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- plan page: copy and the calendar spot left, the planner right; on phones the planner
+   comes straight after the headline ---------- */
+.cel-planpage__grid { grid-template-areas: 'copy form' 'cal form'; grid-template-rows: auto 1fr; row-gap: 40px; }
+.cel-planpage__copy { grid-area: copy; }
+.cel-planpage__form { grid-area: form; }
+.cel-planpage__cal { grid-area: cal; align-self: start; }
+.cel-planpage .planner__note a { color: var(--amber); }
+@media (min-width: 721px) { .cel-planpage .planner > .btn { align-self: flex-start; } }
+@media (max-width: 860px) { .cel-planpage__grid { grid-template-areas: 'copy' 'form' 'cal'; } }
+
+/* ---------- wedding day cards (ember) ---------- */
+.cel-day .card__title { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
+
+/* ---------- spaces page: one row per space (components/SpaceGrid.tsx) ---------- */
+.cel-rooms { display: grid; gap: clamp(72px, 10vw, 150px); }
+.cel-room .frame { aspect-ratio: 4 / 3.2; }
+.cel-room .frame > img { object-fit: cover; }
+.cel-room__body { display: grid; gap: 20px; align-content: center; justify-items: start; }
+.cel-room__body > * { margin: 0; }
+.cel-room__num { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.2rem, 6vw, 5.6rem); line-height: 0.9; color: var(--accent); }
+.cel-room .fl-facts { width: 100%; }
+.cel-room__ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3.2; border: 1px dashed var(--amber); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.cel-aerial__cap { margin: 18px 0 0; }

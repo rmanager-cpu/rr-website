@@ -65,9 +65,9 @@ export const sections: Section[] = [
     tabs: [
       { href: '/stay/rooms', label: 'Rooms' },
       { href: '/stay/packages', label: 'Packages' },
-      { href: '/stay/guest-info', label: 'Guest Info' },
+      { href: '/stay/guest-info', label: 'Guest info' },
     ],
-    action: { href: business.links.bookRoom, label: 'Book a Room' },
+    action: { href: business.links.bookRoom, label: 'Book a room' },
   },
   {
     key: 'dine',
@@ -78,7 +78,7 @@ export const sections: Section[] = [
       { href: '/dine/wine', label: 'Wine' },
       { href: '/dine/happening', label: 'Happening' },
     ],
-    action: { href: business.links.reserveTable, label: 'Reserve a Table' },
+    action: { href: business.links.reserveTable, label: 'Reserve a table' },
   },
   {
     key: 'celebrate',
@@ -89,14 +89,14 @@ export const sections: Section[] = [
       { href: '/celebrate/spaces', label: 'Spaces' },
       { href: '/celebrate/plan', label: 'Plan' },
     ],
-    action: { href: '/celebrate/plan', label: 'Plan Your Event' },
+    action: { href: '/celebrate/plan', label: 'Plan your event' },
   },
 ];
 
 /** The shared pages: the header's “More” menu and the footer. */
 export const sharedNav: NavItem[] = [
   { href: '/history', label: 'History' },
-  { href: '/loyalty-and-gift-cards', label: 'Loyalty & Gift Cards' },
+  { href: '/loyalty-and-gift-cards', label: 'Loyalty & gift cards' },
   { href: '/careers', label: 'Careers' },
   { href: '/visit', label: 'Visit' },
 ];

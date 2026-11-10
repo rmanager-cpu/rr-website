@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { hoursText, MenuTabs, MenuView } from '@/components/menus/MenuView';
 import { SiteHeader } from '@/components/SiteHeader';
@@ -32,18 +33,23 @@ export default async function MenuPage({ params }: { params: { slug: string } })
       <JsonLd data={breadcrumbSchema(`${menu.name} menu`, `/dine/menus/${menu.slug}`)} />
       <JsonLd data={menuSchema(menu)} />
       <SiteHeader />
-      <section className="section" style={{ paddingBottom: 20 }}>
-        <div className="container stack" style={{ gap: 20 }}>
-          <span className="eyebrow">Menus</span>
-          <h1 className="sr-only">{menu.name} menu at River Ranch, Tahoe City</h1>
-          <MenuTabs menus={menus} current={menu.slug} />
-        </div>
-      </section>
-      <section className="section" style={{ paddingTop: 10 }}>
-        <div className="container">
-          <MenuView menu={menu} />
-        </div>
-      </section>
+      <div className="mn-page">
+        <section className="section section--tight section--snow mn-page__top">
+          <div className="container mn-page__head">
+            <div className="mn-page__crumbs">
+              <p className="label label--accent" data-reveal>Menus</p>
+              <Link href="/dine/menus" className="link-arrow" data-reveal>All the menus</Link>
+            </div>
+            <h1 className="sr-only">{menu.name} menu at River Ranch, Tahoe City</h1>
+            <MenuTabs menus={menus} current={menu.slug} />
+          </div>
+        </section>
+        <section className="section section--frost mn-page__body">
+          <div className="container" data-reveal="fade">
+            <MenuView menu={menu} />
+          </div>
+        </section>
+      </div>
     </>
   );
 }

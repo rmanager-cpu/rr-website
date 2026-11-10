@@ -1,0 +1,139 @@
+/* The home page: the First Light hero (kept as the owner loves it), then Fireside
+   (concepts/fireside/index.html): The Week, the river cam, three doors, the wine and The Wall.
+   Every class starts with hm- so nothing leaks into the rest of the site. */
+
+/* ---------- hero: one scroll value (--p, 0 to 1) drives every layer ---------- */
+.hm-hero { --p: 0; --o: 0; position: relative; height: 240vh; height: 240svh; }
+.hm-hero__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; color: var(--paper); }
+/* The picture itself. Its bottom fades out at the end (--o) to show the season photo behind the page. */
+.hm-hero__scene {
+  position: absolute; inset: 0; overflow: hidden; background: var(--night);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, calc(1 - var(--o))) 0%, rgba(0, 0, 0, calc(1 - var(--o) * 0.9)) 11%, rgba(0, 0, 0, calc(1 - var(--o) * 0.5)) 26%, #000 46%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, calc(1 - var(--o))) 0%, rgba(0, 0, 0, calc(1 - var(--o) * 0.9)) 11%, rgba(0, 0, 0, calc(1 - var(--o) * 0.5)) 26%, #000 46%);
+}
+.hm-hero__photo { position: absolute; inset: -3% 0; transform: translate3d(0, calc(var(--p) * -5%), 0) scale(1.15); filter: brightness(calc(0.74 + var(--p) * 0.4)) saturate(calc(0.72 + var(--p) * 0.5)) sepia(calc(var(--p) * 0.16)); will-change: transform, filter; }
+.hm-hero__photo img { object-fit: cover; object-position: 46% 64%; }
+.hm-hero__night { position: absolute; inset: 0; background: linear-gradient(180deg, #0b1626 0%, #1a2f52 58%, #12213a 100%); mix-blend-mode: multiply; opacity: calc(0.7 - var(--p) * 1); }
+.hm-hero__glow { position: absolute; inset: 0; background: radial-gradient(30% 9% at 47% 71%, rgba(242, 178, 74, 0.5), rgba(233, 162, 59, 0) 72%), radial-gradient(14% 8% at 68% 59%, rgba(242, 178, 74, 0.4), rgba(233, 162, 59, 0) 72%); mix-blend-mode: screen; opacity: calc(0.8 - var(--p) * 1.3); }
+.hm-hero__dawn {
+  position: absolute; left: -10%; right: -10%; bottom: 24%; height: 80%; transform-origin: 50% 100%;
+  transform: translate3d(0, calc((1 - var(--p)) * 46%), 0) scaleY(calc(0.4 + var(--p) * 0.6)); opacity: calc(var(--p) * 1.25 - 0.06); mix-blend-mode: screen;
+  background: linear-gradient(to top, rgba(242, 192, 120, 0) 0%, rgba(242, 192, 120, 0.78) 20%, rgba(236, 160, 128, 0.56) 42%, rgba(232, 183, 160, 0.26) 68%, rgba(232, 183, 160, 0) 100%);
+}
+.hm-hero__sky { position: absolute; inset: 0 0 45% 0; background: linear-gradient(180deg, rgba(15, 27, 45, 0.78) 0%, rgba(28, 47, 74, 0.36) 55%, rgba(28, 47, 74, 0) 100%); opacity: calc(1 - var(--p) * 0.45); }
+.hm-hero__snow { position: absolute; top: -6%; left: 0; width: 100%; height: 112%; pointer-events: none; opacity: calc(1 - var(--p) * 0.55); }
+.hm-hero__snow--far { transform: translate3d(0, calc(var(--p) * -3%), 0); }
+.hm-hero__snow--near { transform: translate3d(0, calc(var(--p) * -9%), 0); filter: blur(2.2px); }
+
+.hm-hero__copy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(108px, 17vh, 170px) var(--gutter) 0; transform: translate3d(0, calc(var(--p) * -5vh), 0); }
+.hm-hero__whisper { position: relative; width: 100%; height: 1.6em; margin: 0 0 clamp(10px, 2vh, 22px); font-size: clamp(0.98rem, 1.3vw, 1.15rem); font-weight: 500; letter-spacing: 0.02em; color: rgba(247, 249, 250, 0.86); text-shadow: 0 1px 2px rgba(15, 27, 45, 0.5), 0 2px 18px rgba(15, 27, 45, 0.6); }
+.hm-hero__whisper span { position: absolute; left: 0; right: 0; top: 0; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease); }
+.hm-hero__whisper .is-day { opacity: 0; transform: translateY(12px); color: #ffe2ad; font-weight: 600; }
+.hm-hero.is-waking .hm-hero__whisper .is-night { opacity: 0; transform: translateY(-12px); }
+.hm-hero.is-morning .hm-hero__whisper .is-day { opacity: 1; transform: none; }
+/* The name in Fireside's wordmark: Instrument Serif, "Ranch" in italic amber like the header and footer. */
+.hm-hero__name { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: var(--fs-display); line-height: 0.92; letter-spacing: -0.03em; text-shadow: 0 2px 40px rgba(15, 27, 45, 0.5); animation: fl-rise var(--slower) var(--ease) both; }
+.hm-hero__name em { font-style: italic; color: var(--amber); }
+.hm-hero__sub { margin: clamp(14px, 2.4vh, 26px) 0 0; font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--paper); text-shadow: 0 0 1px rgba(15, 27, 45, 0.8), 0 1px 3px rgba(15, 27, 45, 0.7), 0 2px 18px rgba(15, 27, 45, 0.85); animation: fl-rise var(--slower) var(--ease) 160ms both; }
+
+/* The buttons arrive with the morning. Without JS (see the page's <noscript>), or when one of them gets
+   keyboard focus, they simply show. */
+.hm-hero__actions { position: absolute; left: 0; right: 0; bottom: clamp(44px, 11vh, 120px); display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; padding-inline: var(--gutter); }
+.hm-hero__actions .btn { opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease), background-color var(--quick) var(--ease), box-shadow var(--quick) var(--ease); }
+.hm-hero.is-morning .hm-hero__actions .btn, .hm-hero__actions:focus-within .btn { opacity: 1; transform: none; pointer-events: auto; }
+.hm-hero.is-morning .hm-hero__actions .btn:nth-child(2) { transition-delay: 120ms, 120ms, 0s, 0s; }
+.hm-hero.is-morning .hm-hero__actions .btn:nth-child(3) { transition-delay: 240ms, 240ms, 0s, 0s; }
+.hm-hero.is-morning .hm-hero__actions .btn:hover { transform: translateY(-2px); }
+.hm-hero__cue { position: absolute; left: 0; right: 0; bottom: 34px; display: grid; justify-items: center; gap: 12px; font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(247, 249, 250, 0.78); transition: opacity var(--slow) var(--ease); }
+.hm-hero__cue i { display: block; width: 1px; height: 44px; background: linear-gradient(var(--gold), rgba(242, 192, 120, 0)); transform-origin: top; animation: hm-cue 2800ms var(--ease) infinite; }
+.hm-hero.is-waking .hm-hero__cue { opacity: 0; }
+@keyframes hm-cue { 0% { transform: scaleY(0); opacity: 0; } 35% { opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+@media (max-width: 640px) {
+  .hm-hero__photo img { object-position: 44% 60%; }
+  .hm-hero__actions { flex-direction: column; align-items: center; bottom: clamp(36px, 8vh, 80px); }
+  .hm-hero__actions .btn { width: min(100%, 290px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hm-hero__name, .hm-hero__sub { animation: none; }
+}
+
+/* ---------- Coming up ----------
+   A plain see-through section: the hero's morning fades into the Palisades wash, and the wash settles
+   into solid snow white a little way down. Up to three event cards, picked by staff in the editor. */
+.hm-next { background: linear-gradient(180deg, rgba(247, 249, 250, 0) 0, var(--snow) clamp(380px, 56vh, 620px)); }
+.hm-next__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 40px; margin-bottom: clamp(32px, 4.5vw, 64px); }
+.hm-next__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 36px); margin: 0; padding: 0; list-style: none; }
+.hm-next__card { display: grid; gap: 18px; height: 100%; color: var(--ink); text-decoration: none; }
+a.hm-next__card:hover { color: var(--ink); }
+.hm-next__photo { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--bark); }
+.hm-next__photo img { object-fit: cover; transition: transform 1600ms var(--ease), filter 1200ms var(--ease); }
+a.hm-next__card:hover .hm-next__photo img { transform: scale(1.05); filter: brightness(1.06); }
+.hm-next__date { position: absolute; left: 0; bottom: 0; z-index: 2; display: grid; justify-items: center; min-width: 92px; padding: 12px 16px 10px; background: var(--snow); color: var(--ink); }
+.hm-next__date b { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: 3.2rem; line-height: 0.9; letter-spacing: -0.02em; }
+.hm-next__date span { margin-top: 4px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+.hm-next__body { display: grid; gap: 10px; justify-items: start; align-content: start; }
+.hm-next__body .label { color: var(--muted); }
+.hm-next__title { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.9rem, 2.6vw, 2.6rem); line-height: 1.02; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 900ms var(--ease), color 500ms var(--ease); }
+a.hm-next__card:hover .hm-next__title { background-size: 100% 1px; color: var(--red); }
+.hm-next__line { font-size: 0.98rem; line-height: 1.5; color: var(--muted); }
+@media (max-width: 860px) {
+  .hm-next__grid { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+  .hm-next__photo { aspect-ratio: 16 / 11; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hm-next__photo img, .hm-next__title { transition: none; }
+}
+
+/* ---------- the river cam (the frame itself is components/river-cam.css) ---------- */
+.hm-cam { margin-top: clamp(64px, 9vw, 140px); }
+.hm-cam__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-bottom: clamp(24px, 3vw, 36px); }
+.hm-hours { display: grid; width: min(100%, 420px); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); font-size: 0.92rem; }
+.hm-hours li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.hm-hours li span:first-child { flex: none; padding-top: 3px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.hm-hours li span:last-child { text-align: right; }
+
+/* ---------- three doors ---------- */
+.hm-doors { position: relative; }
+.hm-doors__head { display: grid; gap: 14px; justify-items: start; padding-block: var(--section) clamp(36px, 5vw, 64px); }
+.hm-doors__row { position: relative; display: flex; height: min(92vh, 920px); min-height: 560px; background: var(--char); }
+.hm-door { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; display: flex; align-items: flex-end; color: var(--cream); text-decoration: none; border-left: 1px solid rgba(239, 230, 214, 0.14); transition: flex-grow 1200ms var(--ease); }
+.hm-door:first-child { border-left: 0; }
+.hm-door:hover { color: var(--cream); }
+.hm-door > img { object-fit: cover; filter: brightness(0.5) saturate(0.85); transform: scale(1.1); transition: transform 1600ms var(--ease), filter 1400ms var(--ease); }
+.hm-door--stay > img { object-position: 66% 50%; }
+.hm-door::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(14, 13, 11, 0.92) 0%, rgba(14, 13, 11, 0.15) 55%, rgba(14, 13, 11, 0.35) 100%); }
+.hm-door__body { position: relative; z-index: 3; width: 100%; padding: clamp(22px, 2.6vw, 40px); }
+.hm-door__num { display: block; margin-bottom: 14px; color: rgba(239, 230, 214, 0.7); white-space: nowrap; }
+.hm-door__word { display: block; font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.4rem, 5.3vw, 5.8rem); line-height: 0.9; letter-spacing: -0.02em; transition: color 900ms var(--ease); }
+.hm-door__line { display: block; max-width: 24em; margin-top: 16px; font-size: 1.05rem; line-height: 1.5; color: rgba(239, 230, 214, 0.88); }
+.hm-door__go { display: inline-flex; margin-top: 22px; color: var(--cream); }
+.hm-door:focus-visible { outline-offset: -4px; }
+@media (min-width: 861px) and (hover: hover) {
+  .hm-doors__row:hover .hm-door { flex-grow: 0.82; }
+  .hm-doors__row .hm-door:hover, .hm-doors__row .hm-door:focus-visible { flex-grow: 1.9; }
+  .hm-door:hover > img, .hm-door:focus-visible > img { transform: scale(1); filter: brightness(0.86) saturate(1); }
+  .hm-door:hover .hm-door__word, .hm-door:focus-visible .hm-door__word { color: var(--amber); }
+  .hm-door__line { width: min(22em, 26vw); opacity: 0.72; transition: opacity 900ms var(--ease); }
+  .hm-door__go { opacity: 0; transform: translateY(14px); white-space: nowrap; transition: opacity 900ms var(--ease), transform 1100ms var(--ease), color 500ms var(--ease); }
+  .hm-door:hover .hm-door__line, .hm-door:focus-visible .hm-door__line { opacity: 1; }
+  .hm-door:hover .hm-door__go, .hm-door:focus-visible .hm-door__go { opacity: 1; transform: none; transition-delay: 180ms; }
+}
+@media (max-width: 860px) {
+  .hm-doors__row { flex-direction: column; height: auto; min-height: 0; }
+  .hm-door { flex: none; min-height: 68vh; min-height: 68svh; border-left: 0; border-top: 1px solid rgba(239, 230, 214, 0.14); }
+  .hm-door > img { filter: brightness(0.66) saturate(0.95); transform: none; }
+}
+
+/* ---------- the wine ---------- */
+.hm-wine .frame { width: 100%; max-width: 520px; }
+
+/* ---------- The Wall ---------- */
+.hm-wall {
+  --fg: var(--cream); --muted: rgba(239, 230, 214, 0.7); --rule: rgba(239, 230, 214, 0.2); --accent: var(--amber); --hi: var(--snow); --lo: var(--ink);
+  position: relative; display: flex; align-items: flex-end; min-height: min(96vh, 940px); padding: var(--section) 0 clamp(56px, 8vw, 110px); overflow: hidden; background: var(--char); color: var(--cream); color-scheme: dark;
+}
+.hm-wall__media { position: absolute; inset: 0; overflow: hidden; }
+.hm-wall__media img { object-fit: cover; filter: sepia(0.25) brightness(0.62) contrast(1.05); scale: 1.2; }
+.hm-wall__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14, 13, 11, 0.95) 0%, rgba(14, 13, 11, 0.3) 55%, rgba(14, 13, 11, 0.55) 100%); }
+.hm-wall > .container { position: relative; z-index: 3; }
+.hm-wall .display-l { max-width: none; }

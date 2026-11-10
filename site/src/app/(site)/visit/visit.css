@@ -1,0 +1,39 @@
+/* /visit, in the Fireside look. Everything here is prefixed vi-. */
+
+/* The details: big serif address and phone, then the emails. */
+.vi-contact { display: grid; margin: 0; border-top: 1px solid var(--rule); }
+.vi-contact > div { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 6px 28px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.vi-contact dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-size: 1.0625rem; }
+.vi-contact a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 1px no-repeat; transition: background-size 900ms var(--ease), color var(--quick) var(--ease); }
+.vi-contact a:hover { color: var(--accent); background-size: 100% 1px; }
+.vi-big { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.7rem, 2.5vw, 2.3rem); line-height: 1.12; letter-spacing: -0.01em; }
+.vi-photo { align-self: stretch; max-height: 820px; }
+@media (max-width: 520px) { .vi-contact > div { grid-template-columns: minmax(0, 1fr); } }
+
+/* Hours rows: the time sits on the right in the display serif. */
+/* One fixed time column, so the middle column lines up from row to row (an auto column follows each
+   row's own time width). */
+@media (min-width: 721px) { .vi-hours > li { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) 10.5rem; } }
+.vi-hours__time { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2.1vw, 1.95rem); line-height: 1.1; color: var(--accent); white-space: nowrap; text-align: right; }
+@media (max-width: 720px) { .vi-hours__time { text-align: left; } }
+
+/* Getting here: four numbered ways. */
+.vi-ways { display: grid; gap: clamp(22px, 2.6vw, 40px); grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.vi-ways li { display: grid; align-content: start; gap: 14px; padding-top: 22px; border-top: 1px solid var(--rule); }
+.vi-ways li > * { margin: 0; }
+.vi-ways p { color: var(--muted); line-height: 1.6; text-wrap: pretty; }
+.vi-ways__n { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.2rem, 5vw, 4.6rem); line-height: 0.9; color: var(--accent); }
+.vi-ways__map { margin: clamp(36px, 5vw, 64px) 0 0; }
+@media (max-width: 1000px) { .vi-ways { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .vi-ways { grid-template-columns: minmax(0, 1fr); } }
+
+/* Gift cards and jobs, side by side with a hairline between. */
+.vi-more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.vi-more__item { display: grid; align-content: start; justify-items: start; gap: 22px; padding-right: clamp(24px, 5vw, 80px); }
+.vi-more__item > * { margin: 0; }
+.vi-more__item + .vi-more__item { padding: 0 0 0 clamp(24px, 5vw, 80px); border-left: 1px solid var(--rule); }
+@media (max-width: 860px) {
+  .vi-more { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+  .vi-more__item { padding-right: 0; }
+  .vi-more__item + .vi-more__item { padding: 48px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+}

@@ -1,0 +1,130 @@
+/* Stay pages (/stay, /stay/rooms, /stay/packages, /stay/guest-info), the booking band (StayBook), the
+   curtain (StayCurtain) and the room finder (components/RoomBooking.tsx). Fireside. Every class here
+   starts with sty- or rb-. Light surfaces are snow white or frost only (never cream). */
+
+.sty-nowrap { white-space: nowrap; }
+
+/* ---------- heroes ---------- */
+.sty-hero .page-hero__media > img { object-position: 50% 58%; }
+.sty-hero--rooms .page-hero__media > img { object-position: 22% 50%; }
+.sty-hero--packages .page-hero__media > img { object-position: 50% 60%; }
+.sty-hero--entrance .page-hero__media > img { object-position: 50% 30%; }
+
+/* ---------- intro on snow: copy, then a row of big numbers over a hairline ---------- */
+.sty-intro__copy { padding-top: clamp(0px, 3vw, 44px); }
+.sty-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 3vw, 48px); margin-top: clamp(48px, 7vw, 96px); padding-top: clamp(28px, 3vw, 44px); border-top: 1px solid var(--fg); }
+.sty-facts--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.sty-facts .label { line-height: 1.5; max-width: 22ch; }
+@media (max-width: 900px) { .sty-facts--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 18px; } }
+@media (max-width: 720px) { .sty-facts, .sty-facts--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 18px; } }
+
+/* ---------- the curtain (StayCurtain): night room, then the river ---------- */
+.sty-curtain { position: relative; background: var(--char); color: var(--cream); --fg: var(--cream); --accent: var(--amber); --muted: rgba(239, 230, 214, 0.64); }
+html.fl-motion .sty-curtain { height: 230vh; }
+.sty-curtain__stage { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: var(--char); }
+html.fl-motion .sty-curtain .sty-curtain__stage { position: sticky; top: 0; }
+.sty-curtain__view { position: absolute; inset: 0; will-change: clip-path; }
+.sty-curtain__view img { object-fit: cover; object-position: 50% 55%; will-change: transform; }
+.sty-curtain__view::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14, 13, 11, 0.9) 0%, rgba(14, 13, 11, 0.55) 24%, rgba(14, 13, 11, 0) 56%); }
+html.fl-motion .sty-curtain .sty-curtain__view { clip-path: inset(0 50% 0 50%); }
+.sty-curtain__slit { display: none; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(rgba(224, 145, 58, 0), var(--amber) 30%, var(--amber) 70%, rgba(224, 145, 58, 0)); opacity: 0.8; will-change: opacity; }
+.sty-curtain__night { display: none; position: absolute; left: 0; right: 0; top: 50%; z-index: 3; padding-inline: var(--gutter); transform: translateY(-50%); text-align: center; justify-items: center; gap: 18px; will-change: transform, opacity; }
+.sty-curtain__night > * { margin: 0; }
+.sty-curtain__night .display-l { text-shadow: 0 2px 40px rgba(14, 13, 11, 0.9); }
+html.fl-motion .sty-curtain .sty-curtain__slit { display: block; }
+html.fl-motion .sty-curtain .sty-curtain__night { display: grid; }
+.sty-curtain__morning { position: absolute; left: 0; right: 0; bottom: clamp(44px, 9vh, 100px); z-index: 3; display: grid; gap: 14px; will-change: transform, opacity; }
+.sty-curtain__morning > * { margin: 0; }
+html.fl-motion .sty-curtain .sty-curtain__morning { opacity: 0; }
+.sty-curtain__morning .label { color: rgba(239, 230, 214, 0.9); }
+.sty-curtain__morning h2 { text-shadow: 0 2px 40px rgba(14, 13, 11, 0.55); }
+@media (prefers-reduced-motion: reduce) {
+  html.fl-motion .sty-curtain { height: auto; }
+  html.fl-motion .sty-curtain .sty-curtain__stage { position: relative; }
+  html.fl-motion .sty-curtain .sty-curtain__view { clip-path: none; }
+  html.fl-motion .sty-curtain .sty-curtain__morning { opacity: 1; }
+  html.fl-motion .sty-curtain .sty-curtain__slit, html.fl-motion .sty-curtain .sty-curtain__night { display: none; }
+}
+
+/* ---------- rooms on dark: filters, then editorial rows ---------- */
+.sty-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(28px, 3.4vw, 44px); }
+.sty-filter { min-height: 42px; padding: 0 20px; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--fg); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background-color var(--quick) var(--ease), color var(--quick) var(--ease), border-color var(--quick) var(--ease); }
+.sty-filter:hover { border-color: var(--fg); }
+.sty-filter[aria-pressed='true'] { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+.sty-rows > li { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr) 260px; transition: padding-left 1100ms var(--ease), opacity 900ms var(--ease); }
+.sty-rows .row__title { margin: 0; font-weight: 400; transition: color 900ms var(--ease); }
+.sty-rows__chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.sty-rows > li.is-out { opacity: 0.28; }
+@media (hover: hover) {
+  .sty-rows > li:not(.is-out):hover { padding-left: 14px; }
+  .sty-rows > li:not(.is-out):hover .row__title { color: var(--amber); }
+}
+@media (max-width: 1000px) { .sty-rows > li { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .sty-rows__chips { grid-column: 1 / -1; justify-content: flex-start; } }
+@media (max-width: 720px) { .sty-rows > li { grid-template-columns: minmax(0, 1fr); } .sty-rows__chips { margin-top: 6px; } }
+.sty-rooms__foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 18px 40px; margin-top: clamp(28px, 3.4vw, 44px); }
+.sty-rooms__foot p { margin: 0; max-width: 60ch; }
+
+/* the drag gallery under the rooms */
+.sty-gallery { position: relative; z-index: 1; margin-top: clamp(56px, 8vw, 110px); }
+.sty-gallery__hint { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.sty-gallery__hint::after { content: ''; width: 64px; height: 1px; background: var(--amber); }
+.sty-gallery .drag-gallery { padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2)); }
+.sty-gallery .frame:nth-child(2) > img { object-position: 14% 50%; }
+.sty-gallery .drag-gallery__track { align-items: flex-end; }
+
+/* ---------- booking band (StayBook) on frost ---------- */
+.sty-book__times { display: flex; flex-wrap: wrap; gap: 18px clamp(28px, 5vw, 64px); }
+.sty-book__talk { max-width: 34em; line-height: 1.8; }
+.sty-book__talk a { color: var(--fg); }
+.sty-book__panel .panel { box-shadow: 0 40px 100px rgba(20, 17, 14, 0.22); }
+.rb-panel__go { width: 100%; }
+.rb-panel .form { gap: 22px; }
+@media (max-width: 480px) { .rb-dates { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- doors and good to know ---------- */
+.sty-doors .fl-doors { background: transparent; gap: clamp(12px, 1.6vw, 20px); }
+.sty-know__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 64px); }
+.sty-know__grid > div { display: grid; gap: 10px; align-content: start; padding: 28px 0 34px; border-top: 1px solid var(--rule); }
+.sty-know__grid > div > * { margin: 0; }
+.sty-know__cta { margin-top: clamp(36px, 5vw, 64px); }
+@media (max-width: 860px) { .sty-know__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- room finder (RoomBooking.tsx): a dark dates panel beside white room cards ---------- */
+.rb-finder { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.rb-finder__dates { position: sticky; top: calc(var(--header-h) + 24px); }
+.rb-finder__dates .rb-dates { grid-template-columns: minmax(0, 1fr); }
+.rb-rooms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); margin: 0; padding: 0; list-style: none; }
+.rb-room__body { flex: 1; grid-template-rows: auto 1fr auto auto; }
+.rb-room__go { justify-self: start; margin-top: 6px; }
+.rb-room__ph { display: grid; place-items: center; height: 100%; padding: 24px; background: var(--bark); color: rgba(239, 230, 214, 0.64); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; }
+@media (max-width: 1000px) {
+  .rb-finder { grid-template-columns: minmax(0, 1fr); }
+  .rb-finder__dates { position: static; }
+  .rb-finder__dates .rb-dates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .rb-rooms { grid-template-columns: minmax(0, 1fr); }
+  .rb-finder__dates .rb-dates { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- /stay/rooms: in every room ---------- */
+.sty-amenities .row__title { margin: 0; }
+.sty-amenities > li { grid-template-columns: minmax(0, 1fr) auto; }
+
+/* ---------- /stay/packages ---------- */
+.sty-package { max-width: 760px; }
+.sty-package .card__body { gap: 18px; padding: clamp(28px, 4vw, 56px); }
+.sty-package .display-m { margin: 0; }
+
+/* ---------- /stay/guest-info ---------- */
+.sty-nearby { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3.4vw, 56px); margin: 0; padding: 0; list-style: none; }
+.sty-nearby > li { display: grid; align-content: start; gap: 12px; padding-top: 26px; border-top: 1px solid var(--rule); }
+.sty-nearby > li > * { margin: 0; }
+.sty-nearby p { line-height: 1.6; color: var(--muted); }
+.sty-nearby a { color: var(--fg); }
+@media (max-width: 860px) { .sty-nearby { grid-template-columns: minmax(0, 1fr); } }
+.sty-faq .faq { max-width: 900px; }
+.sty-know-list { margin-top: 8px; }
+
+/* .rows and .facts reset their own margins; keep the stack rhythm above them */
+.stack-l > :is(.sty-amenities, .facts) { margin-top: 2.4rem; }

@@ -1,0 +1,19 @@
+/* The après band (components/ApresSection.tsx), Fireside. Base .apres rules live in globals.css. */
+.apres { display: flex; align-items: flex-end; min-height: min(92vh, 900px); }
+.apres__bg img[data-parallax] { scale: 1.2; }
+.apres__shade { background: linear-gradient(to top, rgba(14, 13, 11, 0.95) 0%, rgba(14, 13, 11, 0.55) 55%, rgba(14, 13, 11, 0.7) 100%); }
+.apres__inner { position: relative; z-index: 3; display: grid; gap: clamp(18px, 2.4vw, 30px); width: 100%; padding-block: clamp(84px, 10vw, 140px); }
+.apres--first .apres__inner { padding-top: calc(var(--header-h) + 140px); }
+.apres__inner > * { margin: 0; }
+.apres__word .rl { padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.apres__word .rl-i { color: var(--amber); }
+.apres__row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px; }
+.apres__copy { display: grid; gap: 22px; max-width: 600px; }
+.apres__copy > * { margin: 0; }
+.apres__copy .display-m { color: var(--cream); }
+.apres__copy .lede { color: rgba(239, 230, 214, 0.86); }
+.frame.apres__frame { width: min(340px, 100%); flex: none; }
+@media (max-width: 700px) {
+  .apres__row { gap: 32px; }
+  .frame.apres__frame { width: 100%; max-width: 320px; }
+}

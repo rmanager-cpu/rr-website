@@ -31,7 +31,7 @@ function YesNo({ name, question, help, value }: { name: string; question: string
 }
 
 /**
- * Add or edit a calendar event, all on one screen: what, when, the details people see, the highlight,
+ * Add or edit a calendar event, all on one screen: what, when, the details people see, the home page toggle,
  * and whether it closes anything. Only a yes to that last one asks the questions Venio needs, so
  * everyday events never meet them. Every event still gets its own page, made behind the scenes.
  */
@@ -128,9 +128,9 @@ export function EventForm({
       </section>
 
       <section className="adm-card">
-        <h2 className="adm-step"><b>4</b> Highlight</h2>
-        <label className="choice" style={{ alignSelf: 'flex-start' }}><input type="checkbox" name="highlighted" value="yes" defaultChecked={s?.highlighted} /> Highlight this event</label>
-        <p className="help">Marks it as one to feature. A highlighted event needs a photo.</p>
+        <h2 className="adm-step"><b>4</b> Home page</h2>
+        <label className="choice" style={{ alignSelf: 'flex-start' }}><input type="checkbox" name="highlighted" value="yes" defaultChecked={s?.highlighted} /> Show this on the home page</label>
+        <p className="help">The home page shows the next three events with this on, soonest first, each with its photo and a link here. A weekly event shows on its next date. Needs a photo. With none on, the next few dated events show instead.</p>
       </section>
 
       <section className="adm-card">

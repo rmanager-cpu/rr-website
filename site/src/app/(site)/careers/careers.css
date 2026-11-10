@@ -1,0 +1,26 @@
+/* /careers, in the Fireside look. Everything here is prefixed ca-. */
+.ca-grid { display: grid; gap: clamp(40px, 6vw, 96px); grid-template-columns: minmax(0, 1fr) minmax(320px, 440px); align-items: start; }
+.ca-side { position: sticky; top: calc(var(--header-h) + 24px); }
+
+/* The five teams: editorial rows, name and line. */
+.ca-teams > li { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); }
+.ca-teams h3, .ca-teams p { margin: 0; }
+.ca-teams h3 { font-weight: 400; }
+.ca-teams .row__note { line-height: 1.6; text-wrap: pretty; }
+.ca-photo { margin-top: clamp(40px, 5vw, 72px); }
+
+/* The apply panel (dark, from globals .planner). */
+.ca-form .room-choice legend { line-height: 1.6; }
+.ca-depts { display: grid; gap: 8px; }
+.ca-form__done { font-size: 1rem; }
+.ca-form__error { color: #f0a58f; }
+/* The TurboTips logo is drawn for dark backgrounds, so its line sits on a bark strip under the panel. */
+.ca-side .turbotips { margin: 0; padding: 14px clamp(26px, 4vw, 56px); background: var(--ember); color: rgba(239, 230, 214, 0.64); border: 1px solid rgba(239, 230, 214, 0.14); border-top: 0; }
+
+@media (max-width: 960px) {
+  .ca-grid { grid-template-columns: minmax(0, 1fr); }
+  .ca-side { position: static; }
+}
+@media (max-width: 720px) {
+  .ca-teams > li { grid-template-columns: minmax(0, 1fr); }
+}

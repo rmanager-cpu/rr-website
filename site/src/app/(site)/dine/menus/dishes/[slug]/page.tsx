@@ -38,24 +38,29 @@ export default async function DishPage({ params }: { params: { slug: string } })
     <>
       <JsonLd data={breadcrumbSchema(d.name, `/dine/menus/dishes/${d.slug}`)} />
       <SiteHeader />
-      <section className="section">
-        <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
-          <div className="grow stack" style={{ gap: 20 }}>
-            <Link href={`/dine/menus/${on[0].menu.slug}`} className="arrow-link" style={{ fontSize: 12 }}>← {on[0].menu.name} menu</Link>
-            <h1 className="slash h-l">{d.name}</h1>
-            {d.description && <p className="lede" style={{ whiteSpace: 'pre-line' }}>{d.description}</p>}
-            <dl className="facts">
+      <section className="section section--snow">
+        <div className={d.photo ? 'container split' : 'container container--narrow'}>
+          <div className="stack">
+            <Link href={`/dine/menus/${on[0].menu.slug}`} className="link-arrow" data-reveal>
+              {on[0].menu.name} menu
+            </Link>
+            <h1 className="display-l" data-reveal data-reveal-delay="120">{d.name}</h1>
+            {d.description && <p className="lede" style={{ whiteSpace: 'pre-line' }} data-reveal data-reveal-delay="200">{d.description}</p>}
+            <dl className="facts" data-reveal data-reveal-delay="300">
               {on.map(({ menu, item }) => (
                 <div key={menu.slug}><dt>{menu.name}</dt><dd>{priceText(item.prices, item.priceNote)}</dd></div>
               ))}
               {d.tags.length > 0 && <div><dt>Good to know</dt><dd>{d.tags.map((t) => TAG_LABEL[t] ?? t).join(', ')}</dd></div>}
             </dl>
-            <a href={business.links.reserveTable} className="btn btn--amber" style={{ alignSelf: 'flex-start' }} rel="noopener">Reserve a table</a>
+            <div className="btn-row" data-reveal data-reveal-delay="300">
+              <Link href="/dine#reserve" className="btn">Reserve a table</Link>
+              <a href={`tel:${business.phoneE164}`} className="btn btn--ghost">{business.phone}</a>
+            </div>
           </div>
           {d.photo && (
-            <div className="side">
-              <Image src={d.photo} alt={`${d.name} at River Ranch`} width={1200} height={1200} sizes="(max-width: 900px) 100vw, 460px" className="rounded" style={{ width: '100%', height: 'auto' }} />
-            </div>
+            <figure className="frame frame--square" data-reveal="clip">
+              <Image src={d.photo} alt={`${d.name} at River Ranch`} fill priority sizes="(max-width: 860px) 100vw, 45vw" />
+            </figure>
           )}
         </div>
       </section>

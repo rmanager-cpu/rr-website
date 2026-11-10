@@ -4,16 +4,24 @@ import { useEffect, useId, useState } from 'react';
 import Image from 'next/image';
 import { roomTypes } from '@/content/rooms';
 import { bookingCenterUrl, nextDay } from '@/lib/bookingcenter';
+import { lodging } from '@/content/site';
 
 function useStayDates() {
   const [today, setToday] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
 
-  // Set after load so "today" is the guest's day, not the server's.
+  // Set after load so "today" is the guest's day, not the server's. A link like /stay?checkin=2026-12-24#book
+  // (the home page's "Stay this night") arrives with that night picked, unless it is in the past.
   useEffect(() => {
     const now = new Date();
-    setToday(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`);
+    const t = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    setToday(t);
+    const asked = new URLSearchParams(window.location.search).get('checkin');
+    if (asked && /^\d{4}-\d{2}-\d{2}$/.test(asked) && asked >= t) {
+      setCheckIn(asked);
+      setCheckOut(nextDay(asked));
+    }
   }, []);
 
   const pickCheckIn = (value: string) => {
@@ -29,7 +37,7 @@ type StayDatesState = ReturnType<typeof useStayDates>;
 function DateFields({ dates, checkInId }: { dates: StayDatesState; checkInId: string }) {
   const checkOutId = useId();
   return (
-    <div className="planner__grid">
+    <div className="form-grid rb-dates">
       <label className="field" htmlFor={checkInId}>
         Check in
         <input id={checkInId} type="date" required min={dates.today || undefined} value={dates.checkIn} onChange={(e) => dates.pickCheckIn(e.target.value)} />
@@ -42,25 +50,39 @@ function DateFields({ dates, checkInId }: { dates: StayDatesState; checkInId: st
   );
 }
 
+/** "Cal King bed, balcony over river": the part after the comma takes the italic accent. */
+function roomName(name: string) {
+  const at = name.indexOf(',');
+  if (at < 0) return name;
+  return (
+    <>
+      {name.slice(0, at + 1)} <em>{name.slice(at + 1).trim()}</em>
+    </>
+  );
+}
+
 const NOTE = 'You’ll see rates and open rooms on the next screen. Minimum stays vary by date.';
 
-/** The date picker that opens BookingCenter's results for those dates. */
+/** The date picker that opens BookingCenter's results for those dates (a Fireside bark panel). */
 export function StayDates() {
   const dates = useStayDates();
   const checkInId = useId();
   return (
-    <form
-      className="planner"
-      aria-label="Check room availability"
-      onSubmit={(e) => {
-        e.preventDefault();
-        window.location.href = bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
-      }}
-    >
-      <DateFields dates={dates} checkInId={checkInId} />
-      <button type="submit" className="btn btn--amber">See rooms and rates</button>
-      <p className="planner__note">{NOTE}</p>
-    </form>
+    <div className="panel rb-panel">
+      <form
+        className="form"
+        aria-label="Check room availability"
+        onSubmit={(e) => {
+          e.preventDefault();
+          window.location.href = bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
+        }}
+      >
+        <DateFields dates={dates} checkInId={checkInId} />
+        <button type="submit" className="btn rb-panel__go">See rooms and rates</button>
+        <p className="planner__note">{NOTE}</p>
+        <p className="planner__note">Check-in is {lodging.checkIn}. Check-out is {lodging.checkOut}. Bringing the dog? Tell us ahead.</p>
+      </form>
+    </div>
   );
 }
 
@@ -77,32 +99,39 @@ export function RoomFinder() {
   };
 
   return (
-    <div className="stack" style={{ gap: 36 }}>
-      <div className="planner" style={{ maxWidth: 560 }}>
+    <div className="rb-finder">
+      <div className="panel rb-finder__dates">
+        <h3 className="panel__title">Your dates <em>first</em></h3>
         <DateFields dates={dates} checkInId={checkInId} />
         <p className="planner__note">{NOTE}</p>
       </div>
-      <div className="space-grid">
+      <ul className="rb-rooms" aria-label="Room types">
         {roomTypes.map((r) => (
-          <div key={r.code} className="space">
-            {r.photo ? (
-              <Image src={r.photo} alt={`River Ranch room: ${r.name}`} width={800} height={1000} sizes="(max-width: 600px) 100vw, 300px" />
-            ) : (
-              <div className="ph" role="img" aria-label={`Photo coming soon: ${r.name}`}>Photo coming soon</div>
-            )}
-            <h3 className="space__name" style={{ fontSize: 26, lineHeight: 1.1 }}>{r.name}</h3>
-            <p className="muted" style={{ margin: 0, fontSize: 15, lineHeight: 1.5 }}>{r.line}</p>
-            <p style={{ margin: 0, fontSize: 15, fontWeight: 600 }}>
-              {[`Sleeps ${r.sleeps}`, r.dogFriendly && 'Dog-friendly', r.accessible && 'ADA'].filter(Boolean).join(' · ')}
-            </p>
-            {hasDates ? (
-              <a href={bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut, roomType: r.code })} className="btn btn--amber btn--sm" rel="noopener">See rates</a>
-            ) : (
-              <button type="button" className="btn btn--amber btn--sm" onClick={askForDates}>Choose dates</button>
-            )}
-          </div>
+          <li key={r.code} className="card rb-room" data-reveal>
+            <div className="card__media">
+              {r.photo ? (
+                <Image src={r.photo} alt={`River Ranch room: ${r.name}`} fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 420px" />
+              ) : (
+                <div className="rb-room__ph" role="img" aria-label={`Photo coming soon: ${r.name}`}>Photo coming soon</div>
+              )}
+            </div>
+            <div className="card__body rb-room__body">
+              <h3 className="card__title">{roomName(r.name)}</h3>
+              <p className="card__line">{r.line}</p>
+              <div className="card__meta">
+                <span className="chip chip--plain">Sleeps {r.sleeps}</span>
+                {r.dogFriendly && <span className="chip chip--lodge">Dog-friendly</span>}
+                {r.accessible && <span className="chip chip--plain">ADA</span>}
+              </div>
+              {hasDates ? (
+                <a href={bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut, roomType: r.code })} className="btn btn--sm rb-room__go" rel="noopener">See rates</a>
+              ) : (
+                <button type="button" className="btn btn--ghost btn--sm rb-room__go" onClick={askForDates}>Choose dates</button>
+              )}
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

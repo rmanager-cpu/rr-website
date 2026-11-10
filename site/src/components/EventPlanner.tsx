@@ -49,7 +49,7 @@ export function EventPlanner({ heading = 'Plan your event' }: { heading?: string
         window.location.href = mailto();
       }}
     >
-      <h2 className="serif" style={{ fontSize: 30, lineHeight: 1.1 }}>{heading}</h2>
+      <h2 className="panel__title">{heading}</h2>
       <div className="planner__grid">
         <label className="field" htmlFor={ids.date}>
           Date

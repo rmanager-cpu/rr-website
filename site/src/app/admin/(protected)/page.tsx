@@ -34,7 +34,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { save
                   <td>
                     <Link href={`/admin/events/${s.id}`} style={{ fontWeight: 700 }}>{s.title}</Link>
                     <div className="help">{CATEGORY_LABEL[s.category]}{s.status !== 'published' ? ` · ${s.status}` : ''}{s.offsite ? ' · off-site' : ''}</div>
-                    {s.highlighted && <span className="tag">Highlighted</span>}
+                    {s.highlighted && <span className="tag">On the home page</span>}
                   </td>
                   <td>{whenPhrase(s)}</td>
                   <td>{next ? formatDate(next) : <span className="help">done</span>}</td>

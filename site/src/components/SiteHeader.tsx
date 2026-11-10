@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { business, sectionFor, sections, sharedNav, type NavItem } from '@/content/site';
-import { Close, Menu } from './Icons';
+import { ChevronDown } from './Icons';
 
 const isCurrent = (path: string, href: string) => path === href || path.startsWith(`${href}/`);
 
-/** A link that leaves the site (booking engine, OpenTable) is a plain <a>; the rest use Link. */
+/** A link that leaves the site (OpenTable) is a plain <a>; the rest use Link. */
 function Go({ item, className, onClick }: { item: NavItem; className?: string; onClick?: () => void }) {
   return item.href.startsWith('/') ? (
     <Link href={item.href} className={className} onClick={onClick}>{item.label}</Link>
@@ -17,12 +17,28 @@ function Go({ item, className, onClick }: { item: NavItem; className?: string; o
   );
 }
 
+/** The wordmark: "River" upright, "Ranch" in italic amber. */
+const Wordmark = () => (
+  <>
+    River <em>Ranch</em>
+  </>
+);
+
+type Props = {
+  /** `overlay` floats clear over a dark full-bleed hero (.page-hero) and turns into the dark glass bar once
+   *  the page scrolls; `solid` is the dark bar from the start, with a spacer so nothing hides under it. */
+  variant?: 'overlay' | 'solid';
+  /** Overlay only: how far down the page (in viewport heights) the header turns solid. */
+  solidAfter?: number;
+};
+
 /**
- * Logo, the three sections, “More” (the shared pages) and Book. Inside a section, a slim second row
- * shows that section's tabs and its main button, in the section's color from the homepage frames.
- * `overlay` sits on a hero photo (light text); `solid` is the navy bar every other page uses.
+ * The Fireside header: the wordmark, the three sections, "More" (the shared pages) and an amber Book
+ * pill, fixed to the top. Inside a section, a slim second row shows that section's tabs and its main
+ * button (on an overlay page that row floats over the hero and scrolls away with it). Phones get a
+ * full-screen menu.
  */
-export function SiteHeader({ variant = 'solid' }: { variant?: 'overlay' | 'solid' }) {
+export function SiteHeader({ variant = 'solid', solidAfter = 0.04 }: Props) {
   const path = usePathname();
   const section = sectionFor(path);
   const [open, setOpen] = useState(false);
@@ -31,6 +47,9 @@ export function SiteHeader({ variant = 'solid' }: { variant?: 'overlay' | 'solid
 
   const [more, setMore] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const moreCurrent = sharedNav.some((n) => isCurrent(path, n.href));
+
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
@@ -59,45 +78,104 @@ export function SiteHeader({ variant = 'solid' }: { variant?: 'overlay' | 'solid
       menuBtnRef.current?.focus();
     };
   }, [open]);
+  useEffect(() => {
+    if (variant !== 'overlay') return;
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      setScrolled(window.scrollY > Math.max(30, window.innerHeight * solidAfter));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [variant, solidAfter]);
 
   return (
-    <header className={`site-header site-header--${variant}`}>
-      <div className="container site-header__bar">
-        <Link href="/" className="brand" aria-label={`${business.name}, home`}>
-          <span className="brand__name">River Ranch</span>
-          <span className="brand__tag">{business.tagline}</span>
-        </Link>
-        <nav className="site-nav" aria-label="Main">
-          {sections.map((s) => (
-            <Link key={s.key} href={s.href} aria-current={path === s.href ? 'page' : section?.key === s.key ? 'true' : undefined}>
-              {s.label}
-            </Link>
-          ))}
-          <div className="more" ref={moreRef}>
-            <button type="button" className="more__btn" aria-expanded={more} aria-controls="more-menu" onClick={() => setMore((v) => !v)}>
-              More <span aria-hidden="true">▾</span>
-            </button>
-            <ul id="more-menu" className="more__menu" hidden={!more}>
-              {sharedNav.map((n) => (
-                <li key={n.href}>
-                  <Link href={n.href} aria-current={path === n.href ? 'page' : undefined} onClick={() => setMore(false)}>
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <a href={business.links.bookRoom} className="btn btn--amber btn--sm" rel="noopener">
+    <>
+      <header className={`site-header site-header--${variant}${scrolled ? ' is-scrolled' : ''}`} data-solid-after={variant === 'overlay' ? solidAfter : undefined}>
+        <div className="site-header__bar">
+          <Link href="/" className="brand" aria-label={`${business.name}, home`}>
+            <Wordmark />
+          </Link>
+          <nav className="site-nav" aria-label="Main">
+            {sections.map((s) => (
+              <Link key={s.key} href={s.href} aria-current={path === s.href ? 'page' : section?.key === s.key ? 'true' : undefined}>
+                {s.label}
+              </Link>
+            ))}
+            <div className={`more${moreCurrent ? ' is-current' : ''}`} ref={moreRef}>
+              <button type="button" className="more__btn" aria-expanded={more} aria-controls="more-menu" onClick={() => setMore((v) => !v)}>
+                More <ChevronDown size={12} />
+              </button>
+              <ul id="more-menu" className="more__menu" hidden={!more}>
+                {sharedNav.map((n) => (
+                  <li key={n.href}>
+                    <Link href={n.href} aria-current={path === n.href ? 'page' : undefined} onClick={() => setMore(false)}>
+                      {n.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+          <Link href={business.links.bookRoom} className="btn btn--sm site-header__book">
             Book
-          </a>
-        </nav>
-        <button ref={menuBtnRef} type="button" className="menu-btn" aria-label="Open menu" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}>
-          <Menu />
-        </button>
-      </div>
+          </Link>
+          <button ref={menuBtnRef} type="button" className="menu-btn" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}>
+            <span>Menu</span>
+            <i aria-hidden="true" />
+          </button>
+        </div>
 
-      {section && variant === 'solid' && (
-        <nav className={`section-tabs section-tabs--${section.key}`} aria-label={`${section.label} pages`}>
+        <div id="mobile-menu" className="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden={!open}>
+          <div className="mobile-menu__top">
+            <Link href="/" className="brand" aria-label={`${business.name}, home`} onClick={() => setOpen(false)}>
+              <Wordmark />
+            </Link>
+            <button ref={closeRef} type="button" className="menu-btn menu-btn--close" onClick={() => setOpen(false)}>
+              <span>Close</span>
+              <i aria-hidden="true" />
+            </button>
+          </div>
+          <nav aria-label="Main (menu)">
+            <Link href="/" className="mm-top" aria-current={path === '/' ? 'page' : undefined}>Home</Link>
+            {sections.map((s) => (
+              <div key={s.key} className="mm-group">
+                <Link href={s.href} className="mm-top" aria-current={path === s.href ? 'page' : undefined}>{s.label}</Link>
+                <ul className="mm-sub">
+                  {s.tabs.map((t) => (
+                    <li key={t.href}><Link href={t.href} aria-current={path === t.href ? 'page' : undefined}>{t.label}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+          <ul className="mobile-menu__more">
+            {sharedNav.map((n) => (
+              <li key={n.href}><Link href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</Link></li>
+            ))}
+          </ul>
+          <div className="mobile-menu__foot">
+            <div className="btn-row">
+              <Link href={business.links.bookRoom} className="btn">Book a room</Link>
+              <a href={business.links.reserveTable} className="btn btn--ghost" rel="noopener">Reserve a table</a>
+            </div>
+            <a href={`tel:${business.phoneE164}`}>{business.phone}</a>
+          </div>
+        </div>
+      </header>
+      {variant === 'solid' && <div className="site-header-spacer" aria-hidden="true" />}
+
+      {section && (
+        <nav className={`section-tabs section-tabs--${section.key}${variant === 'overlay' ? ' section-tabs--overlay' : ''}`} aria-label={`${section.label} pages`}>
           <div className="container section-tabs__inner">
             <Link href={section.href} className="section-tabs__home" aria-current={path === section.href ? 'page' : undefined}>
               {section.label}
@@ -115,40 +193,6 @@ export function SiteHeader({ variant = 'solid' }: { variant?: 'overlay' | 'solid
           </div>
         </nav>
       )}
-
-      <div id="mobile-menu" className="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden={!open}>
-        <div className="mobile-menu__top">
-          <span className="brand__name">River Ranch</span>
-          <button ref={closeRef} type="button" className="menu-btn" style={{ display: 'inline-flex', background: 'rgba(241,231,212,.12)', color: 'var(--cream)' }} aria-label="Close menu" onClick={() => setOpen(false)}>
-            <Close />
-          </button>
-        </div>
-        <nav aria-label="Main (menu)">
-          <Link href="/" className="mm-top">Home</Link>
-          {sections.map((s) => (
-            <div key={s.key} className="mm-group">
-              <Link href={s.href} className="mm-top">{s.label}</Link>
-              <ul className="mm-sub">
-                {s.tabs.map((t) => (
-                  <li key={t.href}><Link href={t.href}>{t.label}</Link></li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </nav>
-        <ul className="mobile-menu__more">
-          {sharedNav.map((n) => (
-            <li key={n.href}><Link href={n.href}>{n.label}</Link></li>
-          ))}
-        </ul>
-        <div className="mobile-menu__foot">
-          <div className="btn-row">
-            <a href={business.links.bookRoom} className="btn btn--amber" rel="noopener">Book a room</a>
-            <a href={business.links.reserveTable} className="btn btn--ghost-cream" rel="noopener">Reserve a table</a>
-          </div>
-          <a href={`tel:${business.phoneE164}`} style={{ color: 'var(--cream)' }}>{business.phone}</a>
-        </div>
-      </div>
-    </header>
+    </>
   );
 }

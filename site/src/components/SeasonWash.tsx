@@ -3,18 +3,14 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-// Each section of the site has its own ski photo; anything else falls back to the slopes.
-const washFor = (path: string) => {
-  if (path.startsWith('/stay')) return '/photos/home/wash-gondola.jpg';
-  if (path.startsWith('/dine')) return '/photos/home/wash-skier.jpg';
-  return '/photos/home/wash-slopes.jpg';
-};
-
-/** The faint full-page photo behind the public pages, in the style of the homepage's Stay section. */
+/** The faded Palisades photo behind the home page only, under snow white at 85% (globals.css
+ *  .season-wash). The First Light hero's morning fades into it. Fireside inner pages are solid dark and
+ *  snow bands, so everywhere else this renders nothing. */
 export function SeasonWash() {
+  if (usePathname() !== '/') return null;
   return (
     <div className="season-wash" aria-hidden="true">
-      <Image src={washFor(usePathname())} alt="" fill sizes="100vw" />
+      <Image src="/photos/home/wash-slopes.jpg" alt="" fill sizes="100vw" quality={60} />
     </div>
   );
 }

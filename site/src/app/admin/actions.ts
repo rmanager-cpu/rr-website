@@ -149,7 +149,7 @@ function summaryFrom(body: string | null): string | null {
   return first.length <= 160 ? first : `${first.slice(0, 160).replace(/\s+\S*$/, '')}…`;
 }
 
-const needsPhoto = () => new Invalid('highlighted', 'A highlighted event needs a photo. Add one, or turn off the highlight.');
+const needsPhoto = () => new Invalid('highlighted', 'An event on the home page needs a photo. Add one, or turn off "Show this on the home page".');
 
 const friendly = (e: unknown): FormState => {
   if (e instanceof Invalid) return { ok: false, message: e.message, field: e.field };

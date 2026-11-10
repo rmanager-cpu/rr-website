@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
-import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from '@/components/Icons';
+import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
-import { SpaceGrid } from '@/components/SpaceGrid';
-import { photos } from '@/content/photos';
+import { homePhotos, photos, type Photo } from '@/content/photos';
+import { business } from '@/content/site';
+import { spaces } from '@/content/spaces';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
+import { Aperture } from './Aperture';
+import { SpacePicker, type PickerSpace } from './SpacePicker';
+import './celebrate.css';
 
 export const metadata: Metadata = {
   title: 'Private Dining & Weddings in Tahoe City',
@@ -48,6 +51,89 @@ const FAQ = [
   },
 ];
 
+// Capacities come only from content/spaces.ts (management-confirmed); anything else says "ask us".
+const fits = (name: string) => spaces.find((s) => s.name === name)?.capacity ?? null;
+
+const SPACES: PickerSpace[] = [
+  {
+    lead: 'Riverview',
+    em: 'room',
+    text: 'The round dining room, cantilevered over the Truckee. The river runs right under the party.',
+    place: 'Out over the river',
+    fits: fits('Riverview room'),
+    photo: photos.heroDusk,
+  },
+  {
+    lead: 'Alpine',
+    em: 'Dining Room',
+    text: 'The one with the big stone fireplace. Light the fire, set a long table, stay late.',
+    place: 'By the stone fireplace',
+    fits: fits('Alpine Dining Room'),
+    photo: photos.fireplaceRoom,
+  },
+  {
+    lead: 'The',
+    em: 'Point',
+    text: 'The river end of the patio. Book it and it’s yours for the event, river and all. A small section of the patio stays open for our regular diners.',
+    place: 'The river end of the patio',
+    fits: fits('The Point'),
+    photo: photos.pointCeremony,
+  },
+  {
+    lead: 'Full',
+    em: 'Patio',
+    text: 'The whole riverside patio, in the warmer months. Room for a band and everyone you know.',
+    place: 'Warmer months',
+    fits: fits('Full Patio'),
+    photo: photos.patioRoundsSails,
+  },
+];
+
+const PARTIES = [
+  {
+    lead: 'Private',
+    em: 'dinners',
+    line: 'One long table by the fire, for 13 to 50 guests. Tell us the occasion and we come back with a menu.',
+    go: 'Plan a dinner',
+    href: '/celebrate/plan#private',
+  },
+  {
+    lead: 'Company',
+    em: 'parties',
+    line: 'Holiday parties, ski groups, team dinners. Take a room or take the whole patio. Monday can wait.',
+    go: 'Plan a party',
+    href: '/celebrate/plan#corporate',
+  },
+  {
+    lead: 'Live',
+    em: 'shows',
+    line: 'Music came back to the patio for good in 2025. Got a show in mind? Bring it.',
+    go: 'Pitch us a show',
+    href: '/celebrate/plan#other',
+  },
+];
+
+const bandOnStage: Photo = { src: '/photos/concerts/band-on-patio-stage.jpg', width: 1600, height: 900, alt: 'A band on the patio stage under string lights with the crowd in front' };
+const packedPatio: Photo = { src: '/photos/concerts/packed-patio-tables-to-stage.jpg', width: 1600, height: 1200, alt: 'Looking down the patio tables to a packed dance floor and the lit stage at night' };
+const GALLERY: { photo: Photo; cap: string; tall?: boolean; focus?: string }[] = [
+  { photo: photos.weddingArch, cap: 'The ceremony' },
+  { photo: homePhotos.ceremony, cap: 'The aisle', tall: true },
+  { photo: photos.riverviewRapids, cap: 'The Riverview room' },
+  { photo: photos.fireplaceTableSet, cap: 'The long table' },
+  { photo: homePhotos.cake, cap: 'The cake', tall: true, focus: '62% 50%' },
+  { photo: packedPatio, cap: 'The dance floor' },
+  { photo: homePhotos.dining, cap: 'The dining room' },
+  { photo: photos.patioRoundsHeaters, cap: 'The reception' },
+  { photo: bandOnStage, cap: 'The show' },
+];
+
+const KINDS = [
+  { id: 'wedding', label: 'A wedding' },
+  { id: 'private', label: 'A private dinner or party' },
+  { id: 'corporate', label: 'A company or group event' },
+  { id: 'other', label: 'Something else' },
+];
+
 export default function CelebratePage() {
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -59,85 +145,165 @@ export default function CelebratePage() {
     <>
       <JsonLd data={breadcrumbSchema('Celebrate', '/celebrate')} />
       <JsonLd data={faqSchema} />
-      <SiteHeader />
+      <SiteHeader variant="overlay" />
 
-      <section className="page-hero">
-        <div className="page-hero__bg">
-          <Image src={photos.fireplaceLongTable.src} alt={photos.fireplaceLongTable.alt} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 60%' }} />
+      {/* HERO */}
+      <section className="page-hero cel-hero">
+        <div className="page-hero__media">
+          <Image src={homePhotos.cake.src} alt={homePhotos.cake.alt} fill priority sizes="100vw" data-parallax="0.15" />
         </div>
-        <div className="page-hero__shade" aria-hidden="true" />
-        <div className="container page-hero__body">
-          <h1 className="serif" style={{ fontSize: 'clamp(56px, 9vw, 144px)', lineHeight: 0.92 }}>
-            <span className="write">Private dinners,</span>
-            <span className="write write--2">parties &amp; weddings.</span>
-          </h1>
-          <p>{L.line}</p>
-        </div>
-      </section>
-
-      <section className="section" aria-label="Ways to celebrate">
-        <div className="container stack" style={{ gap: 40 }}>
-          <span className="eyebrow">Choose your occasion</span>
-          <div className="occasions">
-            <Link href="/celebrate/plan#private" className="occasion" id="private-dining">
-              <span className="occasion__name">Private dining &amp; parties</span>
-              <span className="occasion__line">{L.line2}</span>
-              <span className="occasion__go"><span className="pill">Plan a dinner</span><ArrowRight size={26} /></span>
-            </Link>
-            <Link href="/celebrate/plan#corporate" className="occasion" id="groups">
-              <span className="occasion__name">Corporate &amp; groups</span>
-              <span className="occasion__line">{L.line3}</span>
-              <span className="occasion__go"><span className="pill">Plan an event</span><ArrowRight size={26} /></span>
-            </Link>
-            <Link href="/celebrate/weddings" className="occasion">
-              <span className="occasion__name">Weddings</span>
-              <span className="occasion__line">{L.line2}</span>
-              <span className="occasion__go"><span className="pill pill--line">See weddings</span><ArrowRight size={26} /></span>
-            </Link>
+        <div className="page-hero__inner container">
+          <p className="label label--accent">Celebrate</p>
+          <Lines as="h1" className="display-xl" lines={['Bring', <em key="e">everyone.</em>]} />
+          <p className="lede" data-reveal data-reveal-delay="300">
+            Weddings, private dinners, company parties and live shows, right on the river. Loud toasts welcome.
+          </p>
+          <div className="btn-row" data-reveal data-reveal-delay="450">
+            <Link href="/celebrate/plan" className="btn">Plan an event</Link>
+            <a href="#spaces" className="btn btn--ghost">See the spaces</a>
           </div>
         </div>
       </section>
 
-      <section className="section bg-frost" aria-labelledby="spaces-h">
-        <div className="container stack" style={{ gap: 44 }}>
-          <div className="row-split">
-            <h2 id="spaces-h" className="serif h-m">The spaces</h2>
-            <p className="lede" style={{ maxWidth: 420 }}>{L.line}</p>
+      {/* A VENUE AS MUCH AS A LODGE */}
+      <Aperture photo={photos.aerialSpaces} id="venue" labelledBy="venue-h">
+        <p className="label label--accent" data-reveal>The venue</p>
+        <Lines id="venue-h" className="display-l" lines={['A venue as much', <>as <em>a lodge.</em></>]} />
+        <p className="lede" data-reveal data-reveal-delay="150">
+          Four spaces on the Truckee, dinner from our kitchen, and {business.rooms} rooms upstairs for whoever isn’t driving home.
+        </p>
+        <div className="chip-row" data-reveal data-reveal-delay="250">
+          <span className="chip chip--plain">Weddings</span>
+          <span className="chip chip--plain">Rehearsal dinners</span>
+          <span className="chip chip--plain">Private dinners</span>
+          <span className="chip chip--plain">Company parties</span>
+          <span className="chip chip--music">Live shows</span>
+        </div>
+        <p data-reveal data-reveal-delay="350">
+          <Link href="/stay" className="link-arrow">The rooms upstairs</Link>
+        </p>
+      </Aperture>
+
+      {/* THE FOUR SPACES */}
+      <section className="section section--snow" id="spaces" aria-labelledby="spaces-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>The four spaces</p>
+            <Lines id="spaces-h" className="display-l" lines={[<>Pick <em>your room.</em></>]} />
           </div>
-          <SpaceGrid />
-          <Link href="/celebrate/spaces" className="arrow-link" style={{ alignSelf: 'flex-start' }}>All the spaces <ArrowRight size={18} /></Link>
+          <SpacePicker items={SPACES} />
         </div>
       </section>
 
-      <section className="section" id="plan" aria-labelledby="plan-h">
-        <div className="container stack" style={{ gap: 22, maxWidth: 900 }}>
-          <span className="eyebrow">Plan it</span>
-          <h2 id="plan-h" className="serif h-m">{L.head}</h2>
-          <p className="lede">{L.line3}</p>
-          <div className="btn-row">
-            <Link href="/celebrate/plan" className="btn btn--amber">Plan your event</Link>
+      {/* WEDDINGS */}
+      <section className="section section--dark cel-wed" id="weddings" aria-labelledby="weddings-h">
+        <div className="container split">
+          <figure className="frame frame--tall frame--arch" data-reveal="clip">
+            <Image src={homePhotos.couple.src} alt={homePhotos.couple.alt} fill sizes="(max-width: 860px) 180vw, 1040px" />
+          </figure>
+          <div className="stack cel-stack">
+            <p className="label label--accent" data-reveal>Weddings</p>
+            <Lines id="weddings-h" className="display-l" lines={['Say it by', <em key="e">the river.</em>]} />
+            <p className="lede" data-reveal data-reveal-delay="150">
+              Ceremony on The Point. Dinner on the patio. Cake after dark, with the Truckee doing the background music.
+            </p>
+            <ul className="rows cel-rows2" data-reveal data-reveal-delay="250">
+              <li><span className="row__title">The <em>ceremony</em></span><span className="row__note">On The Point, with the Truckee right behind you.</span></li>
+              <li><span className="row__title">The <em>party</em></span><span className="row__note">Dinner on the patio and cake after dark.</span></li>
+              <li><span className="row__title">The <em>night before</em></span><span className="row__note">Rehearsal dinner in a room of your own.</span></li>
+              <li><span className="row__title">The <em>end of the night</em></span><span className="row__note">A room upstairs. We do the whole weekend.</span></li>
+            </ul>
+            <div className="btn-row" data-reveal data-reveal-delay="300">
+              <Link href="/celebrate/weddings" className="btn">Weddings at River Ranch</Link>
+              <Link href="/celebrate/plan#wedding" className="btn btn--ghost">Plan a wedding</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="band" id="weddings" aria-labelledby="weddings-h">
-        <div className="band__bg">
-          <Image src={photos.weddingArch.src} alt={photos.weddingArch.alt} fill sizes="100vw" style={{ objectFit: 'cover' }} />
-        </div>
-        <div className="container" style={{ width: '100%', paddingBlock: 80 }}>
-          <div className="band__card">
-            <span className="eyebrow">Weddings</span>
-            <h2 id="weddings-h" className="serif" style={{ fontSize: 'clamp(40px, 4.6vw, 64px)', lineHeight: 0.98 }}>{L.head2}</h2>
-            <p className="lede">{L.line}</p>
-            <Link href="/celebrate/weddings" className="btn btn--amber" style={{ alignSelf: 'flex-start' }}>Weddings at River Ranch</Link>
+      {/* PRIVATE DINNERS AND PARTIES */}
+      <section className="section section--ember" id="parties" aria-labelledby="parties-h">
+        <div className="container split split--flip">
+          <figure className="frame frame--zoom" data-reveal="clip">
+            <Image src={photos.fireplaceLongTable.src} alt={photos.fireplaceLongTable.alt} fill sizes="(max-width: 860px) 100vw, 50vw" />
+          </figure>
+          <div className="stack cel-stack">
+            <p className="label label--accent" data-reveal>Dinners and parties</p>
+            <Lines id="parties-h" className="display-l" lines={[<>Take <em>the room.</em></>]} />
+            <p className="lede" data-reveal data-reveal-delay="150">Long tables, good wine, and a guest list that knows how to have fun.</p>
+            <ul className="rows cel-parties" data-reveal data-reveal-delay="250">
+              {PARTIES.map((p) => (
+                <li key={p.href}>
+                  <span className="row__title">{p.lead} <em>{p.em}</em></span>
+                  <span className="cel-party__body">
+                    <span className="row__note">{p.line}</span>
+                    <Link href={p.href} className="link-arrow">{p.go}</Link>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="faq-h">
-        <div className="container stack" style={{ gap: 32 }}>
-          <h2 id="faq-h" className="serif h-m">Questions, answered</h2>
-          <div className="faq">
+      {/* GALLERY */}
+      <section className="section section--dark cel-gallery" id="gallery" aria-labelledby="gallery-h">
+        <div className="container">
+          <div className="cel-gal-head">
+            <div>
+              <p className="label label--accent" data-reveal>A look around</p>
+              <Lines id="gallery-h" className="display-l" lines={[<>Proof it <em>happened.</em></>]} />
+            </div>
+            <p className="label cel-gal-hint" data-reveal data-reveal-delay="200" aria-hidden="true">Drag</p>
+          </div>
+        </div>
+        <div className="drag-gallery" tabIndex={0} aria-label="Event photos (scrolls sideways)" data-reveal="fade">
+          <div className="drag-gallery__track">
+            {GALLERY.map((g) => (
+              <figure key={g.photo.src} className={`frame${g.tall ? ' frame--tall is-tall' : ''}`}>
+                <Image src={g.photo.src} alt={g.photo.alt} fill sizes={g.tall ? '(max-width: 860px) 108vw, 760px' : '(max-width: 860px) 72vw, 560px'} style={g.focus ? { objectPosition: g.focus } : undefined} />
+                <figcaption>{g.cap}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* THREE STEPS */}
+      <section className="section section--frost" id="how" aria-labelledby="how-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>How it works</p>
+            <Lines id="how-h" className="display-l" lines={['Three steps.', <em key="e">Then the fun part.</em>]} />
+          </div>
+          <ol className="cel-steps">
+            <li className="cel-step" data-reveal>
+              <span className="cel-step__when">First,</span>
+              <h3 className="cel-step__what">Tell us what you’re planning.</h3>
+              <p className="muted">A rough date and a headcount is plenty to start.</p>
+            </li>
+            <li className="cel-step" data-reveal data-reveal-delay="180">
+              <span className="cel-step__when">then</span>
+              <h3 className="cel-step__what">We come back with spaces and a menu.</h3>
+              <p className="muted">The rooms that fit, and what the kitchen would cook.</p>
+            </li>
+            <li className="cel-step" data-reveal data-reveal-delay="360">
+              <span className="cel-step__when">and then</span>
+              <h3 className="cel-step__what">We hold your date.</h3>
+              <p className="muted">Your date is held once the deposit is paid. Then the lights are on and it’s yours.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section section--snow" id="faq" aria-labelledby="faq-h">
+        <div className="container split split--top cel-faq">
+          <div className="stack cel-stack">
+            <p className="label label--accent" data-reveal>Good to know</p>
+            <Lines id="faq-h" className="display-l" lines={['Questions,', <em key="e">answered.</em>]} />
+          </div>
+          <div className="faq" data-reveal data-reveal-delay="150">
             {FAQ.map((f) => (
               <details key={f.q}>
                 <summary>{f.q}</summary>
@@ -148,14 +314,47 @@ export default function CelebratePage() {
         </div>
       </section>
 
-      <section style={{ background: 'var(--navy)', color: 'var(--ice)' }}>
-        <Link href="/stay" className="container next-door">
-          <span className="stack" style={{ gap: 14 }}>
-            <span className="eyebrow eyebrow--amber">Next door · Stay</span>
-            <span className="serif" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 0.98 }}>{L.head3}</span>
-          </span>
-          <Image src={photos.balconyChairs.src} alt={photos.balconyChairs.alt} width={photos.balconyChairs.width} height={photos.balconyChairs.height} sizes="440px" className="rounded" style={{ width: 'min(440px, 100%)', aspectRatio: '3 / 2', objectFit: 'cover' }} />
-        </Link>
+      {/* PLAN */}
+      <section className="section section--dark" id="plan" aria-labelledby="plan-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>Plan an event</p>
+            <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
+          </div>
+          <div className="cel-plan__grid">
+            <div className="cel-plan__side">
+              <p className="lede" data-reveal>It takes a minute. We come back with spaces and a menu.</p>
+              <p data-reveal data-reveal-delay="100">
+                <a className="cel-mail" href={`mailto:${business.email.events}`}>{business.email.events}</a>
+              </p>
+              <p className="small cel-contact" data-reveal data-reveal-delay="150">
+                Rather talk? Call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+              </p>
+              {/* The events app's live availability calendar plugs in here once it's ready. */}
+              <div data-reveal data-reveal-delay="200">
+                <p className="label cel-slot__label">Is your date open?</p>
+                <div className="slot cel-slot">
+                  [Live availability calendar goes here]
+                  <small>Open dates from our events system will show at this spot.</small>
+                </div>
+              </div>
+            </div>
+            <div className="panel" data-reveal data-reveal-delay="150">
+              <h3 className="panel__title">What are you <em>planning?</em></h3>
+              <p className="small">Pick one and the planner opens with it filled in.</p>
+              <ul className="cel-kinds">
+                {KINDS.map((k) => (
+                  <li key={k.id}>
+                    <Link href={`/celebrate/plan#${k.id}`}><span>{k.label}</span></Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="btn-row">
+                <Link href="/celebrate/plan" className="btn">Open the planner</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
