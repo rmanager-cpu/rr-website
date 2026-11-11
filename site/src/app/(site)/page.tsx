@@ -39,7 +39,7 @@ export default async function Home() {
     <>
       <SiteHeader variant="overlay" solidAfter={1.4} />
       <noscript>
-        <style>{'.hm-hero__actions{opacity:1!important;transform:none!important;pointer-events:auto!important}'}</style>
+        <style>{'.hm-hero__actions{opacity:1!important;transform:translate(-50%,0)!important;pointer-events:auto!important}'}</style>
       </noscript>
 
       {/* 1. Night into first light (the First Light hero; its morning fades into the Palisades wash) */}
