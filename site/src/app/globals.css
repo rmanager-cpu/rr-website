@@ -158,7 +158,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 /* The faded Palisades photo behind the home page (components/SeasonWash.tsx, home only). */
 .season-wash { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .season-wash img { object-fit: cover; }
-.season-wash::after { content: ''; position: absolute; inset: 0; background: rgba(247, 249, 250, 0.85); }
+.season-wash::after { content: ''; position: absolute; inset: 0; background: rgba(247, 249, 250, 0.72); } /* snow white over the mountain: 0.72 lets the slopes show without taking over (owner, Nov 11) */
 
 /* ======================================================================================
    FS type
