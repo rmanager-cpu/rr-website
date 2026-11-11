@@ -31,18 +31,18 @@
 .hm-hero__name em { font-style: italic; color: var(--amber); }
 .hm-hero__sub { margin: clamp(14px, 2.4vh, 26px) 0 0; font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--paper); text-shadow: 0 0 1px rgba(15, 27, 45, 0.8), 0 1px 3px rgba(15, 27, 45, 0.7), 0 2px 18px rgba(15, 27, 45, 0.85); animation: fl-rise var(--slower) var(--ease) 160ms both; }
 
-/* The buttons arrive with the morning. Without JS (see the page's <noscript>), or when one of them gets
-   keyboard focus, they simply show. */
-.hm-hero__actions { position: absolute; left: 0; right: 0; bottom: clamp(44px, 11vh, 120px); display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; padding-inline: var(--gutter); }
-.hm-hero__actions .btn { opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease), background-color var(--quick) var(--ease), box-shadow var(--quick) var(--ease); }
-.hm-hero.is-morning .hm-hero__actions .btn, .hm-hero__actions:focus-within .btn { opacity: 1; transform: none; pointer-events: auto; }
-.hm-hero.is-morning .hm-hero__actions .btn:nth-child(2) { transition-delay: 120ms, 120ms, 0s, 0s; }
-.hm-hero.is-morning .hm-hero__actions .btn:nth-child(3) { transition-delay: 240ms, 240ms, 0s, 0s; }
-.hm-hero.is-morning .hm-hero__actions .btn:hover { transform: translateY(-2px); }
+/* Stay | Dine | Celebrate arrive with the morning: white tracked capitals that turn ember gold on hover,
+   with gold bars between them. Without JS (see the page's <noscript>), or when one gets keyboard focus,
+   they simply show. */
+.hm-hero__actions { position: absolute; left: 0; right: 0; bottom: clamp(44px, 11vh, 120px); display: flex; justify-content: center; align-items: center; gap: clamp(18px, 2.6vw, 36px); padding-inline: var(--gutter); opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease); }
+.hm-hero.is-morning .hm-hero__actions, .hm-hero__actions:focus-within { opacity: 1; transform: none; pointer-events: auto; }
+.hm-hero__go { padding: 10px 2px; color: var(--snow); font-size: clamp(0.92rem, 1.35vw, 1.2rem); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 2px rgba(15, 27, 45, 0.5), 0 2px 18px rgba(15, 27, 45, 0.6); transition: color var(--quick) var(--ease); }
+.hm-hero__go:hover, .hm-hero__go:focus-visible { color: var(--amber); }
+.hm-hero__actions > i { flex: none; width: 2px; height: 1.3em; font-size: clamp(0.92rem, 1.35vw, 1.2rem); background: var(--amber); }
 @media (max-width: 640px) {
   .hm-hero__photo img { object-position: 44% 60%; }
-  .hm-hero__actions { flex-direction: column; align-items: center; bottom: clamp(36px, 8vh, 80px); }
-  .hm-hero__actions .btn { width: min(100%, 290px); }
+  .hm-hero__actions { gap: 16px; bottom: clamp(36px, 8vh, 80px); }
+  .hm-hero__go { letter-spacing: 0.2em; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hm-hero__name, .hm-hero__sub { animation: none; }

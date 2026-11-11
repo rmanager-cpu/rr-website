@@ -9,7 +9,7 @@ import { business } from '@/content/site';
  * The home hero: night on the Truckee turning into first light as you scroll. A tall track holds a
  * sticky stage; one scroll value (--p, 0 to 1) drives every layer: the photo drifts and warms, the
  * night tint lifts, a dawn glow rises from the horizon, two canvas layers of snow keep falling, and the
- * three buttons arrive. The words are just the name and "Lodge & Restaurant".
+ * three words arrive: Stay | Dine | Celebrate. The words are just the name and "Lodge & Restaurant".
  * At the end the bottom of the scene fades away (a mask, --o) to show the faded Palisades photo the
  * site already paints behind every page (SeasonWash), so morning settles straight into the page.
  */
@@ -156,11 +156,13 @@ export function HomeHero() {
           </h1>
           <p className="hm-hero__sub" aria-hidden="true">Lodge &amp; Restaurant</p>
         </div>
-        <div className="hm-hero__actions">
-          <Link className="btn btn--primary" href="/stay#book">Book a room</Link>
-          <a className="btn btn--light" href={business.links.reserveTable} target="_blank" rel="noopener">Reserve a table</a>
-          <Link className="btn btn--light" href="/celebrate/plan">Plan an event</Link>
-        </div>
+        <nav className="hm-hero__actions" aria-label="Stay, dine or celebrate">
+          <Link className="hm-hero__go" href="/stay">Stay</Link>
+          <i aria-hidden="true" />
+          <Link className="hm-hero__go" href="/dine">Dine</Link>
+          <i aria-hidden="true" />
+          <Link className="hm-hero__go" href="/celebrate">Celebrate</Link>
+        </nav>
       </div>
     </section>
   );
