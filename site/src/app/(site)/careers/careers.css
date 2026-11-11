@@ -24,3 +24,13 @@
 @media (max-width: 720px) {
   .ca-teams > li { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* The fuller application: small section labels, chip rows for seasons, days, shifts and yes/no, and a
+   faint rule around each reference or past job. */
+.ca-sec { margin-top: 18px !important; padding-top: 22px; border-top: 1px solid var(--rule); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+.ca-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ca-chip { min-height: 44px; padding: 6px 16px; gap: 8px; font-size: 0.9rem; }
+.ca-group { display: grid; gap: 18px; padding: 16px 0 4px; border-top: 1px dashed var(--rule); }
+.ca-attest { border-radius: 14px; align-items: flex-start; padding: 14px 18px; line-height: 1.5; font-weight: 500; }
+.ca-attest input { flex: none; margin-top: 2px; }
+.ca-form input[type='file'] { padding: 10px 0; font-size: 0.9rem; color: var(--fg); }

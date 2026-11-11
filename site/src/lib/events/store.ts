@@ -3,7 +3,7 @@ import seed from '@/content/seed-events.json';
 import { db, dbReady } from '@/lib/db/pool';
 
 const hasDb = dbReady;
-import type { Category, EventLink, EventPage, EventSeries, JobApplication, Layout } from './types';
+import type { ApplicationDetails, Category, EventLink, EventPage, EventSeries, JobApplication, Layout } from './types';
 
 // Reads and writes the calendar. With the database connected (SITE_DATABASE_URL) everything lives in
 // the Supabase hub and the staff editor can change it; without it, the site shows the starting events
@@ -233,14 +233,43 @@ export async function photoBytes(id: string): Promise<Buffer | null> {
 
 // ---------- job applications ----------
 
-export async function addApplication(a: { name: string; email: string | null; phone: string | null; department: string }) {
+export async function addApplication(a: {
+  name: string; email: string | null; phone: string | null; department: string; details: ApplicationDetails;
+  resume: { bytes: Buffer; filename: string; mime: string } | null;
+}) {
   await needDb();
-  await db().query('insert into site_job_applications (name, email, phone, department) values ($1,$2,$3,$4)', [a.name, a.email, a.phone, a.department]);
+  const client = await db().connect();
+  try {
+    await client.query('begin');
+    let resumeId: string | null = null;
+    if (a.resume) {
+      const { rows } = await client.query('insert into site_job_resumes (bytes, filename, mime) values ($1,$2,$3) returning id', [a.resume.bytes, a.resume.filename, a.resume.mime]);
+      resumeId = rows[0].id;
+    }
+    await client.query(
+      'insert into site_job_applications (name, email, phone, department, details, resume_id) values ($1,$2,$3,$4,$5::jsonb,$6)',
+      [a.name, a.email, a.phone, a.department, JSON.stringify(a.details), resumeId],
+    );
+    await client.query('commit');
+  } catch (e) {
+    await client.query('rollback').catch(() => {});
+    throw e;
+  } finally {
+    client.release();
+  }
+}
+
+/** A resume for /admin: the file and its name. */
+export async function resumeFile(id: string): Promise<{ bytes: Buffer; filename: string; mime: string } | null> {
+  const { rows } = await db().query('select bytes, filename, mime from site_job_resumes where id = $1', [id]);
+  return rows[0] ?? null;
 }
 
 export async function listApplications(): Promise<JobApplication[]> {
   if (!(await hasDb())) return [];
-  const { rows } = await db().query('select * from site_job_applications order by created_at desc limit 500');
+  const { rows } = await db().query(
+    'select a.*, r.filename as resume_filename from site_job_applications a left join site_job_resumes r on r.id = a.resume_id order by a.created_at desc limit 500',
+  );
   return rows.map((r) => ({
     id: String(r.id),
     createdAt: new Date(r.created_at).toISOString(),
@@ -250,6 +279,8 @@ export async function listApplications(): Promise<JobApplication[]> {
     department: r.department,
     status: r.status,
     notes: r.notes,
+    details: r.details ?? {},
+    resume: r.resume_id ? { id: String(r.resume_id), filename: r.resume_filename } : null,
   }));
 }
 

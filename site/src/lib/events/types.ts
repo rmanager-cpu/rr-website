@@ -67,6 +67,27 @@ export type Occurrence = {
 export const DEPARTMENTS = ['Front of house', 'Back of house', 'Lodge staff', 'Maintenance', 'Administrative'] as const;
 export type Department = (typeof DEPARTMENTS)[number];
 
+/** The fuller application's answers (site_job_applications.details). Older applications have none. */
+export type ApplicationDetails = {
+  role?: string;
+  seasons?: string[];
+  hours?: string;
+  start?: string;
+  days?: string[];
+  shifts?: string[];
+  holidays?: string;
+  over18?: string;
+  over21?: string;
+  authorized?: string;
+  certs?: string[];
+  jobs?: { employer: string; role: string; when: string }[];
+  refs?: { name: string; relation: string; contact: string }[];
+  about?: string;
+  pay?: string;
+  town?: string;
+  heard?: string;
+};
+
 export type JobApplication = {
   id: string;
   createdAt: string;
@@ -76,4 +97,6 @@ export type JobApplication = {
   department: Department;
   status: 'new' | 'contacted' | 'hired' | 'closed';
   notes: string | null;
+  details: ApplicationDetails;
+  resume: { id: string; filename: string } | null;
 };

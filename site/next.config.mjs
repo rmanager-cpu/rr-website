@@ -76,6 +76,8 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
+    // The Careers form posts a resume of up to 4 MB.
+    serverActions: { bodySizeLimit: '5mb' },
     serverComponentsExternalPackages: ['@sparticuz/chromium', 'playwright-core', 'pdf-lib'],
     // Read at run time by the menu PDF route.
     outputFileTracingIncludes: { '/admin/print/menus/*/pdf': ['./print-fonts/**', './src/lib/print-menu/fit.js'] },
