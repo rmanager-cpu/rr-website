@@ -785,7 +785,7 @@ html:not(.fs-scrolled) .site-header--overlay:not(.is-scrolled) .site-header__bar
 .wall-embed { display: block; width: 100%; height: clamp(520px, 82svh, 900px); border: 0; background: var(--ink); }
 @media (max-width: 760px) { .wall-embed { height: 74svh; min-height: 460px; } }
 
-/* ======================================================================================
+/* ===============================================================================
    FS footer (components/SiteFooter.tsx): charcoal, a huge wordmark, four columns, the fine print.
    ====================================================================================== */
 .site-footer { position: relative; padding: clamp(64px, 9vw, 130px) 0 clamp(48px, 6vw, 72px); background: var(--char); color: var(--cream); border-top: 1px solid rgba(239, 230, 214, 0.12); --fg: var(--cream); --muted: rgba(239, 230, 214, 0.6); --rule: rgba(239, 230, 214, 0.14); --accent: var(--amber); }
@@ -853,3 +853,22 @@ html.fl-motion [data-parallax] { will-change: transform; }
   .site-header, .section-tabs, .site-header-spacer, .season-wash { display: none; }
   .grain::after, .section--dark::after, .section--ember::after, .section--bark::after, .page-hero::after, .fl-hero::after, .site-footer::after { display: none; }
 }
+=======
+/* ---------- live room rates (BookingCenter API), Fireside ----------
+   Sits inside the bark date panel and the room cards on /stay/rooms, so colors come from the band's tokens. */
+.live-test { margin: 0; padding: 8px 12px; border-radius: 3px; background: rgba(224, 145, 58, 0.18); color: var(--fg); border: 1px solid var(--amber); font-size: 14px; font-weight: 700; }
+.live-rate { display: flex; flex-direction: column; gap: 4px; }
+.live-rate p { margin: 0; }
+.live-rate__price { font-size: 16px; color: var(--fg); }
+.live-rate__price b { font-size: 22px; }
+.live-rate__sub { font-size: 14px; color: var(--muted); }
+.live-rate__policy { font-size: 14px; color: var(--muted); }
+.live-rate__policy summary, .room-photos summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; font-weight: 600; font-size: 14px; }
+.live-rate__policy p { margin-top: 6px; line-height: 1.5; }
+.live-list { display: flex; flex-direction: column; gap: 18px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.live-list__room { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.live-list__room + .live-list__room { padding-top: 18px; border-top: 1px solid var(--rule); }
+.live-list__name { margin: 0; font-family: var(--font-display), Georgia, serif; font-size: 26px; line-height: 1.15; color: var(--fg); }
+.live-list__all { font-size: 14px; font-weight: 600; color: var(--fg); }
+.room-photos__strip { display: flex; gap: 10px; overflow-x: auto; padding: 6px 0; }
+.room-photos__strip img { flex: none; width: 240px; height: 180px; aspect-ratio: auto; }
