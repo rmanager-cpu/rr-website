@@ -163,6 +163,8 @@ export function HomeHero() {
           <i aria-hidden="true" />
           <Link className="hm-hero__go" href="/celebrate">Celebrate</Link>
         </nav>
+        {/* The scroll cue: a single snowflake drifting down a gold thread. No words. */}
+        <div className="hm-hero__cue" aria-hidden="true"><i /></div>
       </div>
     </section>
   );

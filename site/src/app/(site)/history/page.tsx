@@ -45,7 +45,7 @@ export default function HistoryPage() {
           <>
             <p className="label label--accent">History</p>
             <h1 id="hx-title" className="hx-card__title">Sixty-some years of <em>good nights.</em></h1>
-            <p className="hx-card__line">They all end up on The Wall. Drag or swipe to walk along it, and tap any photo to see it up close.</p>
+            <p className="hx-card__line">Some of them made it onto The Wall. Drag or swipe to walk along it, and tap any photo to see it up close.</p>
           </>
         }
         story={

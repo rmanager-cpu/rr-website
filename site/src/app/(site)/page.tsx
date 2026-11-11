@@ -39,7 +39,7 @@ export default async function Home() {
     <>
       <SiteHeader variant="overlay" solidAfter={1.4} />
       <noscript>
-        <style>{'.hm-hero__actions{opacity:1!important;transform:translate(-50%,0)!important;pointer-events:auto!important}'}</style>
+        <style>{'.hm-hero__cue{display:none}'}</style>
       </noscript>
 
       {/* 1. Night into first light (the First Light hero; its morning fades into the Palisades wash) */}
@@ -174,8 +174,8 @@ export default async function Home() {
         </div>
         <div className="container stack">
           <p className="label label--accent" data-reveal>Since 1964</p>
-          <Lines as="h2" id="wall-h" className="display-l" lines={['Every good night', <>ends up on <em>The Wall.</em></>]} />
-          <p className="lede" data-reveal data-reveal-delay="150">Sixty years of snow days, loud bands and a tequila toddy called the Hot Damn. Go have a look.</p>
+          <Lines as="h2" id="wall-h" className="display-l" lines={['Sixty years,', <em key="w">one wall.</em>]} />
+          <p className="lede" data-reveal data-reveal-delay="150">Snow days, loud bands, old menus and a tequila toddy called the Hot Damn, all framed by the host stand. Go have a look.</p>
           <p data-reveal data-reveal-delay="250">
             <Link className="btn" href="/history">Walk The Wall</Link>
           </p>

@@ -31,17 +31,22 @@
 .hm-hero__name em { font-style: italic; color: var(--amber); }
 .hm-hero__sub { margin: clamp(14px, 2.4vh, 26px) 0 0; font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--paper); text-shadow: 0 0 1px rgba(15, 27, 45, 0.8), 0 1px 3px rgba(15, 27, 45, 0.7), 0 2px 18px rgba(15, 27, 45, 0.85); animation: fl-rise var(--slower) var(--ease) 160ms both; }
 
-/* Stay | Dine | Celebrate arrive with the morning: white tracked capitals that turn ember gold on hover,
-   with gold bars between them, on a dark frosted capsule so they read over bright snow and the light
-   fade at the end. Without JS (see the page's <noscript>), or when one gets keyboard focus, they simply show. */
-.hm-hero__actions { position: absolute; left: 50%; bottom: clamp(44px, 11vh, 120px); display: flex; justify-content: center; align-items: center; gap: clamp(18px, 2.6vw, 36px); width: max-content; max-width: calc(100% - 2 * var(--gutter)); padding: 8px clamp(22px, 3vw, 40px); border-radius: 999px; background: rgba(14, 13, 11, 0.58); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 10px 40px rgba(14, 13, 11, 0.25); opacity: 0; transform: translate(-50%, 20px); pointer-events: none; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease); }
-.hm-hero.is-morning .hm-hero__actions, .hm-hero__actions:focus-within { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+/* Stay | Dine | Celebrate sit on the hero from the first screen: white tracked capitals that turn ember
+   gold on hover, with gold bars between them, on a dark frosted capsule so they read over bright snow and
+   the light fade at the end. Below them, the scroll cue: a snowflake drifting down a gold thread, gone
+   once the scroll starts (no text). */
+.hm-hero__actions { position: absolute; left: 50%; bottom: clamp(76px, 12vh, 132px); display: flex; justify-content: center; align-items: center; gap: clamp(18px, 2.6vw, 36px); width: max-content; max-width: calc(100% - 2 * var(--gutter)); padding: 8px clamp(22px, 3vw, 40px); border-radius: 999px; background: rgba(14, 13, 11, 0.58); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 10px 40px rgba(14, 13, 11, 0.25); transform: translateX(-50%); }
+.hm-hero__cue { position: absolute; left: 50%; bottom: clamp(16px, 3vh, 34px); width: 1px; height: 44px; transform: translateX(-50%); background: linear-gradient(rgba(242, 192, 120, 0), rgba(242, 192, 120, 0.6)); pointer-events: none; transition: opacity var(--slow) var(--ease); }
+.hm-hero__cue i { position: absolute; left: 50%; top: 0; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.75); animation: hm-flake 2800ms var(--ease) infinite; }
+@keyframes hm-flake { 0% { transform: translateY(-8px); opacity: 0; } 20% { opacity: 1; } 75% { opacity: 1; } 100% { transform: translateY(44px); opacity: 0; } }
+.hm-hero.is-waking .hm-hero__cue { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .hm-hero__cue i { animation: none; top: 50%; } }
 .hm-hero__go { padding: 10px 2px; color: var(--snow); font-size: clamp(0.92rem, 1.35vw, 1.2rem); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; text-shadow: 0 1px 2px rgba(15, 27, 45, 0.5), 0 2px 18px rgba(15, 27, 45, 0.6); transition: color var(--quick) var(--ease); }
 .hm-hero__go:hover, .hm-hero__go:focus-visible { color: var(--amber); }
 .hm-hero__actions > i { flex: none; width: 2px; height: 1.3em; font-size: clamp(0.92rem, 1.35vw, 1.2rem); background: var(--amber); }
 @media (max-width: 640px) {
   .hm-hero__photo img { object-position: 44% 60%; }
-  .hm-hero__actions { gap: 14px; padding-inline: 20px; bottom: clamp(36px, 8vh, 80px); }
+  .hm-hero__actions { gap: 14px; padding-inline: 20px; bottom: clamp(72px, 11vh, 104px); }
   .hm-hero__go { letter-spacing: 0.2em; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -51,7 +56,7 @@
 /* ---------- Coming up ----------
    A plain see-through section: the hero's morning fades into the Palisades wash, and the wash settles
    into solid snow white a little way down. Up to three event cards, picked by staff in the editor. */
-.hm-next { background: linear-gradient(180deg, rgba(247, 249, 250, 0) 0, var(--snow) clamp(380px, 56vh, 620px)); }
+.hm-next { background: transparent; } /* the fixed Palisades wash (SeasonWash) shows through the whole light section */
 .hm-next__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 40px; margin-bottom: clamp(32px, 4.5vw, 64px); }
 .hm-next__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 36px); margin: 0; padding: 0; list-style: none; }
 .hm-next__card { display: grid; gap: 18px; height: 100%; color: var(--ink); text-decoration: none; }
