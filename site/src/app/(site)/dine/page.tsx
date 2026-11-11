@@ -65,8 +65,8 @@ function dayViews(menus: Menu[]): Record<'weekdays' | 'weekends', Seg[]> {
 const PLATES = [
   { p: homePhotos.elk, name: <>Elk <em>chops</em></>, line: 'Roasted potatoes, radish and cherries.' },
   { p: photos.scallops, name: <>Seared <em>scallops</em></>, line: 'Over risotto.' },
-  { p: photos.halibut, name: <>The <em>halibut</em></>, line: 'Over chickpeas and grilled zucchini.', tall: true },
-  { p: photos.lamb, name: <>Herb-crusted <em>lamb</em></>, line: null },
+  { p: photos.catchOfTheDay, name: <>Catch of <em>the day</em></>, line: 'Swordfish over farro, the night we shot it.', tall: true },
+  { p: photos.elkPlated, name: <>Elk chops, <em>take two</em></>, line: null },
   { p: photos.cobbler, name: <>Skillet <em>cobbler</em></>, line: 'With ice cream. Told you.' },
 ];
 
