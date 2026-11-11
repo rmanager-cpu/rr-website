@@ -104,7 +104,7 @@ export default async function DinePage() {
           <p className="label label--accent">Dine</p>
           <Lines as="h1" className="display-xl" lines={['Dinner on', <em key="r">the river.</em>]} />
           <p className="lede" data-reveal data-reveal-delay="300">
-            Candles, white tablecloths, snow against the glass. Dinner {hours.dinner.days.toLowerCase()}, <span style={{ whiteSpace: 'nowrap' }}>{hours.dinner.time}</span>. Start at the round bar. Everybody does.
+            Classic mountain comfort food, and plenty of it. We know you got after it today.
           </p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#reserve" className="btn">Reserve a table</a>
