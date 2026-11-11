@@ -27,7 +27,7 @@ const DAY = [
     label: 'The ceremony',
     lead: 'On',
     em: 'the river',
-    line: 'Vows on The Point or the patio, with the Truckee right behind you. An indoor room is the backup if the weather turns.',
+    line: 'Vows on The Point or the patio, with the Truckee right behind you. If the weather turns, we do our best to move everything inside.',
     photo: photos.pointCeremony,
   },
   {
@@ -40,8 +40,8 @@ const DAY = [
 ];
 
 const FACTS: [string, string][] = [
-  ['Ceremonies', 'On the riverside patio in the warmer months, with an indoor room as the backup'],
-  ['Patio dates', 'Released in late winter or early spring, depending on the weather'],
+  ['Ceremonies', 'On the riverside patio. If the weather turns, we do our best to move everything inside'],
+  ['Patio dates', 'September, and spring once the patio opens. Summer belongs to the rafters: no private events Memorial Day to Labor Day'],
   ['Around the day', 'Rehearsal dinners, welcome parties and receptions'],
   ['Your guests', `${business.rooms} lodge rooms upstairs`],
   ['Getting here', 'ADA accessible, with a private lot on site'],

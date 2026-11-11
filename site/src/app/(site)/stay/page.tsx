@@ -36,7 +36,7 @@ const DOORS = [
 export default function StayPage() {
   const KNOW = [
     { title: <>Coming and <em>going</em></>, body: <>Check-in is at {lodging.checkIn}. Check-out is at {lodging.checkOut}.</> },
-    { title: <>Bring <em>the dog</em></>, body: <>Welcome in dog-friendly rooms. Up to two, $25 plus tax per night, arranged in advance.</> },
+    { title: <>Bring <em>the dog</em></>, body: <>Welcome in dog-friendly rooms. Up to two, $25 plus tax per night, arranged in advance. And on the patio, on a leash.</> },
     { title: <>In <em>every room</em></>, body: <>An en-suite bath, a flatscreen TV, free Wi-Fi, a Keurig and a mini-fridge.</> },
     {
       title: <>Dinner is <em>downstairs</em></>,

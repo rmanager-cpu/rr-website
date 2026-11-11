@@ -45,7 +45,7 @@ export default function PlanPage() {
               <div><dt>Private dinners</dt><dd>13 to 50 guests in our dining rooms</dd></div>
               <div><dt>Notice</dt><dd>At least 7 days ahead for a private dinner</dd></div>
               <div><dt>Room fees</dt><dd>None for private dining; a food and beverage minimum applies</dd></div>
-              <div><dt>Patio dates</dt><dd>Released in late winter or early spring</dd></div>
+              <div><dt>Patio dates</dt><dd>September, and spring once the patio opens</dd></div>
             </dl>
             <div className="btn-row" data-reveal data-reveal-delay="250">
               <Link href="/celebrate/spaces" className="btn btn--ink">See the spaces</Link>

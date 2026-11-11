@@ -13,7 +13,7 @@ import '../celebrate.css';
 // left out of the sitemap until then.
 export const metadata: Metadata = {
   title: 'Event Spaces',
-  description: 'The Riverview room, the Alpine Dining Room, The Point and the full riverside patio at River Ranch in Tahoe City.',
+  description: 'The Riverview room, the Alpine Dining Room, The Point (the Half Patio) and the full riverside patio at River Ranch in Tahoe City.',
   alternates: { canonical: '/celebrate/spaces' },
   robots: { index: false, follow: true },
 };

@@ -6,8 +6,8 @@ import { spaces } from '@/content/spaces';
 const PLACE: Record<string, [string, string]> = {
   'Riverview room': ['Where', 'Out over the river'],
   'Alpine Dining Room': ['Where', 'By the stone fireplace'],
-  'The Point': ['Where', 'The river end of the patio'],
-  'Full Patio': ['Season', 'Warmer months'],
+  'The Point': ['Where', 'The Half Patio, at the river end'],
+  'Full Patio': ['Season', 'September, and spring once it opens'],
 };
 
 /** The name in Fireside's two voices: the first word plain, the rest in the italic accent. */

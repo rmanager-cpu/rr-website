@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/celebrate' },
 };
 
-// Facts from the private-dining terms already published on rrbanquets.com. Pricing and cancellation
-// terms are left out on purpose until the one current policy is confirmed (three versions exist).
+// Pricing terms follow the staff price sheet in the events app (management, 2026-11-10: the sheet is
+// the source of truth for pricing). An unmet food & beverage minimum is charged as a site fee.
 const FAQ = [
   {
     q: 'What kinds of events do you host?',
@@ -27,11 +27,11 @@ const FAQ = [
   },
   {
     q: 'How many guests can you seat?',
-    a: 'Private dinners in our dining rooms are for 13 to 50 guests. For larger groups, buyouts and weddings, start a conversation with our events team and we’ll plan it with you.',
+    a: 'Private dinners in our dining rooms are for 13 to 50 guests. For larger groups, buyouts and weddings, start a conversation with our events team and we’ll plan it with you. Buffets are for 30 guests or more; smaller groups get a seated dinner.',
   },
   {
-    q: 'Is there a room or site fee for private dining?',
-    a: 'No room or site fees for private dining. There is a food and beverage minimum, plus tax and a 22% gratuity shared across the whole team.',
+    q: 'Is there a site fee?',
+    a: 'Every space has a food and beverage minimum, and some patio and whole-restaurant dates add a flat site fee. If the food and drink come in under the minimum, the difference is charged as a site fee. Prices are before the 22% service charge (paid in full to the staff who work your event), the 1% North Lake Tahoe TBID and tax.',
   },
   {
     q: 'How far ahead do I need to book?',
@@ -39,7 +39,11 @@ const FAQ = [
   },
   {
     q: 'Can we hold an event on the patio?',
-    a: 'Yes, in the warmer months. Patio dates depend on the weather and are released in late winter or early spring, with an indoor room as the backup.',
+    a: 'Yes, in September, and in spring once the patio opens for the season. From Memorial Day weekend through Labor Day the patio belongs to the rafters, so there are no private events. If the weather turns, we do our best to move everything inside.',
+  },
+  {
+    q: 'Can we bring the dog?',
+    a: 'Yes. Dogs are welcome on the patio, ceremonies included, as long as they’re on a leash and well behaved. Nine of the lodge rooms are dog friendly too.',
   },
   {
     q: 'Can you handle dietary needs?',
@@ -75,15 +79,15 @@ const SPACES: PickerSpace[] = [
     lead: 'The',
     em: 'Point',
     text: 'The river end of the patio. Book it and it’s yours for the event, river and all. A small section of the patio stays open for our regular diners.',
-    place: 'The river end of the patio',
+    place: 'The Half Patio, at the river end',
     fits: fits('The Point'),
     photo: photos.pointCeremony,
   },
   {
     lead: 'Full',
     em: 'Patio',
-    text: 'The whole riverside patio, in the warmer months. Room for a band and everyone you know.',
-    place: 'Warmer months',
+    text: 'The whole riverside patio, in September and in spring once it opens. Room for a band and everyone you know.',
+    place: 'September and spring',
     fits: fits('Full Patio'),
     photo: photos.patioRoundsSails,
   },
