@@ -27,7 +27,7 @@ const YEARS = [
 ];
 
 // How solid each line is: "History facts" in docs/HISTORY-WALL.md. Don't state 1888 as fact, and don't
-// say Renegade started the concert series (it's older). Management wants this kept to five sentences at
+// say Renegade started the concert series (it's older). Management wants this kept to six sentences at
 // most, with the live music connection in it.
 // The page opens straight onto The Wall (the wall app, history-wall/, full screen under the header);
 // the intro and this paragraph sit on a placard beside it. Below the wall, in the Fireside look: the years
@@ -49,7 +49,7 @@ export default function HistoryPage() {
           </>
         }
         story={
-          <p>River Ranch opened in 1964 on the site of the old Deer Park Lodge, heir (depending on who’s pouring) to a Deer Park resort a poet called “where the joy-hunters gather” back in 1914. Within a year Time called it the place to stay for “sophisticated young San Francisco marrieds,” and the après drink was a tequila toddy called the Hot Damn. It has long been where the mountain comes down to party: Wild Winter Wednesdays, the SnowFest snow sculpture contest, and summer rafters floating straight onto the patio. By 1997 Leftover Salmon and the String Cheese Incident were playing here, Umphrey’s McGee came through in 2003, and by 2012 Renegade Productions had the Summer Concert Series packing the place. The pandemic hushed it, but the music came back for good in 2025 (with thanks to our friends at <a href="https://laketahoetravel.com/" rel="noopener">Go Tahoe North</a> and Casamigos Tequila), and River Ranch is now a venue as much as a lodge: live shows, weddings and private parties, right on the river.</p>
+          <p>River Ranch opened in 1964 on the site of the old Deer Park Lodge, heir (depending on who’s pouring) to a Deer Park resort a poet called “where the joy-hunters gather” back in 1914. Within a year Time called it the place to stay for “sophisticated young San Francisco marrieds,” and the après drink was a tequila toddy called the Hot Damn. It has long been where the mountain comes down to party: Wild Winter Wednesdays, the SnowFest snow sculpture contest, and summer rafters floating straight onto the patio. By 1997 Leftover Salmon and the String Cheese Incident were playing here, Umphrey’s McGee came through in 2003, and by 2012 Renegade Productions had the Summer Concert Series packing the place. The pandemic hushed it, but the music came back for good in 2025, with thanks to our friends at <a href="https://laketahoetravel.com/" rel="noopener">Go Tahoe North</a> and Casamigos Tequila. Now it’s elegant weddings, rowdy summer shows and private parties right on the river, and the locals are saying it: the Ranch is back.</p>
         }
       />
 
