@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ['/loyalty-and-gift-cards', 0.5, 'yearly'],
     ['/careers', 0.5, 'monthly'],
     ['/visit', 0.6, 'yearly'],
+    ['/privacy', 0.2, 'yearly'],
   ];
   const pages = (await listPages()).filter((p) => p.layout !== 'standard' || p.body?.trim() || p.summary?.trim());
   const menus = await listMenus();

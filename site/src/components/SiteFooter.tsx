@@ -71,6 +71,7 @@ export function SiteFooter() {
             <a href={business.social.instagram} rel="noopener">Instagram</a>
             <a href={business.social.facebook} rel="noopener">Facebook</a>
             <a href={business.links.theWall}>The Wall</a>
+            <Link href="/privacy">Privacy</Link>
           </span>
           {/* Builder credit. Becomes a link once turbodevs has its own site. */}
           <span className="credit">
