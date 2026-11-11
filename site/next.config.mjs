@@ -21,6 +21,9 @@ const oldSite = [
   // Dine. The old Popmenu menu addresses (/menus/dinner etc.) keep their slugs under /dine/menus.
   r('/menus/merchandise', '/loyalty-and-gift-cards'),
   r('/menus/mothers-day-brunch-2022', '/dine/menus'),
+  // Tuesday Dinner was a short-lived menu from one lean year; dinner is the same menu every night.
+  r('/menus/tuesday-dinner-menu', '/dine/menus/dinner'),
+  r('/dine/menus/tuesday-dinner-menu', '/dine/menus/dinner'),
   r('/items/lodge-gift-certificate', '/loyalty-and-gift-cards'),
   r('/items/restaurant-gift-card', '/loyalty-and-gift-cards'),
   ...Object.entries(itemRedirects).map(([dish, menu]) => r(`/items/${dish}`, `/dine/menus/${menu}`)),

@@ -32,7 +32,7 @@ export default function PackagesPage() {
           <p className="lede" data-reveal data-reveal-delay="300">The closest lodging to Palisades Tahoe’s Alpine Meadows base, with the bar downstairs for after.</p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#book" className="btn">Book a room</a>
-            <a href="#deals" className="btn btn--ghost">This season’s packages</a>
+            <a href="#deals" className="btn btn--ghost">Stay &amp; Dine</a>
           </div>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function PackagesPage() {
             </div>
             <dl className="facts" data-reveal data-reveal-delay="250">
               <div><dt>Ski lockers</dt><dd>In winter. Skis and boards stay out of the rooms.</dd></div>
-              <div><dt>Breakfast</dt><dd>Grab-and-go for hotel guests when occupancy allows; full breakfast {hours.breakfast.days}, <span className="sty-nowrap">{hours.breakfast.time}</span></dd></div>
+              <div><dt>Breakfast</dt><dd>30% off for hotel guests, always. {hours.breakfast.days}, <span className="sty-nowrap">{hours.breakfast.time}</span></dd></div>
               <div><dt>Après</dt><dd>{hours.happyHour.label} {hours.happyHour.days}, <span className="sty-nowrap">{hours.happyHour.time}</span>, at the bar</dd></div>
               <div><dt>Dinner</dt><dd>{hours.dinner.days}, <span className="sty-nowrap">{hours.dinner.time}</span></dd></div>
             </dl>
@@ -63,14 +63,16 @@ export default function PackagesPage() {
       <section className="section section--frost" id="deals" aria-labelledby="deals-h">
         <div className="container">
           <div className="section-head">
-            <p className="label label--accent" data-reveal>This season</p>
-            <Lines id="deals-h" className="display-l" lines={['This winter’s', <em key="p">packages.</em>]} />
+            <p className="label label--accent" data-reveal>Right now</p>
+            <Lines id="deals-h" className="display-l" lines={['Stay & Dine,', <em key="p">weeknights.</em>]} />
           </div>
           <article className="card sty-package" data-reveal>
             <div className="card__body">
-              <h3 className="display-m">Stay <em>tuned.</em></h3>
-              <p className="lede">
-                Ski packages post as soon as Palisades Tahoe sets its lift prices and opening day. Until then, rooms are open for booking, and the front desk has rates for your dates at <a className="text-link" href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+              <h3 className="display-m">$99 rooms, <em>20% off dinner.</em></h3>
+              <p className="lede">Book a Monday through Thursday night with the code <b>STAYDINE</b>: a $99 room, and 20% off your dinner tab downstairs. Through December 10. Not on Thanksgiving.</p>
+              <p className="btn-row">
+                <a className="btn" href="/stay/packages?promo=staydine#book">Book with STAYDINE</a>
+                <a className="btn btn--ghost" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>
               </p>
             </div>
           </article>

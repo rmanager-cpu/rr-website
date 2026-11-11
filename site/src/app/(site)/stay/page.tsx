@@ -25,14 +25,7 @@ const COUNTS = [
   { num: '3', label: 'Budget rooms, for skiers who just need a bed' },
 ];
 
-const GALLERY = [
-  { photo: photos.kingRoom, caption: 'A king room, made up and waiting' },
-  { photo: photos.balconyChairs, caption: 'Two chairs and a river. That’s the balcony' },
-  { photo: photos.roomBearQuilt, caption: 'Log beds and bear quilts' },
-  { photo: photos.roomSnowshoes, caption: 'The decor has seen some winters' },
-  { photo: photos.roomPlaidQuilt, caption: 'Old skis over the bed' },
-  { photo: homePhotos.skiRoom, caption: 'Snow day' },
-];
+const GALLERY = [photos.kingRoom, photos.balconyChairs, photos.roomBearQuilt, photos.roomSnowshoes, photos.roomPlaidQuilt, homePhotos.skiRoom];
 
 const DOORS = [
   { href: '/stay/rooms', title: 'Rooms', photo: photos.roomPlaidQuilt, line: 'Every room type, with photos and live rates for your dates.' },
@@ -115,7 +108,7 @@ export default function StayPage() {
           </div>
           <StayRooms />
           <div className="sty-rooms__foot" data-reveal>
-            <p className="muted">The rooms over the bar and the kitchen cost less for a reason. On a music night, you’re in the front row.</p>
+            <p className="muted">The rooms over the bar and the kitchen cost less for a reason: you might hear the kitchen at work.</p>
             <Link href="/stay/rooms" className="link-arrow">Photos and rates for every room</Link>
           </div>
         </div>
@@ -124,10 +117,9 @@ export default function StayPage() {
           <p className="label sty-gallery__hint container" data-reveal>Drag to look around</p>
           <div className="drag-gallery" tabIndex={0} aria-label="Photos of the rooms" data-reveal="fade">
             <div className="drag-gallery__track">
-              {GALLERY.map((g) => (
-                <figure key={g.photo.src} className="frame">
-                  <Image src={g.photo.src} alt={g.photo.alt} fill sizes="(max-width: 780px) 72vw, 560px" />
-                  <figcaption>{g.caption}</figcaption>
+              {GALLERY.map((p) => (
+                <figure key={p.src} className="frame">
+                  <Image src={p.src} alt={p.alt} fill sizes="(max-width: 780px) 72vw, 560px" />
                 </figure>
               ))}
             </div>

@@ -3,21 +3,25 @@
 import { useEffect, useId, useState } from 'react';
 import Image from 'next/image';
 import { roomTypes } from '@/content/rooms';
-import { bookingCenterUrl, nextDay } from '@/lib/bookingcenter';
+import { bookingCenterUrl, cleanPromo, nextDay } from '@/lib/bookingcenter';
 import { lodging } from '@/content/site';
 
 function useStayDates() {
   const [today, setToday] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
+  const [promo, setPromo] = useState('');
 
   // Set after load so "today" is the guest's day, not the server's. A link like /stay?checkin=2026-12-24#book
-  // (the home page's "Stay this night") arrives with that night picked, unless it is in the past.
+  // (the home page's "Stay this night") arrives with that night picked, unless it is in the past. A link with
+  // ?promo=staydine (the emails and posts for a deal) carries the code through to BookingCenter.
   useEffect(() => {
     const now = new Date();
     const t = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     setToday(t);
-    const asked = new URLSearchParams(window.location.search).get('checkin');
+    const q = new URLSearchParams(window.location.search);
+    setPromo(cleanPromo(q.get('promo')));
+    const asked = q.get('checkin');
     if (asked && /^\d{4}-\d{2}-\d{2}$/.test(asked) && asked >= t) {
       setCheckIn(asked);
       setCheckOut(nextDay(asked));
@@ -29,7 +33,7 @@ function useStayDates() {
     if (value && (!checkOut || checkOut <= value)) setCheckOut(nextDay(value));
   };
 
-  return { today, checkIn, checkOut, pickCheckIn, setCheckOut };
+  return { today, checkIn, checkOut, promo, pickCheckIn, setCheckOut };
 }
 
 type StayDatesState = ReturnType<typeof useStayDates>;
@@ -74,10 +78,11 @@ export function StayDates() {
         aria-label="Check room availability"
         onSubmit={(e) => {
           e.preventDefault();
-          window.location.href = bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
+          window.location.href = bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut, promo: dates.promo });
         }}
       >
         <DateFields dates={dates} checkInId={checkInId} />
+        {dates.promo && <p className="planner__note">Promo code <b>{dates.promo.toUpperCase()}</b> is applied.</p>}
         <button type="submit" className="btn rb-panel__go">See rooms and rates</button>
         <p className="planner__note">{NOTE}</p>
         <p className="planner__note">Check-in is {lodging.checkIn}. Check-out is {lodging.checkOut}. Bringing the dog? Tell us ahead.</p>
@@ -124,7 +129,7 @@ export function RoomFinder() {
                 {r.accessible && <span className="chip chip--plain">ADA</span>}
               </div>
               {hasDates ? (
-                <a href={bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut, roomType: r.code })} className="btn btn--sm rb-room__go" rel="noopener">See rates</a>
+                <a href={bookingCenterUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut, roomType: r.code, promo: dates.promo })} className="btn btn--sm rb-room__go" rel="noopener">See rates</a>
               ) : (
                 <button type="button" className="btn btn--ghost btn--sm rb-room__go" onClick={askForDates}>Choose dates</button>
               )}

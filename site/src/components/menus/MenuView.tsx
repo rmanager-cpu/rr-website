@@ -3,6 +3,7 @@ import { business } from '@/content/site';
 import { formatTime } from '@/lib/events/recurrence';
 import { priceText, TAG_LABEL, type Hours, type Menu } from '@/lib/menus/store';
 import { ServingNow } from './ServingNow';
+import { classicFonts } from './classicFonts';
 
 export function hoursText(h: Hours[]): string {
   return h.map((x) => `${x.label}, ${formatTime(x.start).replace(' PM', '').replace(' AM', '')}–${formatTime(x.end)}`).join(' · ');
@@ -26,7 +27,7 @@ export function MenuView({ menu }: { menu: Menu }) {
   let anyRaw = false;
   for (const s of menu.sections) for (const i of s.items) if (!i.hidden) { i.dish.tags.forEach((t) => usedTags.add(t)); anyRaw ||= i.dish.raw; }
   return (
-    <article className="menu" aria-labelledby="menu-h">
+    <article className={`menu menu--classic ${classicFonts}`} aria-labelledby="menu-h">
       <header className="menu__head">
         <h2 id="menu-h" className="serif menu__title">{menu.name}</h2>
         <div className="menu__when">

@@ -19,7 +19,7 @@ const FAQ = [
   { q: 'How do I book a room?', a: `Book online any time, or call the front desk at ${business.phone}.` },
   { q: 'What time is check-in and check-out?', a: `Check-in is at ${lodging.checkIn} and check-out is at ${lodging.checkOut}. Arriving after 5 PM? Give the front desk a call.` },
   { q: 'Are dogs allowed?', a: 'Yes, in our dog-friendly rooms: up to two dogs, $25 plus tax per night, arranged in advance. Dogs can’t be left alone in the room.' },
-  { q: 'Is breakfast included?', a: 'Hotel guests get a complimentary grab-and-go breakfast when occupancy allows. The restaurant serves a full breakfast on Saturdays and Sundays.' },
+  { q: 'Is breakfast included?', a: 'Not included, but hotel guests always get 30% off breakfast. The restaurant serves breakfast on Saturdays and Sundays, 8 to 11:30 AM.' },
   { q: 'How close are you to Palisades Tahoe?', a: 'We’re the closest lodging to Palisades Tahoe’s Alpine Meadows base, on the Truckee River between Tahoe City and the mountain.' },
   { q: 'Where can I store skis and bikes?', a: 'Ski lockers in winter and bike racks in summer (bring your own lock). Skis, boards, rafts and bikes stay out of the rooms.' },
 ];

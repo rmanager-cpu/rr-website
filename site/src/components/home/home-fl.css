@@ -26,11 +26,6 @@
 .hm-hero__snow--near { transform: translate3d(0, calc(var(--p) * -9%), 0); filter: blur(2.2px); }
 
 .hm-hero__copy { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(108px, 17vh, 170px) var(--gutter) 0; transform: translate3d(0, calc(var(--p) * -5vh), 0); }
-.hm-hero__whisper { position: relative; width: 100%; height: 1.6em; margin: 0 0 clamp(10px, 2vh, 22px); font-size: clamp(0.98rem, 1.3vw, 1.15rem); font-weight: 500; letter-spacing: 0.02em; color: rgba(247, 249, 250, 0.86); text-shadow: 0 1px 2px rgba(15, 27, 45, 0.5), 0 2px 18px rgba(15, 27, 45, 0.6); }
-.hm-hero__whisper span { position: absolute; left: 0; right: 0; top: 0; transition: opacity var(--slower) var(--ease), transform var(--slower) var(--ease); }
-.hm-hero__whisper .is-day { opacity: 0; transform: translateY(12px); color: #ffe2ad; font-weight: 600; }
-.hm-hero.is-waking .hm-hero__whisper .is-night { opacity: 0; transform: translateY(-12px); }
-.hm-hero.is-morning .hm-hero__whisper .is-day { opacity: 1; transform: none; }
 /* The name in Fireside's wordmark: Instrument Serif, "Ranch" in italic amber like the header and footer. */
 .hm-hero__name { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: var(--fs-display); line-height: 0.92; letter-spacing: -0.03em; text-shadow: 0 2px 40px rgba(15, 27, 45, 0.5); animation: fl-rise var(--slower) var(--ease) both; }
 .hm-hero__name em { font-style: italic; color: var(--amber); }
@@ -44,10 +39,6 @@
 .hm-hero.is-morning .hm-hero__actions .btn:nth-child(2) { transition-delay: 120ms, 120ms, 0s, 0s; }
 .hm-hero.is-morning .hm-hero__actions .btn:nth-child(3) { transition-delay: 240ms, 240ms, 0s, 0s; }
 .hm-hero.is-morning .hm-hero__actions .btn:hover { transform: translateY(-2px); }
-.hm-hero__cue { position: absolute; left: 0; right: 0; bottom: 34px; display: grid; justify-items: center; gap: 12px; font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(247, 249, 250, 0.78); transition: opacity var(--slow) var(--ease); }
-.hm-hero__cue i { display: block; width: 1px; height: 44px; background: linear-gradient(var(--gold), rgba(242, 192, 120, 0)); transform-origin: top; animation: hm-cue 2800ms var(--ease) infinite; }
-.hm-hero.is-waking .hm-hero__cue { opacity: 0; }
-@keyframes hm-cue { 0% { transform: scaleY(0); opacity: 0; } 35% { opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
 @media (max-width: 640px) {
   .hm-hero__photo img { object-position: 44% 60%; }
   .hm-hero__actions { flex-direction: column; align-items: center; bottom: clamp(36px, 8vh, 80px); }

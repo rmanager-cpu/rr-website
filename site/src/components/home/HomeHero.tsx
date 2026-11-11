@@ -8,8 +8,8 @@ import { business } from '@/content/site';
 /*
  * The home hero: night on the Truckee turning into first light as you scroll. A tall track holds a
  * sticky stage; one scroll value (--p, 0 to 1) drives every layer: the photo drifts and warms, the
- * night tint lifts, a dawn glow rises from the horizon, two canvas layers of snow keep falling, the
- * line hands over from "Still dark on the Truckee." to "Good morning." and the three buttons arrive.
+ * night tint lifts, a dawn glow rises from the horizon, two canvas layers of snow keep falling, and the
+ * three buttons arrive. The words are just the name and "Lodge & Restaurant".
  * At the end the bottom of the scene fades away (a mask, --o) to show the faded Palisades photo the
  * site already paints behind every page (SeasonWash), so morning settles straight into the page.
  */
@@ -150,24 +150,16 @@ export function HomeHero() {
           <canvas ref={near} className="hm-hero__snow hm-hero__snow--near" aria-hidden="true" />
         </div>
         <div className="hm-hero__copy">
-          <p className="hm-hero__whisper">
-            <span className="is-night">Still dark on the Truckee.</span>
-            <span className="is-day" aria-hidden="true">Good morning.</span>
-          </p>
           <h1 className="hm-hero__name">
             River <em>Ranch</em>
             <span className="sr-only">, {business.tagline.replace('&', 'and')}</span>
           </h1>
-          <p className="hm-hero__sub" aria-hidden="true">{business.tagline}</p>
+          <p className="hm-hero__sub" aria-hidden="true">Lodge &amp; Restaurant</p>
         </div>
         <div className="hm-hero__actions">
           <Link className="btn btn--primary" href="/stay#book">Book a room</Link>
           <a className="btn btn--light" href={business.links.reserveTable} target="_blank" rel="noopener">Reserve a table</a>
           <Link className="btn btn--light" href="/celebrate/plan">Plan an event</Link>
-        </div>
-        <div className="hm-hero__cue" aria-hidden="true">
-          <span>Scroll to wake the lodge</span>
-          <i />
         </div>
       </div>
     </section>

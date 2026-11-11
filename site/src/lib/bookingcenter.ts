@@ -9,14 +9,16 @@ function toBookingCenterDate(iso: string): string {
   return `${d}-${MONTHS[Number(m) - 1]}-${y}`;
 }
 
-/** checkIn and checkOut are 'YYYY-MM-DD' from a date input. roomType pins that type at the top of the results. */
-export function bookingCenterUrl(opts: { checkIn: string; checkOut: string; roomType?: string }): string {
+/** checkIn and checkOut are 'YYYY-MM-DD' from a date input. roomType pins that type at the top of the results;
+ *  promo fills BookingCenter's promo code box (a deal like STAYDINE). */
+export function bookingCenterUrl(opts: { checkIn: string; checkOut: string; roomType?: string; promo?: string }): string {
   const params = new URLSearchParams({
     site: 'RIVERR',
     check_in_date: toBookingCenterDate(opts.checkIn),
     check_out_date: toBookingCenterDate(opts.checkOut),
   });
   if (opts.roomType) params.set('room_type', opts.roomType);
+  if (opts.promo) params.set('promo', opts.promo);
   return `${RESULTS_URL}?${params.toString()}`;
 }
 
@@ -24,4 +26,10 @@ export function bookingCenterUrl(opts: { checkIn: string; checkOut: string; room
 export function nextDay(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
+}
+
+/** A promo code from a link (?promo=staydine), if it looks like one: letters and digits, up to 20. */
+export function cleanPromo(raw: string | null | undefined): string {
+  const v = (raw ?? '').trim();
+  return /^[A-Za-z0-9]{1,20}$/.test(v) ? v.toLowerCase() : '';
 }

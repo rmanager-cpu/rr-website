@@ -79,3 +79,37 @@
 .mn-page__head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .mn-page__crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
 .mn-last .lede { color: var(--cream); }
+
+/* ---------- Classic: the web menus dressed like the printed ones (print theme "classic") ----------
+   Zilla Slab capitals for the menu, section and dish names; Libre Baskerville for the rest; everything
+   centered; a red rule under the title and on both sides of each section name; the price sits under
+   the dish, after its description, the way the printed dinner menu does it. */
+.menu--classic { font-family: var(--font-menu-book), Georgia, serif; }
+.menu--classic .menu__head::after { width: 120px; height: 2px; margin-top: 6px; }
+.menu--classic .menu__title { font-family: var(--font-menu-slab), Georgia, serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.02; letter-spacing: 0.02em; text-transform: uppercase; }
+.menu--classic .menu__when { font-family: var(--font-menu-slab), Georgia, serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.24em; }
+.menu--classic .menu__head .lede { font-family: var(--font-menu-book), Georgia, serif; font-style: italic; font-size: 1.02rem; line-height: 1.6; max-width: 56ch; }
+.menu--classic .menu-section { gap: 18px; text-align: center; }
+.menu--classic .menu-section__name { justify-content: center; gap: 0.7em; padding-bottom: 0; border-bottom: 0; font-family: var(--font-menu-slab), Georgia, serif; font-size: 1.32rem; font-weight: 700; line-height: 1.1; letter-spacing: 0.05em; color: var(--ink); }
+.menu--classic .menu-section__name::before, .menu--classic .menu-section__name::after { content: ''; flex: 1; min-width: 0.8em; border-top: 1.5px solid var(--red); }
+.menu--classic .menu-section__note { font-family: var(--font-menu-book), Georgia, serif; font-size: 0.92rem; }
+.menu--classic .menu-items { gap: 24px; }
+.menu--classic .menu-item { align-items: center; gap: 5px; text-align: center; }
+.menu--classic .menu-item__top { display: contents; }
+.menu--classic .menu-item__name { order: 0; min-width: 0; font-family: var(--font-menu-slab), Georgia, serif; font-weight: 700; font-size: 1.12rem; line-height: 1.2; letter-spacing: 0.04em; text-transform: uppercase; }
+.menu--classic .menu-item__name a:hover { font-style: normal; }
+.menu--classic .menu-item__dots { display: none; }
+.menu--classic .menu-item__desc { order: 1; max-width: 44ch; font-size: 0.92rem; line-height: 1.6; color: rgba(20, 17, 14, 0.74); }
+.menu--classic .menu-item__price { order: 2; max-width: none; width: auto; font-family: var(--font-menu-book), Georgia, serif; font-weight: 700; font-size: 0.92rem; text-align: center; color: var(--ink); }
+.menu--classic .menu-item__tags { order: 3; justify-content: center; }
+.menu--classic .menu-item__tags abbr { font-family: var(--font-sans), system-ui, sans-serif; }
+.menu--classic .menu__foot { align-items: center; text-align: center; border-top: 1px solid var(--red); font-style: italic; font-size: 0.84rem; }
+.menu--classic .menu__foot .btn-row { justify-content: center; font-style: normal; }
+@media (max-width: 560px) {
+  .menu--classic .menu-item__price { width: auto; text-align: center; color: var(--ink); }
+}
+
+/* The menu cards on /dine/menus take the same slab capitals for their names. */
+.menu-cards--classic .mn-card__name { font-family: var(--font-menu-slab), Georgia, serif; font-weight: 700; font-size: clamp(1.4rem, 2vw, 1.75rem); line-height: 1.08; letter-spacing: 0.03em; text-transform: uppercase; }
+.menu-cards--classic .mn-card:hover .mn-card__name { font-style: normal; }
+.menu-cards--classic .mn-card__dishes { font-family: var(--font-menu-book), Georgia, serif; font-size: 0.88rem; line-height: 1.65; }

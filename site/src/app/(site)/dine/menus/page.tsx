@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Lines } from '@/components/fl/Lines';
 import { hoursText, MenuTabs } from '@/components/menus/MenuView';
+import { classicFonts } from '@/components/menus/classicFonts';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
@@ -45,7 +46,7 @@ export default async function MenusIndex() {
             <p className="label label--accent" data-reveal>Pick a menu</p>
             <Lines id="all-h" className="display-l" lines={['What are', <em key="h">we having?</em>]} />
           </div>
-          <div className="menu-cards">
+          <div className={`menu-cards menu-cards--classic ${classicFonts}`}>
             {menus.map((m, i) => (
               <Link key={m.slug} href={`/dine/menus/${m.slug}`} className="mn-card" data-reveal data-reveal-delay={String((i % 3) * 120)}>
                 <span className="mn-card__name">{m.name}</span>
