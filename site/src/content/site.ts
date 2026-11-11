@@ -32,6 +32,11 @@ export const business = {
     // Our date picker, which hands off to BookingCenter with the dates applied (lib/bookingcenter.ts).
     bookRoom: '/stay#book',
     theWall: 'https://the-wall-river-ranch.vercel.app',
+    // Toast: River Ranch Rewards (loyalty, live 2026-11-10) and restaurant eGift cards. Plain links,
+    // never iframed: Toast's pages are meant to open on their own.
+    rewards: 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/rewardsLookup',
+    buyGiftCard: 'https://order.toasttab.com/egiftcards/river-ranch-lodge-restaurant-2285-river-rd',
+    giftCardBalance: 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/findcard',
     palisades: 'https://www.palisadestahoe.com',
   },
   rooms: 19,

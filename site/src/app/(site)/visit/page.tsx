@@ -10,7 +10,7 @@ import './visit.css';
 
 export const metadata: Metadata = {
   title: 'Directions & Contact, Tahoe City',
-  description: `Find River Ranch at ${fullAddress}, on Highway 89 between Tahoe City and Palisades Tahoe. Hours, phone, email, gift cards and jobs.`,
+  description: `Find River Ranch at ${fullAddress}, on Highway 89 between Tahoe City and Palisades Tahoe. Hours, phone, email, gift cards, rewards and jobs.`,
   alternates: { canonical: '/visit' },
 };
 
@@ -143,9 +143,9 @@ export default function VisitPage() {
       <section className="section section--ember" aria-label="Gift cards and jobs">
         <div className="container vi-more">
           <div className="vi-more__item" id="gift-cards" data-reveal>
-            <p className="label label--accent">Gift cards</p>
+            <p className="label label--accent">Gift cards &amp; rewards</p>
             <h2 className="display-m">Give someone a night <em>on the river.</em></h2>
-            <p className="lede">Restaurant gift cards and lodge gift certificates.</p>
+            <p className="lede">Restaurant gift cards online, lodge gift certificates by phone, and River Ranch Rewards for the regulars.</p>
             <p><Link href="/loyalty-and-gift-cards" className="link-arrow">Loyalty &amp; gift cards</Link></p>
           </div>
           <div className="vi-more__item" id="jobs" data-reveal data-reveal-delay="150">

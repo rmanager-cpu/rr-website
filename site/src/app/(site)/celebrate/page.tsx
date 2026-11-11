@@ -165,6 +165,41 @@ export default function CelebratePage() {
         </div>
       </section>
 
+      {/* PLAN: the way into Venio, right under the hero */}
+      <section className="section section--dark" id="plan" aria-labelledby="plan-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>Plan an event</p>
+            <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
+          </div>
+          <div className="cel-plan__grid">
+            <div className="cel-plan__side">
+              <p className="lede" data-reveal>It takes a minute. We come back with spaces and a menu.</p>
+              <p data-reveal data-reveal-delay="100">
+                <a className="cel-mail" href={`mailto:${business.email.events}`}>{business.email.events}</a>
+              </p>
+              <p className="small cel-contact" data-reveal data-reveal-delay="150">
+                Rather talk? Call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+              </p>
+            </div>
+            <div className="panel" data-reveal data-reveal-delay="150">
+              <h3 className="panel__title">What are you <em>planning?</em></h3>
+              <p className="small">Pick one and the planner opens with it filled in.</p>
+              <ul className="cel-kinds">
+                {KINDS.map((k) => (
+                  <li key={k.id}>
+                    <Link href={`/celebrate/plan#${k.id}`}><span>{k.label}</span></Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="btn-row">
+                <Link href="/celebrate/plan" className="btn">Open the planner</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* A VENUE AS MUCH AS A LODGE */}
       <Aperture photo={photos.aerialSpaces} id="venue" labelledBy="venue-h">
         <p className="label label--accent" data-reveal>The venue</p>
@@ -269,33 +304,6 @@ export default function CelebratePage() {
         </div>
       </section>
 
-      {/* THREE STEPS */}
-      <section className="section section--frost" id="how" aria-labelledby="how-h">
-        <div className="container">
-          <div className="section-head">
-            <p className="label label--accent" data-reveal>How it works</p>
-            <Lines id="how-h" className="display-l" lines={['Three steps.', <em key="e">Then the fun part.</em>]} />
-          </div>
-          <ol className="cel-steps">
-            <li className="cel-step" data-reveal>
-              <span className="cel-step__when">First,</span>
-              <h3 className="cel-step__what">Tell us what you’re planning.</h3>
-              <p className="muted">A rough date and a headcount is plenty to start.</p>
-            </li>
-            <li className="cel-step" data-reveal data-reveal-delay="180">
-              <span className="cel-step__when">then</span>
-              <h3 className="cel-step__what">We come back with spaces and a menu.</h3>
-              <p className="muted">The rooms that fit, and what the kitchen would cook.</p>
-            </li>
-            <li className="cel-step" data-reveal data-reveal-delay="360">
-              <span className="cel-step__when">and then</span>
-              <h3 className="cel-step__what">We hold your date.</h3>
-              <p className="muted">Your date is held once the deposit is paid. Then the lights are on and it’s yours.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="section section--snow" id="faq" aria-labelledby="faq-h">
         <div className="container split split--top cel-faq">
@@ -310,49 +318,6 @@ export default function CelebratePage() {
                 <p>{f.a}</p>
               </details>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PLAN */}
-      <section className="section section--dark" id="plan" aria-labelledby="plan-h">
-        <div className="container">
-          <div className="section-head">
-            <p className="label label--accent" data-reveal>Plan an event</p>
-            <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
-          </div>
-          <div className="cel-plan__grid">
-            <div className="cel-plan__side">
-              <p className="lede" data-reveal>It takes a minute. We come back with spaces and a menu.</p>
-              <p data-reveal data-reveal-delay="100">
-                <a className="cel-mail" href={`mailto:${business.email.events}`}>{business.email.events}</a>
-              </p>
-              <p className="small cel-contact" data-reveal data-reveal-delay="150">
-                Rather talk? Call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
-              </p>
-              {/* The events app's live availability calendar plugs in here once it's ready. */}
-              <div data-reveal data-reveal-delay="200">
-                <p className="label cel-slot__label">Is your date open?</p>
-                <div className="slot cel-slot">
-                  [Live availability calendar goes here]
-                  <small>Open dates from our events system will show at this spot.</small>
-                </div>
-              </div>
-            </div>
-            <div className="panel" data-reveal data-reveal-delay="150">
-              <h3 className="panel__title">What are you <em>planning?</em></h3>
-              <p className="small">Pick one and the planner opens with it filled in.</p>
-              <ul className="cel-kinds">
-                {KINDS.map((k) => (
-                  <li key={k.id}>
-                    <Link href={`/celebrate/plan#${k.id}`}><span>{k.label}</span></Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="btn-row">
-                <Link href="/celebrate/plan" className="btn">Open the planner</Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>

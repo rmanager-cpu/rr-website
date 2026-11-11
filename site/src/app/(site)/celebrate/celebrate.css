@@ -80,21 +80,11 @@
 .cel-gallery .drag-gallery__track { align-items: flex-end; }
 .cel-gallery .frame > img { object-fit: cover; }
 
-/* ---------- three steps (frost): a rule draws over each step as it rises in ---------- */
-.cel-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3.4vw, 56px); margin: 0; padding: 0; list-style: none; }
-.cel-step { position: relative; display: grid; gap: 14px; align-content: start; padding-top: 30px; }
-.cel-step > * { margin: 0; }
-.cel-step::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--fg); transform-origin: left; transition: transform 1500ms var(--ease) var(--d, 0ms); }
-html.fl-motion .cel-step:not([data-revealed])::before { transform: scaleX(0); }
-.cel-step__when { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.2rem, 6vw, 5.6rem); line-height: 0.9; color: var(--accent); }
-.cel-step__what { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.08; }
-@media (max-width: 860px) { .cel-steps { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
-
 /* ---------- FAQ (snow) ---------- */
 .cel-faq { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
 @media (max-width: 860px) { .cel-faq { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- plan (dark): contact and the calendar spot beside a bark panel ---------- */
+/* ---------- plan (dark, right under the hero): contact beside a bark panel ---------- */
 .cel-plan__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
 .cel-plan__side { display: grid; gap: 26px; }
 .cel-plan__side > * { margin: 0; }
@@ -102,9 +92,6 @@ html.fl-motion .cel-step:not([data-revealed])::before { transform: scaleX(0); }
 .cel-mail:hover { color: var(--amber); border-color: var(--amber); }
 .cel-contact a { color: var(--fg); }
 .cel-contact a:hover { color: var(--amber); }
-.cel-slot { min-height: 300px; gap: 10px; align-content: center; }
-.cel-slot small { display: block; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
-.cel-slot__label { margin: 0 0 12px; }
 .cel-kinds { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
 .cel-kinds a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.15; color: var(--fg); text-decoration: none; transition: color var(--quick) var(--ease); }
 .cel-kinds a span { transition: transform 900ms var(--ease); }
@@ -114,15 +101,14 @@ html.fl-motion .cel-step:not([data-revealed])::before { transform: scaleX(0); }
 .cel-kinds a:hover::after { transform: scaleX(1.7); }
 @media (max-width: 860px) { .cel-plan__grid { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- plan page: copy and the calendar spot left, the planner right; on phones the planner
-   comes straight after the headline ---------- */
-.cel-planpage__grid { grid-template-areas: 'copy form' 'cal form'; grid-template-rows: auto 1fr; row-gap: 40px; }
+/* ---------- plan page: copy left, the planner right; on phones the planner comes straight after
+   the headline ---------- */
+.cel-planpage__grid { grid-template-areas: 'copy form'; row-gap: 40px; }
 .cel-planpage__copy { grid-area: copy; }
 .cel-planpage__form { grid-area: form; }
-.cel-planpage__cal { grid-area: cal; align-self: start; }
 .cel-planpage .planner__note a { color: var(--amber); }
 @media (min-width: 721px) { .cel-planpage .planner > .btn { align-self: flex-start; } }
-@media (max-width: 860px) { .cel-planpage__grid { grid-template-areas: 'copy' 'form' 'cal'; } }
+@media (max-width: 860px) { .cel-planpage__grid { grid-template-areas: 'copy' 'form'; } }
 
 /* ---------- wedding day cards (ember) ---------- */
 .cel-day .card__title { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }

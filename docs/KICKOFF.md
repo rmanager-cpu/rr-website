@@ -135,6 +135,17 @@ Started 2026-10-16, carried over from the rr-events session where it was planned
   alcohol until confirmed). Dining via receipt claim (check # + total, matched in Toast), stays via
   BookingCenter, events via Venio; redemption = one-time code, server taps a "Regulars" discount in
   Toast; lodging reward applied at checkout. Toast partner Loyalty API later, if it takes off.
+  Update 2026-11-10: River Ranch Rewards is live on Toast Loyalty instead: 1 pt per $1 (pre-tax, after
+  discounts; never tips, tax or gift cards), $10 off at 200 pts, 50 pts for joining, $5 off in the
+  birthday month. Only restaurant and bar spending should earn: never lodge income or event/wedding
+  deposits (Alex), so site copy never says "every dollar you spend with us". Points are River Ranch's
+  alone. Two processors today: Toast (restaurant, bar) and BookingCenter (rooms, and front-desk merch).
+  The front desk will learn Toast, so anything rung through Toast that shouldn't earn (deposits,
+  room charges, possibly merch) must be excluded from earning in Toast's loyalty settings.
+  Restaurant eGift cards were already live on Toast ($5–$500, email or text). /loyalty-and-gift-cards
+  links to Toast's join, buy and balance pages (plain links, no iframes; URLs in content/site.ts).
+  Lodge gift certificates are still by phone. Still open: whether points should exclude alcohol (the
+  old plan said yes until confirmed; Toast can exclude items), and River Ranch art for the eGift card.
 - 2026-10-23, printed menus: a print tool exists (/admin/print/menus/<slug>) but its layout is on hold:
   it doesn't fit the two-page holders. Alex will describe the required form first.
   Update 2026-11-02: replaced by Alex's Menu Maker (`site/src/lib/print-menu`). One editor at /admin/menus

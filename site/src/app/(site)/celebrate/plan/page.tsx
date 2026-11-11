@@ -33,14 +33,6 @@ export default function PlanPage() {
           <div className="cel-planpage__form" data-reveal data-reveal-delay="150">
             <EventPlanner heading="Tell us about it" />
           </div>
-          {/* The events app's live availability calendar plugs in here once it's ready. */}
-          <div className="cel-planpage__cal" data-reveal data-reveal-delay="300">
-            <p className="label cel-slot__label">Is your date open?</p>
-            <div className="slot cel-slot">
-              [Live availability calendar goes here]
-              <small>Open dates from our events system will show at this spot.</small>
-            </div>
-          </div>
         </div>
       </section>
 
