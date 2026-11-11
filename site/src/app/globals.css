@@ -465,6 +465,11 @@ html:not(.fs-scrolled) .site-header--overlay:not(.is-scrolled) .site-header__bar
 .brand { margin-right: auto; font-family: var(--font-display), Georgia, serif; font-size: 1.75rem; font-weight: 400; line-height: 1; letter-spacing: -0.01em; color: var(--cream); text-decoration: none; white-space: nowrap; }
 .brand em { font-style: italic; color: var(--amber); }
 .brand:hover { color: var(--cream); }
+/* The River Ranch logo in the top corner (home link): the white logo file as a mask, filled ember gold. */
+.brand { display: inline-flex; align-items: center; }
+.brand__logo { display: block; height: 54px; aspect-ratio: 1062 / 750; background: var(--amber); -webkit-mask: url('/brand/river-ranch-logo-snow.png') center / contain no-repeat; mask: url('/brand/river-ranch-logo-snow.png') center / contain no-repeat; filter: drop-shadow(0 1px 10px rgba(14, 13, 11, 0.35)); transition: background-color var(--quick) var(--ease); }
+.brand:hover .brand__logo { background: #f2c078; }
+@media (max-width: 900px) { .brand__logo { height: 44px; } }
 .site-nav { display: flex; align-items: center; gap: 34px; }
 .site-nav > a, .more__btn {
   position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; border: 0; background: none;

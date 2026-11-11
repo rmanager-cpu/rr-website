@@ -17,12 +17,9 @@ function Go({ item, className, onClick }: { item: NavItem; className?: string; o
   );
 }
 
-/** The wordmark: "River" upright, "Ranch" in italic amber. */
-const Wordmark = () => (
-  <>
-    River <em>Ranch</em>
-  </>
-);
+/** The River Ranch logo in ember gold: the white logo file used as a mask over the gold (globals .brand__logo),
+ *  so it always matches --amber. The link around it carries the name for screen readers. */
+const Wordmark = () => <span className="brand__logo" aria-hidden="true" />;
 
 type Props = {
   /** `overlay` floats clear over a dark full-bleed hero (.page-hero) and turns into the dark glass bar once
