@@ -158,7 +158,7 @@ export default function CelebratePage() {
         </div>
         <div className="page-hero__inner container">
           <p className="label label--accent">Celebrate</p>
-          <Lines as="h1" className="display-xl" lines={['Bring', <em key="e">everyone.</em>]} />
+          <Lines as="h1" className="display-xl" lines={['Throw it', <em key="e">at the Ranch.</em>]} />
           <p className="lede" data-reveal data-reveal-delay="300">
             Weddings, private dinners, company parties and live shows, right on the river. Loud toasts welcome.
           </p>

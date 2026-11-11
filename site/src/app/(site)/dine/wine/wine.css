@@ -16,7 +16,7 @@
 .wn-pour__word { position: relative; display: inline-block; margin-top: clamp(20px, 3vw, 40px); font-size: clamp(4.2rem, 15vw, 15rem); line-height: 0.9; }
 .wn-pour__base { display: block; color: rgba(239, 230, 214, 0.14); }
 .wn-pour__base em { color: inherit; }
-.wn-pour__fill { position: absolute; inset: 0; display: block; color: var(--red); will-change: clip-path; }
+.wn-pour__fill { position: absolute; inset: 0; display: block; color: var(--forest); will-change: clip-path; }
 .wn-pour__fill em { color: var(--amber); }
 html.fl-motion .wn-pour__fill { clip-path: inset(100% 0 0 0); }
 .wn-pour .lede { margin: clamp(22px, 3vw, 40px) auto 0; }
@@ -32,7 +32,7 @@ html.fl-motion .wn-pour__fill { clip-path: inset(100% 0 0 0); }
 
 /* ---- the wines ---- */
 .wn-wines .rows > li { grid-template-columns: clamp(60px, 8vw, 120px) minmax(0, 1fr) minmax(0, 1.3fr) auto; align-items: center; }
-.wn-n { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 0.9; color: var(--red); }
+.wn-n { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 0.9; color: var(--forest); }
 @media (max-width: 720px) {
   .wn-wines .rows > li { grid-template-columns: 56px minmax(0, 1fr); gap: 4px 14px; }
   .wn-wines .rows > li > :nth-child(n + 3) { grid-column: 2; }

@@ -14,7 +14,8 @@
   --bark: #2a211a;        /* bark: panels and photo placeholders on dark */
   --cream: #efe6d6;       /* TEXT on dark only, never a surface */
   --amber: #e0913a;       /* primary buttons, accents on dark, focus */
-  --red: #b6452c;         /* accents on light */
+  --forest: #2c5f3f;      /* forest green: accents on light (owner, Nov 11: no red on light bands) */
+  --red: var(--forest);   /* old name, kept so nothing breaks */
   --frost: #dfe8ee;       /* cool frost band */
   --snow: #f7f9fa;        /* snow white: light bands and the page (owner: no cream) */
   --snow-2: #e8eef2;      /* second light tone */
@@ -29,7 +30,7 @@
   --muted: rgba(20, 17, 14, 0.62);
   --rule: rgba(20, 17, 14, 0.16);
   --surface: var(--white);
-  --accent: var(--red);
+  --accent: var(--forest);
   --hi: var(--ink);       /* hover fill that contrasts with the band */
   --lo: var(--snow);      /* text on --hi */
 
@@ -37,7 +38,7 @@
   --night: var(--char);
   --night-deep: #080706;
   --deep: var(--bark);
-  --rose: var(--red);
+  --rose: var(--forest);
   --gold: var(--amber);
   --paper: var(--snow);
   --paper-warm: var(--snow-2);
@@ -141,7 +142,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .section--bark { --bg: var(--bark); --muted: rgba(239, 230, 214, 0.66); --rule: rgba(239, 230, 214, 0.18); --surface: var(--ember); }
 .section--snow, .section--frost, .section--warm, .on-light {
   --bg: var(--snow); --fg: var(--ink); --muted: rgba(20, 17, 14, 0.62); --rule: rgba(20, 17, 14, 0.16);
-  --surface: var(--white); --accent: var(--red); --hi: var(--ink); --lo: var(--snow);
+  --surface: var(--white); --accent: var(--forest); --hi: var(--ink); --lo: var(--snow);
   --line: rgba(20, 17, 14, 0.14); --card: var(--white);
   background: var(--bg); color: var(--fg); color-scheme: light;
 }
@@ -163,7 +164,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
    FS type
    <h2 class="display-l">Sleep by <em>the river.</em></h2>   the <em> is italic in the band's accent
    .display-xl (huge), .display-l, .display-m, .display-s (card-size)
-   <p class="label">Small caps label</p>   .label--accent colours it amber (dark) or red (light)
+   <p class="label">Small caps label</p>   .label--accent colours it amber (dark) or forest green (light)
    .lede (the intro sentence), .muted, .serif-italic, .prose (body copy), .placeholder ([bracketed])
    Older: .eyebrow = .label.label--accent; .h1/.h-l = display-l; .h2/.h-m = display-m; .h3/.h-s = display-s.
    ====================================================================================== */
@@ -216,7 +217,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 :where(.rule, .dawn-rule, .fl-frame, .frame, .fl-facts) { margin: 0; }
 .rule { height: 1px; border: 0; background: var(--rule); transform-origin: left; }
 /* Older accent rule: now a short amber-to-red line. */
-.dawn-rule { height: 1px; width: 120px; border: 0; background: linear-gradient(90deg, var(--amber), var(--red)); transform-origin: left; }
+.dawn-rule { height: 1px; width: 120px; border: 0; background: linear-gradient(90deg, var(--amber), var(--forest)); transform-origin: left; }
 .row-split { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; }
 .grid-2, .grid-3, .grid-4 { display: grid; gap: clamp(20px, 2.6vw, 40px); }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -258,7 +259,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .btn--ghost-light, .btn--ghost-cream { background: transparent; border-color: rgba(239, 230, 214, 0.7); color: var(--cream); }
 .btn--ghost-light:hover, .btn--ghost-cream:hover { background: var(--snow); border-color: var(--snow); color: var(--ink); }
 .btn--ink, .btn--navy { background: var(--ink); border-color: var(--ink); color: var(--cream); }
-.btn--ink:hover, .btn--navy:hover { background: var(--red); border-color: var(--red); color: var(--cream); }
+.btn--ink:hover, .btn--navy:hover { background: var(--forest); border-color: var(--forest); color: var(--cream); }
 .btn--cream, .btn--light { background: var(--snow); border-color: var(--snow); color: var(--ink); }
 .btn--cream:hover, .btn--light:hover { background: var(--amber); border-color: var(--amber); color: var(--ink); }
 .btn--sm { min-height: 42px; padding: 0 22px; font-size: 0.68rem; }
@@ -293,7 +294,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .chip--plain::before { display: none; }
 .chip--music { color: #a8621a; border-color: rgba(224, 145, 58, 0.5); }
 .chip--music::before { background: var(--amber); }
-.chip--food, .chip--special { color: var(--red); border-color: rgba(182, 69, 44, 0.4); }
+.chip--food, .chip--special { color: var(--forest); border-color: rgba(44, 95, 63, 0.4); }
 .chip--lodge, .chip--holiday { color: #4b6a80; border-color: rgba(75, 106, 128, 0.4); }
 .chip--community { color: #5b6b3c; border-color: rgba(91, 107, 60, 0.45); }
 .chip--offsite { border-style: dashed; color: var(--muted); }
@@ -305,8 +306,8 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 :is(.section--dark, .section--ember, .section--bark, .on-night, .section--night, .section--dusk, .page-hero, .fl-hero, .panel, .planner) .chip--community { color: #b7c48e; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .live { display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.26em; text-transform: uppercase; }
-.live::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: live-pulse 2.4s ease-out infinite; }
-@keyframes live-pulse { 0% { box-shadow: 0 0 0 0 rgba(182, 69, 44, 0.55); } 100% { box-shadow: 0 0 0 14px rgba(182, 69, 44, 0); } }
+.live::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--forest); animation: live-pulse 2.4s ease-out infinite; }
+@keyframes live-pulse { 0% { box-shadow: 0 0 0 0 rgba(44, 95, 63, 0.55); } 100% { box-shadow: 0 0 0 14px rgba(44, 95, 63, 0); } }
 
 /* ======================================================================================
    FS photo frames: square-cornered, edge to edge, bark behind while loading.
@@ -401,7 +402,7 @@ a.card:hover { color: var(--fg); }
 }
 .panel--light {
   --bg: var(--white); --fg: var(--ink); --muted: rgba(20, 17, 14, 0.6); --rule: rgba(20, 17, 14, 0.2);
-  --surface: var(--snow); --accent: var(--red); --hi: var(--ink); --lo: var(--snow); --line: var(--rule); --card: var(--snow);
+  --surface: var(--snow); --accent: var(--forest); --hi: var(--ink); --lo: var(--snow); --line: var(--rule); --card: var(--snow);
   border-color: rgba(20, 17, 14, 0.12); color-scheme: light;
 }
 .panel > *, .planner > * { margin: 0; }

@@ -70,7 +70,7 @@ export default async function EventsPage() {
         </div>
         <div className="page-hero__inner container">
           <p className="label label--accent">Happening</p>
-          <Lines as="h1" className="display-xl" lines={['What’s on', <em key="r">at the river.</em>]} />
+          <Lines as="h1" className="display-xl" lines={['What’s happening', <em key="r">at the Ranch?</em>]} />
           <p className="lede" data-reveal data-reveal-delay="300">Happy hour at the round bar, dinner nights worth planning around, holidays, and free music on the patio when summer comes back. Here’s the calendar.</p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#calendar" className="btn">The calendar</a>

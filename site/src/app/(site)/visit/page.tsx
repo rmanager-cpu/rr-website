@@ -144,13 +144,13 @@ export default function VisitPage() {
         <div className="container vi-more">
           <div className="vi-more__item" id="gift-cards" data-reveal>
             <p className="label label--accent">Gift cards &amp; rewards</p>
-            <h2 className="display-m">Give someone a night <em>on the river.</em></h2>
+            <h2 className="display-m">Give someone a night <em>at the Ranch.</em></h2>
             <p className="lede">Restaurant gift cards online, lodge gift certificates by phone, and River Ranch Rewards for the regulars.</p>
             <p><Link href="/loyalty-and-gift-cards" className="link-arrow">Loyalty &amp; gift cards</Link></p>
           </div>
           <div className="vi-more__item" id="jobs" data-reveal data-reveal-delay="150">
             <p className="label label--accent">Jobs</p>
-            <h2 className="display-m">Come work <em>on the river.</em></h2>
+            <h2 className="display-m">Come work <em>at the Ranch.</em></h2>
             <p className="lede">Front of house, back of house, the lodge and more.</p>
             <p><Link href="/careers" className="link-arrow">Apply on our Careers page</Link></p>
           </div>

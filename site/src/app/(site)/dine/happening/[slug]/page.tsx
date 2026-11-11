@@ -240,7 +240,7 @@ function ConcertPage({ page }: { page: EventPage }) {
             <div className="media-row" style={{ gap: 32, alignItems: "flex-start" }}>
               <div className="grow stack" style={{ gap: 18, flexBasis: 300 }}>
                 <span className="label label--accent">Bands &amp; artists</span>
-                <h2 id="play-h" className="display-l" style={{ color: 'var(--cream)' }}>Want to play <em>the river?</em></h2>
+                <h2 id="play-h" className="display-l" style={{ color: 'var(--cream)' }}>Want to play <em>the Ranch?</em></h2>
                 <p className="lede">Send us your band, your links and the nights you’re free, and we’ll give it a listen.</p>
               </div>
               <div className="side" style={{ flexBasis: 380 }}>

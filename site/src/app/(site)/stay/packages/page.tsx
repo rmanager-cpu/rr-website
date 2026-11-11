@@ -28,7 +28,7 @@ export default function PackagesPage() {
         </div>
         <div className="page-hero__inner container">
           <p className="label label--accent">Packages</p>
-          <Lines as="h1" className="display-l" lines={['Ski all day.', <>Sleep by <em>the river.</em></>]} />
+          <Lines as="h1" className="display-l" lines={['Ski all day.', <>Sleep at <em>the Ranch.</em></>]} />
           <p className="lede" data-reveal data-reveal-delay="300">The closest lodging to Palisades Tahoe’s Alpine Meadows base, with the bar downstairs for after.</p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#book" className="btn">Book a room</a>

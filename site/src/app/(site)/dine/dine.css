@@ -12,7 +12,7 @@
 .dn-switch button:hover { color: var(--ink); }
 .dn-switch button[aria-pressed='true'] { background: var(--ink); color: var(--snow); }
 .dn-now { display: inline-flex; align-items: center; gap: 12px; margin: 0; font-size: 0.72rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); }
-.dn-now i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: live-pulse 2.4s ease-out infinite; }
+.dn-now i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--forest); animation: live-pulse 2.4s ease-out infinite; }
 .dn-now.is-off { color: var(--muted); }
 .dn-now.is-off i { background: rgba(20, 17, 14, 0.35); animation: none; }
 
@@ -38,8 +38,8 @@ html.fl-motion .dn-dayline:not([data-revealed]) .dn-dayline__seg { clip-path: in
 .dn-dayline__ticks span:last-child { transform: translateX(-100%); }
 .dn-dayline__ticks span:last-child::before { left: 100%; }
 .dn-dayline__now { position: absolute; top: 18px; left: var(--now, 0%); width: 0; height: 128px; pointer-events: none; }
-.dn-dayline__now::before { content: ''; position: absolute; left: 0; top: 22px; bottom: 0; width: 1px; background: var(--red); }
-.dn-dayline__now b { position: absolute; top: 0; left: 0; transform: translateX(-50%); padding: 0.35em 0.8em; border-radius: 999px; background: var(--red); color: var(--snow); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; }
+.dn-dayline__now::before { content: ''; position: absolute; left: 0; top: 22px; bottom: 0; width: 1px; background: var(--forest); }
+.dn-dayline__now b { position: absolute; top: 0; left: 0; transform: translateX(-50%); padding: 0.35em 0.8em; border-radius: 999px; background: var(--forest); color: var(--snow); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; }
 
 /* each service: a big hour, its name in italic, a line */
 .dn-hours { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
@@ -109,11 +109,11 @@ html.fl-motion .dn-dayline:not([data-revealed]) .dn-dayline__seg { clip-path: in
 .dn-menu { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 15rem) minmax(0, 1fr) auto; align-items: baseline; gap: 6px 32px; padding: 24px 0; color: var(--fg); text-decoration: none; transition: padding-left 1100ms var(--ease); }
 .dn-menu:hover { padding-left: 14px; color: var(--fg); }
 .dn-menu__name { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.05; transition: color 900ms var(--ease); }
-.dn-menu:hover .dn-menu__name { color: var(--red); font-style: italic; }
+.dn-menu:hover .dn-menu__name { color: var(--forest); font-style: italic; }
 .dn-menu__when { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
 .dn-menu__dishes { font-size: 0.94rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dn-menu__go { width: 34px; height: 1px; background: currentColor; transform-origin: right; transition: transform 900ms var(--ease); align-self: center; }
-.dn-menu:hover .dn-menu__go { transform: scaleX(1.6); background: var(--red); }
+.dn-menu:hover .dn-menu__go { transform: scaleX(1.6); background: var(--forest); }
 @media (max-width: 860px) {
   .dn-menu { grid-template-columns: minmax(0, 1fr) auto; padding: 20px 0; }
   .dn-menu__when, .dn-menu__dishes { grid-column: 1; }

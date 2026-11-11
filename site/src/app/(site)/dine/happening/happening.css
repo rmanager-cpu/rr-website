@@ -5,22 +5,22 @@
 /* The regulars: white cards on snow. */
 .hp-card { gap: 12px; }
 .hp-card .ev-card__title { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
-.hp-card:hover .ev-card__title { color: var(--red); font-style: italic; }
+.hp-card:hover .ev-card__title { color: var(--forest); font-style: italic; }
 .ev-card__title { transition: color 900ms var(--ease); }
 .hp-card__line { font-size: 0.96rem; line-height: 1.55; color: var(--muted); }
 .hp-card__note { font-size: 0.9rem; color: var(--muted); }
-.hp-card__next { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
+.hp-card__next { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest); }
 
 /* The calendar: the month in big serif on the left, its dates on the right. */
 .hp-months { display: grid; gap: clamp(40px, 6vw, 72px); }
 .hp-month { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: 12px clamp(24px, 4vw, 64px); align-items: start; }
 .hp-month__name { position: sticky; top: calc(var(--header-h) + 24px); margin: 0; padding-top: 14px; font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; letter-spacing: -0.015em; }
-.hp-month__name em { font-style: italic; color: var(--red); }
+.hp-month__name em { font-style: italic; color: var(--forest); }
 .hp-month > div { border-bottom: 1px solid var(--rule); }
 .hp-row { grid-template-columns: 84px minmax(0, 1fr) auto; }
 .hp-row .ev-date b { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: 3rem; }
 .hp-row .ev-row__title { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(1.4rem, 2vw, 1.75rem); line-height: 1.1; transition: color 900ms var(--ease); }
-.hp-row:hover .ev-row__title { color: var(--red); font-style: italic; }
+.hp-row:hover .ev-row__title { color: var(--forest); font-style: italic; }
 .hp-row__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 @media (max-width: 860px) {
   .hp-month { grid-template-columns: minmax(0, 1fr); }
@@ -36,7 +36,7 @@
 .hp-event { padding-top: clamp(48px, 6vw, 96px); }
 .hp-event__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
 .hp-back { align-self: flex-start; }
-.hp-event__when { margin: 0; font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.15; color: var(--red); }
+.hp-event__when { margin: 0; font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.15; color: var(--forest); }
 .hp-event__side { display: grid; gap: 14px; }
 .hp-event__flyer { position: relative; overflow: hidden; box-shadow: var(--shadow); }
 .hp-event__flyer img { width: 100%; height: auto; }
