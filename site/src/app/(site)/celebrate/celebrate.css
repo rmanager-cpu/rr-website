@@ -110,8 +110,50 @@
 @media (min-width: 721px) { .cel-planpage .planner > .btn { align-self: flex-start; } }
 @media (max-width: 860px) { .cel-planpage__grid { grid-template-areas: 'copy' 'form'; } }
 
-/* ---------- wedding day cards (ember) ---------- */
-.cel-day .card__title { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
+/* ---------- weddings: one wedding as a short story, around the open dates and the packet ---------- */
+.cel-end .page-hero__media > img { object-position: 50% 45%; filter: brightness(0.7); }
+
+/* a chapter: the words on one side, its photos on the other; a lone wide photo runs under the words */
+.cel-wch { --gap: clamp(8px, 1.1vw, 16px); }
+.cel-wch + .cel-wch { padding-top: 0; }
+.cel-wch__grid { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.5fr); gap: 32px clamp(32px, 6vw, 100px); align-items: center; }
+.cel-wch__grid--flip { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.75fr); }
+.cel-wch__grid--flip > .cel-wch__words { order: 2; }
+.cel-wch__grid--wide { grid-template-columns: minmax(0, 1fr); }
+.cel-wch__grid--wide > .cel-wch__words { max-width: 640px; }
+@media (max-width: 860px) {
+  .cel-wch__grid, .cel-wch__grid--flip { grid-template-columns: minmax(0, 1fr); }
+  .cel-wch__grid--flip > .cel-wch__words { order: 0; }
+}
+
+/* a row of photos: each width in proportion to its shape (--ar, width over height), so the row fills
+   the width at one height and nothing is cropped */
+.cel-row { display: flex; gap: var(--gap, 12px); }
+.cel-row > .cel-shot { flex: var(--ar) 1 0; min-width: 0; }
+.cel-shot { display: block; margin: 0; }
+.cel-shot > img { display: block; width: 100%; height: auto; background: var(--bark); }
+
+/* open dates: the dog crashing the vows, Venio's calendar, and "Get the packet" beside it */
+.cel-dates { scroll-margin-top: 80px; }
+.cel-dates__head { margin-bottom: clamp(32px, 4vw, 56px); }
+.cel-dates__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) minmax(0, 0.9fr); grid-template-areas: 'dog cal packet'; gap: clamp(16px, 2vw, 32px); min-height: clamp(520px, 46vw, 680px); }
+.cel-beside { grid-area: dog; position: relative; margin: 0; overflow: hidden; background: var(--bark); min-height: 420px; }
+.cel-beside > img { object-fit: cover; object-position: 50% 62%; }
+.cel-beside figcaption { position: absolute; inset: auto 0 0 0; padding: 48px 18px 16px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.6)); color: var(--cream); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.6; text-transform: uppercase; }
+.cel-cal__slot { grid-area: cal; display: flex; align-items: center; justify-content: center; min-height: 520px; border: 1px dashed var(--amber); }
+.cel-cal__slot > iframe { display: block; width: 100%; height: 100%; min-height: 520px; border: 0; }
+.cel-cal__slot > .placeholder { margin: 0; padding: 24px; text-align: center; }
+.cel-packet { grid-area: packet; align-self: center; justify-items: start; }
+.cel-packet__title { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 400; line-height: 1.05; }
+.cel-packet > .btn { justify-self: start; }
+.cel-packet a:not(.btn) { color: inherit; }
+@media (max-width: 960px) {
+  .cel-dates__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'cal cal' 'packet dog'; min-height: 0; }
+}
+@media (max-width: 600px) {
+  .cel-dates__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'cal' 'packet' 'dog'; }
+  .cel-beside { aspect-ratio: 4 / 5; min-height: 0; }
+}
 
 /* ---------- spaces page: one row per space (components/SpaceGrid.tsx) ---------- */
 .cel-rooms { display: grid; gap: clamp(72px, 10vw, 150px); }
