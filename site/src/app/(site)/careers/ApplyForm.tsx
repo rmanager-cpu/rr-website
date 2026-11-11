@@ -67,132 +67,160 @@ export function ApplyForm() {
       <h3 className="panel__title">Apply <em>now.</em></h3>
       <p className="planner__note">About ten minutes. Got a resume? Attach it and skip the job history.</p>
 
-      <p className="ca-sec">You</p>
-      <label className="field" htmlFor="ap-name">
-        Your name
-        <input id="ap-name" name="name" type="text" autoComplete="name" required maxLength={120} />
-      </label>
-      <div className="planner__grid">
-        <label className="field" htmlFor="ap-email">
-          Email
-          <input id="ap-email" name="email" type="email" autoComplete="email" maxLength={160} />
-        </label>
-        <label className="field" htmlFor="ap-phone">
-          Phone
-          <input id="ap-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} />
-        </label>
+      <div className="ca-block">
+        <p className="ca-sec">You</p>
+        <div className="ca-block__body">
+          <label className="field" htmlFor="ap-name">
+            Your name
+            <input id="ap-name" name="name" type="text" autoComplete="name" required maxLength={120} />
+          </label>
+          <div className="planner__grid">
+            <label className="field" htmlFor="ap-email">
+              Email
+              <input id="ap-email" name="email" type="email" autoComplete="email" maxLength={160} />
+            </label>
+            <label className="field" htmlFor="ap-phone">
+              Phone
+              <input id="ap-phone" name="phone" type="tel" autoComplete="tel" maxLength={40} />
+            </label>
+          </div>
+          <label className="field" htmlFor="ap-town">
+            Where do you live now? (optional)
+            <input id="ap-town" name="town" type="text" autoComplete="address-level2" maxLength={80} placeholder="Tahoe City, Truckee, moving here…" />
+          </label>
+        </div>
       </div>
-      <label className="field" htmlFor="ap-town">
-        Where do you live now? (optional)
-        <input id="ap-town" name="town" type="text" autoComplete="address-level2" maxLength={80} placeholder="Tahoe City, Truckee, moving here…" />
-      </label>
 
-      <p className="ca-sec">The job</p>
-      <fieldset className="room-choice">
-        <legend>Which department?</legend>
-        <div className="ca-depts">
-          {DEPARTMENTS.map((d) => (
-            <label key={d} className="dept-choice">
-              <input type="radio" name="department" value={d} required />
-              <span>{d}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-      <label className="field" htmlFor="ap-role">
-        Which job? (optional)
-        <input id="ap-role" name="role" type="text" maxLength={140} placeholder="Line cook, server, bartender, housekeeping…" />
-      </label>
-      <Checks name="seasons" legend="Which seasons?" options={SEASONS} required />
-      <fieldset className="room-choice">
-        <legend>Full or part time?</legend>
-        <div className="ca-chips">
-          {['Full time', 'Part time', 'Either'].map((h) => (
-            <label key={h} className="dept-choice ca-chip">
-              <input type="radio" name="hours" value={h} />
-              <span>{h}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-      <label className="field" htmlFor="ap-start">
-        Earliest start date (optional)
-        <input id="ap-start" name="start" type="date" />
-      </label>
-
-      <p className="ca-sec">When you can work</p>
-      <Checks name="days" legend="Days" options={DAYS} required />
-      <Checks name="shifts" legend="Shifts" options={SHIFTS} />
-      <YesNo name="holidays" legend="Can you work holidays and weekends?" note="They’re our busiest days." />
-
-      <p className="ca-sec">The basics</p>
-      <YesNo name="over18" legend="Are you 18 or older?" />
-      <YesNo name="over21" legend="Are you 21 or older?" note="Only matters for bartending." />
-      <YesNo name="authorized" legend="Can you legally work in the U.S.?" />
-      <Checks name="certs" legend="Certifications you have now" options={CERTS} />
-      <p className="planner__note">None yet? That’s fine. New hires get the food handler card within 30 days and alcohol servers get RBS certified within 60.</p>
-
-      <p className="ca-sec">Your last two jobs</p>
-      <p className="planner__note">Skip this if you attach a resume.</p>
-      {[0, 1].map((i) => (
-        <div key={i} className="ca-group">
-          <div className="planner__grid">
-            <label className="field" htmlFor={`ap-job${i}-e`}>
-              Where
-              <input id={`ap-job${i}-e`} name={`job${i}_employer`} type="text" maxLength={120} />
-            </label>
-            <label className="field" htmlFor={`ap-job${i}-r`}>
-              Your job
-              <input id={`ap-job${i}-r`} name={`job${i}_role`} type="text" maxLength={120} />
-            </label>
-          </div>
-          <label className="field" htmlFor={`ap-job${i}-w`}>
-            When
-            <input id={`ap-job${i}-w`} name={`job${i}_when`} type="text" maxLength={60} placeholder="2023 to now" />
+      <div className="ca-block">
+        <p className="ca-sec">The job</p>
+        <div className="ca-block__body">
+          <fieldset className="room-choice">
+            <legend>Which department?</legend>
+            <div className="ca-depts">
+              {DEPARTMENTS.map((d) => (
+                <label key={d} className="dept-choice">
+                  <input type="radio" name="department" value={d} required />
+                  <span>{d}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <label className="field" htmlFor="ap-role">
+            Which job? (optional)
+            <input id="ap-role" name="role" type="text" maxLength={140} placeholder="Line cook, server, bartender, housekeeping…" />
+          </label>
+          <Checks name="seasons" legend="Which seasons?" options={SEASONS} required />
+          <fieldset className="room-choice">
+            <legend>Full or part time?</legend>
+            <div className="ca-chips">
+              {['Full time', 'Part time', 'Either'].map((h) => (
+                <label key={h} className="dept-choice ca-chip">
+                  <input type="radio" name="hours" value={h} />
+                  <span>{h}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <label className="field" htmlFor="ap-start">
+            Earliest start date (optional)
+            <input id="ap-start" name="start" type="date" />
           </label>
         </div>
-      ))}
-      <label className="field" htmlFor="ap-resume">
-        Resume (optional)
-        <input id="ap-resume" name="resume" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic,application/pdf,image/*" />
-      </label>
-      <p className="planner__note">PDF, Word, or a photo of it, up to 4 MB.</p>
+      </div>
 
-      <p className="ca-sec">Three references</p>
-      <p className="planner__note">Recent bosses or coworkers are best. We’ll only call once we’re talking to you.</p>
-      {[0, 1, 2].map((i) => (
-        <div key={i} className="ca-group">
-          <label className="field" htmlFor={`ap-ref${i}-n`}>
-            Reference {i + 1}: name
-            <input id={`ap-ref${i}-n`} name={`ref${i}_name`} type="text" required maxLength={120} />
+      <div className="ca-block">
+        <p className="ca-sec">When you can work</p>
+        <div className="ca-block__body">
+          <Checks name="days" legend="Days" options={DAYS} required />
+          <Checks name="shifts" legend="Shifts" options={SHIFTS} />
+          <YesNo name="holidays" legend="Can you work holidays and weekends?" note="They’re our busiest days." />
+        </div>
+      </div>
+
+      <div className="ca-block">
+        <p className="ca-sec">The basics</p>
+        <div className="ca-block__body">
+          <YesNo name="over18" legend="Are you 18 or older?" />
+          <YesNo name="over21" legend="Are you 21 or older?" note="Only matters for bartending." />
+          <YesNo name="authorized" legend="Can you legally work in the U.S.?" />
+          <Checks name="certs" legend="Certifications you have now" options={CERTS} />
+          <p className="planner__note">None yet? That’s fine. New hires get the food handler card within 30 days and alcohol servers get RBS certified within 60.</p>
+        </div>
+      </div>
+
+      <div className="ca-block">
+        <p className="ca-sec">Your last two jobs</p>
+        <div className="ca-block__body">
+          <p className="planner__note">Skip this if you attach a resume.</p>
+          {[0, 1].map((i) => (
+            <div key={i} className="ca-group">
+              <div className="planner__grid">
+                <label className="field" htmlFor={`ap-job${i}-e`}>
+                  Where
+                  <input id={`ap-job${i}-e`} name={`job${i}_employer`} type="text" maxLength={120} />
+                </label>
+                <label className="field" htmlFor={`ap-job${i}-r`}>
+                  Your job
+                  <input id={`ap-job${i}-r`} name={`job${i}_role`} type="text" maxLength={120} />
+                </label>
+              </div>
+              <label className="field" htmlFor={`ap-job${i}-w`}>
+                When
+                <input id={`ap-job${i}-w`} name={`job${i}_when`} type="text" maxLength={60} placeholder="2023 to now" />
+              </label>
+            </div>
+          ))}
+          <label className="field" htmlFor="ap-resume">
+            Resume (optional)
+            <input id="ap-resume" name="resume" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic,application/pdf,image/*" />
+          </label>
+          <p className="planner__note">PDF, Word, or a photo of it, up to 4 MB.</p>
+        </div>
+      </div>
+
+      <div className="ca-block">
+        <p className="ca-sec">Three references</p>
+        <div className="ca-block__body">
+          <p className="planner__note">Recent bosses or coworkers are best. We’ll only call once we’re talking to you.</p>
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="ca-group">
+              <label className="field" htmlFor={`ap-ref${i}-n`}>
+                Reference {i + 1}: name
+                <input id={`ap-ref${i}-n`} name={`ref${i}_name`} type="text" required maxLength={120} />
+              </label>
+              <div className="planner__grid">
+                <label className="field" htmlFor={`ap-ref${i}-r`}>
+                  How you know them
+                  <input id={`ap-ref${i}-r`} name={`ref${i}_relation`} type="text" maxLength={160} placeholder="My chef at…" />
+                </label>
+                <label className="field" htmlFor={`ap-ref${i}-c`}>
+                  Phone or email
+                  <input id={`ap-ref${i}-c`} name={`ref${i}_contact`} type="text" required maxLength={160} />
+                </label>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="ca-block">
+        <p className="ca-sec">A bit about you</p>
+        <div className="ca-block__body">
+          <label className="field" htmlFor="ap-about">
+            Tell us about yourself
+            <textarea id="ap-about" name="about" required minLength={20} maxLength={2000} placeholder="What you’re good at, what you like about this work, and what keeps you in the mountains." />
           </label>
           <div className="planner__grid">
-            <label className="field" htmlFor={`ap-ref${i}-r`}>
-              How you know them
-              <input id={`ap-ref${i}-r`} name={`ref${i}_relation`} type="text" maxLength={160} placeholder="My chef at…" />
+            <label className="field" htmlFor="ap-pay">
+              Pay you’re hoping for (optional)
+              <input id="ap-pay" name="pay" type="text" maxLength={80} />
             </label>
-            <label className="field" htmlFor={`ap-ref${i}-c`}>
-              Phone or email
-              <input id={`ap-ref${i}-c`} name={`ref${i}_contact`} type="text" required maxLength={160} />
+            <label className="field" htmlFor="ap-heard">
+              How did you hear about us? (optional)
+              <input id="ap-heard" name="heard" type="text" maxLength={120} />
             </label>
           </div>
         </div>
-      ))}
-
-      <p className="ca-sec">A bit about you</p>
-      <label className="field" htmlFor="ap-about">
-        Tell us about yourself
-        <textarea id="ap-about" name="about" required minLength={20} maxLength={2000} placeholder="What you’re good at, what you like about this work, and what keeps you in the mountains." />
-      </label>
-      <div className="planner__grid">
-        <label className="field" htmlFor="ap-pay">
-          Pay you’re hoping for (optional)
-          <input id="ap-pay" name="pay" type="text" maxLength={80} />
-        </label>
-        <label className="field" htmlFor="ap-heard">
-          How did you hear about us? (optional)
-          <input id="ap-heard" name="heard" type="text" maxLength={120} />
-        </label>
       </div>
 
       <label className="dept-choice ca-attest">

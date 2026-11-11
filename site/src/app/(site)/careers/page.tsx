@@ -33,7 +33,7 @@ export default function CareersPage() {
 
       <section className="page-hero page-hero--short">
         <div className="page-hero__media">
-          <Image src={photos.bartender.src} alt={photos.bartender.alt} fill priority sizes="100vw" data-parallax="0.15" />
+          <Image src={photos.bartender.src} alt={photos.bartender.alt} fill priority sizes="100vw" data-parallax="0.15" className="ca-hero-img" />
         </div>
         <div className="page-hero__inner container">
           <p className="label label--accent">Careers</p>
@@ -52,7 +52,7 @@ export default function CareersPage() {
             <div className="section-head">
               <p className="label label--accent" data-reveal>Join the crew</p>
               <Lines id="ca-teams-h" className="display-l" lines={['Five ways', <em key="e">onto the team.</em>]} />
-              <p className="lede" data-reveal data-reveal-delay="150">Pick a department, leave your name and a way to reach you, and we’ll be in touch.</p>
+              <p className="lede" data-reveal data-reveal-delay="150">Find your team, then apply below. It takes about ten minutes, and we read every one.</p>
             </div>
             <ul className="rows ca-teams">
               {TEAMS.map((t, i) => (
@@ -62,12 +62,18 @@ export default function CareersPage() {
                 </li>
               ))}
             </ul>
-            <figure className="frame frame--wide ca-photo" data-reveal="clip">
-              <Image src={photos.roundBar.src} alt={photos.roundBar.alt} fill sizes="(max-width: 960px) 100vw, 60vw" />
-              <figcaption>The round bar</figcaption>
-            </figure>
           </div>
-          <div className="ca-side" id="apply" data-reveal data-reveal-delay="150">
+          <figure className="frame frame--tall ca-photo" data-reveal="clip">
+            <Image src={photos.roundBar.src} alt={photos.roundBar.alt} fill sizes="(max-width: 960px) 100vw, 40vw" />
+            <figcaption>The round bar</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* The application gets its own band: the form runs wide, each part a label beside its questions. */}
+      <section className="section section--frost ca-apply" id="apply" aria-label="Apply to work at River Ranch">
+        <div className="container">
+          <div className="ca-apply__inner" data-reveal>
             <ApplyForm />
             <p className="turbotips">
               Tips here are tracked and shared through
