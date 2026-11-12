@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 // The years that slide by below the wall: each one comes straight from the approved paragraph.
 const YEARS = [
-  { year: '1914', tag: 'Before us', line: 'Poet Edwin Markham calls Deer Park Springs “a canyoned and cascaded slope where the joy-hunters gather.”' },
+  { year: '1914', tag: 'Before us', line: 'Poet Edwin Markham, in California the Wonderful, calls Deer Park Springs “a canyoned and cascaded slope where the joy-hunters gather.”' },
   { year: '1964', tag: 'Doors open', line: 'River Ranch opens. Within a year, Time has noticed.' },
   { year: '1997', tag: 'On stage', line: 'Leftover Salmon and the String Cheese Incident are playing here.' },
   { year: '2003', tag: 'On stage', line: 'Umphrey’s McGee comes through.' },
