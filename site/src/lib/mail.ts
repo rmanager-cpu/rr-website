@@ -19,7 +19,10 @@ export const mailReady = () => Boolean(process.env.SMTP_USER && process.env.SMTP
 
 let transport: ReturnType<typeof nodemailer.createTransport> | null = null;
 
-export async function sendStaffMail(m: { to: string[]; subject: string; text: string; replyTo?: string }) {
+/** An image shown inside the email body: reference it in `html` as <img src="cid:CID">. */
+export type InlineImage = { cid: string; filename: string; content: Buffer; contentType: string };
+
+export async function sendStaffMail(m: { to: string[]; subject: string; text: string; html?: string; images?: InlineImage[]; replyTo?: string }) {
   if (!mailReady()) throw new Error('SMTP_USER and SMTP_PASS are not set');
   transport ??= nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -32,6 +35,8 @@ export async function sendStaffMail(m: { to: string[]; subject: string; text: st
     to: m.to.join(', '),
     subject: m.subject,
     text: m.text,
+    html: m.html,
+    attachments: m.images?.map((i) => ({ ...i, contentDisposition: 'inline' as const })),
     replyTo: m.replyTo,
   });
 }
