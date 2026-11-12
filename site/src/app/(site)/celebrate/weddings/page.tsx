@@ -11,7 +11,8 @@ import '../celebrate.css';
 
 // One real wedding as a short story, in ten photos, around the open-date calendar for wedding season
 // and "Get the packet". Both are Venio's, displayed here. Until Venio serves the calendar,
-// NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL stays unset and a marked slot shows. "Get the packet" is the
+// NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL stays unset and a short "call us" line shows. The owner wants dates only
+// here, no pricing (Nov 12): Venio's wedding calendar must be a calendar-only view, not the private-dining widget. "Get the packet" is the
 // way into Venio's forms: for now it opens the wedding inquiry; once Venio's packet form is embedded it
 // becomes that form (fill it in, get the packet, land in Leads).
 
@@ -96,7 +97,7 @@ export default function WeddingsPage() {
               {CALENDAR_URL ? (
                 <iframe src={CALENDAR_URL} title="Open wedding dates" loading="lazy" />
               ) : (
-                <p className="placeholder">[Venio open-date calendar for wedding season]</p>
+                <p className="cel-cal__soon">Open wedding dates show here soon. Until then, call us and we’ll read you the calendar.</p>
               )}
             </div>
             <div className="cel-packet stack" data-reveal data-reveal-delay="150">

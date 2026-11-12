@@ -103,8 +103,17 @@
 
 /* ---------- plan page: copy left, the planner right; on phones the planner comes straight after
    the headline ---------- */
-/* Plan an event: the heading, then Venio's widget at full content width (it brings its own look and height). */
-.cel-planpage__copy { max-width: 760px; margin-bottom: clamp(32px, 4vw, 56px); }
+/* Plan an event: the fireplace room full-bleed under the header, the copy over it, then Venio's widget sitting on the
+   photo at full content width (it brings its own look and height). The photo darkens toward the left and the bottom
+   so the cream copy reads and the widget's dark panel melts into it. */
+.cel-planhero { position: relative; isolation: isolate; overflow: hidden; padding: calc(var(--header-h) + clamp(48px, 8vw, 120px)) 0 clamp(56px, 7vw, 110px); background: var(--char); color: var(--cream); --fg: var(--cream); --muted: rgba(239, 230, 214, 0.7); --accent: var(--amber); }
+.cel-planhero__media { position: absolute; inset: 0; z-index: -1; }
+.cel-planhero__media img { object-fit: cover; object-position: 70% 40%; }
+.cel-planhero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 13, 11, 0.9) 0%, rgba(14, 13, 11, 0.7) 45%, rgba(14, 13, 11, 0.35) 100%), linear-gradient(180deg, rgba(14, 13, 11, 0) 35%, rgba(14, 13, 11, 0.85) 75%); }
+.cel-planhero .display-l { color: var(--cream); }
+.cel-planhero .lede { color: rgba(239, 230, 214, 0.9); max-width: 34em; }
+.cel-planpage__copy { max-width: 760px; margin-bottom: clamp(36px, 5vw, 72px); }
+.cel-know { max-width: 760px; }
 .cel-planpage__widget { margin: 0; }
 .cel-planpage__call { margin-top: 28px; color: var(--muted); }
 .cel-planpage__call a { color: var(--amber); }
@@ -139,9 +148,10 @@
 .cel-beside { grid-area: dog; position: relative; margin: 0; overflow: hidden; background: var(--bark); min-height: 420px; }
 .cel-beside > img { object-fit: cover; object-position: 50% 62%; }
 .cel-beside figcaption { position: absolute; inset: auto 0 0 0; padding: 48px 18px 16px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.6)); color: var(--cream); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.6; text-transform: uppercase; }
-.cel-cal__slot { grid-area: cal; display: flex; align-items: center; justify-content: center; min-height: 520px; border: 1px dashed var(--amber); }
+.cel-cal__slot { grid-area: cal; display: flex; align-items: center; justify-content: center; min-height: 520px; border: 1px solid rgba(224, 145, 58, 0.35); }
 .cel-cal__slot > iframe { display: block; width: 100%; height: 100%; min-height: 520px; border: 0; }
 .cel-cal__slot > .placeholder { margin: 0; padding: 24px; text-align: center; }
+.cel-cal__soon { margin: 0; padding: 32px; max-width: 24ch; text-align: center; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.3; color: var(--cream); }
 .cel-packet { grid-area: packet; align-self: center; justify-items: start; }
 .cel-packet__title { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 400; line-height: 1.05; }
 .cel-packet > .btn { justify-self: start; }

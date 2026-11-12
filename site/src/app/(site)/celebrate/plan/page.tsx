@@ -20,33 +20,37 @@ export default function PlanPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema('Plan', '/celebrate/plan')} />
-      <SiteHeader />
+      <SiteHeader variant="overlay" />
 
-      {/* Venio's booking widget, full width. It's the one way in for every event request (no second form). Venio
-          needs this page's address for guests who turn back at the deposit page: /celebrate/plan. */}
-      <section className="section section--dark cel-planpage" aria-labelledby="plan-h">
-        <div className="container">
+      {/* The top of the page: the Alpine Dining Room by the fireplace, full-bleed, with the rrbanquets.com line over it and
+          Venio's booking widget sitting on the photo below. The widget is the one way in for every event request (no second
+          form). Venio needs this page's address for guests who turn back at the deposit page: /celebrate/plan. */}
+      <section className="cel-planhero" aria-labelledby="plan-h">
+        <div className="cel-planhero__media">
+          <Image src={photos.fireplaceTableSet.src} alt={photos.fireplaceTableSet.alt} fill priority sizes="100vw" />
+        </div>
+        <div className="container cel-planhero__inner">
           <div className="stack cel-planpage__copy">
-            <p className="label label--accent">Plan an event</p>
-            <Lines as="h1" id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
+            <p className="label label--accent">Private dining</p>
+            <Lines as="h1" id="plan-h" className="display-l" lines={['A smarter way to book', <em key="e">private dining.</em>]} />
             <p className="lede" data-reveal data-reveal-delay="200">
-              Pick a night in the Alpine Dining Room and send a request. Planning something bigger, like a wedding, a buyout or the patio? There’s a
-              way in for that below the calendar too.
+              Easy enough to do on a chairlift. Pick a night, send a request, and get back to enjoying Tahoe. Our events team follows up on your
+              time to go over the rest. Cheers.
             </p>
           </div>
           <div className="cel-planpage__widget" id="request">
             <VenioWidget />
           </div>
           <p className="planner__note cel-planpage__call">
-            Rather talk it through? Email <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call{' '}
-            <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+            Planning a wedding, a buyout or the patio? Use “Planning something bigger?” in the calendar, email{' '}
+            <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
           </p>
         </div>
       </section>
 
       <section className="section section--snow" aria-labelledby="know-h">
-        <div className="container split">
-          <div className="stack cel-stack">
+        <div className="container">
+          <div className="stack cel-stack cel-know">
             <p className="label label--accent" data-reveal>Good to know</p>
             <Lines id="know-h" className="display-l" lines={['The plain', <em key="e">details.</em>]} />
             <dl className="fl-facts" data-reveal data-reveal-delay="150">
@@ -60,9 +64,6 @@ export default function PlanPage() {
               <Link href="/celebrate#faq" className="btn btn--ghost">More questions</Link>
             </div>
           </div>
-          <figure className="frame frame--tall" data-reveal>
-            <Image src={photos.fireplaceTableSet.src} alt={photos.fireplaceTableSet.alt} fill sizes="(max-width: 860px) 200vw, 100vw" data-parallax="0.08" />
-          </figure>
         </div>
       </section>
     </>
