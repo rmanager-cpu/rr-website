@@ -179,3 +179,6 @@
 .cel-plan__lede { max-width: 40em; margin: 0 0 clamp(28px, 4vw, 48px); }
 .cel-plan__widget { margin: 0; }
 .cel-plan__call { margin-top: 24px; }
+
+/* On phones the widget runs edge to edge, so its calendar has room for the nightly prices. */
+@media (max-width: 600px) { .cel-planpage__widget, .cel-plan__widget { margin-inline: calc(var(--gutter) * -1); } }
