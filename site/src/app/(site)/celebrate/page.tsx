@@ -99,21 +99,21 @@ const PARTIES = [
     em: 'dinners',
     line: 'One long table by the fire, for 13 to 50 guests. Tell us the occasion and we come back with a menu.',
     go: 'Plan a dinner',
-    href: '/celebrate/plan#private',
+    href: '/celebrate/plan#request',
   },
   {
     lead: 'Company',
     em: 'parties',
     line: 'Holiday parties, ski groups, team dinners. Take a room or take the whole patio. Monday can wait.',
     go: 'Plan a party',
-    href: '/celebrate/plan#corporate',
+    href: '/celebrate/plan#request',
   },
   {
     lead: 'Live',
     em: 'shows',
     line: 'Music came back to the patio for good in 2025. Got a show in mind? Bring it.',
     go: 'Pitch us a show',
-    href: '/celebrate/plan#other',
+    href: '/celebrate/plan#request',
   },
 ];
 
@@ -194,7 +194,7 @@ export default function CelebratePage() {
               <ul className="cel-kinds">
                 {KINDS.map((k) => (
                   <li key={k.id}>
-                    <Link href={`/celebrate/plan#${k.id}`}><span>{k.label}</span></Link>
+                    <Link href={`/celebrate/plan#request`}><span>{k.label}</span></Link>
                   </li>
                 ))}
               </ul>
@@ -256,7 +256,7 @@ export default function CelebratePage() {
             </ul>
             <div className="btn-row" data-reveal data-reveal-delay="300">
               <Link href="/celebrate/weddings" className="btn">Weddings at River Ranch</Link>
-              <Link href="/celebrate/plan#wedding" className="btn btn--ghost">Plan a wedding</Link>
+              <Link href="/celebrate/plan#request" className="btn btn--ghost">Plan a wedding</Link>
             </div>
           </div>
         </div>

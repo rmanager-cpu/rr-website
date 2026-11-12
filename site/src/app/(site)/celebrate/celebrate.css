@@ -103,12 +103,11 @@
 
 /* ---------- plan page: copy left, the planner right; on phones the planner comes straight after
    the headline ---------- */
-.cel-planpage__grid { grid-template-areas: 'copy form'; row-gap: 40px; }
-.cel-planpage__copy { grid-area: copy; }
-.cel-planpage__form { grid-area: form; }
-.cel-planpage .planner__note a { color: var(--amber); }
-@media (min-width: 721px) { .cel-planpage .planner > .btn { align-self: flex-start; } }
-@media (max-width: 860px) { .cel-planpage__grid { grid-template-areas: 'copy' 'form'; } }
+/* Plan an event: the heading, then Venio's widget at full content width (it brings its own look and height). */
+.cel-planpage__copy { max-width: 760px; margin-bottom: clamp(32px, 4vw, 56px); }
+.cel-planpage__widget { margin: 0; }
+.cel-planpage__call { margin-top: 28px; color: var(--muted); }
+.cel-planpage__call a { color: var(--amber); }
 
 /* ---------- weddings: one wedding as a short story, around the open dates and the packet ---------- */
 .cel-end .page-hero__media > img { object-position: 50% 45%; filter: brightness(0.7); }

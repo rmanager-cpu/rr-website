@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { EventPlanner } from '@/components/EventPlanner';
 import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
+import { VenioWidget } from '@/components/VenioWidget';
+import { business } from '@/content/site';
 import { photos } from '@/content/photos';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 import '../celebrate.css';
@@ -11,7 +12,7 @@ import '../celebrate.css';
 export const metadata: Metadata = {
   title: 'Plan Your Event',
   description:
-    'Plan a wedding, private dinner, party or group event at River Ranch in Tahoe City: pick a date, tell us what you’re planning, and the events team gets back to you.',
+    'Plan a private dinner, party, wedding or group event at River Ranch in Tahoe City: see open nights in the Alpine Dining Room, send a request, and the events team gets back to you.',
   alternates: { canonical: '/celebrate/plan' },
 };
 
@@ -21,18 +22,25 @@ export default function PlanPage() {
       <JsonLd data={breadcrumbSchema('Plan', '/celebrate/plan')} />
       <SiteHeader />
 
+      {/* Venio's booking widget, full width. It's the one way in for every event request (no second form). Venio
+          needs this page's address for guests who turn back at the deposit page: /celebrate/plan. */}
       <section className="section section--dark cel-planpage" aria-labelledby="plan-h">
-        <div className="container cel-plan__grid cel-planpage__grid">
+        <div className="container">
           <div className="stack cel-planpage__copy">
             <p className="label label--accent">Plan an event</p>
             <Lines as="h1" id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
             <p className="lede" data-reveal data-reveal-delay="200">
-              It takes a minute. Tell us the date, the headcount and what you’re celebrating, and we come back with spaces and a menu.
+              Pick a night in the Alpine Dining Room and send a request. Planning something bigger, like a wedding, a buyout or the patio? There’s a
+              way in for that below the calendar too.
             </p>
           </div>
-          <div className="cel-planpage__form" data-reveal data-reveal-delay="150">
-            <EventPlanner heading="Tell us about it" />
+          <div className="cel-planpage__widget" id="request">
+            <VenioWidget />
           </div>
+          <p className="planner__note cel-planpage__call">
+            Rather talk it through? Email <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call{' '}
+            <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+          </p>
         </div>
       </section>
 

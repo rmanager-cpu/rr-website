@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 const CALENDAR_URL = process.env.NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL;
-const PACKET_HREF = '/celebrate/plan#wedding';
+const PACKET_HREF = '/celebrate/plan#request';
 
 function Shot({ photo, sizes }: { photo: Photo; sizes: string }) {
   return (
