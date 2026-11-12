@@ -1,7 +1,6 @@
 // Redirects keep every old address working, so rankings and old links carry over (see docs/INVENTORY.md
-// §6). All are 301 (permanent). Popmenu's ~247 /items/* pages fold into the menus; rrbanquets.com and
-// rrweddings.com map onto /celebrate once those domains point here. Every rule points at the final page,
-// so nothing redirects twice.
+// §6). All are 301 (permanent). Popmenu's ~247 /items/* pages fold into the menus. Every rule points at
+// the final page, so nothing redirects twice.
 import { readFileSync } from 'node:fs';
 
 const itemRedirects = JSON.parse(readFileSync(new URL('./src/content/item-redirects.json', import.meta.url), 'utf8'));
@@ -54,22 +53,8 @@ const moved = [
   r('/gift-cards', '/loyalty-and-gift-cards'),
 ];
 
-const host = (domain, source, destination) => ({
-  source,
-  has: [{ type: 'host', value: `(?:www\\.)?${domain.replace('.', '\\.')}` }],
-  destination: `https://www.riverranchlodge.com${destination}`,
-  statusCode: 301,
-});
-
-const oldDomains = [
-  host('rrbanquets.com', '/menus', '/celebrate/plan#private'),
-  host('rrbanquets.com', '/book', '/celebrate/plan#private'),
-  host('rrbanquets.com', '/faqs', '/celebrate#faq-h'),
-  host('rrbanquets.com', '/custom-inquiry', '/celebrate/plan'),
-  host('rrbanquets.com', '/ski-stay', '/stay/packages'),
-  host('rrbanquets.com', '/:path*', '/celebrate'),
-  host('rrweddings.com', '/:path*', '/celebrate/weddings'),
-];
+// No other domains forward here (Alex, 2026-11-12): rrbanquets.com and rrweddings.com were Popmenu-era
+// workarounds and are being let go.
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -89,7 +74,7 @@ const nextConfig = {
     remotePatterns: [{ protocol: 'https', hostname: 'images.bookingcenter.com', pathname: '/RIVERR/images/**' }],
   },
   async redirects() {
-    return [...oldDomains, ...oldSite, ...moved];
+    return [...oldSite, ...moved];
   },
   async headers() {
     return [{ source: '/photos/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] }];
