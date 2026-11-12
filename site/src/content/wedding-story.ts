@@ -33,8 +33,8 @@ export const weddingPhotos = {
   riverKiss: P('kiss-river-rocks', 'The couple kissing on the river rocks among the pines'),
   steps: L('couple-dog-steps', 'The couple and their dog sitting on wooden steps by the river'),
   valley: L('couple-river-valley', 'The couple small on the riverbank, the forested Truckee valley around them'),
-  groomBike: L('groom-bike-cake', 'The groom riding a bike past the cake table, waving'),
-  brideBike: L('bride-bike-tables', 'The bride riding a sunflower-basket bike through the cheering dinner tables'),
+  groomBike: L('groom-bike-cake', 'The groom riding in on a bike past the cake table, waving'),
+  brideBike: L('bride-bike-tables', 'The bride riding in on a sunflower-basket bike, guests cheering at the tables'),
   toast: L('toast-river', 'The couple raising their arms for a toast at the river’s edge'),
   toastsLaugh: L('couple-laughing-toasts', 'The couple cracking up during the toasts'),
   firstDance: L('first-dance-hug', 'The first dance, her arms around his neck'),
@@ -47,7 +47,8 @@ export const weddingPhotos = {
   lanterns: w('patio-lanterns-night', 2400, 1600, 'The patio at night under paper lanterns and string lights, the lodge balconies lit'),
 } satisfies Record<string, Photo>;
 
-export type Chapter = { id: string; name: string; title: [string, string]; line: string; photos: Photo[] };
+/** night: the chapter sits on a dark band (the after-party). */
+export type Chapter = { id: string; name: string; title: [string, string]; line: string; photos: Photo[]; night?: boolean };
 
 const s = weddingPhotos;
 
@@ -58,14 +59,15 @@ export const storyClose = s.lanterns;
 /** Beside the calendar: the dog crashing the vows. */
 export const besideCalendar = s.dogCeremony;
 
-/** The short story: two chapters before the calendar, two after. Each chapter's photos run as one row. */
+/** The short story: two chapters before the calendar, the rest after. Each chapter's photos run as one row.
+ *  (The mother-and-daughter hug was taken at a house that isn't River Ranch, so it stays out.) */
 export const chapters: Chapter[] = [
   {
     id: 'morning',
     name: 'The morning',
     title: ['Get ready', 'by the river.'],
-    line: 'A lodge room upstairs, the dress in the pines and the Truckee running below the deck. Take your time.',
-    photos: [s.dress, s.momHug],
+    line: 'A lodge room upstairs, the dress in the pines and the Truckee running below the deck. Then roll in on two wheels.',
+    photos: [s.dress, s.brideBike, s.groomBike],
   },
   {
     id: 'ceremony',
@@ -85,7 +87,15 @@ export const chapters: Chapter[] = [
     id: 'evening',
     name: 'The evening',
     title: ['Dinner, toasts,', 'a first dance.'],
-    line: 'Dinner on the patio, toasts by the water, then dancing under the lanterns until the last song.',
+    line: 'Dinner on the patio, toasts by the water, then the first dance under the lanterns.',
     photos: [s.toast, s.firstDance],
+  },
+  {
+    id: 'after-party',
+    name: 'The after-party',
+    title: ['Then the band', 'takes the patio.'],
+    line: 'Live music on the patio stage, giant Jenga, and everybody dancing until the last song.',
+    photos: [s.band, s.jenga, s.spinning],
+    night: true,
   },
 ];

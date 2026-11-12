@@ -36,7 +36,7 @@ function Shot({ photo, sizes }: { photo: Photo; sizes: string }) {
 function ChapterBand({ ch, flip }: { ch: Chapter; flip: boolean }) {
   const wide = ch.photos.length === 1;
   return (
-    <section className="section section--snow cel-wch" id={ch.id} aria-labelledby={`${ch.id}-h`}>
+    <section className={`section ${ch.night ? 'section--dark' : 'section--snow'} cel-wch`} id={ch.id} aria-labelledby={`${ch.id}-h`}>
       <div className={`container cel-wch__grid${flip ? ' cel-wch__grid--flip' : ''}${wide ? ' cel-wch__grid--wide' : ''}`}>
         <div className="stack cel-wch__words">
           <p className="label label--accent" data-reveal>{ch.name}</p>
