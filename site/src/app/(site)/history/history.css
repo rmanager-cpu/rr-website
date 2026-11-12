@@ -1,0 +1,134 @@
+/* /history: The Wall is the page, in the Fireside look. Everything here is prefixed hx-. */
+
+/* ---------- the wall, full screen under the header ---------- */
+.hx-wall {
+  --fg: var(--cream); --muted: rgba(239, 230, 214, 0.66); --rule: rgba(239, 230, 214, 0.16); --accent: var(--amber); --hi: var(--snow); --lo: var(--ink);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  height: calc(100vh - var(--header-h));
+  height: calc(100svh - var(--header-h));
+  min-height: 460px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--char);
+  color: var(--cream);
+  color-scheme: dark;
+}
+.hx-wall::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; z-index: 3; background: var(--rule); pointer-events: none; }
+.hx-wall__stage { position: relative; min-width: 0; background: var(--char) url('/photos/the-wall-old-photos.jpg') center / cover; }
+.hx-wall__stage::before { content: ''; position: absolute; inset: 0; background: rgba(14, 13, 11, 0.78); }
+.hx-wall__frame { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+
+/* ---------- the placard ---------- */
+.hx-card { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 22px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: rgba(239, 230, 214, 0.25) transparent; }
+.hx-card[hidden] { display: none; }
+.hx-card__intro { display: grid; gap: 16px; justify-items: start; padding-right: 40px; animation: fs-rise var(--slow) var(--ease) both; }
+.hx-card__intro > * { margin: 0; }
+.hx-card__title { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 3.4vw, 3.4rem); line-height: 0.96; letter-spacing: -0.015em; color: var(--cream); text-wrap: balance; }
+.hx-card__title em { font-style: italic; color: var(--amber); }
+.hx-card__line { margin: 0; font-size: 1.04rem; line-height: 1.55; color: rgba(239, 230, 214, 0.86); text-wrap: pretty; }
+.hx-card__rule { flex: none; display: block; width: 64px; height: 2px; background: var(--amber); transform-origin: left; animation: fl-draw var(--slower) var(--ease) 300ms both; }
+
+.hx-card__hide { position: absolute; top: 18px; right: 18px; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid rgba(239, 230, 214, 0.28); border-radius: 50%; background: transparent; color: var(--cream); cursor: pointer; transition: border-color var(--quick) var(--ease), background-color var(--quick) var(--ease), color var(--quick) var(--ease); }
+.hx-card__hide:hover { border-color: var(--amber); background: var(--amber); color: var(--ink); }
+.hx-card__hide-phone { display: none; }
+
+/* The approved paragraph: a few lines, then "Read the story". Its first line is set in the display serif. */
+.hx-story { position: relative; flex: none; max-height: 10.4em; overflow: hidden; font-size: 1rem; line-height: 1.72; color: rgba(239, 230, 214, 0.78); text-wrap: pretty; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
+.hx-story.is-open { max-height: none; -webkit-mask-image: none; mask-image: none; }
+.hx-story p { margin: 0; }
+.hx-story p::first-line { font-family: var(--font-display), Georgia, serif; font-size: 1.5em; line-height: 1.25; color: var(--cream); }
+.hx-story a { color: var(--amber); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.hx-story a:hover { color: var(--cream); }
+.hx-more { align-self: flex-start; position: relative; padding: 0 0 6px; border: 0; background: none; color: var(--cream); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; }
+.hx-more::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--amber); transform: scaleX(0.3); transform-origin: left; transition: transform 900ms var(--ease); }
+.hx-more:hover::after { transform: scaleX(1); }
+
+.hx-card__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--rule); }
+.hx-chip { min-height: 38px; padding: 8px 16px; text-decoration: none; white-space: normal; transition: border-color var(--quick) var(--ease), background-color var(--quick) var(--ease), color var(--quick) var(--ease); }
+.hx-chip:hover { border-color: var(--amber); background: var(--amber); color: var(--ink); }
+.hx-chip:hover::before { background: var(--ink); }
+.hx-full { color: var(--cream); }
+
+/* The tucked-away story: a rail on wide screens, a pill on phones. */
+.hx-pill { z-index: 2; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; color: var(--cream); cursor: pointer; }
+.hx-pill[hidden] { display: none; }
+
+/* Wide screens: the placard stands beside the wall, the first stop as you walk along it. */
+@media (min-width: 1000px) {
+  .hx-wall { grid-template-columns: clamp(360px, 30vw, 440px) minmax(0, 1fr); }
+  .hx-wall.is-tucked { grid-template-columns: 64px minmax(0, 1fr); }
+  .hx-card { padding: clamp(32px, 4.4vh, 52px) clamp(28px, 2.6vw, 44px) clamp(28px, 3.6vh, 40px); border-right: 1px solid rgba(239, 230, 214, 0.12);
+    background: radial-gradient(120% 55% at 0% 100%, rgba(224, 145, 58, 0.14) 0%, rgba(224, 145, 58, 0) 70%), var(--ember); }
+  .hx-pill { flex-direction: column; height: 100%; width: 64px; padding: 26px 0; border-right: 1px solid rgba(239, 230, 214, 0.12); background: var(--ember); transition: background-color var(--quick) var(--ease); }
+  .hx-pill span { writing-mode: vertical-rl; transform: rotate(180deg); font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--amber); }
+  .hx-pill:hover { background: var(--bark); }
+  .hx-pill:hover span { color: var(--cream); }
+}
+@media (min-width: 1000px) and (max-height: 760px) {
+  .hx-card { gap: 16px; }
+  .hx-card__title { font-size: clamp(2.1rem, 2.8vw, 2.7rem); }
+  .hx-story { max-height: 7em; }
+}
+
+/* Phones and tablets: the placard floats over the wall and tucks into a pill. */
+@media (max-width: 999px) {
+  .hx-wall__stage { grid-area: 1 / 1; }
+  .hx-card { position: absolute; top: 12px; left: 12px; right: 12px; max-width: 520px; max-height: calc(100% - 96px); gap: 16px; padding: 22px 20px 20px; border: 1px solid rgba(239, 230, 214, 0.16); background: rgba(23, 19, 15, 0.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8); animation: fs-rise var(--slow) var(--ease) both; }
+  .hx-card__intro { gap: 12px; animation: none; }
+  .hx-card__title { font-size: clamp(2.1rem, 9vw, 2.7rem); }
+  .hx-card__line { font-size: 0.98rem; }
+  .hx-card__hide { top: 12px; right: 12px; border-color: transparent; }
+  .hx-card__hide-wide { display: none; }
+  .hx-card__hide-phone { display: grid; }
+  /* Phones open on the intro alone; the paragraph waits behind "Read the story". */
+  .hx-card__rule { display: none; }
+  .hx-story { max-height: 0; margin-top: -16px; font-size: 0.96rem; }
+  .hx-story.is-open { margin-top: 0; }
+  .hx-card__foot { padding-top: 16px; }
+  .hx-pill { position: absolute; top: 12px; left: 12px; min-height: 44px; padding: 0 18px 0 22px; border: 1px solid rgba(239, 230, 214, 0.22); border-radius: 999px; background: rgba(23, 19, 15, 0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.8); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; animation: fl-fade var(--quick) var(--ease) both; }
+  .hx-pill svg { color: var(--amber); }
+}
+
+/* ---------- the years: one scroll value slides the row sideways ---------- */
+.hx-years { position: relative; background: var(--ember); color: var(--cream); color-scheme: dark;
+  --fg: var(--cream); --muted: rgba(239, 230, 214, 0.64); --rule: rgba(239, 230, 214, 0.16); --accent: var(--amber); --hi: var(--snow); --lo: var(--ink); }
+.hx-years__stage { position: relative; z-index: 1; padding-block: var(--section); }
+.hx-years__head { display: grid; gap: 14px; margin-bottom: clamp(28px, 5vh, 64px); }
+.hx-years__head > * { margin: 0; }
+.hx-years__head h2 { max-width: 20em; }
+.hx-years__track { display: flex; align-items: flex-start; gap: clamp(36px, 7vw, 120px); margin: 0; padding: 0 var(--gutter) 12px; list-style: none; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.hx-years__track::-webkit-scrollbar { display: none; }
+.hx-year { flex: 0 0 auto; width: min(76vw, 500px); display: grid; gap: 18px; }
+.hx-year__num { font-family: var(--font-display), Georgia, serif; font-size: clamp(6.4rem, 21vw, 19rem); line-height: 0.8; letter-spacing: -0.035em; white-space: nowrap; }
+.hx-year:nth-child(even) .hx-year__num { font-style: italic; color: var(--amber); }
+.hx-year__rule { height: 1px; background: var(--rule); }
+.hx-year small { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.hx-year p { margin: 0; max-width: 24em; font-size: clamp(1.02rem, 1.35vw, 1.2rem); line-height: 1.5; }
+.hx-years__bar { position: relative; height: 1px; margin: clamp(28px, 5vh, 60px) var(--gutter) 0; background: var(--rule); }
+.hx-years__bar i { position: absolute; left: 0; top: -1px; height: 3px; width: 100%; background: var(--amber); transform: scaleX(1); transform-origin: left; }
+@media (max-width: 600px) { .hx-year { width: min(72vw, 500px); } }
+/* The reel only while motion runs (html.fl-motion): the band grows tall and its stage sticks. */
+html.fl-motion .hx-years { height: 360vh; }
+html.fl-motion .hx-years__stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding-block: var(--header-h) 24px; }
+html.fl-motion .hx-years__track { width: max-content; overflow: visible; padding-bottom: 0; will-change: transform; }
+html.fl-motion .hx-years__bar i { transform: scaleX(0); will-change: transform; }
+html.fl-motion .hx-year { will-change: opacity; }
+
+/* ---------- off the wall, on snow white ---------- */
+.hx-off__head > * { margin: 0; }
+.hx-off__head > * + * { margin-top: 22px; }
+.hx-off__head .display-l { margin-top: 14px; }
+.hx-pieces { position: relative; display: grid; gap: clamp(14px, 2.4vw, 28px); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; padding: clamp(20px, 3vw, 44px); background: var(--white); border: 1px solid var(--rule); box-shadow: 0 40px 100px rgba(20, 17, 14, 0.08); }
+.hx-pieces::before { content: ''; position: absolute; left: clamp(20px, 3vw, 44px); top: -1px; width: 64px; height: 3px; background: var(--forest); }
+.hx-piece { display: grid; gap: 14px; margin: 0; }
+.hx-piece:nth-child(2) { margin-top: clamp(28px, 5vw, 72px); }
+.hx-piece figcaption { font-size: 0.86rem; line-height: 1.5; color: var(--muted); }
+
+/* ---------- closing ---------- */
+.hx-outro { text-align: center; }
+.hx-outro .container > * { margin: 0 auto; }
+.hx-outro .display-l { margin-top: 14px; }
+.hx-outro .lede { margin-top: 22px; }
+.hx-outro .btn-row { justify-content: center; margin-top: 34px; }

@@ -4,7 +4,7 @@ import { formatDate, nextDate, todayInTahoe, whenPhrase } from '@/lib/events/rec
 import { listApplications, listPages, listSeries } from '@/lib/events/store';
 import { CATEGORY_LABEL } from '@/lib/events/types';
 
-export default async function Dashboard({ searchParams }: { searchParams: { saved?: string } }) {
+export default async function Dashboard({ searchParams }: { searchParams: { saved?: string; deleted?: string } }) {
   const ready = await dbReady();
   const [series, pages, apps] = await Promise.all([listSeries(), listPages(), listApplications()]);
   const pageOf = new Map(pages.map((p) => [p.id, p]));
@@ -16,10 +16,11 @@ export default async function Dashboard({ searchParams }: { searchParams: { save
   return (
     <>
       <div className="row-actions" style={{ justifyContent: 'space-between' }}>
-        <h1>Events calendar</h1>
-        <Link href="/admin/events/new" className="btn btn--amber">Add event</Link>
+        <h1>What’s On calendar</h1>
+        <Link href="/admin/events/new" className="btn btn--amber">Add to Calendar</Link>
       </div>
-      {searchParams.saved && <p className="ok" role="status">Added. The event and its page are live on the site.</p>}
+      {searchParams.saved && <p className="ok" role="status">Added to the calendar.</p>}
+      {searchParams.deleted && <p className="ok" role="status">Deleted.</p>}
       {!ready && <p className="note">Showing the built-in starting events. Editing switches on once the calendar database is connected.</p>}
       {newApps > 0 && <p className="note"><Link href="/admin/applications">{newApps} new job application{newApps > 1 ? 's' : ''}</Link></p>}
       <div className="adm-card tbl">
@@ -33,6 +34,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { save
                   <td>
                     <Link href={`/admin/events/${s.id}`} style={{ fontWeight: 700 }}>{s.title}</Link>
                     <div className="help">{CATEGORY_LABEL[s.category]}{s.status !== 'published' ? ` · ${s.status}` : ''}{s.offsite ? ' · off-site' : ''}</div>
+                    {s.highlighted && <span className="tag">On the home page</span>}
                   </td>
                   <td>{whenPhrase(s)}</td>
                   <td>{next ? formatDate(next) : <span className="help">done</span>}</td>

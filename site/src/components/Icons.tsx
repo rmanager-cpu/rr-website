@@ -25,9 +25,27 @@ export const Sunrise = ({ size = 18 }: P) => (
   </svg>
 );
 
+export const ChevronDown = ({ size = 14 }: P) => (
+  <svg width={size} height={size} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 5.25 7 9.25l4-4" />
+  </svg>
+);
+
+export const ChevronLeft = ({ size = 14 }: P) => (
+  <svg width={size} height={size} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M9 2 4 7l5 5" />
+  </svg>
+);
+
+export const ChevronRight = ({ size = 14 }: P) => (
+  <svg width={size} height={size} viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="m5 2 5 5-5 5" />
+  </svg>
+);
+
 export const Menu = ({ size = 22 }: P) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-    <path d="M4 8h16M4 16h16" />
+    <path d="M6 9.5h12M6 14.5h12" />
   </svg>
 );
 

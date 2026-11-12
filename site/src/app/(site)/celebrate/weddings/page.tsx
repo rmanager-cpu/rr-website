@@ -1,69 +1,131 @@
 import type { Metadata } from 'next';
-import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
-import { photos } from '@/content/photos';
 import { business } from '@/content/site';
+import type { Photo } from '@/content/photos';
+import { besideCalendar, chapters, storyClose, storyOpen, type Chapter } from '@/content/wedding-story';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
+import '../celebrate.css';
+
+// One real wedding as a short story, in ten photos, around the open-date calendar for wedding season
+// and "Get the packet". Both are Venio's, displayed here. Until Venio serves the calendar,
+// NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL stays unset and a short "call us" line shows. The owner wants dates only
+// here, no pricing (Nov 12): Venio's wedding calendar must be a calendar-only view, not the private-dining widget. "Get the packet" is the
+// way into Venio's forms: for now it opens the wedding inquiry; once Venio's packet form is embedded it
+// becomes that form (fill it in, get the packet, land in Leads).
 
 export const metadata: Metadata = {
   title: 'Riverside Weddings in Tahoe City',
   description:
-    'Ceremonies on the riverside patio, receptions, rehearsal dinners and welcome parties at River Ranch on the Truckee River, with 19 lodge rooms upstairs for your guests.',
+    'Riverside weddings at River Ranch in Tahoe City: get ready at the lodge, say your vows on the patio under the pines, portraits on the Truckee, then dinner and dancing under the lanterns. See open dates and get the wedding packet.',
   alternates: { canonical: '/celebrate/weddings' },
 };
 
+const CALENDAR_URL = process.env.NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL;
+const PACKET_HREF = '/celebrate/plan#request';
+
+function Shot({ photo, sizes }: { photo: Photo; sizes: string }) {
+  return (
+    <figure className="cel-shot" data-reveal style={{ '--ar': (photo.width / photo.height).toFixed(3) } as React.CSSProperties}>
+      <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes={sizes} />
+    </figure>
+  );
+}
+
+function ChapterBand({ ch, flip }: { ch: Chapter; flip: boolean }) {
+  const wide = ch.photos.length === 1;
+  return (
+    <section className={`section ${ch.night ? 'section--dark' : 'section--snow'} cel-wch`} id={ch.id} aria-labelledby={`${ch.id}-h`}>
+      <div className={`container cel-wch__grid${flip ? ' cel-wch__grid--flip' : ''}${wide ? ' cel-wch__grid--wide' : ''}`}>
+        <div className="stack cel-wch__words">
+          <p className="label label--accent" data-reveal>{ch.name}</p>
+          <Lines id={`${ch.id}-h`} className="display-l" lines={[ch.title[0], <em key="e">{ch.title[1]}</em>]} />
+          <p className="lede" data-reveal data-reveal-delay="150">{ch.line}</p>
+        </div>
+        <div className="cel-row">
+          {ch.photos.map((p) => (
+            <Shot key={p.src} photo={p} sizes={wide ? '(max-width: 1400px) 100vw, 1400px' : '(max-width: 860px) 50vw, 33vw'} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function WeddingsPage() {
+  const before = chapters.slice(0, 2);
+  const after = chapters.slice(2);
   return (
     <>
       <JsonLd data={breadcrumbSchema('Weddings', '/celebrate/weddings')} />
-      <SiteHeader />
+      <SiteHeader variant="overlay" />
 
-      <section className="page-hero">
-        <div className="page-hero__bg">
-          <Image src={photos.ceremonyAisle.src} alt={photos.ceremonyAisle.alt} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 60%' }} />
+      <section className="page-hero cel-hero--night">
+        <div className="page-hero__media">
+          <Image src={storyOpen.src} alt={storyOpen.alt} fill priority sizes="100vw" data-parallax="0.15" />
         </div>
-        <div className="page-hero__shade" aria-hidden="true" />
-        <div className="container page-hero__body">
-          <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>Weddings</h1>
-          <p>{L.line}</p>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="day-h">
-        <div className="container media-row" style={{ gap: 48, alignItems: 'flex-start' }}>
-          <div className="grow stack" style={{ gap: 28 }}>
-            <span className="eyebrow">On the river</span>
-            <h2 id="day-h" className="serif h-m">{L.head2}</h2>
-            <p className="lede">{L.line2}</p>
-            <dl className="facts">
-              <div><dt>Ceremonies</dt><dd>On the riverside patio in the warmer months, with an indoor room as the backup</dd></div>
-              <div><dt>Patio dates</dt><dd>Released in late winter or early spring, depending on the weather</dd></div>
-              <div><dt>Around the day</dt><dd>Rehearsal dinners, welcome parties and receptions</dd></div>
-              <div><dt>Your guests</dt><dd>{business.rooms} lodge rooms upstairs</dd></div>
-              <div><dt>Getting here</dt><dd>ADA accessible, with a private lot on site</dd></div>
-            </dl>
-          </div>
-          <div className="side">
-            <Image src={photos.patioRoundsSails.src} alt={photos.patioRoundsSails.alt} width={photos.patioRoundsSails.width} height={photos.patioRoundsSails.height} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto' }} />
+        <div className="page-hero__inner container">
+          <p className="label label--accent">Weddings</p>
+          <Lines as="h1" className="display-xl" lines={['Say it by', <em key="e">the river.</em>]} />
+          <p className="lede" data-reveal data-reveal-delay="300">
+            Vows under the pines, dinner on the patio and dancing under the lanterns, with the Truckee running past all evening.
+          </p>
+          <div className="btn-row" data-reveal data-reveal-delay="450">
+            <Link href={PACKET_HREF} className="btn">Get the packet</Link>
+            <a href="#dates" className="btn btn--ghost-cream">See open dates</a>
           </div>
         </div>
       </section>
 
-      <section className="band" aria-labelledby="inquire-h">
-        <div className="band__bg">
-          <Image src={photos.patioNight.src} alt={photos.patioNight.alt} fill sizes="100vw" style={{ objectFit: 'cover' }} />
-        </div>
-        <div className="container" style={{ width: '100%', paddingBlock: 80 }}>
-          <div className="band__card">
-            <span className="eyebrow">Start planning</span>
-            <h2 id="inquire-h" className="serif" style={{ fontSize: 'clamp(40px, 4.6vw, 64px)', lineHeight: 0.98 }}>{L.head3}</h2>
-            <p className="lede">{L.line3}</p>
-            <div className="btn-row">
-              <Link href="/celebrate/plan#wedding" className="btn btn--amber">Start a wedding inquiry</Link>
-              <Link href="/celebrate/spaces" className="btn btn--navy">See the spaces</Link>
+      {before.map((ch, i) => <ChapterBand key={ch.id} ch={ch} flip={i % 2 === 1} />)}
+
+      {/* OPEN DATES: the dog crashing the vows, Venio's calendar, and the way in */}
+      <section className="section section--ember cel-dates" id="dates" aria-labelledby="dates-h">
+        <div className="container">
+          <div className="cel-dates__head stack">
+            <p className="label label--accent" data-reveal>Open dates</p>
+            <Lines id="dates-h" className="display-l" lines={['Find your', <em key="e">date.</em>]} />
+          </div>
+          <div className="cel-dates__grid">
+            <figure className="cel-beside" data-reveal="clip">
+              <Image src={besideCalendar.src} alt={besideCalendar.alt} fill sizes="(max-width: 860px) 100vw, 25vw" />
+              <figcaption>Leashed dogs welcome on the patio, ceremonies included.</figcaption>
+            </figure>
+            <div className="cel-cal__slot">
+              {CALENDAR_URL ? (
+                <iframe src={CALENDAR_URL} title="Open wedding dates" loading="lazy" />
+              ) : (
+                <p className="cel-cal__soon">Open wedding dates show here soon. Until then, call us and we’ll read you the calendar.</p>
+              )}
             </div>
+            <div className="cel-packet stack" data-reveal data-reveal-delay="150">
+              <p className="label label--accent">The wedding packet</p>
+              <h3 className="cel-packet__title">Get the packet</h3>
+              <p>Spaces, menus and pricing, all in one place. Tell us a little about your day and it’s yours.</p>
+              <Link href={PACKET_HREF} className="btn">Get the packet</Link>
+              <p className="small">
+                Or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {after.map((ch, i) => <ChapterBand key={ch.id} ch={ch} flip={i % 2 === 1} />)}
+
+      {/* YOUR TURN: the patio after dark */}
+      <section className="page-hero page-hero--short cel-end" aria-labelledby="end-h">
+        <div className="page-hero__media">
+          <Image src={storyClose.src} alt={storyClose.alt} fill sizes="100vw" />
+        </div>
+        <div className="page-hero__inner container">
+          <p className="label label--accent" data-reveal>Your turn</p>
+          <Lines id="end-h" className="display-l" lines={['Tell us', <em key="e">your date.</em>]} />
+          <div className="btn-row" data-reveal data-reveal-delay="200">
+            <Link href={PACKET_HREF} className="btn">Get the packet</Link>
+            <a href="#dates" className="btn btn--ghost-cream">See open dates</a>
           </div>
         </div>
       </section>

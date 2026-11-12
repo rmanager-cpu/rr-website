@@ -171,7 +171,7 @@ Most room cards carry "possible noise" notes where they apply.
 | Restaurant reservations | **OpenTable**: opentable.com/river-ranch-lodge-and-restaurant (rid **27631**) | It is listed on OpenTable, **but the site's "Book A Table" button does not link to it**. It only jumps to /#location. |
 | Lodging booking engine | **UNKNOWN** (lives on /book-a-room, which lazy-loads) | Needs the owner or a browser to identify it |
 | Gift cards | Popmenu item pages (restaurant gift card, lodge gift certificate) | The checkout path is unclear and /order is empty |
-| Ski rentals | Ski Butlers partner portal: skibutlers.com/portal/riverranchlodge | Keep; 10% guest discount |
+| Ski rentals | Ski Butlers partner portal: skibutlers.com/portal/riverranchlodge | Drop; the partnership has ended (2026-11-05) |
 | Rafting | truckeeriverraft.com, truckeeriverrafting.com | Keep; ties to the "rafting pivot" switch |
 | Ski resort | palisadestahoe.com | |
 | Bike shops | squawbikes.com, olympicbikeshop.com, willardsportshop.com | Re-verify that they are still in business |
@@ -344,7 +344,7 @@ Suggested targets; adjust to the final page names.
 8. **Current hours**, including whether the patio lunch runs in winter, and breakfast 8–11 vs 8–12.
 9. **The one cancellation and deposit policy** for events. Three conflicting versions exist on rrbanquets; ties to the pricing-rules revisit.
 10. Weddings: what should the new page say (capacities, spaces, pricing approach)? The Wedding-Spot numbers look out of date.
-11. Are Snowfest, the Live Music series, Ski Butlers, and the three bike shops still active?
+11. Are Snowfest, the Live Music series, and the three bike shops still active? (Ski Butlers is not; removed from the site 2026-11-05.)
 12. Is there a GA4 property, Meta pixel, or Google Business Profile login to carry over?
 13. Where do the rrbanquets Custom Inquiry submissions currently go (Squarespace form storage or email)?
 14. Hiring: what should /jobs use (7shifts hiring, or an email)?

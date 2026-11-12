@@ -2662,6 +2662,7 @@
   {
    "slug": "tuesday-dinner-menu",
    "name": "Tuesday Dinner",
+   "active": false,
    "sort": 2,
    "intro": null,
    "hours": [

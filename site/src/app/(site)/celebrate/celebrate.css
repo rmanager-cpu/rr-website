@@ -1,0 +1,184 @@
+/* Celebrate (/celebrate, /celebrate/weddings, /celebrate/spaces, /celebrate/plan) in Fireside.
+   Bands, type, buttons, frames, rows and fields come from globals.css; this file only adds the page
+   blocks. Everything here is prefixed cel- so nothing leaks into other pages. Light surfaces are snow
+   white or frost, never cream. */
+
+/* ---------- page heroes ---------- */
+.cel-hero .page-hero__media > img { object-position: 50% 30%; filter: brightness(0.82) saturate(0.95); }
+.cel-hero--bright .page-hero__media > img { object-position: 50% 60%; filter: brightness(0.74) saturate(0.95); }
+.cel-hero--night .page-hero__media > img { object-position: 50% 50%; filter: brightness(0.8); }
+@media (max-width: 700px) {
+  .cel-hero .page-hero__media > img { object-position: 66% 26%; filter: brightness(0.7) saturate(0.95); }
+}
+
+/* ---------- aperture: the aerial photo opens from a slit to full bleed as you scroll in (Aperture.tsx) ---------- */
+.cel-ap { position: relative; display: grid; place-items: center; min-height: min(104vh, 980px); padding: var(--section) 0; overflow: hidden; isolation: isolate; text-align: center; }
+.cel-ap__media { position: absolute; inset: 0; z-index: 0; will-change: clip-path; }
+.cel-ap__media > img { object-fit: cover; object-position: 50% 55%; filter: brightness(0.42) saturate(0.8) sepia(0.12); will-change: transform; }
+.cel-ap__media::after { content: ''; position: absolute; inset: 0; background: radial-gradient(90% 70% at 50% 50%, rgba(14, 13, 11, 0.25) 0%, rgba(14, 13, 11, 0.78) 100%); }
+.cel-ap__copy { position: relative; z-index: 3; display: grid; gap: 24px; justify-items: center; width: 100%; max-width: calc(980px + var(--gutter) * 2); padding-inline: var(--gutter); }
+.cel-ap__copy > * { margin: 0; }
+.cel-ap__copy .lede { max-width: 30em; }
+.cel-ap .chip-row { justify-content: center; margin-top: 6px; }
+.cel-ap .chip--plain { color: var(--cream); border-color: rgba(239, 230, 214, 0.3); }
+
+/* ---------- the four spaces: the hovered or focused row wipes its photo onto the stage (SpacePicker.tsx) ---------- */
+.cel-spaces { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: clamp(32px, 5.5vw, 96px); align-items: start; }
+.cel-spaces__list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--fg); }
+.cel-space { border-bottom: 1px solid var(--rule); }
+.cel-space__head { position: relative; display: grid; gap: 12px; justify-items: start; padding: clamp(22px, 2.6vw, 38px) 0; opacity: 0.42; transition: opacity 900ms var(--ease), transform 1100ms var(--ease); }
+.cel-space__head > * { margin: 0; }
+.cel-space__name { font-family: var(--font-display), Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 5vw, 4.7rem); line-height: 0.94; letter-spacing: -0.02em; }
+.cel-space__name button { padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
+/* the whole row is the hit area */
+.cel-space__name button::after { content: ''; position: absolute; inset: 0; }
+.cel-space__name em { font-style: italic; transition: color 900ms var(--ease); }
+.cel-space__note { max-width: 30em; font-size: 1.05rem; line-height: 1.55; color: var(--muted); }
+.cel-space.is-active .cel-space__head { opacity: 1; transform: translateX(12px); }
+.cel-space.is-active .cel-space__name em { color: var(--accent); }
+.cel-space__photo { display: none; }
+.cel-spaces__more { margin: clamp(26px, 3vw, 40px) 0 0; }
+.cel-spaces__stage { position: sticky; top: calc(var(--header-h) + 24px); }
+.cel-spaces__screen { position: relative; aspect-ratio: 4 / 5; max-height: calc(100vh - var(--header-h) - 96px); width: 100%; overflow: hidden; background: var(--bark); box-shadow: 0 40px 100px rgba(20, 17, 14, 0.22); }
+.cel-spaces__screen > img { object-fit: cover; clip-path: inset(100% 0 0 0); z-index: 0; }
+.cel-spaces__screen > img.is-prev { clip-path: inset(0 0 0 0); z-index: 1; }
+.cel-spaces__screen > img.is-active { clip-path: inset(0 0 0 0); z-index: 2; transition: clip-path 1300ms var(--ease); }
+.cel-spaces__cap { display: flex; justify-content: space-between; gap: 16px; margin: 14px 0 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 860px) {
+  .cel-spaces { grid-template-columns: minmax(0, 1fr); }
+  .cel-spaces__stage { display: none; }
+  .cel-space__head { opacity: 1; padding-bottom: 20px; }
+  .cel-space.is-active .cel-space__head { transform: none; }
+  .cel-space__name em { color: var(--accent); }
+  .cel-space__name button { cursor: default; }
+  .cel-space__photo { display: block; margin-bottom: 26px; }
+}
+
+/* a little more air before a list of rows or a button row inside a text stack */
+.cel-stack > .rows, .cel-stack > .fl-facts { margin-top: 2.4rem; }
+.cel-stack > .btn-row { margin-top: 2.2rem; }
+
+/* ---------- weddings (dark) ---------- */
+.cel-wed .frame--arch { max-width: 520px; width: 100%; justify-self: center; }
+.cel-wed .frame--arch > img { object-position: 42% 50%; }
+.cel-rows2 > li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); padding: 18px 0; }
+.cel-rows2 .row__title { font-size: clamp(1.35rem, 1.9vw, 1.75rem); }
+@media (max-width: 720px) { .cel-rows2 > li { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- dinners and parties (ember) ---------- */
+.cel-parties > li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); padding: 22px 0; }
+.cel-party__body { display: grid; gap: 14px; justify-items: start; }
+.cel-party__body > * { margin: 0; }
+.cel-parties .row__note { color: var(--muted); }
+@media (max-width: 720px) { .cel-parties > li { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- gallery (a drag row) ---------- */
+.cel-gal-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; margin-bottom: clamp(32px, 4vw, 56px); }
+.cel-gal-head > div > * + * { margin-top: 14px; }
+.cel-gal-hint { display: inline-flex; align-items: center; gap: 14px; }
+.cel-gal-hint::after { content: ''; width: 56px; height: 1px; background: var(--amber); }
+.cel-gallery .drag-gallery__track { align-items: flex-end; }
+.cel-gallery .frame > img { object-fit: cover; }
+
+/* ---------- FAQ (snow) ---------- */
+.cel-faq { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+@media (max-width: 860px) { .cel-faq { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- plan (dark, right under the hero): contact beside a bark panel ---------- */
+.cel-plan__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
+.cel-plan__side { display: grid; gap: 26px; }
+.cel-plan__side > * { margin: 0; }
+.cel-mail { display: inline-block; padding-bottom: 4px; border-bottom: 1px solid var(--rule); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.2; color: var(--fg); text-decoration: none; overflow-wrap: anywhere; transition: color var(--quick) var(--ease), border-color var(--quick) var(--ease); }
+.cel-mail:hover { color: var(--amber); border-color: var(--amber); }
+.cel-contact a { color: var(--fg); }
+.cel-contact a:hover { color: var(--amber); }
+.cel-kinds { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.cel-kinds a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.15; color: var(--fg); text-decoration: none; transition: color var(--quick) var(--ease); }
+.cel-kinds a span { transition: transform 900ms var(--ease); }
+.cel-kinds a::after { content: ''; flex: none; width: 28px; height: 1px; background: currentColor; transform-origin: right; transition: transform 900ms var(--ease); }
+.cel-kinds a:hover { color: var(--amber); }
+.cel-kinds a:hover span { transform: translateX(10px); }
+.cel-kinds a:hover::after { transform: scaleX(1.7); }
+@media (max-width: 860px) { .cel-plan__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- plan page: copy left, the planner right; on phones the planner comes straight after
+   the headline ---------- */
+/* Plan an event: the fireplace room full-bleed under the header, the copy over it, then Venio's widget sitting on the
+   photo at full content width (it brings its own look and height). The photo darkens toward the left and the bottom
+   so the cream copy reads and the widget's dark panel melts into it. */
+.cel-planhero { position: relative; isolation: isolate; overflow: hidden; padding: calc(var(--header-h) + clamp(48px, 8vw, 120px)) 0 clamp(56px, 7vw, 110px); background: var(--char); color: var(--cream); --fg: var(--cream); --muted: rgba(239, 230, 214, 0.7); --accent: var(--amber); }
+.cel-planhero__media { position: absolute; inset: 0; z-index: -1; }
+.cel-planhero__media img { object-fit: cover; object-position: 70% 40%; }
+.cel-planhero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 13, 11, 0.9) 0%, rgba(14, 13, 11, 0.7) 45%, rgba(14, 13, 11, 0.35) 100%), linear-gradient(180deg, rgba(14, 13, 11, 0) 35%, rgba(14, 13, 11, 0.85) 75%); }
+.cel-planhero .display-l { color: var(--cream); }
+.cel-planhero .lede { color: rgba(239, 230, 214, 0.9); max-width: 34em; }
+.cel-planpage__copy { max-width: 760px; margin-bottom: clamp(36px, 5vw, 72px); }
+.cel-know { max-width: 760px; }
+.cel-planpage__widget { margin: 0; }
+.cel-planpage__call { margin-top: 28px; color: var(--muted); }
+.cel-planpage__call a { color: var(--amber); }
+
+/* ---------- weddings: one wedding as a short story, around the open dates and the packet ---------- */
+.cel-end .page-hero__media > img { object-position: 50% 45%; filter: brightness(0.7); }
+
+/* a chapter: the words on one side, its photos on the other; a lone wide photo runs under the words */
+.cel-wch { --gap: clamp(8px, 1.1vw, 16px); }
+.cel-wch + .cel-wch { padding-top: 0; }
+.cel-wch__grid { display: grid; grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.5fr); gap: 32px clamp(32px, 6vw, 100px); align-items: center; }
+.cel-wch__grid--flip { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.75fr); }
+.cel-wch__grid--flip > .cel-wch__words { order: 2; }
+.cel-wch__grid--wide { grid-template-columns: minmax(0, 1fr); }
+.cel-wch__grid--wide > .cel-wch__words { max-width: 640px; }
+@media (max-width: 860px) {
+  .cel-wch__grid, .cel-wch__grid--flip { grid-template-columns: minmax(0, 1fr); }
+  .cel-wch__grid--flip > .cel-wch__words { order: 0; }
+}
+
+/* a row of photos: each width in proportion to its shape (--ar, width over height), so the row fills
+   the width at one height and nothing is cropped */
+.cel-row { display: flex; gap: var(--gap, 12px); }
+.cel-row > .cel-shot { flex: var(--ar) 1 0; min-width: 0; }
+.cel-shot { display: block; margin: 0; }
+.cel-shot > img { display: block; width: 100%; height: auto; background: var(--bark); }
+
+/* open dates: the dog crashing the vows, Venio's calendar, and "Get the packet" beside it */
+.cel-dates { scroll-margin-top: 80px; }
+.cel-dates__head { margin-bottom: clamp(32px, 4vw, 56px); }
+.cel-dates__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr) minmax(0, 0.9fr); grid-template-areas: 'dog cal packet'; gap: clamp(16px, 2vw, 32px); min-height: clamp(520px, 46vw, 680px); }
+.cel-beside { grid-area: dog; position: relative; margin: 0; overflow: hidden; background: var(--bark); min-height: 420px; }
+.cel-beside > img { object-fit: cover; object-position: 50% 62%; }
+.cel-beside figcaption { position: absolute; inset: auto 0 0 0; padding: 48px 18px 16px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.6)); color: var(--cream); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.6; text-transform: uppercase; }
+.cel-cal__slot { grid-area: cal; display: flex; align-items: center; justify-content: center; min-height: 520px; border: 1px solid rgba(224, 145, 58, 0.35); }
+.cel-cal__slot > iframe { display: block; width: 100%; height: 100%; min-height: 520px; border: 0; }
+.cel-cal__slot > .placeholder { margin: 0; padding: 24px; text-align: center; }
+.cel-cal__soon { margin: 0; padding: 32px; max-width: 24ch; text-align: center; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.3; color: var(--cream); }
+.cel-packet { grid-area: packet; align-self: center; justify-items: start; }
+.cel-packet__title { font-family: var(--font-display), Georgia, serif; font-size: clamp(1.9rem, 2.6vw, 2.5rem); font-weight: 400; line-height: 1.05; }
+.cel-packet > .btn { justify-self: start; }
+.cel-packet a:not(.btn) { color: inherit; }
+@media (max-width: 960px) {
+  .cel-dates__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'cal cal' 'packet dog'; min-height: 0; }
+}
+@media (max-width: 600px) {
+  .cel-dates__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'cal' 'packet' 'dog'; }
+  .cel-beside { aspect-ratio: 4 / 5; min-height: 0; }
+}
+
+/* ---------- spaces page: one row per space (components/SpaceGrid.tsx) ---------- */
+.cel-rooms { display: grid; gap: clamp(72px, 10vw, 150px); }
+.cel-room .frame { aspect-ratio: 4 / 3.2; }
+.cel-room .frame > img { object-fit: cover; }
+.cel-room__body { display: grid; gap: 20px; align-content: center; justify-items: start; }
+.cel-room__body > * { margin: 0; }
+.cel-room__num { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(3.2rem, 6vw, 5.6rem); line-height: 0.9; color: var(--accent); }
+.cel-room .fl-facts { width: 100%; }
+.cel-room__ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3.2; border: 1px dashed var(--amber); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.cel-aerial__cap { margin: 18px 0 0; }
+
+/* Celebrate: the booking widget under the hero, full content width. */
+.cel-plan__lede { max-width: 40em; margin: 0 0 clamp(28px, 4vw, 48px); }
+.cel-plan__widget { margin: 0; }
+.cel-plan__call { margin-top: 24px; }
+
+/* On phones the widget runs edge to edge, so its calendar has room for the nightly prices. */
+@media (max-width: 600px) { .cel-planpage__widget, .cel-plan__widget { margin-inline: calc(var(--gutter) * -1); } }

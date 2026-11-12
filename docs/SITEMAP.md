@@ -16,7 +16,7 @@ The scroll story (hero, Stay, Dine, Celebrate), then Visit (hours, address, emai
 | (main) | `/stay` | The lodge in short, best rooms, Book | current /stay |
 | Rooms | `/stay/rooms` | Room types, photos, amenities; one page per type | current /stay rooms section |
 | Packages | `/stay/packages` | Ski & stay and seasonal deals | new content |
-| Guest Info | `/stay/guest-info` | Check-in/out, policies, parking, pets, skiing & nearby, Ski Butlers, questions | current Good to know, Nearby, FAQ |
+| Guest Info | `/stay/guest-info` | Check-in/out, policies, parking, pets, skiing & nearby, questions | current Good to know, Nearby, FAQ |
 
 Booking: our own room list and date picker, then a redirect to BookingCenter's results page with the
 dates applied (`site/src/lib/bookingcenter.ts`). Once the BookingCenter API keys arrive, booking runs on

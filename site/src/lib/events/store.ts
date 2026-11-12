@@ -3,7 +3,7 @@ import seed from '@/content/seed-events.json';
 import { db, dbReady } from '@/lib/db/pool';
 
 const hasDb = dbReady;
-import type { Category, EventPage, EventSeries, JobApplication, Layout } from './types';
+import type { ApplicationDetails, Category, EventLink, EventPage, EventSeries, JobApplication, Layout } from './types';
 
 // Reads and writes the calendar. With the database connected (SITE_DATABASE_URL) everything lives in
 // the Supabase hub and the staff editor can change it; without it, the site shows the starting events
@@ -21,6 +21,8 @@ function pageFrom(r: Row): EventPage {
     summary: (r.summary as string) ?? null,
     body: (r.body as string) ?? null,
     heroImage: (r.hero_image as string) ?? null,
+    photos: (r.photos as string[]) ?? [],
+    links: (r.links as EventLink[]) ?? [],
     layout: r.layout as Layout,
     updatedAt: r.updated_at ? new Date(r.updated_at as string).toISOString() : '',
   };
@@ -45,6 +47,7 @@ function seriesFrom(r: Row): EventSeries {
     location: (r.location as string) ?? null,
     note: (r.note as string) ?? null,
     ticketUrl: (r.ticket_url as string) ?? null,
+    highlighted: Boolean(r.highlighted),
     closedPrivate: Boolean(r.closed_private),
     closedRegular: Boolean(r.closed_regular),
     venioSpaces: (r.venio_spaces as string[]) ?? [],
@@ -104,7 +107,8 @@ export async function venioSpaces(): Promise<string[]> {
 // ---------- writes (database only) ----------
 
 export type SeriesInput = Omit<EventSeries, 'id' | 'pageId' | 'updatedAt'>;
-export type PageInput = { slug: string; title: string; summary: string | null; body: string | null; heroImage: string | null; layout: Layout };
+export type PageInput = { slug: string; title: string; summary: string | null; body: string | null; layout: Layout };
+export type PageContent = { body: string | null; photos: string[]; links: EventLink[] };
 
 async function needDb() {
   if (!(await hasDb())) throw new Error('The calendar database is not connected yet, so changes cannot be saved.');
@@ -112,11 +116,21 @@ async function needDb() {
 
 const seriesParams = (s: SeriesInput) => [
   s.title, s.category, s.status, s.startsOn, s.endsOn, s.startTime, s.endTime, s.repeat, s.weekdays, s.skipHolidays,
-  s.skipDates, s.offsite, s.location, s.note, s.ticketUrl, s.closedPrivate, s.closedRegular, s.venioSpaces,
+  s.skipDates, s.offsite, s.location, s.note, s.ticketUrl, s.closedPrivate, s.closedRegular, s.venioSpaces, s.highlighted,
 ];
 
+/** A web address nothing else uses: two events can share a name, so a repeat gets its date added. */
+export async function freeSlug(slug: string, date: string): Promise<string> {
+  await needDb();
+  const taken = async (s: string) => (await db().query('select 1 from site_event_pages where slug = $1', [s])).rows.length > 0;
+  if (!(await taken(slug))) return slug;
+  const dated = `${slug.slice(0, 66)}-${date}`;
+  if (!(await taken(dated))) return dated;
+  for (let n = 2; ; n++) if (!(await taken(`${dated}-${n}`))) return `${dated}-${n}`;
+}
+
 /** Adds an event and its page together (a new page, or an existing one for a series that shares it). */
-export async function createSeries(input: SeriesInput, page: { existingId: string } | { create: PageInput }, by: string): Promise<{ seriesId: string; pageId: string }> {
+export async function createSeries(input: SeriesInput, page: { existingId: string } | { create: PageInput & PageContent }, by: string): Promise<{ seriesId: string; pageId: string }> {
   await needDb();
   const client = await db().connect();
   try {
@@ -127,15 +141,15 @@ export async function createSeries(input: SeriesInput, page: { existingId: strin
     } else {
       const p = page.create;
       const { rows } = await client.query(
-        'insert into site_event_pages (slug, title, summary, body, hero_image, layout, updated_by) values ($1,$2,$3,$4,$5,$6,$7) returning id',
-        [p.slug, p.title, p.summary, p.body, p.heroImage, p.layout, by],
+        'insert into site_event_pages (slug, title, summary, body, hero_image, photos, links, layout, updated_by) values ($1,$2,$3,$4,$5,$6,$7::jsonb,$8,$9) returning id',
+        [p.slug, p.title, p.summary, p.body, p.photos[0] ?? null, p.photos, JSON.stringify(p.links), p.layout, by],
       );
       pageId = rows[0].id;
     }
     const { rows } = await client.query(
       `insert into site_events (title, category, status, starts_on, ends_on, start_time, end_time, repeat, weekdays, skip_holidays,
-         skip_dates, offsite, location, note, ticket_url, closed_private, closed_regular, venio_spaces, page_id, updated_by)
-       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) returning id`,
+         skip_dates, offsite, location, note, ticket_url, closed_private, closed_regular, venio_spaces, highlighted, page_id, updated_by)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21) returning id`,
       [...seriesParams(input), pageId, by],
     );
     await client.query('commit');
@@ -153,7 +167,7 @@ export async function updateSeries(id: string, input: SeriesInput, by: string) {
   await db().query(
     `update site_events set title=$1, category=$2, status=$3, starts_on=$4, ends_on=$5, start_time=$6, end_time=$7, repeat=$8,
        weekdays=$9, skip_holidays=$10, skip_dates=$11, offsite=$12, location=$13, note=$14, ticket_url=$15, closed_private=$16,
-       closed_regular=$17, venio_spaces=$18, updated_at=now(), updated_by=$20 where id=$19`,
+       closed_regular=$17, venio_spaces=$18, highlighted=$19, updated_at=now(), updated_by=$21 where id=$20`,
     [...seriesParams(input), id, by],
   );
 }
@@ -161,21 +175,101 @@ export async function updateSeries(id: string, input: SeriesInput, by: string) {
 export async function updatePage(id: string, p: PageInput, by: string) {
   await needDb();
   await db().query(
-    'update site_event_pages set slug=$1, title=$2, summary=$3, body=$4, hero_image=$5, layout=$6, updated_at=now(), updated_by=$8 where id=$7',
-    [p.slug, p.title, p.summary, p.body, p.heroImage, p.layout, id, by],
+    'update site_event_pages set slug=$1, title=$2, summary=$3, body=$4, layout=$5, updated_at=now(), updated_by=$7 where id=$6',
+    [p.slug, p.title, p.summary, p.body, p.layout, id, by],
   );
+}
+
+/** What the Add to Calendar form edits on an event's page. A summary already written is left alone. */
+export async function updatePageContent(id: string, c: PageContent, summary: string | null, by: string) {
+  await needDb();
+  await db().query(
+    'update site_event_pages set body=$1, photos=$2, links=$3::jsonb, hero_image=$4, summary=coalesce(summary,$5), updated_at=now(), updated_by=$7 where id=$6',
+    [c.body, c.photos, JSON.stringify(c.links), c.photos[0] ?? null, summary, id, by],
+  );
+}
+
+/** Removes an event. Its page and uploaded photos go too, unless another event still shares the page. */
+export async function deleteSeries(id: string) {
+  await needDb();
+  const client = await db().connect();
+  try {
+    await client.query('begin');
+    const { rows } = await client.query('delete from site_events where id = $1 returning page_id', [id]);
+    const pageId = rows[0]?.page_id;
+    if (pageId) {
+      const shared = await client.query('select 1 from site_events where page_id = $1 limit 1', [pageId]);
+      if (!shared.rows.length) {
+        const gone = await client.query('delete from site_event_pages where id = $1 returning photos', [pageId]);
+        const photoIds = ((gone.rows[0]?.photos as string[]) ?? []).filter((p) => p.startsWith(PHOTO_PATH)).map((p) => p.slice(PHOTO_PATH.length));
+        if (photoIds.length) await client.query('delete from site_event_photos where id = any($1::uuid[])', [photoIds]);
+      }
+    }
+    await client.query('commit');
+  } catch (e) {
+    await client.query('rollback');
+    throw e;
+  } finally {
+    client.release();
+  }
+}
+
+// ---------- uploaded event photos ----------
+
+/** Where the site serves uploaded photos from. */
+const PHOTO_PATH = '/event-photos/';
+
+export async function addPhoto(bytes: Buffer, width: number, height: number, by: string): Promise<string> {
+  await needDb();
+  const { rows } = await db().query('insert into site_event_photos (bytes, width, height, created_by) values ($1,$2,$3,$4) returning id', [bytes, width, height, by]);
+  return `${PHOTO_PATH}${rows[0].id}`;
+}
+
+export async function photoBytes(id: string): Promise<Buffer | null> {
+  if (!(await hasDb())) return null;
+  const { rows } = await db().query('select bytes from site_event_photos where id = $1', [id]);
+  return rows[0]?.bytes ?? null;
 }
 
 // ---------- job applications ----------
 
-export async function addApplication(a: { name: string; email: string | null; phone: string | null; department: string }) {
+export async function addApplication(a: {
+  name: string; email: string | null; phone: string | null; department: string; details: ApplicationDetails;
+  resume: { bytes: Buffer; filename: string; mime: string } | null;
+}) {
   await needDb();
-  await db().query('insert into site_job_applications (name, email, phone, department) values ($1,$2,$3,$4)', [a.name, a.email, a.phone, a.department]);
+  const client = await db().connect();
+  try {
+    await client.query('begin');
+    let resumeId: string | null = null;
+    if (a.resume) {
+      const { rows } = await client.query('insert into site_job_resumes (bytes, filename, mime) values ($1,$2,$3) returning id', [a.resume.bytes, a.resume.filename, a.resume.mime]);
+      resumeId = rows[0].id;
+    }
+    await client.query(
+      'insert into site_job_applications (name, email, phone, department, details, resume_id) values ($1,$2,$3,$4,$5::jsonb,$6)',
+      [a.name, a.email, a.phone, a.department, JSON.stringify(a.details), resumeId],
+    );
+    await client.query('commit');
+  } catch (e) {
+    await client.query('rollback').catch(() => {});
+    throw e;
+  } finally {
+    client.release();
+  }
+}
+
+/** A resume for /admin: the file and its name. */
+export async function resumeFile(id: string): Promise<{ bytes: Buffer; filename: string; mime: string } | null> {
+  const { rows } = await db().query('select bytes, filename, mime from site_job_resumes where id = $1', [id]);
+  return rows[0] ?? null;
 }
 
 export async function listApplications(): Promise<JobApplication[]> {
   if (!(await hasDb())) return [];
-  const { rows } = await db().query('select * from site_job_applications order by created_at desc limit 500');
+  const { rows } = await db().query(
+    'select a.*, r.filename as resume_filename from site_job_applications a left join site_job_resumes r on r.id = a.resume_id order by a.created_at desc limit 500',
+  );
   return rows.map((r) => ({
     id: String(r.id),
     createdAt: new Date(r.created_at).toISOString(),
@@ -185,6 +279,8 @@ export async function listApplications(): Promise<JobApplication[]> {
     department: r.department,
     status: r.status,
     notes: r.notes,
+    details: r.details ?? {},
+    resume: r.resume_id ? { id: String(r.resume_id), filename: r.resume_filename } : null,
   }));
 }
 

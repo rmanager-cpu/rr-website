@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { L } from '@/content/lorem';
 import Image from 'next/image';
 import { RoomFinder } from '@/components/RoomBooking';
 import { SiteHeader } from '@/components/SiteHeader';
+import { Lines } from '@/components/fl/Lines';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 import { StayBook } from '../StayBook';
+import '../stay.css';
 
 export const metadata: Metadata = {
   title: 'Rooms on the Truckee River',
@@ -15,75 +16,119 @@ export const metadata: Metadata = {
   alternates: { canonical: '/stay/rooms' },
 };
 
-const GALLERY = [photos.kingRoom, photos.roomBearQuilt, photos.roomPlaidQuilt, photos.balconySnowyRiver, photos.roomSnowshoes, photos.balconyChairs];
+const COUNTS = [
+  { num: String(business.rooms), label: 'Rooms' },
+  { num: '7', label: 'With a balcony', em: true },
+  { num: '3', label: 'With a deck' },
+  { num: '9', label: 'Dog-friendly', em: true },
+  { num: '3', label: 'Budget rooms, for skiers who just need a bed' },
+];
+
+const AMENITIES = [
+  <>En-suite <em>bath</em></>,
+  <>Flatscreen <em>TV</em></>,
+  <>Free <em>Wi-Fi</em></>,
+  <>Keurig <em>coffee maker</em></>,
+  <><em>Mini-fridge</em></>,
+];
+
+const GALLERY = [
+  { photo: photos.kingRoom, tall: false },
+  { photo: photos.balconySnowyRiver, tall: true },
+  { photo: photos.roomBearQuilt, tall: false },
+  { photo: photos.roomSnowshoes, tall: true },
+  { photo: photos.roomPlaidQuilt, tall: false },
+  { photo: photos.balconyChairs, tall: true },
+];
 
 export default function RoomsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema('Rooms', '/stay/rooms')} />
-      <SiteHeader />
+      <SiteHeader variant="overlay" />
 
-      <section className="page-hero">
-        <div className="page-hero__bg">
-          <Image src={photos.balconyChairs.src} alt={photos.balconyChairs.alt} fill priority sizes="100vw" style={{ objectFit: 'cover' }} />
+      <section className="page-hero page-hero--short sty-hero--rooms">
+        <div className="page-hero__media">
+          <Image src={photos.balconyChairs.src} alt={photos.balconyChairs.alt} fill priority sizes="100vw" data-parallax="0.15" />
         </div>
-        <div className="page-hero__shade" aria-hidden="true" />
-        <div className="container page-hero__body">
-          <h1 className="slash h-l" style={{ color: 'var(--ice)' }}>Rooms</h1>
-          <p>{L.line}</p>
+        <div className="page-hero__inner container">
+          <p className="label label--accent">Rooms</p>
+          <Lines as="h1" className="display-l" lines={['Nineteen rooms,', <em key="r">one river.</em>]} />
+          <p className="lede" data-reveal data-reveal-delay="300">Log beds, quilts and old skis on the walls. Most rooms look right at the Truckee.</p>
+          <div className="btn-row" data-reveal data-reveal-delay="450">
+            <a href="#finder" className="btn">Choose your dates</a>
+          </div>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="rooms-h">
-        <div className="container stack" style={{ gap: 40 }}>
-          <div className="stack" style={{ gap: 22, maxWidth: 760 }}>
-            <span className="eyebrow">{business.rooms} rooms</span>
-            <h2 id="rooms-h" className="serif h-m">{L.head2}</h2>
-            <div className="prose">
-              <p>Each room is furnished in lodgepole pine, hickory, birch and antiques, and most have a view of the Truckee.</p>
+      <section className="section section--snow" aria-labelledby="rooms-h">
+        <div className="container">
+          <div className="split split--top">
+            <div className="stack">
+              <p className="label label--accent" data-reveal>{business.rooms} rooms</p>
+              <Lines id="rooms-h" className="display-l" lines={['A room for', <>every kind <em>of skier.</em></>]} />
+            </div>
+            <div className="stack sty-intro__copy">
+              <p className="lede" data-reveal>Each room is furnished in lodgepole pine, hickory, birch and antiques, and most have a view of the Truckee.</p>
+              <p data-reveal data-reveal-delay="200"><a className="link-arrow" href="#finder">Choose your dates and room</a></p>
             </div>
           </div>
-          <dl className="facts">
-            <div><dt>Rooms</dt><dd>{business.rooms}</dd></div>
-            <div><dt>With a balcony</dt><dd>7</dd></div>
-            <div><dt>With a deck</dt><dd>3</dd></div>
-            <div><dt>Dog-friendly</dt><dd>9</dd></div>
-            <div><dt>Budget rooms</dt><dd>3, for skiers who just need a bed</dd></div>
-          </dl>
+          <div className="sty-facts sty-facts--5">
+            {COUNTS.map((c, i) => (
+              <div key={c.label} className="fact" data-reveal data-reveal-delay={i ? String(i * 100) : undefined}>
+                <span className="fact__num">{c.em ? <em>{c.num}</em> : c.num}</span>
+                <span className="label">{c.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section bg-frost" aria-labelledby="types-h">
-        <div className="container stack" style={{ gap: 28 }}>
-          <h2 id="types-h" className="serif h-m">Choose your dates and room</h2>
+      <section className="section section--dark" id="finder" aria-labelledby="types-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>Room types</p>
+            <Lines id="types-h" className="display-l" lines={['Choose your', <>dates <em>and room.</em></>]} />
+            <p className="lede" data-reveal data-reveal-delay="150">Pick your nights, then any room’s button opens live rates with that room at the top.</p>
+          </div>
           <RoomFinder />
         </div>
       </section>
 
-      <section className="section" aria-labelledby="in-room-h">
-        <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
-          <Image src={photos.roomBearQuilt.src} alt={photos.roomBearQuilt.alt} width={photos.roomBearQuilt.width} height={photos.roomBearQuilt.height} sizes="(max-width: 900px) 100vw, 720px" className="rounded grow" style={{ width: '100%', height: 'auto' }} />
-          <div className="side stack" style={{ gap: 18 }}>
-            <h2 id="in-room-h" className="serif h-s">In every room</h2>
-            <ul className="list-dots">
-              <li>En-suite bath</li>
-              <li>Flatscreen TV</li>
-              <li>Free Wi-Fi</li>
-              <li>Keurig coffee maker</li>
-              <li>Mini-fridge</li>
+      <section className="section section--snow" id="in-room" aria-labelledby="in-room-h">
+        <div className="container split">
+          <figure className="frame frame--tall" data-reveal="clip">
+            <Image src={photos.roomBearQuilt.src} alt={photos.roomBearQuilt.alt} fill sizes="(max-width: 860px) 100vw, 600px" />
+          </figure>
+          <div className="stack-l">
+            <div className="stack">
+              <p className="label label--accent" data-reveal>In every room</p>
+              <Lines id="in-room-h" className="display-l" lines={['The essentials,', <em key="a">all of them.</em>]} />
+            </div>
+            <ul className="rows sty-amenities">
+              {AMENITIES.map((a, i) => (
+                <li key={i} data-reveal data-reveal-delay={String(i * 80)}>
+                  <span className="row__title">{a}</span>
+                </li>
+              ))}
             </ul>
-            <p className="muted" style={{ margin: 0, fontSize: 15 }}>Non-smoking throughout. Stairs, no elevator.</p>
+            <p className="muted" data-reveal>Non-smoking throughout. Stairs, no elevator.</p>
           </div>
         </div>
       </section>
 
-      <section className="section" aria-label="Photos of the rooms">
-        <div className="container card-grid">
-          {GALLERY.map((ph) => (
-            <figure key={ph.src} className="figure">
-              <Image src={ph.src} alt={ph.alt} width={ph.width} height={ph.height} sizes="(max-width: 700px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto', aspectRatio: '3 / 2', objectFit: 'cover' }} />
-            </figure>
-          ))}
+      <section className="section section--dark section--tight sty-gallery-band" aria-label="Photos of the rooms">
+        <div className="sty-gallery" style={{ marginTop: 0 }}>
+          <p className="label sty-gallery__hint container" data-reveal>Drag to look around</p>
+          <div className="drag-gallery" tabIndex={0} aria-label="Photos of the rooms" data-reveal="fade">
+            <div className="drag-gallery__track">
+              {GALLERY.map(({ photo, tall }) => (
+                <figure key={photo.src} className={`frame${tall ? ' frame--tall is-tall' : ''}`}>
+                  <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 780px) 72vw, 560px" />
+                </figure>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,0 +1,48 @@
+/* /careers, in the Fireside look. Everything here is prefixed ca-. */
+/* The hero photo of the bartender: anchored to the top so the frame never cuts off her head. */
+.ca-hero-img { object-position: 50% 4%; }
+
+/* The teams beside the round bar photo; the application gets its own band below. */
+.ca-grid { display: grid; gap: clamp(40px, 6vw, 96px); grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: center; }
+
+/* The five teams: editorial rows, name and line. */
+.ca-teams > li { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); }
+.ca-teams h3, .ca-teams p { margin: 0; }
+.ca-teams h3 { font-weight: 400; }
+.ca-teams .row__note { line-height: 1.6; text-wrap: pretty; }
+.ca-photo { margin: 0; }
+
+/* The apply panel (dark, from globals .planner). */
+.ca-form .room-choice legend { line-height: 1.6; }
+.ca-depts { display: grid; gap: 8px; }
+.ca-form__done { font-size: 1rem; }
+.ca-form__error { color: #f0a58f; }
+.ca-apply__inner { max-width: 1040px; margin: 0 auto; }
+.ca-apply .planner { padding: clamp(28px, 5vw, 72px); gap: 30px; }
+/* The TurboTips logo is drawn for dark backgrounds, so its line sits on a bark strip under the panel. */
+.ca-apply .turbotips { margin: 0; padding: 14px clamp(26px, 4vw, 56px); background: var(--ember); color: rgba(239, 230, 214, 0.64); border: 1px solid rgba(239, 230, 214, 0.14); border-top: 0; }
+
+@media (max-width: 960px) {
+  .ca-grid { grid-template-columns: minmax(0, 1fr); }
+  .ca-photo { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 720px) {
+  .ca-teams > li { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* The fuller application: small section labels, chip rows for seasons, days, shifts and yes/no, and a
+   faint rule around each reference or past job. */
+.ca-sec { margin: 0; padding-top: 6px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+.ca-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ca-chip { min-height: 44px; padding: 6px 16px; gap: 8px; font-size: 0.9rem; }
+.ca-group { display: grid; gap: 18px; padding: 16px 0 4px; border-top: 1px dashed var(--rule); }
+.ca-attest { border-radius: 14px; align-items: flex-start; padding: 14px 18px; line-height: 1.5; font-weight: 500; }
+.ca-attest input { flex: none; margin-top: 2px; }
+.ca-form input[type='file'] { padding: 10px 0; font-size: 0.9rem; color: var(--fg); }
+
+/* Each part of the application is a row: its name on the left, its questions on the right (stacked on phones). */
+.ca-block { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr); gap: 16px clamp(24px, 4vw, 56px); padding-top: 30px; border-top: 1px solid var(--rule); }
+.ca-block__body { display: grid; gap: 24px; min-width: 0; }
+.ca-block__body > * { margin: 0; }
+@media (min-width: 761px) { .ca-sec { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; } }
+@media (max-width: 760px) { .ca-block { grid-template-columns: minmax(0, 1fr); } }

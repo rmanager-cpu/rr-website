@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,6 +11,8 @@ import { breadcrumbSchema, eventSchema, JsonLd, MARKABLE_EVENT_CATEGORIES } from
 import { addDays, datesOf, formatDate, holidayDates, todayInTahoe, whenPhrase } from '@/lib/events/recurrence';
 import { listPages, listSeries, pageBySlug } from '@/lib/events/store';
 import type { EventPage, EventSeries } from '@/lib/events/types';
+import { chipFor } from '../chips';
+import '../happening.css';
 
 export const revalidate = 300;
 
@@ -19,15 +20,21 @@ export async function generateStaticParams() {
   return (await listPages()).map((p) => ({ slug: p.slug }));
 }
 
+/** Placeholder text left in the events store never reaches the page or Google. */
+const real = (s: string | null | undefined) => (s && s.trim() && !/lorem ipsum/i.test(s) ? s : null);
+
 /** A page with no words yet (e.g. a holiday's placeholder) stays out of Google until it has some. */
-const isEmpty = (p: EventPage) => !p.body?.trim() && !p.summary?.trim() && p.layout === 'standard';
+const isEmpty = (p: EventPage) => !real(p.body) && !real(p.summary) && p.layout === 'standard';
+
+const CONCERT_DESCRIPTION = 'Free live music on the riverside patio at River Ranch in Tahoe City, all summer long. The lineup, the recap and how to play.';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const page = await pageBySlug(params.slug);
   if (!page) return {};
+  const concert = page.slug === 'summer-concert-series';
   return {
-    title: page.slug === 'summer-concert-series' ? 'Summer Concert Series: Free Music on the River' : page.title,
-    description: page.summary ?? `${page.title} at River Ranch Lodge & Restaurant in Tahoe City.`,
+    title: concert ? 'Summer Concert Series: Free Music on the River' : page.title,
+    description: real(page.summary) ?? (concert ? CONCERT_DESCRIPTION : `${page.title} at River Ranch Lodge & Restaurant in Tahoe City.`),
     alternates: { canonical: `/dine/happening/${page.slug}` },
     ...(page.heroImage ? { openGraph: { images: [page.heroImage] } } : {}),
     ...(isEmpty(page) ? { robots: { index: false, follow: true } } : {}),
@@ -46,7 +53,7 @@ export default async function EventDetail({ params }: { params: { slug: string }
   const ld = upcoming
     .filter(({ s }) => MARKABLE_EVENT_CATEGORIES.has(s.category))
     .slice(0, 6)
-    .map(({ s, d }) => eventSchema({ title: s.title, slug: page.slug, date: d, startTime: s.startTime, endTime: s.endTime, description: page.summary, image: page.heroImage, offsite: s.offsite, location: s.location, ticketUrl: s.ticketUrl }));
+    .map(({ s, d }) => eventSchema({ title: s.title, slug: page.slug, date: d, startTime: s.startTime, endTime: s.endTime, description: real(page.summary), image: page.heroImage, offsite: s.offsite, location: s.location, ticketUrl: s.ticketUrl }));
 
   return (
     <>
@@ -59,14 +66,12 @@ export default async function EventDetail({ params }: { params: { slug: string }
   );
 }
 
-function When({ mine, upcoming, dark = false }: { mine: EventSeries[]; upcoming: { s: EventSeries; d: string }[]; dark?: boolean }) {
+function When({ mine, upcoming }: { mine: EventSeries[]; upcoming: { s: EventSeries; d: string }[] }) {
   if (!mine.length) return null;
   return (
     <div className="stack" style={{ gap: 14 }}>
       {mine.map((s) => (
-        <p key={s.id} className="serif" style={{ margin: 0, fontSize: 'clamp(24px, 2.6vw, 34px)', lineHeight: 1.15, color: dark ? 'var(--cream)' : undefined }}>
-          {whenPhrase(s)}
-        </p>
+        <p key={s.id} className="hp-event__when">{whenPhrase(s)}</p>
       ))}
       {mine.some((s) => s.repeat === 'weekly') && upcoming.length > 0 && (
         <ul className="ev-dates" aria-label="Next dates">
@@ -82,35 +87,75 @@ function When({ mine, upcoming, dark = false }: { mine: EventSeries[]; upcoming:
 function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSeries[]; upcoming: { s: EventSeries; d: string }[] }) {
   const s = mine[0];
   const flyer = page.slug === 'zombie-karaoke' ? { src: '/photos/zombie-karaoke-flyer.jpg', w: 494, h: 640, alt: 'Zombie Karaoke flyer: 9 PM to midnight, $99 rooms and 50% off breakfast' } : null;
+  const chip = s ? chipFor(s) : null;
+  const summary = real(page.summary);
+  const body = real(page.body);
+  const hasSide = Boolean(flyer || page.heroImage);
   return (
     <>
       <SiteHeader />
-      <section className="section">
-        <div className="container media-row" style={{ gap: 48, alignItems: 'flex-start' }}>
-          <div className="grow stack" style={{ gap: 24 }}>
-            <Link href="/dine/happening" className="arrow-link" style={{ fontSize: 12 }}>← Everything happening</Link>
-            <span className="eyebrow">{s?.offsite ? 'Off-site' : s?.category === 'holiday' ? 'Holiday' : 'At River Ranch'}</span>
-            <h1 className="slash h-l">{page.title}</h1>
-            <When mine={mine} upcoming={upcoming} />
-            {s?.offsite && s.location && <p className="lede"><strong>Where:</strong> {s.location} (not at River Ranch)</p>}
-            {page.summary && <p className="lede">{page.summary}</p>}
-            {page.body?.trim() ? (
-              <div className="prose">{page.body.split(/\n{2,}/).map((para, i) => <p key={i}>{para}</p>)}</div>
-            ) : (
-              <p className="lede">More details coming soon.</p>
+      <section className="section section--snow hp-event">
+        <div className={hasSide ? 'container hp-event__grid' : 'container container--narrow'}>
+          <div className="stack">
+            <Link href="/dine/happening" className="link-arrow hp-back" data-reveal>
+              Everything happening
+            </Link>
+            {chip && (
+              <div className="chip-row" data-reveal>
+                <span className={chip.cls}>{chip.label}</span>
+                {!s.offsite && <span className="chip chip--plain">At River Ranch</span>}
+              </div>
             )}
-            <div className="btn-row">
-              {s?.ticketUrl && <a href={s.ticketUrl} className="btn btn--amber" rel="noopener">Get tickets</a>}
-              {!s?.offsite && <a href={business.links.reserveTable} className="btn btn--navy" rel="noopener">Reserve a table</a>}
+            <h1 className="display-l" data-reveal data-reveal-delay="120">{page.title}</h1>
+            <div data-reveal data-reveal-delay="200">
+              <When mine={mine} upcoming={upcoming} />
             </div>
+            {s?.offsite && s.location && (
+              <p className="lede" data-reveal data-reveal-delay="200"><strong>Where:</strong> {s.location} (not at River Ranch)</p>
+            )}
+            {summary && <p className="lede" data-reveal data-reveal-delay="200">{summary}</p>}
+            {body ? (
+              <div className="prose" data-reveal data-reveal-delay="300">{body.split(/\n{2,}/).map((para, i) => <p key={i}>{para}</p>)}</div>
+            ) : (
+              <p className="lede" data-reveal data-reveal-delay="300">More details coming soon.</p>
+            )}
+            {(s?.ticketUrl || !s?.offsite) && (
+              <div className="btn-row" data-reveal data-reveal-delay="300">
+                {s?.ticketUrl && <a href={s.ticketUrl} className="btn" rel="noopener">Get tickets</a>}
+                {!s?.offsite && <Link href="/dine#reserve" className={s?.ticketUrl ? 'btn btn--ghost' : 'btn'}>Reserve a table</Link>}
+                {!s?.offsite && <a href={`tel:${business.phoneE164}`} className="btn btn--ghost">{business.phone}</a>}
+              </div>
+            )}
+            {page.links.length > 0 && (
+              <ul className="hp-event__links" data-reveal>
+                {page.links.map((l) => (
+                  <li key={l.url}><a href={l.url} className="link-arrow" rel="noopener">{l.label}</a></li>
+                ))}
+              </ul>
+            )}
           </div>
-          <div className="side">
-            {flyer ? (
-              <Image src={flyer.src} alt={flyer.alt} width={flyer.w} height={flyer.h} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto', boxShadow: '0 24px 50px -20px rgba(0,0,0,.5)' }} />
-            ) : page.heroImage ? (
-              <Image src={page.heroImage} alt={`${page.title} at River Ranch`} width={1800} height={1200} sizes="(max-width: 900px) 100vw, 400px" className="rounded" style={{ width: '100%', height: 'auto' }} />
-            ) : null}
-          </div>
+          {hasSide && (
+            <div className="hp-event__side">
+              {flyer ? (
+                <figure className="hp-event__flyer" style={{ margin: 0 }} data-reveal data-reveal-delay="120">
+                  <Image src={flyer.src} alt={flyer.alt} width={flyer.w} height={flyer.h} priority sizes="(max-width: 860px) 100vw, 440px" />
+                </figure>
+              ) : page.heroImage ? (
+                <figure className="frame frame--tall" data-reveal="clip">
+                  <Image src={page.heroImage} alt={`${page.title} at River Ranch`} fill priority sizes="(max-width: 860px) 100vw, 440px" />
+                </figure>
+              ) : null}
+              {page.photos.length > 1 && (
+                <div className="hp-event__thumbs">
+                  {page.photos.slice(1).map((src, i) => (
+                    <figure key={src} className="frame" data-reveal data-reveal-delay={String(((i % 2) + 1) * 120)}>
+                      <Image src={src} alt={`${page.title} at River Ranch, photo ${i + 2}`} fill sizes="(max-width: 860px) 50vw, 220px" />
+                    </figure>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
     </>
@@ -120,27 +165,31 @@ function StandardPage({ page, mine, upcoming }: { page: EventPage; mine: EventSe
 function HappyHourPage({ page, mine }: { page: EventPage; mine: EventSeries[] }) {
   return (
     <>
-      <div style={{ background: 'var(--night)' }}>
-        <SiteHeader variant="overlay" />
-      </div>
+      <SiteHeader variant="overlay" />
       <h1 className="sr-only">{page.title} at River Ranch, Tahoe City</h1>
       <ApresSection
-        eyebrow="Happy hour · Monday–Friday"
+        first
+        eyebrow="Happy hour · Monday to Friday"
         title="Happy hour at the River Ranch round bar"
         line={`Monday to Friday, ${hours.happyHour.time}.`}
-        detail={page.body ?? ''}
+        detail={real(page.body) ?? 'Come in off the mountain and thaw. Dine-in at the round bar, and not on holidays.'}
         cta={{ href: '/dine/menus/happy-hour', label: 'Happy hour menu' }}
       />
-      <section className="section on-night" style={{ paddingTop: 0 }}>
-        <div className="container stack" style={{ gap: 18 }}>
-          <span className="eyebrow">Good to know</span>
-          {mine.map((s) => (
-            <p key={s.id} className="lede" style={{ maxWidth: '60ch' }}>
-              {whenPhrase(s)}. {s.note}
-            </p>
-          ))}
-        </div>
-      </section>
+      {mine.length > 0 && (
+        <section className="section section--ember hp-know">
+          <div className="container stack">
+            <p className="label label--accent" data-reveal>Good to know</p>
+            <ul className="fl-facts" style={{ maxWidth: 720 }} data-reveal data-reveal-delay="120">
+              {mine.map((s) => (
+                <li key={s.id}>
+                  <span>{whenPhrase(s)}</span>
+                  <span>{s.note ?? hours.happyHour.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   );
 }
@@ -156,22 +205,22 @@ function ConcertPage({ page }: { page: EventPage }) {
   return (
     <div className="concert-hero">
       {RECAP_VIDEO && (
-        <JsonLd data={{ "@context": "https://schema.org", "@type": "VideoObject", name: RECAP_VIDEO.title, description: page.summary ?? "Summer Concert Series at River Ranch", thumbnailUrl: RECAP_VIDEO.poster, contentUrl: RECAP_VIDEO.src, uploadDate: RECAP_VIDEO.uploadDate }} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "VideoObject", name: RECAP_VIDEO.title, description: real(page.summary) ?? CONCERT_DESCRIPTION, thumbnailUrl: RECAP_VIDEO.poster, contentUrl: RECAP_VIDEO.src, uploadDate: RECAP_VIDEO.uploadDate }} />
       )}
       <SiteHeader variant="overlay" />
-      <div className="cwall">
+      <div className="cwall" style={{ paddingTop: 'calc(var(--header-h) + 54px)' }}>
         <div className="cwall__collage">
           <ConcertCollage />
         </div>
         <div className="cwall__content container">
           <section className="cwall__card cwall__card--a stack" style={{ gap: 22 }}>
-            <span className="eyebrow eyebrow--amber">Free music on the river</span>
+            <span className="label label--accent">Free music on the river</span>
             <h1 className="slash concert-title">
               Summer Concert<span>Series.</span>
             </h1>
             <div className="mission">
-              <p>{L.para}</p>
-              <p>{L.para2}</p>
+              <p>Free shows on the riverside patio, all summer. A band on the stage, the Truckee running past, and nobody checking tickets at the gate.</p>
+              <p>Music came back to River Ranch for good in 2025. Grab a drink, find a spot by the rail, stay for the encore.</p>
             </div>
             <p className="thanks-line">
               Made possible by{" "}
@@ -190,9 +239,9 @@ function ConcertPage({ page }: { page: EventPage }) {
           <section className="cwall__card cwall__card--c" aria-labelledby="play-h" id="play">
             <div className="media-row" style={{ gap: 32, alignItems: "flex-start" }}>
               <div className="grow stack" style={{ gap: 18, flexBasis: 300 }}>
-                <span className="eyebrow eyebrow--amber">Bands &amp; artists</span>
-                <h2 id="play-h" className="slash" style={{ fontSize: "clamp(42px, 5vw, 80px)", lineHeight: 0.95, color: "var(--cream)" }}>{L.head}</h2>
-                <p className="lede">{L.para}</p>
+                <span className="label label--accent">Bands &amp; artists</span>
+                <h2 id="play-h" className="display-l" style={{ color: 'var(--cream)' }}>Want to play <em>the Ranch?</em></h2>
+                <p className="lede">Send us your band, your links and the nights you’re free, and we’ll give it a listen.</p>
               </div>
               <div className="side" style={{ flexBasis: 380 }}>
                 <BookingForm />
@@ -202,7 +251,7 @@ function ConcertPage({ page }: { page: EventPage }) {
 
           <section className="cwall__card cwall__card--d" aria-labelledby="recap-h">
             <div className="stack" style={{ gap: 26 }}>
-              <h2 id="recap-h" className="serif h-m">The recap</h2>
+              <h2 id="recap-h" className="display-m">The <em>recap</em></h2>
               <div className="recap">
                 {CONCERT_RECAP.map((r) => (
                   <div key={r.year}>
@@ -212,8 +261,8 @@ function ConcertPage({ page }: { page: EventPage }) {
                 ))}
               </div>
               <div className="btn-row">
-                <a href={business.social.instagram} className="btn btn--amber" rel="noopener">Follow for the lineup</a>
-                <Link href="/stay" className="btn btn--ghost-cream">Stay the night</Link>
+                <a href={business.social.instagram} className="btn" rel="noopener">Follow for the lineup</a>
+                <Link href="/stay" className="btn btn--ghost-light">Stay the night</Link>
               </div>
             </div>
           </section>

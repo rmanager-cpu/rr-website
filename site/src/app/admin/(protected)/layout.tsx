@@ -10,7 +10,7 @@ export default function Protected({ children }: { children: React.ReactNode }) {
         <span className="adm-brand">River Ranch · Staff</span>
         <nav aria-label="Staff">
           <Link href="/admin">Calendar</Link>
-          <Link href="/admin/events/new">Add event</Link>
+          <Link href="/admin/events/new">Add to Calendar</Link>
           <Link href="/admin/menus">Menus</Link>
           <Link href="/admin/applications">Applications</Link>
           <Link href="/admin/bookings">Band requests</Link>

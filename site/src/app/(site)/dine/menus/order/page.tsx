@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { L } from '@/content/lorem';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
@@ -21,21 +21,21 @@ export default function OrderPage() {
     <>
       <JsonLd data={breadcrumbSchema('Order online', '/dine/menus/order')} />
       <SiteHeader />
-      <section className="section">
-        <div className="container media-row" style={{ gap: 48, alignItems: 'center' }}>
-          <div className="grow stack" style={{ gap: 22 }}>
-            <span className="eyebrow">Order online</span>
-            <h1 className="slash h-l">Online ordering &amp; delivery.</h1>
-            <p className="serif" style={{ margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', color: 'var(--amber)' }}>Coming soon.</p>
-            <p className="lede">{L.line}</p>
-            <div className="btn-row">
-              <Link href="/dine/menus" className="btn btn--amber">See the menus</Link>
-              <a href={`tel:${business.phoneE164}`} className="btn btn--navy">{business.phone}</a>
+      <section className="section section--snow">
+        <div className="container split">
+          <div className="stack">
+            <p className="label label--accent" data-reveal>Order online</p>
+            <Lines as="h1" className="display-l" lines={['Online ordering', <em key="w">is on its way.</em>]} />
+            <p className="lede" data-reveal data-reveal-delay="150">It isn’t ready yet. Until it is, every menu is here, and there’s a table by the river with your name on it.</p>
+            <p className="placeholder" data-reveal data-reveal-delay="200">[One line about takeout: can guests call in an order today?]</p>
+            <div className="btn-row" data-reveal data-reveal-delay="300">
+              <Link href="/dine/menus" className="btn">See the menus</Link>
+              <a href={`tel:${business.phoneE164}`} className="btn btn--ghost">{business.phone}</a>
             </div>
           </div>
-          <div className="side">
-            <Image src={photos.scallops.src} alt={photos.scallops.alt} width={photos.scallops.width} height={photos.scallops.height} sizes="(max-width: 900px) 100vw, 420px" className="rounded" style={{ width: '100%', height: 'auto' }} />
-          </div>
+          <figure className="frame frame--tall frame--arch" style={{ width: '100%', maxWidth: 480, justifySelf: 'center' }} data-reveal="clip">
+            <Image src={photos.scallops.src} alt={photos.scallops.alt} fill priority sizes="(max-width: 860px) 100vw, 45vw" />
+          </figure>
         </div>
       </section>
     </>

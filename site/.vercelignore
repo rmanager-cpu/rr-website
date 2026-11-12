@@ -1,0 +1,9 @@
+# Never upload local secrets or build output when deploying from this computer.
+.env
+.env*
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+*.log

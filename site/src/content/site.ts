@@ -32,7 +32,11 @@ export const business = {
     // Our date picker, which hands off to BookingCenter with the dates applied (lib/bookingcenter.ts).
     bookRoom: '/stay#book',
     theWall: 'https://the-wall-river-ranch.vercel.app',
-    skiButlers: 'https://www.skibutlers.com/portal/riverranchlodge',
+    // Toast: River Ranch Rewards (loyalty, live 2026-11-10) and restaurant eGift cards. Plain links,
+    // never iframed: Toast's pages are meant to open on their own.
+    rewards: 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/rewardsLookup',
+    buyGiftCard: 'https://order.toasttab.com/egiftcards/river-ranch-lodge-restaurant-2285-river-rd',
+    giftCardBalance: 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/findcard',
     palisades: 'https://www.palisadestahoe.com',
   },
   rooms: 19,
@@ -66,9 +70,9 @@ export const sections: Section[] = [
     tabs: [
       { href: '/stay/rooms', label: 'Rooms' },
       { href: '/stay/packages', label: 'Packages' },
-      { href: '/stay/guest-info', label: 'Guest Info' },
+      { href: '/stay/guest-info', label: 'Guest info' },
     ],
-    action: { href: business.links.bookRoom, label: 'Book a Room' },
+    action: { href: business.links.bookRoom, label: 'Book a room' },
   },
   {
     key: 'dine',
@@ -79,7 +83,7 @@ export const sections: Section[] = [
       { href: '/dine/wine', label: 'Wine' },
       { href: '/dine/happening', label: 'Happening' },
     ],
-    action: { href: business.links.reserveTable, label: 'Reserve a Table' },
+    action: { href: business.links.reserveTable, label: 'Reserve a table' },
   },
   {
     key: 'celebrate',
@@ -90,14 +94,14 @@ export const sections: Section[] = [
       { href: '/celebrate/spaces', label: 'Spaces' },
       { href: '/celebrate/plan', label: 'Plan' },
     ],
-    action: { href: '/celebrate/plan', label: 'Plan Your Event' },
+    action: { href: '/celebrate/plan', label: 'Plan your event' },
   },
 ];
 
 /** The shared pages: the header's “More” menu and the footer. */
 export const sharedNav: NavItem[] = [
   { href: '/history', label: 'History' },
-  { href: '/loyalty-and-gift-cards', label: 'Loyalty & Gift Cards' },
+  { href: '/loyalty-and-gift-cards', label: 'Loyalty & gift cards' },
   { href: '/careers', label: 'Careers' },
   { href: '/visit', label: 'Visit' },
 ];

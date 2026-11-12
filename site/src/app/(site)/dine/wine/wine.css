@@ -1,0 +1,51 @@
+/* /dine/wine: Fireside, wine only. Every class starts with wn- so nothing leaks. */
+
+.wn-hero .page-hero__media img { object-position: 60% 46%; }
+/* a little more room under masked lines so the y and J descenders are not clipped */
+.wn-hero .rl, .wn-family .rl, .wn-wines .rl, .wn-now .rl { padding-bottom: 0.26em; margin-bottom: -0.26em; }
+
+/* ---- the family ---- */
+.wn-family .frame { max-width: 500px; width: 100%; justify-self: center; }
+.wn-facts { margin-top: 2rem !important; }
+.wn-facts dt { font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+.wn-facts dd { font-family: var(--font-display), Georgia, serif; font-size: 1.3rem; line-height: 1.25; }
+
+/* ---- the pour: a glass of deep red fills, then the words ---- */
+.wn-pour { text-align: center; overflow: hidden; }
+.wn-pour .container { display: grid; justify-items: center; }
+.wn-pour__word { position: relative; display: inline-block; margin-top: clamp(20px, 3vw, 40px); font-size: clamp(4.2rem, 15vw, 15rem); line-height: 0.9; }
+.wn-pour__base { display: block; color: rgba(239, 230, 214, 0.14); }
+.wn-pour__base em { color: inherit; }
+.wn-pour__fill { position: absolute; inset: 0; display: block; color: var(--forest); will-change: clip-path; }
+.wn-pour__fill em { color: var(--amber); }
+html.fl-motion .wn-pour__fill { clip-path: inset(100% 0 0 0); }
+.wn-pour .lede { margin: clamp(22px, 3vw, 40px) auto 0; }
+@media (prefers-reduced-motion: reduce) { html.fl-motion .wn-pour__fill { clip-path: none !important; } }
+
+/* The glass: deep red wine rises as it scrolls into view. */
+.wn-glass { position: relative; width: clamp(96px, 10vw, 140px); aspect-ratio: 120 / 210; --p: 1; }
+.wn-glass[data-live] { --p: 0; }
+.wn-glass svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.wn-glass__wine { position: absolute; inset: 0; clip-path: inset(calc(50% - var(--p) * 23%) 0 0 0); will-change: clip-path; }
+.wn-glass__stream { position: absolute; left: 50%; top: -30%; width: 3px; height: 80%; margin-left: -1.5px; border-radius: 3px; background: linear-gradient(180deg, rgba(168, 50, 62, 0), #a8323e 30%, #5c1420); transform-origin: top; transform: scaleY(clamp(0, calc(var(--p) * 3), 1)); opacity: calc((1 - var(--p)) * var(--p) * 5); }
+.wn-glass__glow { position: absolute; inset: -30% -60% 20%; background: radial-gradient(50% 50% at 50% 50%, rgba(224, 145, 58, 0.28), rgba(224, 145, 58, 0) 70%); opacity: var(--p); pointer-events: none; }
+
+/* ---- the wines ---- */
+.wn-wines .rows > li { grid-template-columns: clamp(60px, 8vw, 120px) minmax(0, 1fr) minmax(0, 1.3fr) auto; align-items: center; }
+.wn-n { font-family: var(--font-display), Georgia, serif; font-style: italic; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 0.9; color: var(--forest); }
+@media (max-width: 720px) {
+  .wn-wines .rows > li { grid-template-columns: 56px minmax(0, 1fr); gap: 4px 14px; }
+  .wn-wines .rows > li > :nth-child(n + 3) { grid-column: 2; }
+  .wn-wines .rows .chip { justify-self: start; margin-top: 6px; }
+}
+
+/* ---- take it home ---- */
+.wn-now { position: relative; min-height: min(90vh, 860px); display: flex; align-items: flex-end; overflow: hidden; padding: var(--section) 0 clamp(56px, 8vw, 110px); background: var(--char); color: var(--cream); color-scheme: dark;
+  --bg: var(--char); --fg: var(--cream); --muted: rgba(239, 230, 214, 0.7); --rule: rgba(239, 230, 214, 0.2); --accent: var(--amber); --hi: var(--snow); --lo: var(--ink); }
+.wn-now__media { position: absolute; inset: 0; overflow: hidden; }
+.wn-now__media img { object-fit: cover; filter: brightness(0.58) saturate(1.05); scale: 1.2; }
+.wn-now__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(14, 13, 11, 0.95) 0%, rgba(14, 13, 11, 0.3) 58%, rgba(14, 13, 11, 0.5) 100%); }
+.wn-now .container { position: relative; z-index: 3; display: grid; gap: 22px; justify-items: start; }
+.wn-now .container > * { margin: 0; }
+@media (max-width: 700px) { .wn-now .btn-row .btn { flex: 1 1 100%; } }
+
