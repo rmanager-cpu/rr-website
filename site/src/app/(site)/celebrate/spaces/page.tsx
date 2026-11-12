@@ -26,7 +26,7 @@ export default function SpacesPage() {
 
       <section className="page-hero cel-hero--night">
         <div className="page-hero__media">
-          <Image src={photos.heroDawn.src} alt={photos.heroDawn.alt} fill priority sizes="100vw" data-parallax="0.15" />
+          <Image src={photos.patioChairs.src} alt={photos.patioChairs.alt} fill priority sizes="100vw" data-parallax="0.15" style={{ objectPosition: '50% 72%' }} />
         </div>
         <div className="page-hero__inner container">
           <p className="label label--accent">Spaces</p>

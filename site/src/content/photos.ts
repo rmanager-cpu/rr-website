@@ -12,6 +12,7 @@ export const photos = {
   heroNight: p('snowy-deck-pines-night', 1536, 2048, 'The snowy deck and pines lit up at night'),
   frontEntranceNight: p('front-entrance-night', 1200, 900, 'The front entrance lit up after dark'),
   patioNight: p('patio-string-lights-night', 2400, 1800, 'The empty patio under string lights at night'),
+  patioChairs: p('patio-adirondack-chairs-river', 1200, 1109, 'A row of red, yellow and green Adirondack chairs along the patio wall over the Truckee River, snow on the far bank'),
   fireplaceRoom: p('fireplace-room-fire', 1800, 1200, 'The Alpine Dining Room with the fire going in its stone fireplace'),
   fireplaceLongTable: p('fireplace-room-long-table', 1800, 1200, 'A long table set for a private dinner in the Alpine Dining Room'),
   fireplacePrivateDinner: p('fireplace-room-private-dinner', 1800, 1200, 'The Alpine Dining Room set for a private dinner'),
