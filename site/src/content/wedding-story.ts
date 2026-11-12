@@ -38,7 +38,7 @@ export const weddingPhotos = {
   toast: L('toast-river', 'The couple raising their arms for a toast at the river’s edge'),
   toastsLaugh: L('couple-laughing-toasts', 'The couple cracking up during the toasts'),
   firstDance: L('first-dance-hug', 'The first dance, her arms around his neck'),
-  danceFloor: w('patio-dance-floor-lodge', 2400, 1600, 'The patio packed with dancers in front of the lodge under paper lanterns'),
+  patioDancing: w('patio-dancing-lodge', 2400, 1600, 'The patio packed with dancers in front of the lodge under paper lanterns'),
   spinning: L('couple-dancing-lights', 'The couple dancing, the lodge lights streaking behind them'),
   band: L('band-patio-stage', 'The band playing on the patio stage under a glowing lantern'),
   jenga: L('giant-jenga', 'A giant Jenga tower about to fall, a guest crawling underneath'),

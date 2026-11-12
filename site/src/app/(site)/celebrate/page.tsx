@@ -118,17 +118,19 @@ const PARTIES = [
 ];
 
 const bandOnStage: Photo = { src: '/photos/concerts/band-on-patio-stage.jpg', width: 1600, height: 900, alt: 'A band on the patio stage under string lights with the crowd in front' };
-const packedPatio: Photo = { src: '/photos/concerts/packed-patio-tables-to-stage.jpg', width: 1600, height: 1200, alt: 'Looking down the patio tables to a packed dance floor and the lit stage at night' };
-const GALLERY: { photo: Photo; cap: string; tall?: boolean; focus?: string }[] = [
-  { photo: photos.weddingArch, cap: 'The ceremony' },
-  { photo: homePhotos.ceremony, cap: 'The aisle', tall: true },
-  { photo: photos.riverviewRapids, cap: 'The Riverview room' },
-  { photo: photos.fireplaceTableSet, cap: 'The long table' },
-  { photo: homePhotos.cake, cap: 'The cake', tall: true, focus: '62% 50%' },
-  { photo: packedPatio, cap: 'The dance floor' },
-  { photo: homePhotos.dining, cap: 'The dining room' },
-  { photo: photos.patioRoundsHeaters, cap: 'The reception' },
-  { photo: bandOnStage, cap: 'The show' },
+const packedPatio: Photo = { src: '/photos/concerts/packed-patio-tables-to-stage.jpg', width: 1600, height: 1200, alt: 'Looking down the patio tables to a packed crowd and the lit stage at night' };
+// No captions on these photos (owner, Nov 12). Never describe any part of River Ranch as a dance
+// floor in copy, alt text or file names: it isn't a nightclub, and the wording matters to our insurance.
+const GALLERY: { photo: Photo; tall?: boolean; focus?: string }[] = [
+  { photo: photos.weddingArch },
+  { photo: homePhotos.ceremony, tall: true },
+  { photo: photos.riverviewRapids },
+  { photo: photos.fireplaceTableSet },
+  { photo: homePhotos.cake, tall: true, focus: '62% 50%' },
+  { photo: packedPatio },
+  { photo: homePhotos.dining },
+  { photo: photos.patioRoundsHeaters },
+  { photo: bandOnStage },
 ];
 
 const KINDS = [
@@ -301,7 +303,6 @@ export default function CelebratePage() {
             {GALLERY.map((g) => (
               <figure key={g.photo.src} className={`frame${g.tall ? ' frame--tall is-tall' : ''}`}>
                 <Image src={g.photo.src} alt={g.photo.alt} fill sizes={g.tall ? '(max-width: 860px) 108vw, 760px' : '(max-width: 860px) 72vw, 560px'} style={g.focus ? { objectPosition: g.focus } : undefined} />
-                <figcaption>{g.cap}</figcaption>
               </figure>
             ))}
           </div>
