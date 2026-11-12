@@ -174,3 +174,8 @@
 .cel-room .fl-facts { width: 100%; }
 .cel-room__ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3.2; border: 1px dashed var(--amber); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 .cel-aerial__cap { margin: 18px 0 0; }
+
+/* Celebrate: the booking widget under the hero, full content width. */
+.cel-plan__lede { max-width: 40em; margin: 0 0 clamp(28px, 4vw, 48px); }
+.cel-plan__widget { margin: 0; }
+.cel-plan__call { margin-top: 24px; }

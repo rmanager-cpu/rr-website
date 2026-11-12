@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
+import { VenioWidget } from '@/components/VenioWidget';
 import { homePhotos, photos, type Photo } from '@/content/photos';
 import { business } from '@/content/site';
 import { spaces } from '@/content/spaces';
@@ -133,12 +134,6 @@ const GALLERY: { photo: Photo; tall?: boolean; focus?: string }[] = [
   { photo: bandOnStage },
 ];
 
-const KINDS = [
-  { id: 'wedding', label: 'A wedding' },
-  { id: 'private', label: 'A private dinner or party' },
-  { id: 'corporate', label: 'A company or group event' },
-  { id: 'other', label: 'Something else' },
-];
 
 export default function CelebratePage() {
   const faqSchema = {
@@ -171,38 +166,21 @@ export default function CelebratePage() {
         </div>
       </section>
 
-      {/* PLAN: the way into Venio, right under the hero */}
+      {/* PLAN: Venio's booking widget right under the hero (the same frame as /celebrate/plan; every request lands in Venio) */}
       <section className="section section--dark" id="plan" aria-labelledby="plan-h">
         <div className="container">
           <div className="section-head">
             <p className="label label--accent" data-reveal>Plan an event</p>
             <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
           </div>
-          <div className="cel-plan__grid">
-            <div className="cel-plan__side">
-              <p className="lede" data-reveal>It takes a minute. We come back with spaces and a menu.</p>
-              <p data-reveal data-reveal-delay="100">
-                <a className="cel-mail" href={`mailto:${business.email.events}`}>{business.email.events}</a>
-              </p>
-              <p className="small cel-contact" data-reveal data-reveal-delay="150">
-                Rather talk? Call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
-              </p>
-            </div>
-            <div className="panel" data-reveal data-reveal-delay="150">
-              <h3 className="panel__title">What are you <em>planning?</em></h3>
-              <p className="small">Pick one and the planner opens with it filled in.</p>
-              <ul className="cel-kinds">
-                {KINDS.map((k) => (
-                  <li key={k.id}>
-                    <Link href={`/celebrate/plan#request`}><span>{k.label}</span></Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="btn-row">
-                <Link href="/celebrate/plan" className="btn">Open the planner</Link>
-              </div>
-            </div>
+          <p className="lede cel-plan__lede" data-reveal>Pick a night in the Alpine Dining Room and send a request. Easy enough to do on a chairlift.</p>
+          <div className="cel-plan__widget">
+            <VenioWidget />
           </div>
+          <p className="small cel-contact cel-plan__call">
+            Planning a wedding, a buyout or the patio? Use “Planning something bigger?” in the calendar, email{' '}
+            <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+          </p>
         </div>
       </section>
 
