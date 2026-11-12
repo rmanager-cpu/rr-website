@@ -559,6 +559,9 @@
   margin: 0;
   color: var(--hw-muted);
 }
+.hw-thanks-rewards .hw-link {
+  font: inherit;
+}
 .hw-thanks .hw-thanks-title {
   font-family: var(--hw-serif);
   font-size: 30px;

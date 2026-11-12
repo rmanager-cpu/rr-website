@@ -3,6 +3,10 @@ import type { Frame, Point, Section, SectionImage, SubmissionAdapter } from './t
 import { Straightened } from './Straightened';
 import { isAsk } from './labels';
 
+/** River Ranch Rewards (Toast Loyalty): join or look up points. Same link as the website's
+ *  business.links.rewards in site/src/content/site.ts. */
+const REWARDS_URL = 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/rewardsLookup';
+
 interface Props {
   frame: Frame;
   /** The section the visitor opened it from. */
@@ -150,6 +154,13 @@ function AskForm({ frame, section, adapter, lead, onNext, onDone }: AskFormProps
       <div className="hw-thanks" role="status">
         <p className="hw-thanks-title">Thank you.</p>
         <p>Every piece helps us tell this wall’s story.</p>
+        <p className="hw-thanks-rewards">
+          Come in often?{' '}
+          <a className="hw-link" href={REWARDS_URL} target="_blank" rel="noopener noreferrer">
+            Join River Ranch Rewards
+          </a>
+          : 50 points just for joining.
+        </p>
         <div className="hw-thanks-actions">
           <button type="button" className="hw-cta" onClick={onNext}>
             Next photo

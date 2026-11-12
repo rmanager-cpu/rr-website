@@ -77,6 +77,17 @@ the-wall-river-ranch; deployed from `history-wall/` with `vercel build --prod` t
 - Submissions go to `wall_submissions` in the hub once `history-wall/supabase/wall_submissions.sql`
   has been run.
 
+## Deployed 2026-11-12
+Production `the-wall-river-ranch-cquy429u7` (previous: `-8r95l848o`, for rollback): the Nov 12 retakes
+and research pass from `main`, plus the Nov 10 close-ups for 1, 4 and 59 and the River Ranch Rewards
+line from `sitemap-build`. Where both batches shot a frame (57, 72, 14) the Nov 12 photo won: sharper,
+true color.
+- On Windows, `vercel build` fails with EPERM (the CLI can't create symlinks). The Wall is static, so
+  build with `npm run build` (needs `.env.local`), copy `dist/` to `.vercel/output/static/`, write
+  `.vercel/output/config.json` (version 3, with `vercel.json`'s two Cache-Control headers as routes
+  plus `{ "handle": "filesystem" }`), then `vercel deploy --prebuilt --prod`.
+- Check the bundle names the hub (`supabase.co`), or the form silently falls back to browser-only.
+
 ## Next: stitched walls (decided 2026-10-16)
 Replace the five overlapping section photos with one stitched image per flat stretch of wall, so the
 wall reads as continuous instead of frames repeating across shots.
