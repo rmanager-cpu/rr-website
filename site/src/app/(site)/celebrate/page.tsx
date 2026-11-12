@@ -125,7 +125,7 @@ const packedPatio: Photo = { src: '/photos/concerts/packed-patio-tables-to-stage
 const GALLERY: { photo: Photo; tall?: boolean; focus?: string }[] = [
   { photo: photos.weddingArch },
   { photo: homePhotos.ceremony, tall: true },
-  { photo: photos.riverviewRapids },
+  { photo: photos.roundBar },
   { photo: photos.fireplaceTableSet },
   { photo: homePhotos.cake, tall: true, focus: '62% 50%' },
   { photo: packedPatio },
@@ -166,24 +166,6 @@ export default function CelebratePage() {
         </div>
       </section>
 
-      {/* PLAN: Venio's booking widget right under the hero (the same frame as /celebrate/plan; every request lands in Venio) */}
-      <section className="section section--dark" id="plan" aria-labelledby="plan-h">
-        <div className="container">
-          <div className="section-head">
-            <p className="label label--accent" data-reveal>Plan an event</p>
-            <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
-          </div>
-          <p className="lede cel-plan__lede" data-reveal>Pick a night in the Alpine Dining Room and send a request. Easy enough to do on a chairlift.</p>
-          <div className="cel-plan__widget">
-            <VenioWidget />
-          </div>
-          <p className="small cel-contact cel-plan__call">
-            Planning a wedding, a buyout or the patio? Use “Planning something bigger?” in the calendar, email{' '}
-            <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
-          </p>
-        </div>
-      </section>
-
       {/* A VENUE AS MUCH AS A LODGE */}
       <Aperture photo={photos.aerialSpaces} id="venue" labelledBy="venue-h">
         <p className="label label--accent" data-reveal>The venue</p>
@@ -202,6 +184,24 @@ export default function CelebratePage() {
           <Link href="/stay" className="link-arrow">The rooms upstairs</Link>
         </p>
       </Aperture>
+
+      {/* PLAN: Venio's booking widget under the venue photo (the same frame as /celebrate/plan; every request lands in Venio) */}
+      <section className="section section--dark" id="plan" aria-labelledby="plan-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent" data-reveal>Plan an event</p>
+            <Lines id="plan-h" className="display-l" lines={['Let’s get it', <em key="e">on the calendar.</em>]} />
+          </div>
+          <p className="lede cel-plan__lede" data-reveal>Pick a night in the Alpine Dining Room and send a request. Easy enough to do on a chairlift.</p>
+          <div className="cel-plan__widget">
+            <VenioWidget />
+          </div>
+          <p className="small cel-contact cel-plan__call">
+            Planning a wedding, a buyout or the patio? Use “Planning something bigger?” in the calendar, email{' '}
+            <a href={`mailto:${business.email.events}`}>{business.email.events}</a> or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
+          </p>
+        </div>
+      </section>
 
       {/* THE FOUR SPACES */}
       <section className="section section--snow" id="spaces" aria-labelledby="spaces-h">
