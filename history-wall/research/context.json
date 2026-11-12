@@ -1,0 +1,39 @@
+{
+  "reviewed_on": "2026-11-12",
+  "scope": "The 63 active frames on the main Wall, including the newly clickable skier below the phone. The archived corner and poster walls are outside this pass.",
+  "publication_status": "Editorial research drafts; not added to the public Wall or deployed.",
+  "method": "Use the supplied photographs and readable captions as primary evidence. Keep an artifact's date separate from the date of a later photograph of it. External sources supply attributed context, not identities inferred from faces. Unreadable signatures, missing dates and local stories remain open questions.",
+  "findings": [
+    {
+      "title": "A dated letter anchors the early River Ranch period",
+      "text": "The supplied governor's letter is dated March 12, 1965, addressed to Gardner Mein at River Ranch Restaurant, and signed in print by Edmund G. Brown, Governor. Its thanks for a dinner are direct evidence; it does not date the other social photographs on the wall.",
+      "frame_ids": ["u-letter"],
+      "sources": ["../source/closeups/u-letter.jpg"]
+    },
+    {
+      "title": "The TIME reference can be traced to July 2, 1965",
+      "text": "TIME's Recreation: Splendors at Home includes River Ranch in its July 2, 1965 issue. This corroborates the year named in the Bon Cafe clipping. It does not establish the later claim that River Ranch received a 1967 top-ten award; that claim needs a separate source.",
+      "frame_ids": ["u-boncafe"],
+      "sources": ["https://content.time.com/time/subscriber/article/0,33009,833860-7,00.html", "https://www.riverranchlodge.com/history"]
+    },
+    {
+      "title": "A family account supports the Deer Park Lodge connection",
+      "text": "In a March 13, 2019 letter, Mark Calhoun states that his family owned Deer Park Lodge, now River Ranch, from 1957 to 1964. The letter appears on PDF page 8 of the district's March 21, 2019 board packet. This is a retrospective family account, not proof of the date of any individual photograph.",
+      "frame_ids": ["u-lodge-river"],
+      "sources": ["https://ovpsd.org/wp-content/uploads/2024/06/2019-03-21_BoardPacket-SpecialMeeting.pdf#page=8"]
+    },
+    {
+      "title": "There may already be more history in the lodge's files",
+      "text": "A Summer 2025 Palisades Press article specifically about the Legacy Wall mentions scrapbooks and physical historical files, and an effort to organize the display. These are promising leads for the unnamed people and occasions. The article does not provide a numbered photo key.",
+      "frame_ids": [],
+      "sources": ["https://img1.wsimg.com/blobby/go/e9d07b0c-dad6-41fd-9b1b-3966317c1e77/PPSummer25-e.pdf#page=12"]
+    }
+  ],
+  "unresolved_context": [
+    "The current lodge history page gives 1950 for replacement of the old building; the Bon Cafe clipping describes a 1930s predecessor. Determine whether these refer to different buildings or whether one account is mistaken before attaching a construction date to a photograph.",
+    "The current website and later promotional accounts do not fully agree with the contemporary clippings on early River Ranch dates. Keep source-specific statements attributed until original ownership and opening records are located.",
+    "A caption or autograph is evidence for its written words; it is not enough by itself to identify every person shown, authenticate the signature, establish a visit to the lodge, or date the scene.",
+    "A targeted connected Drive search did not locate a numbered caption key. A modern concert article was found, but it does not identify these historic frames and was not used as a source for their stories.",
+    "The existing Wall submission inbox was checked read-only on November 12, 2026. Its two entries are explicitly labeled setup tests, so neither supplies historical evidence. No submission was changed or deleted."
+  ]
+}

@@ -16,7 +16,7 @@
 
 import sharp from 'sharp';
 import { createRequire } from 'node:module';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
@@ -87,15 +87,35 @@ for (const [id, f] of [...best].sort()) {
 // 3. Straight-on photos of single frames replace the cuts.
 const PHOTO_DIR = 'source/closeups';
 if (existsSync(PHOTO_DIR)) {
-  const { readdir } = await import('node:fs/promises');
+  // Optional rectangles in EXIF-oriented source pixels, for shots containing several frames.
+  // Keep the original file unchanged; only the generated web close-up is cropped.
+  const cropFile = `${PHOTO_DIR}/crops.json`;
+  const crops = existsSync(cropFile) ? JSON.parse(await readFile(cropFile, 'utf8')) : {};
   for (const file of await readdir(PHOTO_DIR)) {
     const m = file.match(/^(.+)\.(jpe?g|png|heic|webp)$/i);
     if (!m) continue;
     const id = /^\d+$/.test(m[1]) ? `f${m[1]}` : m[1];
-    await sharp(`${PHOTO_DIR}/${file}`).rotate().resize({ width: MAX_SIDE, height: MAX_SIDE, fit: 'inside', withoutEnlargement: true })
+    let photo = sharp(`${PHOTO_DIR}/${file}`).rotate();
+    if (crops[id]) photo = photo.extract(crops[id]);
+    await photo.resize({ width: MAX_SIDE, height: MAX_SIDE, fit: 'inside', withoutEnlargement: true })
       .webp({ quality: QUALITY }).toFile(`public/frames/${id}.webp`);
     out[id] = `frames/${id}.webp`;
     console.log(`${id.padEnd(22)} photo    ${file}`);
+  }
+}
+
+// 4. Optional detail photos keep the full primary close-up available.
+// Link these explicitly from frames.json; they do not create or replace hotspots.
+const DETAIL_DIR = 'source/details';
+if (existsSync(DETAIL_DIR)) {
+  await mkdir('public/details', { recursive: true });
+  for (const file of await readdir(DETAIL_DIR)) {
+    const m = file.match(/^(.+)\.(jpe?g|png|heic|webp)$/i);
+    if (!m) continue;
+    await sharp(`${DETAIL_DIR}/${file}`).rotate()
+      .resize({ width: MAX_SIDE, height: MAX_SIDE, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: QUALITY }).toFile(`public/details/${m[1]}.webp`);
+    console.log(`${m[1].padEnd(22)} detail   ${file}`);
   }
 }
 

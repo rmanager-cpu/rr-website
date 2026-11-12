@@ -1,5 +1,11 @@
 [
   {
+    "id": "u-skier-phone",
+    "title": "Skier below the phone",
+    "action": { "type": "ask" },
+    "notes": "Added from the November 12, 2026 photo batch. Frame below the telephone at the far left of the main wall; no readable number tag."
+  },
+  {
     "id": "f1",
     "tag": "1"
   },
@@ -205,7 +211,8 @@
   },
   {
     "id": "u-blacktie-clipping",
-    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+    "detail": { "src": "details/u-blacktie-clipping.webp", "label": "View article detail" },
+    "notes": "November 12, 2026 detail photo provides clearer central text but cuts off the sides and bottom. Keep the full wall crop as the primary view. Number tag remains unreadable."
   },
   {
     "id": "u-boncafe",
@@ -221,7 +228,8 @@
   },
   {
     "id": "u-dark-portrait",
-    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+    "tag": "33",
+    "notes": "Tag 33 confirmed in the November 12, 2026 close-up. Stable frame id retained for existing submissions."
   },
   {
     "id": "u-dogs",
@@ -281,7 +289,7 @@
   },
   {
     "id": "u-sepia-bar",
-    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+    "notes": "Close-up replaced from the November 12, 2026 photo batch. Number tag remains unreadable."
   },
   {
     "id": "u-ski-nautique",
@@ -289,11 +297,13 @@
   },
   {
     "id": "u-skier-14",
-    "notes": "Number tag is hard to read in the current photo; looks like 14. Rename to f14 once confirmed."
+    "tag": "14",
+    "notes": "Tag 14 confirmed in the November 12, 2026 close-up. Stable frame id retained for existing submissions."
   },
   {
     "id": "u-snow-village",
-    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+    "tag": "15",
+    "notes": "Tag 15 confirmed in the November 12, 2026 close-up. Stable frame id retained for existing submissions."
   },
   {
     "id": "u-snowman-small",
@@ -305,7 +315,8 @@
   },
   {
     "id": "u-staff-suspenders",
-    "notes": "Number tag not readable in the current photo. Rename to f<number> once confirmed."
+    "tag": "32",
+    "notes": "Tag 32 confirmed in the November 12, 2026 close-up. Stable frame id retained for existing submissions."
   },
   {
     "id": "u-subtlety",

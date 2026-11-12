@@ -65,6 +65,12 @@ export function FramePanel({ frame, section, shot, points, previewSrc, url, clos
             <h2 id={titleId} className="hw-panel-title">{name}</h2>
           </header>
 
+          {frame.detail && (
+            <a className="hw-link" href={url(frame.detail.src)} target="_blank" rel="noreferrer">
+              {frame.detail.label} (opens in a new tab)
+            </a>
+          )}
+
           {!ask && (
             <div className="hw-story">
               {frame.description && <p>{frame.description}</p>}

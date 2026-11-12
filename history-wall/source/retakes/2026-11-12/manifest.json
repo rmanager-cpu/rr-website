@@ -1,0 +1,202 @@
+{
+  "date": "2026-11-12",
+  "note": "Unmodified user-supplied JPEGs. Selected originals are copied unchanged to source/closeups. Exact repeated uploads are deduplicated by filename and SHA-256.",
+  "photos": [
+    {
+      "file": "1000001414.jpg",
+      "sha256": "0685af828187ffc260f3173c9bf83f59ac1470a078e8107abe8a96e209f81f0a",
+      "frame_id": "f54",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/54.jpg"
+    },
+    {
+      "file": "1000001415.jpg",
+      "sha256": "a0996454b94911b0ce7b277cf0424e38607977ceea79cb34edb68f5803ecb336",
+      "frame_id": "f72",
+      "status": "selected",
+      "upload_count": 2,
+      "closeup_file": "source/closeups/72.jpg"
+    },
+    {
+      "file": "1000001416.jpg",
+      "sha256": "35ad137c75623d501bec321be4c1d1be1c1eb7686e686c7edd3782298ee5333b",
+      "status": "selected",
+      "upload_count": 1,
+      "note": "Selected for f12. The f57 view in this original is retained as an alternate; image-1794459750108.jpg is now selected for f57.",
+      "frame_id": "f12",
+      "closeup_file": "source/closeups/12.jpg",
+      "alternate_frame_ids": [
+        "f57"
+      ]
+    },
+    {
+      "file": "1000001417.jpg",
+      "sha256": "9d66b43155f2834bea27fad7cd99c28c485380680ebc6f15b6033df07e467489",
+      "frame_id": null,
+      "status": "overview",
+      "upload_count": 2
+    },
+    {
+      "file": "1000001419.jpg",
+      "sha256": "374aec8be71230ceab8941d3db68424d03d73eb7d775e0df92a26756d33dc4a2",
+      "frame_id": "f41",
+      "status": "alternate",
+      "upload_count": 1,
+      "note": "Alternate view; 1000001420.jpg selected with less glare."
+    },
+    {
+      "file": "1000001420.jpg",
+      "sha256": "7d528b9874b3cd7012ac2dda6c6d11c8407e39b9637c0b04e2cf319da8313870",
+      "frame_id": "f41",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/41.jpg"
+    },
+    {
+      "file": "1000001421.jpg",
+      "sha256": "ad6442d19cbb5aa38af2b5224dcb85e4dc6ed8425c8b42755b8f15b5c5e9af94",
+      "frame_id": "u-letter",
+      "status": "alternate",
+      "upload_count": 1,
+      "note": "Letter detail; full-letter image selected separately."
+    },
+    {
+      "file": "1000001422.jpg",
+      "sha256": "84d0bd92df2112905b26dcadc8cd9060395d855cceb8ec8753c3142d34ef5d53",
+      "frame_id": "u-letter",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-letter.jpg"
+    },
+    {
+      "file": "1000001423.jpg",
+      "sha256": "6da8b44a3e9e970e1b8441246db296723a4e039fd51b05c22172670dcde64e97",
+      "frame_id": "u-boncafe",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-boncafe.jpg"
+    },
+    {
+      "file": "1000001424.jpg",
+      "sha256": "45a73f132014dfda9b97901d56fdedee4b11e6f8f8c5090e49ef31f1b02da13d",
+      "frame_id": "u-subtlety",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-subtlety.jpg"
+    },
+    {
+      "file": "1000001425.jpg",
+      "sha256": "7eb4b7be9596ff029136961f9869509cef708cda901e4cee4cc22b697d7c6655",
+      "frame_id": "u-skier-phone",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-skier-phone.jpg"
+    },
+    {
+      "file": "1000001426.jpg",
+      "sha256": "20ae55459caf99bcf8fb4e81bd4a2ae12c6b3681110d2fdf2e59156db984a249",
+      "frame_id": "f48",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/48.jpg"
+    },
+    {
+      "file": "1000001427.jpg",
+      "sha256": "a32ecd5d31fe50419348d93ec93706094a9a1e094ea26315bc3e4333ab112fcc",
+      "frame_id": "f69",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/69.jpg"
+    },
+    {
+      "file": "1000001428.jpg",
+      "sha256": "ac72eac363dc275c71a499519bedbee5c915c806c169d0ef489ed3e6cb188ac7",
+      "frame_id": "f40",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/40.jpg"
+    },
+    {
+      "file": "1000001429.jpg",
+      "sha256": "0334fc6665d07c3f73b3ec3fa8d6929e8fc2bed0e9b3078a3cf41230866855cb",
+      "frame_id": "f50",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/50.jpg"
+    },
+    {
+      "file": "1000001430.jpg",
+      "sha256": "f6779ec1c7d031364d0017cd0cb76cd5a88a38433f782c6b1e34cd954fa81054",
+      "frame_id": "f70",
+      "status": "selected",
+      "upload_count": 2,
+      "closeup_file": "source/closeups/70.jpg"
+    },
+    {
+      "file": "1000001431.jpg",
+      "sha256": "e02cee34c4fcd04145020c36c55af5981a9f03959b23332457068aa99ef0f289",
+      "frame_id": "f13",
+      "status": "selected",
+      "upload_count": 2,
+      "closeup_file": "source/closeups/13.jpg"
+    },
+    {
+      "file": "image-1794459699682.jpg",
+      "sha256": "81f1036ae30ab762cc774484dbe63d6a4fd7b40f227b6d135159e9a0081409b4",
+      "frame_id": "u-dark-portrait",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-dark-portrait.jpg"
+    },
+    {
+      "file": "image-1794459713234.jpg",
+      "sha256": "163323d3eec972a2e93cd978b721f51dbc9f8fd74f2f0c575ef2cbfea1189298",
+      "frame_id": "u-staff-suspenders",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-staff-suspenders.jpg"
+    },
+    {
+      "file": "image-1794459737618.jpg",
+      "sha256": "a58ee1546b7d61670e867eb2e33b6acf97688e6d0be6cebbacaa34414a951d0e",
+      "frame_id": "u-skier-14",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-skier-14.jpg"
+    },
+    {
+      "file": "image-1794459750108.jpg",
+      "sha256": "203d8598e3fa0b424a8329e69db367cda68442d9ee8058ffe9b324e0330b34ff",
+      "frame_id": "f57",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/57.jpg"
+    },
+    {
+      "file": "image-1794459772259.jpg",
+      "sha256": "a93a020aa02557cbee861ba06d49f5ca3ddc90c7ea5d38f21aa6ab9384e01614",
+      "frame_id": "u-snow-village",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-snow-village.jpg"
+    },
+    {
+      "file": "image-1794459825462.jpg",
+      "sha256": "26ed095d11a86c62c412d3c83241ab9f8a357ccfea721b58869a7351dc6a0cc1",
+      "frame_id": "u-blacktie-clipping",
+      "status": "supplemental",
+      "upload_count": 1,
+      "note": "Partial newspaper detail with more readable central text; sides and bottom are cut off. Preserve the existing full primary image.",
+      "detail_file": "source/details/u-blacktie-clipping.jpg"
+    },
+    {
+      "file": "image-1794459868140.jpg",
+      "sha256": "fa70b0e16020b3eb3d292cbe5190a5d696f6736276db335736aefb946a36a04b",
+      "frame_id": "u-sepia-bar",
+      "status": "selected",
+      "upload_count": 1,
+      "closeup_file": "source/closeups/u-sepia-bar.jpg"
+    }
+  ]
+}

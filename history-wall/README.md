@@ -28,13 +28,20 @@ screen size, pan or zoom, and survive re-exporting the photo at another resoluti
 ## Frame ids
 
 - `f41`: the number on the frame's tag on the real wall. The site shows it as "No. 41".
-- `u-something`: the tag isn't readable in the current photo. Rename to `f<number>` once confirmed,
-  in the geometry files (the mapper's list) and in `frames.json`.
+- `u-something`: the tag was unreadable when first traced. Once confirmed, set `tag` in
+  `frames.json`; retain the stable id so existing submissions still refer to the same frame.
 
 A frame can appear on more than one section (the shots overlap). Same id everywhere; it opens from
 whichever photo shows it largest.
 
 ## Adding what we learn about a frame
+
+The November 12 research pass is in `research/catalog.json`: one evidence record per active frame,
+with draft text, source references, missing facts, and an identification status. Open
+`research/index.html` for the searchable illustrated review; it embeds the existing WebP images
+and works offline. Rebuild it with `python research/build-review.py` after editing the catalog.
+These are editorial drafts, not public copy. `research/context.json` records shared findings and
+conflicting dates to resolve before publishing a construction timeline or identifying people.
 
 Add or edit its entry in `src/data/frames.json`. Everything except `id` is optional:
 
@@ -72,6 +79,17 @@ The sharpest close-ups come from a straight-on phone photo of the single frame: 
 `npm run closeups`. Tips: stand square to the frame, fill the screen with it, no flash (it glares on
 the glass); turn off the overhead light behind you if it reflects. A `closeup` set by hand in
 `frames.json` overrides both.
+
+For a shot containing several frames, keep the original JPEG and add a rectangle to
+`source/closeups/crops.json`, keyed by frame id: `{ "f12": { "left": 80, "top": 0,
+"width": 770, "height": 610 } }`. Coordinates are pixels after EXIF orientation.
+`npm run closeups` crops only the generated web image, without upscaling or changing the original.
+The November 12 retakes and their frame mappings are archived in `source/retakes/2026-11-12/`.
+
+A detail shot that cuts off part of a document can accompany its complete primary view. Save it
+as `source/details/<id>.jpg` and run `npm run closeups`, then set `detail` in `frames.json` to
+`{ "src": "details/<id>.webp", "label": "View article detail" }`. The panel links to the detail
+at its full web resolution in a new tab.
 
 ## Adding or replacing a wall photo
 

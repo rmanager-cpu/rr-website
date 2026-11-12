@@ -3,6 +3,9 @@
 Everything in Git comes down with a clone. Two things deliberately don't: secret settings
 (`.env.local` files) and the big photo library. Steps below.
 
+For the verified cloud-workspace setup and the Wall's deployment procedure, see
+[Deploying from Codex](CODEX-DEPLOYMENT.md).
+
 ## 1. Tools (once per computer)
 - Git, Node.js 20 or newer (24 is what the work computer runs), VS Code with Claude Code.
 - GitHub CLI, signed in as `rmanager-cpu`: `gh auth login`.

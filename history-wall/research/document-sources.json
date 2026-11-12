@@ -1,0 +1,58 @@
+[
+  {
+    "id": "time-1965-river-ranch",
+    "title": "Recreation: Splendors at Home",
+    "publisher": "TIME",
+    "published": "1965-07-02",
+    "url": "https://content.time.com/time/subscriber/article/0,33009,833860-7,00.html",
+    "accessed": "2026-11-12",
+    "kind": "contemporary published article",
+    "verified": true,
+    "supports": [
+      "The TIME item quoted by the framed Bon Cafe profile was published July 2, 1965.",
+      "The contemporary article described River Ranch as having opened one year earlier and as popular with young San Francisco married couples.",
+      "The Bon Cafe profile cannot predate the July 2, 1965 TIME article it quotes."
+    ],
+    "limits": [
+      "This is not the original publication of the Bon Cafe page; its publication name and issue date remain unverified.",
+      "TIME's geographical phrase describing River Ranch as south of the lake is erroneous; do not repeat it.",
+      "Opening one year earlier is the article's contemporary statement, not independently precise establishment dating."
+    ]
+  },
+  {
+    "id": "mallory-2014-dumbrille",
+    "title": "Mary Mallory / Hollywood Heights: Douglass Dumbrille, Suave Slickster",
+    "publisher": "Los Angeles Daily Mirror",
+    "author": "Mary Mallory",
+    "published": "2014-07-21",
+    "url": "https://ladailymirror.com/2014/07/21/mary-mallory-hollywood-heights-douglass-dumbrille-suave-slickster/",
+    "accessed": "2026-11-12",
+    "kind": "historian's retrospective",
+    "verified": true,
+    "supports": [
+      "A Douglass Dumbrille Film Festival accompanied the unveiling of a theater/restaurant above Squaw Valley in July 1965.",
+      "The festival celebrated character actors including Dumbrille, Franklin Pangborn, Donald Meek and Henry Armetta."
+    ],
+    "limits": [
+      "This corroborates the event and month, not the exact date of the framed New York Times clipping.",
+      "People in the framed image are identified from its printed caption, not visual resemblance."
+    ]
+  },
+  {
+    "id": "examiner-1965-high-camp-lead",
+    "title": "'High Camp' Film Festival",
+    "publisher": "The San Francisco Examiner",
+    "author": "Stanley Eichelbaum",
+    "published": "1965-07-23",
+    "page": "25",
+    "url": "https://www.newspapers.com/clip/28632671/douglass_dumbrille/",
+    "accessed": "2026-11-12",
+    "kind": "archive lead",
+    "verified": false,
+    "discovery_url": "https://en.wikipedia.org/wiki/Douglass_Dumbrille",
+    "limits": [
+      "Bibliographic details found in Wikipedia's references; original archive fetch was restricted, so this article has not been inspected.",
+      "Do not treat it as the same publication as the framed New York Times article."
+    ]
+  }
+]

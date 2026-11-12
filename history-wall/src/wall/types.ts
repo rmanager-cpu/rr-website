@@ -58,6 +58,8 @@ export interface Frame {
   description?: string;
   /** Straight-on close-up photo (path relative to the asset base). Falls back to the wall crop. */
   closeup?: string;
+  /** Optional closer detail; the primary close-up still shows the complete frame. */
+  detail?: { src: string; label: string };
   action?: FrameAction;
   related?: string[];
   themes?: string[];

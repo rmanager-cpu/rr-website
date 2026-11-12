@@ -1,0 +1,1545 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-12",
+  "scope": "All 63 active main-wall frames",
+  "publication_status": "Research drafts only; not public website copy",
+  "status_counts": {
+    "needs_local_history": 49,
+    "partially_documented": 13,
+    "documented": 1
+  },
+  "frames": [
+    {
+      "id": "u-skier-phone",
+      "title": "The skier below the phone",
+      "visible_evidence": [
+        "A single person in dark clothing stands on skis, with pale boots and trees behind.",
+        "A broad blue stripe runs across the pale foreground surface.",
+        "The black physical frame is partly obscured by the telephone cord in the supplied photograph.",
+        "No name, date, or location caption is legible."
+      ],
+      "draft_history": "This small portrait shows a skier in dark clothing against a wooded background. The skis, pale boots, and blue stripe across the foreground are the most useful details for recognizing the setting. On the lodge wall the frame sits beneath the telephone, a location specifically identified by the owner when supplying the close-up. The photograph has no readable caption establishing the skier’s name, the place, or the occasion; those details remain part of its unwritten local history.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is the skier, and what connects them to River Ranch?",
+        "Where was the blue-striped surface, and what activity was taking place?",
+        "Who made or donated this print, and approximately when?"
+      ],
+      "sources": [
+        "user-provided description: framed person below the telephone"
+      ],
+      "tag": null,
+      "image": "frames/u-skier-phone.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-skier-phone.webp",
+        "history-wall/source/closeups/u-skier-phone.jpg"
+      ]
+    },
+    {
+      "id": "f21",
+      "title": "Two people at an outdoor table",
+      "visible_evidence": [
+        "Two people sit beside one another at a table in an outdoor setting.",
+        "The person on the left wears a pale open-front garment; the person on the right wears a dark sleeveless top.",
+        "Foliage and a horizontal railing or fence appear behind them.",
+        "The frame bears the number 21; no identifying caption is readable."
+      ],
+      "draft_history": "Two people share an outdoor table, with leafy vegetation and a railing behind them. The informal composition and visible table setting preserve a social moment, but the print supplies no names or occasion. Its background may help someone familiar with the lodge’s earlier outdoor spaces determine whether it was taken at River Ranch or brought from another location. The small number 21 identifies its place in the wall collection, not a year.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people at the table?",
+        "Is this a River Ranch outdoor area, and which part of it?",
+        "What was the occasion and approximate year?"
+      ],
+      "sources": [],
+      "tag": "21",
+      "image": "frames/f21.webp",
+      "source_assets": [
+        "history-wall/public/frames/f21.webp"
+      ]
+    },
+    {
+      "id": "u-dark-portrait",
+      "title": "Two people in a paneled room",
+      "visible_evidence": [
+        "Two people pose together in a room with wood trim, striped wall covering, a framed picture, and an oval mirror.",
+        "The person at left wears a dark brimmed hat, patterned clothing, and a pale draped layer.",
+        "The person at right wears a shirt printed M*A*S*H and a pale face covering hanging at the neck.",
+        "The physical tag reads 33; no names or date are written on the visible print."
+      ],
+      "draft_history": "The photograph shows two people standing closely together inside a paneled room. A M*A*S*H shirt, a face covering worn at the neck, a brimmed hat, and the contrasting layers of clothing give the portrait distinctive visual clues. They may help a participant recognize the occasion, but the clothes alone do not establish a themed party, a job, or a date. The newer close-up makes the wall number 33 readable; the identities and reason this photograph joined the collection are still unrecorded.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people, and how were they connected to the lodge?",
+        "Was the clothing associated with a particular event or simply what they wore that day?",
+        "Which room is pictured, and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": "33",
+      "image": "frames/u-dark-portrait.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-dark-portrait.webp",
+        "history-wall/source/closeups/u-dark-portrait.jpg"
+      ]
+    },
+    {
+      "id": "f47",
+      "title": "Signed portrait of four people outdoors",
+      "visible_evidence": [
+        "Four people pose shoulder to shoulder beside a horizontal railing.",
+        "Water and a pink-purple sky or distant background appear behind the group.",
+        "Several handwritten dedications and signatures occupy the upper part of the print.",
+        "The handwriting is not clear enough to transcribe complete names reliably; the wall tag reads 47."
+      ],
+      "draft_history": "Four people pose together by a railing with water and a pink-purple background behind them. The handwritten messages make this more than an anonymous group snapshot: someone deliberately personalized the print before it reached the wall. The current photograph does not support a reliable transcription of the full dedications or signatures. Those inscriptions are the best starting point for establishing who gave the print to River Ranch and whether the signers are also among the four people pictured.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What do the complete dedications and signatures say?",
+        "Who are the four people, and were any of them the signers?",
+        "Where and when was the portrait taken, and who donated it?"
+      ],
+      "sources": [],
+      "tag": "47",
+      "image": "frames/f47.webp",
+      "source_assets": [
+        "history-wall/public/frames/f47.webp"
+      ]
+    },
+    {
+      "id": "f34",
+      "title": "Clown-costumed figure at a counter",
+      "visible_evidence": [
+        "A central person wears a striped costume, a large dark collar or bow, and a clown-style face or mask.",
+        "Two other people stand on either side; part of another person appears at the lower right.",
+        "The group is gathered around a counter or table in a dark interior.",
+        "The physical tag reads 34; no event name or date is legible."
+      ],
+      "draft_history": "A clown-costumed figure is the focus of this indoor scene, flanked by two people at a counter or table. The striped outfit, oversized collar, and painted or masked face are unusually specific details that may make the occasion recognizable to someone who attended it. There is no visible caption naming the performer or describing the gathering. The image records a costume being worn, but it does not establish Halloween, a professional performance, or any particular annual celebration.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who wore the clown costume, and who is standing beside them?",
+        "What gathering or performance was this?",
+        "Where was the counter, and approximately when was the photo made?"
+      ],
+      "sources": [],
+      "tag": "34",
+      "image": "frames/f34.webp",
+      "source_assets": [
+        "history-wall/public/frames/f34.webp"
+      ]
+    },
+    {
+      "id": "u-staff-suspenders",
+      "title": "Group portrait beneath a striped awning",
+      "visible_evidence": [
+        "A large group poses in two closely arranged rows beneath a striped awning.",
+        "Many people wear pale shirts, ties, and suspenders; clothing and tie colors vary.",
+        "The group stands in front of a doorway or glazed entrance.",
+        "The newer close-up clearly shows physical tag 32; no names or date accompany the image."
+      ],
+      "draft_history": "This posed group photograph gathers people beneath a striped awning, with several wearing shirts, ties, and suspenders. Their coordinated appearance is a useful clue to the gathering, while the entrance and awning may establish the location through comparison with other lodge photographs. The image itself does not label the group as employees or specify an anniversary, reunion, or service team. A participant or dated copy is needed to turn that plausible impression into documented history.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What group is pictured, and can someone supply a left-to-right identification?",
+        "Is this entrance at River Ranch, and what was the occasion?",
+        "Were the shirts, ties, and suspenders a uniform or part of an event?"
+      ],
+      "sources": [],
+      "tag": "32",
+      "image": "frames/u-staff-suspenders.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-staff-suspenders.webp",
+        "history-wall/source/closeups/u-staff-suspenders.jpg"
+      ]
+    },
+    {
+      "id": "f30",
+      "title": "People gathered around a chandelier-lit bar",
+      "visible_evidence": [
+        "Several people sit or stand around a wooden bar.",
+        "Two ornate hanging light fixtures and shelves of bottles are visible.",
+        "Wooden stools line the foreground; drinking vessels sit on the counter.",
+        "The frame is numbered 30; no names or date are readable."
+      ],
+      "draft_history": "The room, as much as the people, is the subject of this photograph. Wooden stools curve around a crowded bar, bottles fill the back shelving, and two elaborate hanging lights illuminate the gathering. The view preserves details of an earlier bar arrangement that can be compared with other interior photographs on the wall. No caption identifies the people or confirms which bar is shown, so the room’s fixtures are stronger evidence than assumptions about whether the group were guests, employees, or friends.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Is this the River Ranch bar, and which period of its layout is shown?",
+        "Who is seated or standing around the counter?",
+        "Was this an ordinary evening or a particular gathering?"
+      ],
+      "sources": [],
+      "tag": "30",
+      "image": "frames/f30.webp",
+      "source_assets": [
+        "history-wall/public/frames/f30.webp"
+      ]
+    },
+    {
+      "id": "f26",
+      "title": "A dark figure silhouetted against flames",
+      "visible_evidence": [
+        "Orange flames surround a dark human-shaped silhouette with spread legs and raised or bent arms.",
+        "The background is nearly black, leaving little environmental detail.",
+        "Objects in front of the physical frame partly obscure its lower edge.",
+        "No explanatory caption, place, or date is visible."
+      ],
+      "draft_history": "Orange flames dominate this dark image, outlining a human-shaped figure with widely separated legs and arms lifted to either side. The dramatic silhouette is clear, but the photograph does not explain the circumstances or even establish whether the central form is a person, a prop, or another constructed figure. It should therefore remain a description of the visible scene until someone can supply its original caption. The meaning of the fire and the reason this image was selected for the lodge wall are both unresolved.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What is the central silhouetted figure?",
+        "What event or activity produced the scene, and where did it happen?",
+        "Who photographed or contributed the image, and when?"
+      ],
+      "sources": [],
+      "tag": "26",
+      "image": "frames/f26.webp",
+      "source_assets": [
+        "history-wall/public/frames/f26.webp",
+        "history-wall/source/shots/wall/host.jpg"
+      ]
+    },
+    {
+      "id": "u-family-22",
+      "title": "Two adults holding children outdoors",
+      "visible_evidence": [
+        "Two adults pose side by side outdoors, each holding or supporting a small child.",
+        "Trees and other foliage fill the background.",
+        "One adult wears glasses and a dark jacket; the other wears a lighter jacket.",
+        "The visible tag reads 22; the print has no readable names or date."
+      ],
+      "draft_history": "Two adults stand together outdoors, each with a small child in their arms. The close arrangement makes this an intimate group portrait, although the photograph does not establish the relationships among the four people. Trees fill the background without a sign or building that securely identifies the location. The image may preserve an important personal connection to River Ranch; documenting that connection requires names and the circumstances of the photograph rather than treating the internal file label as proof that they are a family.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two adults and the two children, and how were they related?",
+        "Where and approximately when was the photograph taken?",
+        "What connection brought this portrait into the River Ranch collection?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-family-22.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-family-22.webp"
+      ]
+    },
+    {
+      "id": "f61",
+      "title": "Runner with a Suzuki Rock ’n’ Roll Marathon label",
+      "visible_evidence": [
+        "A foreground runner in a pale shirt and dark shorts passes other runners on a paved street.",
+        "The photograph is mounted above a printed Suzuki Rock ’n’ Roll Marathon graphic.",
+        "San Diego, CA is visible in the small lower line; the preceding date appears to read June 21, 1998 but is not fully clear.",
+        "The mat and frame carry tag 61; the runner’s name and race number are not readable."
+      ],
+      "draft_history": "A road-running photograph is mounted with a Suzuki Rock ’n’ Roll Marathon label, providing a stronger event connection than clothing or scenery alone. San Diego, California, is readable beneath the event logo. The small date line appears to indicate June 21, 1998, but the available image is not crisp enough to treat every digit as settled. The foreground runner’s identity and the reason the race photograph was displayed at River Ranch remain unknown.\n\nContext: contemporary race results in the Buffalo Chips running club’s Summer 1998 newsletter document the Suzuki Rock ’n’ Roll Marathon in San Diego on June 21, 1998. That record supports a date worth checking against the original mat; it does not independently identify this runner or prove that this particular print is from that edition.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Can the date on the mat be confirmed as June 21, 1998?",
+        "Who is the foreground runner, and what was their connection to River Ranch?",
+        "Is there a race bib number, finishing record, or inscription on the back of the print?"
+      ],
+      "sources": [
+        "https://cdn1.sportngin.com/attachments/document/4a58-2979875/1998.pdf"
+      ],
+      "tag": "61",
+      "image": "frames/f61.webp",
+      "source_assets": [
+        "history-wall/public/frames/f61.webp",
+        "history-wall/source/shots/wall/host.jpg"
+      ]
+    },
+    {
+      "id": "f76",
+      "title": "Skiing print with a River Ranch dedication",
+      "visible_evidence": [
+        "A skier in a blue patterned suit makes a very low edged turn with red boots and poles visible.",
+        "The upper handwritten dedication reads “Thanks River Ranch!!”.",
+        "Marcus Caston is printed at the lower left.",
+        "A separate handwritten name appears to read Travis Ganong; it is not the same name as the printed text.",
+        "The physical tag reads 76; no date is visible."
+      ],
+      "draft_history": "This skiing print has a direct written connection to the lodge: the dedication across the top thanks River Ranch. Below the skier, the print carries the name Marcus Caston, while a separate handwritten name appears to read Travis Ganong. These two inscriptions should be preserved as separate pieces of evidence. Neither a signature nor an unqualified printed name, by itself, establishes whether it belongs to the pictured skier, photographer, donor, or another participant. The steeply edged turn is visible; the athlete, location, date, and occasion for the thank-you still need attribution.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Does Marcus Caston identify the skier, the photographer, or another credit on the print?",
+        "Is the handwritten name Travis Ganong, and who wrote the dedication?",
+        "What visit, support, or event prompted the thanks to River Ranch?"
+      ],
+      "sources": [],
+      "tag": "76",
+      "image": "frames/f76.webp",
+      "source_assets": [
+        "history-wall/public/frames/f76.webp"
+      ]
+    },
+    {
+      "id": "f45",
+      "title": "Four people posing in a tiled room",
+      "visible_evidence": [
+        "Four people pose closely together, with one standing behind the others.",
+        "White square tiles and wood paneling form the background.",
+        "The person at lower right wears flowers in their hair; the person at lower left holds one hand raised.",
+        "The physical tag reads 45; no caption or date is legible."
+      ],
+      "draft_history": "Four people gather for a close indoor portrait in a room with square white tiles and wood paneling. One stands behind the group, and the person in the foreground wears flowers in their hair. These details make the image distinctive without establishing a celebration, employment relationship, or date. The combination of tile and woodwork may help a longtime visitor locate the room, while the pose and floral detail may prompt a participant’s account of the occasion.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the four people, and how were they connected to one another?",
+        "Which tiled room is shown?",
+        "Was the flower decoration associated with a specific occasion, and when?"
+      ],
+      "sources": [],
+      "tag": "45",
+      "image": "frames/f45.webp",
+      "source_assets": [
+        "history-wall/public/frames/f45.webp"
+      ]
+    },
+    {
+      "id": "f40",
+      "title": "Two people in an oval-framed portrait",
+      "visible_evidence": [
+        "Two people sit closely together at an indoor counter or table.",
+        "The person at left wears a patterned headband and a long strand of beads.",
+        "The person at right wears a red cap backward, dark marks beneath the eyes, and a sports-style shirt with striped sleeves.",
+        "The print is mounted in a dark oval frame with a gold inner edge; tag 40 is visible near its lower right."
+      ],
+      "draft_history": "The oval frame encloses a closely posed portrait of two people in distinctive outfits. A patterned headband and long beads appear on the left; a backward red cap, eye markings, and a sports-style shirt appear on the right. A container of straws and other table items place the scene in an indoor social setting. The clothes may have been chosen for an event, but the print does not name one, and no date or personal identification is visible.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people, and what brought them together for the photograph?",
+        "Was this a costume event or another named occasion?",
+        "Was it taken at River Ranch, and approximately when?"
+      ],
+      "sources": [],
+      "tag": "40",
+      "image": "frames/f40.webp",
+      "source_assets": [
+        "history-wall/public/frames/f40.webp",
+        "history-wall/source/closeups/40.jpg"
+      ]
+    },
+    {
+      "id": "f31",
+      "title": "Group behind a decorated bar",
+      "visible_evidence": [
+        "A group faces the camera from behind and beside a bar crowded with glasses and bottles.",
+        "Hanging light fixtures and streamers or ribbon decorations appear overhead.",
+        "Part of a lettered banner is visible but cannot be transcribed fully.",
+        "The tag reads 31; no complete date or identifying inscription is visible."
+      ],
+      "draft_history": "A group has assembled around a decorated bar, with bottles and glasses covering the counter and hanging lights above. Streamers and part of a lettered banner indicate that the room was decorated for a gathering, but the surviving view does not give a complete event name. The arrangement can help distinguish this image from the wall’s other bar portraits: the overhead decorations and the people grouped behind the counter are its strongest identifying clues. Who was being celebrated, if anyone, remains unrecorded.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What does the complete banner say, and what was the occasion?",
+        "Who is in the group behind the bar?",
+        "Where was this taken, and what is the approximate date?"
+      ],
+      "sources": [],
+      "tag": "31",
+      "image": "frames/f31.webp",
+      "source_assets": [
+        "history-wall/public/frames/f31.webp"
+      ]
+    },
+    {
+      "id": "u-welcome-menu",
+      "title": "Welcome to the River Ranch: a steak-and-seafood menu",
+      "visible_evidence": [
+        "The heading reads WELCOME TO THE RIVER RANCH.",
+        "Visible dishes include roast prime ribs of beef au jus, top sirloin, Alaskan king crab legs, sirloin and king crab legs, and sirloin and teriyaki shrimp.",
+        "Alaskan king crab legs are listed at $8.50 and sirloin with king crab legs at $7.50. The lower menu is outside this photograph."
+      ],
+      "draft_history": "This fragment preserves a River Ranch dinner menu built around prime rib, sirloin, seafood, and combination plates. The bold Western-style heading and the paired meat-and-seafood options are part of the restaurant’s presentation as well as evidence of what diners could order. Two clearly visible prices are $8.50 for Alaskan king crab legs and $7.50 for sirloin with king crab legs.\n\nThe menu carries no readable date in the surviving view. Its prices cannot establish a particular year by themselves. A matching menu in the lodge’s files or a dated advertisement would let this fragment anchor a more precise account of the dining room in that period.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Which years was this menu used?",
+        "Is there a dated duplicate in an old menu file or scrapbook?",
+        "Who selected these dishes, and which became longtime favorites?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-welcome-menu.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-welcome-menu.webp"
+      ]
+    },
+    {
+      "id": "f42",
+      "title": "Two people beside a snowy wooden building",
+      "visible_evidence": [
+        "Two people stand with their arms around one another outdoors.",
+        "Snow lies on the wooden railings and on ledges of the building behind them.",
+        "One person wears a dark cap or hat with goggles; the other wears a hanging pass or badge.",
+        "The physical tag reads 42; the pass text and any names are unreadable."
+      ],
+      "draft_history": "Two people pose beside a wooden building after or during a snowy period. Snow rests on the surrounding rails and ledges, and one person’s goggles and the other’s hanging pass provide clues to the setting. Those objects do not establish their jobs or prove participation in a particular event. The building’s balcony and woodwork offer a useful way to identify the location; the people, date, and meaning of the pass still require a caption or local recollection.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people, and what connects them to River Ranch?",
+        "Which building and balcony are behind them?",
+        "What was the hanging pass for, and when was this taken?"
+      ],
+      "sources": [],
+      "tag": "42",
+      "image": "frames/f42.webp",
+      "source_assets": [
+        "history-wall/public/frames/f42.webp"
+      ]
+    },
+    {
+      "id": "f48",
+      "title": "Group atop a Squaw Valley aerial tram",
+      "visible_evidence": [
+        "A red aerial tram car carries the painted words SQUAW VALLEY USA and the number 2.",
+        "A group stands or sits on the car’s roof, with other people positioned along the tall suspension structure.",
+        "Snow-covered mountain terrain and trees appear far below and behind the tram.",
+        "The physical frame tag reads 48; no personal names or date are visible."
+      ],
+      "draft_history": "The lettering identifies the tram as belonging to Squaw Valley, and the car itself is marked 2. People occupy the roof and several positions along the suspension structure above it, with snowy mountain terrain visible below. The photograph documents a deliberately unusual group pose, but it provides no caption naming the participants or explaining how the session was arranged.\n\nContext: Palisades Tahoe’s own history of its lift systems dates construction of the aerial tram to 1968. That establishes background for the equipment shown, not the year of this photograph. A FREESKIER archival feature also captions a tram-roof group as Squaw Ski Patrol; its image remains a research lead because an exact visual match has not yet been verified.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Does the tram-roof photograph in FREESKIER’s archival feature reproduce this exact image?",
+        "Who arranged and photographed the roof-top group, and in what year?",
+        "Can an original caption identify the people and their connection to River Ranch?"
+      ],
+      "sources": [
+        "https://blog.palisadestahoe.com/experiences/tram-funitel-gondola-whats-the-difference/",
+        "https://www.freeskier.com/26-vintage-ski-resort-images-will-thirsting-good-ol-days"
+      ],
+      "tag": "48",
+      "image": "frames/f48.webp",
+      "source_assets": [
+        "history-wall/public/frames/f48.webp",
+        "history-wall/source/closeups/48.jpg"
+      ]
+    },
+    {
+      "id": "f50",
+      "title": "Climber suspended in a rope harness",
+      "visible_evidence": [
+        "One person is suspended beside rock with ropes and a climbing harness visible.",
+        "The person wears a sleeveless shirt and protective gloves and looks upward toward the camera.",
+        "Climbing hardware and several lengths of rope surround the body.",
+        "No personal name, location, route, or date is readable."
+      ],
+      "draft_history": "This close view records a climber suspended in a harness beside rock, looking up toward the camera with ropes and hardware gathered around the body. The gloves, harness, and rope system are visible evidence of the activity, but the image does not distinguish a particular route, training session, ascent, or descent. The portrait’s place on the lodge wall may reflect an outdoor pursuit shared by someone in the River Ranch community; that personal connection has not yet been documented.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is the climber, and who took the photograph?",
+        "Which rock face or route is shown, and what stage of the climb was this?",
+        "When was it taken, and how did the print reach River Ranch?"
+      ],
+      "sources": [],
+      "tag": "50",
+      "image": "frames/f50.webp",
+      "source_assets": [
+        "history-wall/public/frames/f50.webp",
+        "history-wall/source/closeups/50.jpg"
+      ]
+    },
+    {
+      "id": "f62",
+      "title": "People beside a large pale animal-shaped figure in snow",
+      "visible_evidence": [
+        "A large pale dog- or bear-like figure with a dark collar rises behind a small group of people.",
+        "Snow covers the ground, and a dark railing or low wall crosses the background.",
+        "A small sign at lower right is obscured by glare and cannot be read reliably.",
+        "A bright reflection obscures much of the lower central part of the photograph."
+      ],
+      "draft_history": "A large pale animal-shaped figure stands behind people posing in a snowy setting. Its dark collar and rounded head are visible, while reflections hide much of the lower scene and a small sign. The figure may be a snow sculpture, but the available view does not establish its material or intended character securely. The unreadable sign could explain the occasion or name the creation, making it a more promising historical clue than guessing from its appearance.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What is the large animal-shaped figure, and was it made from snow?",
+        "What does the sign beside the group say?",
+        "Who made or posed with it, and where and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": "62",
+      "image": "frames/f62.webp",
+      "source_assets": [
+        "history-wall/public/frames/f62.webp",
+        "history-wall/source/shots/wall/host.jpg"
+      ]
+    },
+    {
+      "id": "u-snowroof",
+      "title": "Buildings under deep snow, March 1982",
+      "visible_evidence": [
+        "A monochrome photograph shows building roofs, upper walls, and a small projecting gable surrounded by deep snow.",
+        "A tall conifer rises behind the roofs.",
+        "The label reads “MARCH 1982 COURTESY OF TIM LONGO”.",
+        "The caption is clearer along the upper edge of the original upload used for frame 50 than in the generated snowroof image."
+      ],
+      "draft_history": "Deep snow fills the foreground and rises around the buildings, leaving roofs, portions of the upper walls, and a small projecting gable visible. The caption supplies an unusually useful piece of documentation for this wall: March 1982, courtesy of Tim Longo. That wording credits the source of the photograph without explicitly naming its photographer. The building arrangement and the depth of the accumulation are recorded in the image; its exact viewpoint and the particular snowfall or sequence of storms responsible are not stated on the label.",
+      "known_date": "1982-03",
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Which buildings and viewpoint are shown?",
+        "Did Tim Longo take the photograph, own the original, or provide a copy?",
+        "Is there a more exact March 1982 date or an account of conditions when it was taken?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-snowroof.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-snowroof.webp",
+        "history-wall/source/closeups/50.jpg"
+      ]
+    },
+    {
+      "id": "u-lake-clipping",
+      "title": "Newspaper image of activity on the water",
+      "visible_evidence": [
+        "A newspaper clipping contains a photograph of people on a long narrow floating platform or craft near a wooded shore.",
+        "A short printed caption is present but is too soft in this copy for reliable transcription.",
+        "The clipping is in a green frame; no publication date is readable."
+      ],
+      "draft_history": "The scene records people balancing or standing on a narrow floating platform or craft close to a wooded shoreline. It survives as a newspaper clipping, so its original caption may contain the names, place, and occasion that the photograph alone cannot supply.\n\nAt present this cannot be identified as a particular river race, lake event, or River Ranch gathering. The useful next source is the clipping’s original caption or an existing scrapbook transcription; the frame’s appearance and its position on the wall do not establish those details.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What does the original newspaper caption say?",
+        "Was this a River Rat Race or a different event?",
+        "Which publication printed it, and when?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-lake-clipping.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-lake-clipping.webp"
+      ]
+    },
+    {
+      "id": "f49",
+      "title": "Hang glider above a lake and wooded shoreline",
+      "visible_evidence": [
+        "A person hangs in a harness within the triangular control frame of a hang glider.",
+        "The wing edge and support wires occupy the right and upper parts of the image.",
+        "A blue lake and a wooded, partly snow-covered shoreline lie below.",
+        "The print is displayed in portrait orientation; tag 49 is visible and no caption is readable."
+      ],
+      "draft_history": "An aerial photograph looks along a hang glider’s frame toward its harnessed pilot, with a lake and wooded shoreline below. The wing and cables create a sharply tilted composition that makes the height and viewpoint central to the image. The landscape may be recognizable to a local pilot, but no visible caption names the lake, launch site, pilot, or photographer. The picture records flight rather than a grounded group portrait, leaving the route and the circumstances of the camera position as useful clues to its history.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is the pilot, and where was the camera mounted or held?",
+        "Which lake, shoreline, and launch site are shown?",
+        "When was the flight, and what is its connection to River Ranch?"
+      ],
+      "sources": [],
+      "tag": "49",
+      "image": "frames/f49.webp",
+      "source_assets": [
+        "history-wall/public/frames/f49.webp"
+      ]
+    },
+    {
+      "id": "f69",
+      "title": "Mountain group in red cross-marked jackets",
+      "visible_evidence": [
+        "A large group poses on snow below a rocky mountain slope.",
+        "Many jackets are red with prominent white cross emblems.",
+        "Coiled ropes, shovels or long-handled tools, and boxes are arranged in front of the group.",
+        "A rectangular orange sign stands behind them, but its text is not legible.",
+        "The physical tag reads 69; there is no readable roster or date."
+      ],
+      "draft_history": "This mountain group portrait combines matching red jackets with white cross emblems and an array of ropes, tools, and equipment placed in the foreground. Those details are consistent with a ski-patrol setting, but they do not by themselves establish a particular resort, roster, job title, or year. The rocky slope and orange sign behind the group may make the location identifiable. A dated roster or original caption would explain whether the photograph marked a season, a team gathering, or another occasion.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Which group and mountain location are pictured?",
+        "Can a participant provide the year and a left-to-right roster?",
+        "What do the orange sign and the equipment arrangement signify?"
+      ],
+      "sources": [],
+      "tag": "69",
+      "image": "frames/f69.webp",
+      "source_assets": [
+        "history-wall/public/frames/f69.webp",
+        "history-wall/source/closeups/69.jpg"
+      ]
+    },
+    {
+      "id": "f70",
+      "title": "A baseball trophy at the bar",
+      "visible_evidence": [
+        "Seven people pose behind a bar with a baseball bat and a large silver trophy made of slender poles and small flags.",
+        "The background contains stonework, liquor shelves, brass light fixtures, and a chalkboard with partially readable drink specials.",
+        "The wall tag reads 70; the trophy inscription and championship year are not readable."
+      ],
+      "draft_history": "Seven people gather behind the bar around a silver, flag-ring trophy, with a baseball bat angled toward its base. The photograph records an occasion important enough for a posed group picture, and its shelves, stonework, and light fixtures provide useful clues for confirming the room. The trophy's engraved base is not readable in this copy, so the championship, date, visitors, and whether this is an original or a replica remain unverified.\n\nContext: The Commissioner's Trophy is awarded to World Series winners; its flags represent Major League Baseball's teams.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Who brought the trophy, and which team and championship year did it represent?",
+        "Was this a scheduled trophy visit, a private gathering, or a replica display?",
+        "Who are the seven people, and when was the photograph taken?"
+      ],
+      "sources": [
+        "https://www.mlb.com/news/world-series-trophy-profile/c-155729034"
+      ],
+      "research_notes": "Targeted searches did not establish a River Ranch trophy-tour date. The team and championship year remain unverified.",
+      "tag": "70",
+      "image": "frames/f70.webp",
+      "source_assets": [
+        "history-wall/public/frames/f70.webp"
+      ]
+    },
+    {
+      "id": "u-lodge-river",
+      "title": "Deer Park Lodge in the Calhoun era",
+      "visible_evidence": [
+        "A riverside lodge and tall conifers appear beyond a rocky bank and dark water.",
+        "The caption identifies DEER PARK LODGE and ALLAN CALHOUN – OWNER.",
+        "The date on the caption appears to read 1959 in the upper-right background of original 1000001430.jpg; this reading remains provisional."
+      ],
+      "draft_history": "The caption identifies the riverside property as Deer Park Lodge and names Allan Calhoun as owner. The buildings stand close to the rocky bank, with conifers framing the view across the water. This makes the photograph especially useful for comparing the property's earlier layout with the lodge today.\n\nA retrospective family account supplies a firm historical anchor: in a March 13, 2019 letter preserved in the local public-service district's board packet, Mark Calhoun wrote that his family owned Deer Park Lodge, now River Ranch, from 1957 to 1964. That period supports the caption's Calhoun connection. The photograph's caption appears to give 1959, but the numeral should be checked before assigning an exact photograph date.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Can the caption year be confirmed as 1959 from an existing copy or someone who knows the label?",
+        "Which visible buildings survived into River Ranch, and which were altered or removed?",
+        "Who took or donated this photograph?"
+      ],
+      "sources": [
+        "https://ovpsd.org/wp-content/uploads/2024/06/2019-03-21_BoardPacket-SpecialMeeting.pdf"
+      ],
+      "research_notes": "Primary retrospective account: Mark Calhoun letter dated March 13, 2019, PDF page 8. Full PDF and text verified locally by parent; no claim that the letter dates this exact image. Additional source image: history-wall/source/retakes/2026-11-12/1000001430.jpg, top-right caption.",
+      "tag": null,
+      "image": "frames/u-lodge-river.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-lodge-river.webp"
+      ]
+    },
+    {
+      "id": "u-letter",
+      "title": "Governor Pat Brown’s thank-you to Gardner Mein",
+      "visible_evidence": [
+        "The letter is dated March 12, 1965 on State of California Governor’s Office stationery.",
+        "It is addressed to Mr. Gardner Mein, River Ranch Restaurant, Tahoe City, California.",
+        "The writer thanks Gardner on behalf of Bernice and himself for dinner at River Ranch on Friday night, says it began their weekend well, and hopes to meet again.",
+        "The typed signature line reads EDMUND G. BROWN, Governor."
+      ],
+      "draft_history": "A letter dated March 12, 1965 records a River Ranch dinner enjoyed by Governor Edmund G. “Pat” Brown and his wife, Bernice. Addressing Gardner Mein by his first name, Brown thanks him for the Friday-night meal, says it gave their weekend a good start, and expresses the hope that they will meet again. This is direct evidence of the restaurant hosting the couple during Brown’s governorship.\n\nThe California State Library confirms that Pat Brown served as governor from 1959 to 1967 and that his wife was Bernice Layne. The letter gives the wall a firm date and a named connection to California public life. It does not name the menu, other guests, or the reason for the Tahoe trip, and the dinner’s exact calendar date should not be inferred from the word Friday alone.",
+      "known_date": "1965-03-12 (letter date)",
+      "identification_status": "documented",
+      "open_questions": [
+        "Was this visit recorded in a guest book, reservation book, or local newspaper?",
+        "What was served, and who else attended the dinner?",
+        "How was the letter preserved and added to the wall?"
+      ],
+      "sources": [
+        "https://www.governors.library.ca.gov/32-Pbrown.html"
+      ],
+      "tag": null,
+      "image": "frames/u-letter.webp",
+      "source_assets": [
+        "history-wall/source/closeups/u-letter.jpg",
+        "history-wall/source/retakes/2026-11-12/1000001421.jpg"
+      ]
+    },
+    {
+      "id": "f41",
+      "title": "Six people in formal dress",
+      "visible_evidence": [
+        "Six people stand shoulder to shoulder in dark dinner jackets and bow ties.",
+        "Several hold drinking glasses or wear flowers on their lapels.",
+        "A patterned wall or large hanging forms the backdrop; tag 41 is visible."
+      ],
+      "draft_history": "Six people pose together in dinner jackets, some holding drinks and wearing flowers. Their close grouping and formal clothing establish a social occasion, but the image carries no readable names, event title, or date. Nothing in the photograph alone distinguishes a wedding from a banquet, club gathering, or another celebration.\n\nThe location and purpose of the portrait remain the important missing history. Identifying one participant or the backdrop could connect the picture to an invitation, guest list, or dated album without relying on resemblance.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What was the occasion, and where was the portrait taken?",
+        "Who are the six people from left to right?",
+        "Is there a dated invitation, album, or original caption associated with it?"
+      ],
+      "sources": [],
+      "tag": "41",
+      "image": "frames/f41.webp",
+      "source_assets": [
+        "history-wall/public/frames/f41.webp"
+      ]
+    },
+    {
+      "id": "f17",
+      "title": "A group around an open-top car",
+      "visible_evidence": [
+        "Several people pose in and beside an open-top automobile with large whitewall tires.",
+        "A striped awning is visible behind the car, with cases or bags in the foreground.",
+        "The frame is tagged 17; no event caption or date is legible."
+      ],
+      "draft_history": "This group photograph centers on an open-top car with conspicuous whitewall tires, parked beneath a striped awning. People sit inside, lean against, or stand beside the vehicle; cases or bags lie near the front of the scene. These details preserve an outing or staged group pose whose purpose has not yet been identified.\n\nThe car is a useful research lead, but its appearance cannot date the photograph: an older vehicle may have been photographed decades after manufacture. A location, owner, or event name is needed before connecting the scene to a rally, celebration, or lodge tradition.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Whose car was this, and is its make and model known?",
+        "Where was the striped awning, and what gathering brought the group there?",
+        "Who is pictured, and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": "17",
+      "image": "frames/f17.webp",
+      "source_assets": [
+        "history-wall/public/frames/f17.webp"
+      ]
+    },
+    {
+      "id": "u-boncafe",
+      "title": "Bon Cafe profiles River Ranch’s early resort years",
+      "visible_evidence": [
+        "The page is headed BON CAFE, River Ranch, TAHOE CITY, CALIFORNIA.",
+        "The text names Gardner W. Mein and resident manager Alan Brenner; it describes dining, wine, summer river activities, and skiing nearby.",
+        "It explicitly refers to TIME coverage in July 1965.",
+        "It gives a Hot Damn drink recipe using powdered milk, hot water, tequila, dark crème de cacao, and nutmeg.",
+        "The photograph shows the stone-walled bar and large patterned pendant lamps."
+      ],
+      "draft_history": "This dining-and-travel profile describes River Ranch as a relatively new resort on the Truckee River. Its account names Gardner W. Mein and resident manager Alan Brenner, praises the food and wine, and connects the restaurant with seasonal activities: skiing in winter, and kayaking, fishing, and a River Rat Race in summer. The accompanying bar photograph records the stonework and patterned hanging lamps. A printed recipe for the Hot Damn drink supplies a particularly concrete piece of the restaurant’s beverage history.\n\nThe article’s reference to TIME can now be checked against the original magazine: “Recreation: Splendors at Home,” dated July 2, 1965, includes River Ranch and describes it as a new destination popular with young San Francisco couples. This establishes that the Bon Cafe page was written after that coverage, but it does not establish the page’s own issue date. Its account of earlier Deer Park buildings needs reconciliation with other lodge histories before being used as a settled construction timeline.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Which magazine and issue supplied the Bon Cafe page?",
+        "Was Hot Damn a house recipe, and who introduced it?",
+        "Which surviving menus or business records date the Mein/Brenner period?"
+      ],
+      "sources": [
+        "https://content.time.com/time/subscriber/article/0,33009,833860-7,00.html"
+      ],
+      "date_evidence": "The text cites TIME in July 1965; the clipping’s own date remains unverified.",
+      "research_caution": "The clipping says Deer Park Inn 1888 and a1930s replacement; other modern histories conflict. TIME itself mislocates River Ranch south of the lake; do not repeat that error.",
+      "tag": null,
+      "image": "frames/u-boncafe.webp",
+      "source_assets": [
+        "history-wall/source/closeups/u-boncafe.jpg"
+      ]
+    },
+    {
+      "id": "f2",
+      "title": "An outdoor meal beside a wooded slope",
+      "visible_evidence": [
+        "A black-and-white photograph shows people seated at outdoor benches and tables covered with checked cloths.",
+        "Other people stand behind them against a rocky, wooded slope.",
+        "The wall tag is 2; no names, place caption, or date are readable."
+      ],
+      "draft_history": "People gather around checked tablecloths for an outdoor meal, with others standing nearby and a rocky, wooded slope behind them. The benches and grouped tables give a clear record of the setting and how the gathering was arranged. The photograph does not identify the participants or establish whether this was a private picnic, a camp meal, or a lodge function.\n\nIts value to the Wall's history will depend on identifying the location and the group. A connection to Deer Park Lodge or River Ranch should come from an account or caption, rather than from the photograph's presence on the wall alone.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Where were these tables, and were they part of the lodge grounds?",
+        "Was the group attending a camp, a private outing, or a lodge event?",
+        "Does anyone know a participant or approximate year?"
+      ],
+      "sources": [],
+      "tag": "2",
+      "image": "frames/f2.webp",
+      "source_assets": [
+        "history-wall/public/frames/f2.webp"
+      ]
+    },
+    {
+      "id": "f43",
+      "title": "Skiers gathering for a group picture",
+      "visible_evidence": [
+        "A group stands together on snow, holding ski poles with skis at their feet.",
+        "Conifers and a distant mountain ridge appear behind them.",
+        "Tag 43 is visible; no resort sign, names, or date are readable."
+      ],
+      "draft_history": "A group of skiers bunches together on a snowy slope, their poles and skis crossing in the foreground. Trees and a distant mountain ridge establish the outdoor setting, but there is no readable sign identifying the ski area. The photograph records a shared ski day; it does not establish that this was a racing team, ski school, or employee outing.\n\nA participant's recollection could distinguish a casual group portrait from an organized event. The ridge, tree line, and clothing may help compare this image with other dated photographs once a location has been supplied.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Which ski area and run or meeting place are shown?",
+        "Were these friends, coworkers, a ski club, or a class?",
+        "Who is pictured, and what year was this ski day?"
+      ],
+      "sources": [],
+      "tag": "43",
+      "image": "frames/f43.webp",
+      "source_assets": [
+        "history-wall/public/frames/f43.webp"
+      ]
+    },
+    {
+      "id": "f19",
+      "title": "A snow plume on a mountain slope",
+      "visible_evidence": [
+        "One person stands in the lower foreground beneath a steep snow-covered slope.",
+        "A large plume of snow or airborne powder rises farther up the slope.",
+        "Equipment or a bag lies near the foreground figure; tag 19 is visible."
+      ],
+      "draft_history": "A person watches from the lower slope while a broad plume rises above the snow higher on the mountain. The surrounding terrain and the position of the observer make the photograph visually striking, but there is no readable caption explaining what caused the plume. It could record avalanche-control work, snow movement, or another operation; the image alone does not settle that question.\n\nThe exact mountain, date, and activity must be established before naming an incident or attaching the photograph to a particular avalanche. The observer's identity and any companion photographs would be especially helpful.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What caused the plume, and was this part of a documented mountain operation?",
+        "Which mountain or run is shown?",
+        "Who is the foreground observer, and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": "19",
+      "image": "frames/f19.webp",
+      "source_assets": [
+        "history-wall/public/frames/f19.webp"
+      ]
+    },
+    {
+      "id": "f18",
+      "title": "Ski equipment beside a helicopter",
+      "visible_evidence": [
+        "A small group poses in snow beside a red-and-white helicopter.",
+        "Skis are held upright, and several participants wear similar dark outerwear.",
+        "The frame tag reads 18; no operator name, registration, location, or date is readable."
+      ],
+      "draft_history": "A group poses beside a red-and-white helicopter in a snowy, wooded setting, with skis held upright alongside the aircraft. The picture establishes a connection between the group, ski equipment, and the helicopter, but it does not show whether this was a recreational trip, a work assignment, a demonstration, or a rescue-related outing.\n\nThe aircraft and any original caption could provide a route to a dated record. A helicopter operator or location would be more reliable evidence than trying to identify the participants or event from their clothing.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Where was the helicopter operating, and what was the purpose of this outing?",
+        "Is the operator or aircraft registration known from an original print?",
+        "Who were the participants, and when was this taken?"
+      ],
+      "sources": [],
+      "tag": "18",
+      "image": "frames/f18.webp",
+      "source_assets": [
+        "history-wall/public/frames/f18.webp"
+      ]
+    },
+    {
+      "id": "f13",
+      "title": "At the river’s edge",
+      "visible_evidence": [
+        "A person stands in shallow water beside an exposed gravel bank.",
+        "Lodge-like buildings sit across the water among conifers.",
+        "The frame tag is 13; the person and date are not identified by readable text."
+      ],
+      "draft_history": "A person stands in the shallows beside an exposed gravel bank, with buildings and conifers on the opposite side of the river. The photograph preserves the relationship between the water, the bank, and the built property, making it useful for comparing the river frontage over time. The activity of the foreground person is not clear enough here to establish a fishing story or identify equipment.\n\nThe buildings may help confirm the viewpoint and period, but those comparisons have not yet been made against dated plans or photographs. The identity of the person and the reason this view was selected for the Wall remain open.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Is this the river immediately beside Deer Park Lodge or River Ranch, and which way is the camera facing?",
+        "Who is in the water, and what were they doing?",
+        "What year was this taken, and were the opposite-bank buildings later changed?"
+      ],
+      "sources": [],
+      "tag": "13",
+      "image": "frames/f13.webp",
+      "source_assets": [
+        "history-wall/public/frames/f13.webp"
+      ]
+    },
+    {
+      "id": "u-bear",
+      "title": "Visitors beside a large bear figure",
+      "visible_evidence": [
+        "Several people pose beside a large light-colored bear-shaped figure.",
+        "Two people are positioned low in the foreground, with another person farther back.",
+        "A small caption at the upper left is present but too blurred to transcribe reliably."
+      ],
+      "draft_history": "Several people pose around a large bear-shaped figure, with two in the foreground and another behind. A small caption survives in the upper-left corner, making this one of the Wall's better candidates for recovering an existing identification. Its wording is not readable enough in the available copy to use as evidence.\n\nThe material and purpose of the bear figure are also uncertain: it should not yet be described as a costume, a permanent sculpture, or an entry in a snow-sculpture event. The original caption or a recollection of the setting could resolve both the event and the people involved.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What does the small caption at upper left say?",
+        "Where was the bear figure, and what was it made or used for?",
+        "Who is pictured, and what was the occasion?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-bear.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-bear.webp"
+      ]
+    },
+    {
+      "id": "f44",
+      "title": "A large gathering beneath the eaves",
+      "visible_evidence": [
+        "A large group poses in several rows outside a building under a broad roof overhang.",
+        "Many people wear light shirts, ties, or dark vests; clothing is varied.",
+        "The frame tag is 44; no event label or date is legible."
+      ],
+      "draft_history": "A large group fills several rows beneath a building's roof overhang. The combination of ties, vests, and informal poses suggests an arranged group photograph, but clothing alone cannot establish whether the people were employees, guests, a club, or attendees at a celebration. The picture contains no readable event label.\n\nThe building entrance and arrangement of the group could help match it to an annual photograph or a dated album. If this was a staff gathering, a roster or a former participant's account would provide the basis for a reliable history of the occasion.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What gathering brought this group together?",
+        "Was the photograph taken at River Ranch, and can the building entrance be matched?",
+        "Is there a year, roster, or original annotated copy?"
+      ],
+      "sources": [],
+      "tag": "44",
+      "image": "frames/f44.webp",
+      "source_assets": [
+        "history-wall/public/frames/f44.webp"
+      ]
+    },
+    {
+      "id": "u-subtlety",
+      "title": "Leave Subtlety at Home: a fashion feature",
+      "visible_evidence": [
+        "The headline reads Leave Subtlety at Home.",
+        "Three fashion photographs show brightly colored clothing; the large image features a reclining model in a red or orange outfit beside a stone wall and wine racks.",
+        "Patterned globe pendant lamps match distinctive fixtures visible in other River Ranch bar photographs.",
+        "The footer appears to name the San Francisco Sunday Chronicle; the date and byline are not reliably legible."
+      ],
+      "draft_history": "This illustrated fashion feature brings the wall’s restaurant history into contact with clothing and style. Its headline, Leave Subtlety at Home, introduces conspicuously colorful outfits arranged in three photographs. In the largest, a model reclines beside wine racks beneath patterned globe lamps; the stonework and fixtures offer a strong visual link to the River Ranch bar shown in the Bon Cafe profile and other wall photographs.\n\nThe venue attribution should be confirmed from the article text or original issue before the feature is described as a documented River Ranch fashion shoot. The visible copy does not yet establish a publication date, identify the models, or reliably resolve the byline and photo credit. Those are research questions, not reasons to invent a period or celebrity connection.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Can an existing scrapbook or clipping file identify the issue date and credits?",
+        "Does the article explicitly name River Ranch as the location?",
+        "Was the shoot part of a local fashion event or a newspaper commission?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-subtlety.webp",
+      "source_assets": [
+        "history-wall/source/closeups/u-subtlety.jpg"
+      ]
+    },
+    {
+      "id": "u-riverhouse",
+      "title": "Buildings at the water’s edge",
+      "visible_evidence": [
+        "Water fills the foreground up to the edge of small riverside structures.",
+        "The central building has an open or recessed front beneath an overhanging roof.",
+        "Trees and another building are visible behind; no readable explanatory caption is present."
+      ],
+      "draft_history": "Water occupies nearly the whole foreground of this riverside view, reaching close to a small structure and nearby buildings. The scene may record unusually high water, but no readable caption establishes the water level, date, or reason for taking the photograph. It should not be attached to a named flood without another record.\n\nThe shapes of the small front structure and the building behind it are potentially useful for matching the view to property records. Establishing which part of the grounds is shown would allow a meaningful comparison with the river frontage in No. 13 and the Deer Park Lodge view.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Which buildings and section of the riverbank are shown?",
+        "Was this a flood photograph, and if so which documented event?",
+        "Who supplied the image, and is an original date or caption known?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-riverhouse.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-riverhouse.webp"
+      ]
+    },
+    {
+      "id": "u-sepia-bar",
+      "title": "The bar beneath the red globe lights",
+      "visible_evidence": [
+        "Two people sit at the curved bar, with a third person in a striped shirt behind it.",
+        "Large red-and-yellow globe lights hang above the bar.",
+        "Stone walls, bottle shelves, a central stone support, and wooden stools are visible; the tag is unreadable."
+      ],
+      "draft_history": "Two people sit at a curved bar while another stands behind it. Red-and-yellow globe lights, stonework, bottle shelves, and wooden stools make the interior particularly distinctive. The close-up preserves details of the room's decoration and arrangement that can be compared with the bar shown in the Bon Café and Leave Subtlety at Home clippings.\n\nThat visual relationship is useful architectural evidence, but it does not identify the people or date this photograph. An account of when the globe lights were installed or removed could narrow the period without assigning identities from faces.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two seated people and the person behind the bar?",
+        "When did the bar have these globe lights and this stool arrangement?",
+        "Was the photograph taken for a publication, an event, or a personal album?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-sepia-bar.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-sepia-bar.webp"
+      ]
+    },
+    {
+      "id": "u-trophy",
+      "title": "Holding a tall award",
+      "visible_evidence": [
+        "A person in a checked short-sleeved shirt holds a tall multi-column trophy.",
+        "A small figure stands on the trophy’s central upper section.",
+        "No award title or date is readable on the trophy; the dark tag is not securely transcribed."
+      ],
+      "draft_history": "A person holds a tall trophy built from several columns and topped with a small figure. The pose documents an award or a moment of presentation, but the trophy's inscription cannot be read in this copy. Its shape does not reliably establish a sport, competition, or year.\n\nRecovering the award's name would turn this from an unidentified portrait into an event history. A trophy inscription, program, or recollection from the person pictured is needed before describing the achievement or its connection to River Ranch.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What competition or honor was this trophy for?",
+        "Who is holding it, and was the person a winner, organizer, or presenter?",
+        "What year and location belong to the photograph?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-trophy.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-trophy.webp"
+      ]
+    },
+    {
+      "id": "u-dam",
+      "title": "A low river drop in winter",
+      "visible_evidence": [
+        "A broad band of water spills over a low ledge across the foreground.",
+        "Snow covers the banks, with wooden rails or a bridge-like structure behind the drop.",
+        "Conifers fill the background; no place name or date is readable."
+      ],
+      "draft_history": "This winter view shows water passing over a low drop, with snow-covered banks, trees, and timber rails or a bridge-like structure beyond. The photograph records a built feature along a watercourse, but neither its engineering purpose nor its location is identified by readable text.\n\nA location match could establish whether this was a dam, a weir, a natural drop beside a crossing, or another river feature. The image should not be labeled as Lake Tahoe Dam or a particular historical structure until the visible layout has been compared with a reliable record.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Where was this photographed, and what was the low river structure called?",
+        "Were the timber rails part of a footbridge, road crossing, or control structure?",
+        "When was the photograph taken, and does the feature still exist?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-dam.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-dam.webp"
+      ]
+    },
+    {
+      "id": "f4",
+      "title": "River Ranch Bill of Fare",
+      "visible_evidence": [
+        "The document is titled River Ranch Bill of Fare.",
+        "Its main sections read From our Char-Broiler and River Ranch Entrees.",
+        "Several lines of dishes, prices, and meal accompaniments are visible, but most are too blurred for reliable full transcription.",
+        "The physical frame tag reads4."
+      ],
+      "draft_history": "No. 4 preserves another version of the restaurant’s menu under the title River Ranch Bill of Fare. The division between char-broiled dishes and house entrées documents how the dining room organized its offerings; the meal-accompaniment and beverage lines below would add useful detail once transcribed from an existing original.\n\nThe date, complete dishes, and prices cannot be read confidently from this copy. It should therefore be treated as a distinct menu artifact rather than silently assigned to the same year as the separate Welcome to the River Ranch menu. Comparing dated copies could reveal changes in the kitchen’s range and pricing.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "What year or ownership period does this Bill of Fare belong to?",
+        "Is a readable copy retained with the restaurant’s historical menus?",
+        "Which dishes on it were particular River Ranch specialties?"
+      ],
+      "sources": [],
+      "tag": "4",
+      "image": "frames/f4.webp",
+      "source_assets": [
+        "history-wall/public/frames/f4.webp"
+      ]
+    },
+    {
+      "id": "u-dogs",
+      "title": "Dogs gathered in the snow",
+      "visible_evidence": [
+        "Several dogs stand together on snow in front of a large light-colored structure or vehicle.",
+        "One darker dog stands near the center of the group.",
+        "No event caption, owner’s name, or readable date appears in the image."
+      ],
+      "draft_history": "A group of dogs stands together in the snow, with a darker animal near the middle and a large pale structure or vehicle behind them. The available image preserves the gathering but does not clearly show enough equipment to establish a sled team, race, kennel, or organized exhibition.\n\nThe dogs may connect to a particular person or winter event remembered by the lodge community. A location, owner's name, or companion photograph showing harnesses and equipment would allow that possibility to be tested without assigning an unsupported story.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Whose dogs were these, and why were they together?",
+        "Where was the photograph taken?",
+        "Was this part of a sled-dog activity, another winter event, or a personal gathering?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-dogs.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-dogs.webp"
+      ]
+    },
+    {
+      "id": "f1",
+      "title": "A toast in a stone-walled room",
+      "visible_evidence": [
+        "Three people are gathered around a table in a black-and-white photograph.",
+        "Two people in the foreground extend drinking glasses toward one another while a third looks on.",
+        "Stonework and diagonal wine racks appear behind them; tag 1 is readable."
+      ],
+      "draft_history": "Three people gather at a table in a stone-walled room, with the two foreground figures bringing their glasses together. Diagonal wine racks and the masonry behind the group are distinctive clues to the interior. The image records a toast, but it contains no readable names or statement of the occasion.\n\nThe setting can be compared with River Ranch's other interior photographs and printed features. It would be premature to call this an opening-night toast, a change of ownership, or a visit by a public figure without a caption or independent account.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the three people, and what was being celebrated?",
+        "Was this room at River Ranch, and which part of the building was it?",
+        "Is there a date or original caption for the photograph?"
+      ],
+      "sources": [],
+      "tag": "1",
+      "image": "frames/f1.webp",
+      "source_assets": [
+        "history-wall/public/frames/f1.webp"
+      ]
+    },
+    {
+      "id": "f55",
+      "title": "An outdoor portrait with a dog",
+      "visible_evidence": [
+        "A seated person wears a dark button-front shirt and jeans, with a dog close to their lap.",
+        "Branches and foliage fill the background.",
+        "Tag 55 is visible; no signature, date, or identifying caption is legible."
+      ],
+      "draft_history": "A seated person rests their hands near a dog, with branches and foliage behind them. The close framing gives this image the character of a personal outdoor portrait. The available print does not identify either the person or the dog, nor does it establish where the picture was taken.\n\nA name supplied by someone who knows the photograph would allow research into the person's connection to the lodge. Until then, resemblance to any familiar figure is not evidence of identity.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is pictured, and what was their connection to River Ranch?",
+        "Was the dog theirs, and is its name remembered?",
+        "Where and when was the portrait made?"
+      ],
+      "sources": [],
+      "tag": "55",
+      "image": "frames/f55.webp",
+      "source_assets": [
+        "history-wall/public/frames/f55.webp"
+      ]
+    },
+    {
+      "id": "u-snow-village",
+      "title": "Squaw Valley Sport Shop in the snow",
+      "visible_evidence": [
+        "The storefront sign reads Squaw Valley Sport Shop.",
+        "The black-and-white scene shows a deep-snow pedestrian area, globe-topped lamps, trees, storefronts, and part of a vehicle.",
+        "The physical frame tag is15."
+      ],
+      "draft_history": "This winter scene can be tied to a named business because the Squaw Valley Sport Shop sign is legible. Snow piles around the storefronts and the line of globe lamps, while a partly visible vehicle gives the composition a street-level, everyday character. The photograph preserves the older resort-village streetscape, although its exact date and photographer remain unknown.\n\nAs contextual business history, Tahoe Rental Company’s account of Willard’s Sport Shop says the Willard family opened the Squaw Valley Sport Shop in 1978 and later continued in Tahoe City after the original shop closed. That history is a research lead for matching this particular building and period; it is not, by itself, proof that the photograph dates to 1978 or that the name was never used earlier.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Which year and part of the village does this view show?",
+        "Who photographed or donated the print?",
+        "Can a shop archive identify the building, lamps, and neighboring storefronts?"
+      ],
+      "sources": [
+        "https://www.tahoerentalcompany.com/lake-tahoe-things-to-do/willards-sport-shop"
+      ],
+      "tag": "15",
+      "image": "frames/u-snow-village.webp",
+      "source_assets": [
+        "history-wall/source/closeups/u-snow-village.jpg"
+      ]
+    },
+    {
+      "id": "u-group-46",
+      "title": "A small group indoors",
+      "visible_evidence": [
+        "A group poses in two loosely arranged rows inside a room.",
+        "A dark background, reddish upper area, and light hanging object are visible.",
+        "The small print is soft; no names, date, or event caption are readable."
+      ],
+      "draft_history": "This small color photograph shows a group gathered indoors, some seated or standing in front of others. The print's softness limits the detail available from the room and from any clothing or objects. It establishes a group portrait but not the event, location, or relationship among the participants.\n\nThe useful next step is to recover the original association: who donated the print, what gathering it commemorates, or whether it belongs to a dated series elsewhere in the Wall collection. The group should not be described as staff or relatives without that information.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What event or gathering does this photograph commemorate?",
+        "Who supplied the print, and can they identify any participant?",
+        "Was it taken inside River Ranch, and in what year?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-group-46.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-group-46.webp"
+      ]
+    },
+    {
+      "id": "u-blacktie-clipping",
+      "title": "Black tie and pearls above Squaw Valley",
+      "visible_evidence": [
+        "The complete headline reads Up the Mountain They Went--in Black Tie and Pearls.",
+        "The newer detail image shows The New York Times masthead and Charlotte Curtis byline.",
+        "A central caption names Alexander C. Cushing and Douglas Dumbrille and describes a gondola journey from Squaw Valley Lodge to High Camp.",
+        "The page includes formal evening clothes and a festival marquee, but its issue date is cropped or unreadable in the supplied images."
+      ],
+      "draft_history": "This New York Times clipping by Charlotte Curtis reports a formal mountain gathering under the headline Up the Mountain They Went--in Black Tie and Pearls. Unlike many of the wall’s uncaptioned group photographs, it supplies names and an activity in print: Alexander C. Cushing accompanies actor Douglass Dumbrille on a gondola ride from Squaw Valley Lodge to High Camp. The combination of evening dress, ski transport, and a film-festival marquee is the story’s distinctive subject.\n\nHistorian Mary Mallory’s account of Dumbrille describes a July 1965 Squaw Valley festival celebrating the actor’s long film career. That provides relevant context for the clipping, but the exact New York Times publication date and complete article still need to be recovered. The clipping’s presence at River Ranch does not establish that this particular party was held at the restaurant.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "What is the clipping’s exact issue date and page number?",
+        "Who saved it, and what was its connection to River Ranch?",
+        "Does an original copy or newspaper archive supply the remaining captions and attendees?"
+      ],
+      "sources": [
+        "https://ladailymirror.com/2014/07/21/mary-mallory-hollywood-heights-douglass-dumbrille-suave-slickster/"
+      ],
+      "date_evidence": "Secondary history places the Dumbrille festival in July 1965; the issue date is not yet verified.",
+      "tag": null,
+      "image": "frames/u-blacktie-clipping.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-blacktie-clipping.webp",
+        "history-wall/source/details/u-blacktie-clipping.jpg"
+      ]
+    },
+    {
+      "id": "u-laughing-56",
+      "title": "A smiling portrait with a lei",
+      "visible_evidence": [
+        "A smiling person wears a colorful lei around their neck.",
+        "A black-and-white patterned object is visible close to one side of their face.",
+        "The close framing reveals little of the setting, and no caption or date is readable."
+      ],
+      "draft_history": "A smiling person fills this portrait, wearing a colorful lei with a black-and-white patterned object beside their face. The photograph captures a playful moment, but the tight crop provides little evidence of the place or occasion. A lei alone does not establish a Hawaiian location or a particular themed event.\n\nThe person's name, the nature of the patterned object, and the event behind the portrait are the missing pieces needed for a fuller history. Those details are likely to come from someone who remembers the photograph rather than a general historical source.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is pictured, and what occasion prompted the portrait?",
+        "What is the black-and-white object beside their face?",
+        "Where and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-laughing-56.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-laughing-56.webp"
+      ]
+    },
+    {
+      "id": "f58",
+      "title": "A portrait beneath a Wharf sign",
+      "visible_evidence": [
+        "One person stands beneath a sign with large red lettering.",
+        "The sign appears to include WOODIES and WHARF, but the intervening wording and smaller line are not securely readable.",
+        "The frame tag is 58; no person’s name or date is legible."
+      ],
+      "draft_history": "A person stands below a large sign whose most legible words appear to be Woodies and Wharf. The lettering offers a possible route to identifying the location or event, but the available copy does not clearly establish the full wording or a date.\n\nSearches found both a Woodies on the Wharf car gathering in Santa Cruz and similarly named waterfront businesses, so the partial sign is not enough to select one. The portrait's relationship to River Ranch and the identity of the person remain unverified.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What does the complete sign say, including the smaller line?",
+        "Was this a car gathering, a restaurant visit, or another occasion?",
+        "Who is pictured, and why was this portrait included on the Wall?"
+      ],
+      "sources": [
+        "https://www.santacruzwoodies.com/25th-annual-woodies-on-the-wharf/",
+        "https://www.woodiescafe.net/about-woodies-cafe/"
+      ],
+      "research_notes": "Sources are competing research leads only, not photo identifications. Do not assign Santa Cruz, Newport Beach, or 2019 as fact from these results.",
+      "tag": "58",
+      "image": "frames/f58.webp",
+      "source_assets": [
+        "history-wall/public/frames/f58.webp"
+      ]
+    },
+    {
+      "id": "f71",
+      "title": "a skier in flight",
+      "visible_evidence": [
+        "A skier is airborne with the skis crossing diagonally across the image.",
+        "Handwriting at the top appears to contain a name and a four-digit year, but neither is reliably resolved in this view.",
+        "The frame tag reads71."
+      ],
+      "draft_history": "The photograph freezes a skier in the air, with the skis forming strong diagonals across the foreground. It also preserves handwritten information across the top edge, potentially the most useful clue to the skier and date.\n\nThat inscription is not clear enough here for a dependable transcription. Until it is checked against a caption list or a better existing copy, the image should not be assigned to a named skier, a particular competition, or a year. The distinction between the date of the photograph and a later signing date would also matter if the writing proves to be a dedication.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What exactly does the handwriting across the top say?",
+        "Is this a competition photograph, a publicity print, or a personal ski-day picture?",
+        "Which slope or ski area is shown?"
+      ],
+      "sources": [],
+      "tag": "71",
+      "image": "frames/f71.webp",
+      "source_assets": [
+        "history-wall/public/frames/f71.webp"
+      ]
+    },
+    {
+      "id": "f72",
+      "title": "two people on a snowy hillside",
+      "visible_evidence": [
+        "Two people stand outdoors against a snowy, tree-covered hillside.",
+        "The nearer person wears a blue jacket, cap, sunglasses, and gloves; the other wears dark outerwear and a patterned head covering.",
+        "One holds a beverage can; the physical frame tag reads72."
+      ],
+      "draft_history": "No. 72 is an informal winter portrait: two people pause on a snowy hillside with trees and ski terrain behind them. Their relaxed pose and the beverage can record a social moment rather than a captioned competition or formal event.\n\nThe supplied print does not name either person or the location. A local recollection could establish whether this was a day off, a gathering connected with the lodge, or a different outing. Clothing and landscape alone cannot establish their jobs, identities, or the year.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people, and how were they connected to River Ranch?",
+        "Where and approximately when was the photograph taken?",
+        "Who took or contributed this print?"
+      ],
+      "sources": [],
+      "tag": "72",
+      "image": "frames/f72.webp",
+      "source_assets": [
+        "history-wall/source/closeups/72.jpg"
+      ]
+    },
+    {
+      "id": "f54",
+      "title": "a dedicated baseball batting photograph",
+      "visible_evidence": [
+        "A baseball player is photographed swinging a bat in a yellow uniform top and white trousers.",
+        "A handwritten dedication and signature run across the lower half of the image.",
+        "The signature may read Joe Morgan, but that reading needs confirmation; the recipients’ full names are not securely legible.",
+        "The physical frame tag reads54."
+      ],
+      "draft_history": "This batting photograph has a handwritten dedication across the lower part of the print. Its personal message is the best route to the story: it could establish who signed the picture and who received it. A possible reading of the signature is retained in the research notes, pending confirmation.\n\nThe photograph itself records the batting action and the personalized print. The recipients, signing occasion, and route into the River Ranch collection remain to be established from the inscription or a firsthand account.",
+      "known_date": null,
+      "identification_status": "partially_documented",
+      "open_questions": [
+        "Can the autograph and complete dedication be confirmed from an existing caption or firsthand account?",
+        "Who were the recipients named in the dedication?",
+        "Was the print given during a River Ranch visit or acquired elsewhere?"
+      ],
+      "sources": [
+        "https://baseballhall.org/hall-of-famers/morgan-joe"
+      ],
+      "research_caution": "Do not publish Joe Morgan as the confirmed subject until the inscription is resolved; no face-based identification was made.",
+      "tag": "54",
+      "image": "frames/f54.webp",
+      "source_assets": [
+        "history-wall/source/closeups/54.jpg",
+        "history-wall/source/retakes/2026-11-12/1000001415.jpg"
+      ],
+      "research_lead": {
+        "name": "Joe Morgan",
+        "basis": "Possible reading of the handwritten signature; not a face-based identification.",
+        "status": "unconfirmed",
+        "source": "https://baseballhall.org/hall-of-famers/morgan-joe"
+      }
+    },
+    {
+      "id": "u-skier-14",
+      "title": "an inverted skier",
+      "visible_evidence": [
+        "A skier is caught inverted above or very close to a snow surface, with skis overhead and poles extending outward.",
+        "Evergreen trees stand behind the action.",
+        "The physical tag is14; no name or date caption is visible."
+      ],
+      "draft_history": "The frame records an inverted moment on skis: the skier’s body is low in the composition, skis arc overhead, and the poles extend outward against a snowy slope and trees. It is a striking action image, but a single still does not establish whether this was an intentional aerial maneuver or a fall.\n\nNo readable caption supplies the skier, photographer, ski area, or date. Those details are needed before attaching a biography or explaining the event. For now, the physical tag confirms this as No. 14 and keeps the image connected to future local identifications.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is the skier, and who made the photograph?",
+        "Was this an intentional trick or a fall?",
+        "Which ski area and approximate year does it show?"
+      ],
+      "sources": [],
+      "tag": "14",
+      "image": "frames/u-skier-14.webp",
+      "source_assets": [
+        "history-wall/source/closeups/u-skier-14.jpg"
+      ]
+    },
+    {
+      "id": "f59",
+      "title": "a signed open-wheel racing print",
+      "visible_evidence": [
+        "The photograph shows a red-and-white open-wheel race car on a paved circuit.",
+        "A handwritten dedication or signature crosses the top of the print.",
+        "Advertising boards are visible in the background; the frame tag reads59."
+      ],
+      "draft_history": "This motorsport print shows an open-wheel racing car negotiating a paved circuit, with advertising boards beyond the track. The handwritten message across the top indicates that the print was personalized, making it another potential record of a relationship between a sportsperson and the people who assembled the wall.\n\nThe signature, car number, circuit, and race date are not reliably resolved in this copy. It would be premature to label the driver or series from the car’s colors. A confirmed reading of the autograph or a record of who donated the print would provide a much stronger starting point.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Whose autograph and dedication are on the print?",
+        "What car number, circuit, and event are shown?",
+        "Who received or donated this signed photograph?"
+      ],
+      "sources": [],
+      "tag": "59",
+      "image": "frames/f59.webp",
+      "source_assets": [
+        "history-wall/public/frames/f59.webp"
+      ]
+    },
+    {
+      "id": "u-couple-23",
+      "title": "two people at a gathering",
+      "visible_evidence": [
+        "Two people pose close together, one in a light top and the other in a patterned shirt.",
+        "Other people are visible in the background.",
+        "The corner tag appears to read23."
+      ],
+      "draft_history": "This close portrait records two people posing together during a larger gathering. One wears a light-colored top and the other a patterned shirt; the background includes other attendees but no readable sign or event caption.\n\nTheir relationship, names, and connection to River Ranch are not documented in the supplied image. It should not be described as a wedding, anniversary, or reunion simply because of the pose. A contributor’s caption could turn this intimate social photograph into a specific account of a person or event remembered by the lodge.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people?",
+        "What gathering was this, and where was it held?",
+        "Who added the photograph to the wall and why?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-couple-23.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-couple-23.webp"
+      ]
+    },
+    {
+      "id": "f24",
+      "title": "an outdoor portrait in an eight-sided frame",
+      "visible_evidence": [
+        "Two people pose together outside; one wears a light-colored suit and cap, the other a hat and patterned outfit with a red shoulder bag.",
+        "Trees and outdoor furniture or equipment appear behind them.",
+        "The distinctive eight-sided frame carries tag24."
+      ],
+      "draft_history": "No. 24 presents an outdoor portrait of two people, preserved in a distinctive eight-sided frame. Their clothing, hats, and the red shoulder bag give useful recognition cues for someone who knew them, while the trees and objects behind them may help locate the gathering.\n\nThere is no readable caption giving the names, date, or occasion. The image therefore cannot yet support a story about a wedding, celebration, or particular River Ranch tradition. The frame and tag can be used to match the print against any older wall inventory or family album.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the people, and what occasion brought them together?",
+        "Was the setting River Ranch or another location?",
+        "Does an older wall inventory identify No.24?"
+      ],
+      "sources": [],
+      "tag": "24",
+      "image": "frames/f24.webp",
+      "source_assets": [
+        "history-wall/public/frames/f24.webp"
+      ]
+    },
+    {
+      "id": "f57",
+      "title": "three people above a lake",
+      "visible_evidence": [
+        "Three people wearing sunglasses pose outdoors.",
+        "The person in the center wears a red sleeveless top.",
+        "A blue lake and mountain landscape are visible behind them.",
+        "The close-up clearly confirms tag57."
+      ],
+      "draft_history": "This photograph records three people together at an elevated viewpoint, with a lake and mountain scenery behind them. The newer close-up preserves their expressions and the setting more clearly and confirms the physical tag as No. 57.\n\nThe lake is not named in the print, and the image does not establish the people’s relationship to each other or to River Ranch. A named viewpoint, date, and identification from someone connected with the photograph would make it possible to describe the outing without guessing from the landscape alone.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the three people?",
+        "Which overlook or viewpoint is this?",
+        "What was the occasion and approximate year?"
+      ],
+      "sources": [],
+      "tag": "57",
+      "image": "frames/f57.webp",
+      "source_assets": [
+        "history-wall/source/closeups/57.jpg"
+      ]
+    },
+    {
+      "id": "f12",
+      "title": "a fish, fly rod, and handwritten record",
+      "visible_evidence": [
+        "A large spotted fish lies beside a fishing rod and round reel.",
+        "A small handwritten card sits above the fish, but its wording is too faint for a dependable transcription.",
+        "The frame tag reads12."
+      ],
+      "draft_history": "This fishing still life preserves a catch alongside the equipment used or displayed with it: a rod and a large round reel. The spotted fish is arranged with a small handwritten card, suggesting that the print was meant to retain information about the catch as well as show its size and appearance.\n\nThe card is the missing key to a fuller history. The current copy does not securely establish the angler, species, waterway, weight, or date. Those details should come from the written record or a firsthand account, rather than being supplied from River Ranch’s proximity to the Truckee River.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What does the handwritten card record?",
+        "Who caught the fish, where, and when?",
+        "Was this a notable personal catch, a record, or a restaurant display?"
+      ],
+      "sources": [],
+      "tag": "12",
+      "image": "frames/f12.webp",
+      "source_assets": [
+        "history-wall/source/closeups/12.jpg"
+      ]
+    },
+    {
+      "id": "f10",
+      "title": "an apron beside an outdoor cooking area",
+      "visible_evidence": [
+        "A person in a white apron stands outdoors with trees behind them.",
+        "A dark cooking surface or large outdoor grill and stacked wood or logs appear to the left.",
+        "The person holds an object at waist height; the physical tag reads10."
+      ],
+      "draft_history": "This photograph centers on a person wearing a white apron beside what appears to be an outdoor cooking area. Trees, wood, and a dark grill or cooking surface place food preparation in an open-air setting, a different view of hospitality from the bar and dining-room portraits elsewhere on the wall.\n\nNo caption identifies the person, site, menu, or event. The apron alone does not establish employment or a particular role at River Ranch. Identifying the occasion and the person’s own account would determine whether the image documents a restaurant cookout, a private gathering, or another event.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is pictured, and what was being prepared?",
+        "Where and when was this outdoor cooking area in use?",
+        "Was this a River Ranch event or a personal photograph?"
+      ],
+      "sources": [],
+      "tag": "10",
+      "image": "frames/f10.webp",
+      "source_assets": [
+        "history-wall/public/frames/f10.webp"
+      ]
+    },
+    {
+      "id": "f74",
+      "title": "a pair posing in an interior doorway",
+      "visible_evidence": [
+        "Two people stand together indoors, one wearing a dark jacket with a bow tie and brightly patterned trousers, the other a teal-colored dress.",
+        "They are positioned in a doorway or passage with a warm-lit interior behind them.",
+        "The frame tag reads74."
+      ],
+      "draft_history": "No. 74 records two people posing in an interior doorway. The combination of a dark jacket and bow tie with patterned trousers is a distinctive detail that may help someone who attended identify the occasion; the companion’s teal dress is another visible recognition cue.\n\nNothing readable in the image establishes an event title, year, location, or names. It should not be labeled as a holiday party, costume night, or wedding until a participant or a dated companion photograph supplies that connection.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who are the two people?",
+        "Was there a named event or theme associated with the patterned trousers?",
+        "Which room and approximate year are shown?"
+      ],
+      "sources": [],
+      "tag": "74",
+      "image": "frames/f74.webp",
+      "source_assets": [
+        "history-wall/public/frames/f74.webp"
+      ]
+    },
+    {
+      "id": "u-group-78",
+      "title": "a group around a large pale figure",
+      "visible_evidence": [
+        "A group of people pose outdoors around a large pale central figure or object.",
+        "A foreground person wears a blue top.",
+        "The central figure is too blurred to determine confidently whether it is a sculpture, costume, or something else.",
+        "The corner tag appears to read78."
+      ],
+      "draft_history": "This group photograph centers on a large pale figure or object, with people gathered closely around it. That central subject appears to be the reason for the photograph, but the surviving wall crop is not sharp enough to determine its nature confidently.\n\nThe event and participants cannot be recovered from the visible image alone. A local account identifying the central object would do more to unlock this story than a generic description of Tahoe celebrations. Until then, the frame should retain an open identification rather than being assigned to a snow-sculpture contest or costume event.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "What is the large central figure or object?",
+        "Who is gathered around it, and what was happening?",
+        "Where and when was the photograph taken?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-group-78.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-group-78.webp"
+      ]
+    },
+    {
+      "id": "u-gray-frame",
+      "title": "A portrait beside the windows",
+      "visible_evidence": [
+        "A person in a blue-and-white patterned shirt is seated or leaning beside a row of windows.",
+        "A dark counter, bench, or railing runs along the windows.",
+        "The print is mounted with a white mat in a gray frame; no readable tag or caption is visible."
+      ],
+      "draft_history": "This small portrait shows a person beside a row of windows, wearing a blue-and-white patterned shirt. The windows and dark surface along them may be useful architectural clues for people familiar with earlier River Ranch interiors.\n\nThe supplied print does not identify the person or room. Their relationship to the lodge, the date, and the reason this portrait was kept all require a local source. A caption from an older album or an account from the person who contributed it would provide the foundation for a meaningful history.",
+      "known_date": null,
+      "identification_status": "needs_local_history",
+      "open_questions": [
+        "Who is pictured?",
+        "Which room or building appears behind them?",
+        "Who contributed this portrait to the wall, and what did it commemorate?"
+      ],
+      "sources": [],
+      "tag": null,
+      "image": "frames/u-gray-frame.webp",
+      "source_assets": [
+        "history-wall/public/frames/u-gray-frame.webp"
+      ]
+    }
+  ]
+}
