@@ -141,6 +141,8 @@ html.fl-motion .dn-round[data-reveal='clip']:not([data-revealed='done']) { trans
 html.fl-motion .dn-round[data-reveal='clip']:not([data-revealed]) { clip-path: circle(0% at 50% 52%); }
 html.fl-motion .dn-round[data-reveal='clip'][data-revealed='in'] { clip-path: circle(78% at 50% 52%); }
 .dn-bar__copy { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 110px); align-items: start; margin-top: clamp(36px, 5vw, 72px); }
+.dn-bar__tender { aspect-ratio: 4 / 3; max-width: 560px; margin: 18px 0 0; }
+.dn-bar__tender img { object-position: 60% 40%; }
 .dn-bar__happy { display: grid; gap: 14px; padding-top: 22px; border-top: 1px solid var(--amber); }
 .dn-bar__happy > * { margin: 0; }
 .dn-bar__happy .fact__num { font-size: clamp(3.2rem, 6vw, 5.6rem); }

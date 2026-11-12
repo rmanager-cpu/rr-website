@@ -29,6 +29,7 @@ export const photos = {
   menuWine: p('menu-red-wine-table', 1800, 1200, 'A River Ranch menu and a bottle of red wine on a set table'),
   roundBar: p('round-bar-log-ceiling', 1200, 800, 'The round bar under its spoked log ceiling'),
   bartender: p('bartender-cocktail', 1614, 1076, 'A bartender holding up a cocktail at the River Ranch bar'),
+  bartenderIrishCoffee: p('bartender-irish-coffee', 704, 533, 'A River Ranch bartender sliding an Irish coffee across the round bar'),
   theWall: p('the-wall-old-photos', 1800, 1200, 'The wall of old River Ranch photographs by the host stand'),
   roomSnowshoes: p('room-snowshoes-on-the-wall', 1800, 1200, 'Old wooden snowshoes and ski poles hung on a guest room wall'),
   roomBearQuilt: p('room-king-bear-quilt-new-floors', 1200, 800, 'A guest room with a bear quilt, a log bed and vintage skis on the wall'),

@@ -243,6 +243,10 @@ export default async function DinePage() {
               <p className="lede" data-reveal>A circle of stools under a wagon-wheel ceiling of timber. Come in off the mountain and thaw.</p>
               <p className="muted" data-reveal data-reveal-delay="120">Johanson Family Wine is the owners’ own label, and we pour it here.</p>
               <p data-reveal data-reveal-delay="200"><Link href="/dine/wine" className="link-arrow">Meet the wine</Link></p>
+              <figure className="frame dn-bar__tender" data-reveal="clip">
+                <Image src={photos.bartenderIrishCoffee.src} alt={photos.bartenderIrishCoffee.alt} fill sizes="(max-width: 860px) 100vw, 560px" />
+                <figcaption>Irish coffee, the round bar way</figcaption>
+              </figure>
             </div>
             <div className="dn-bar__happy" data-reveal data-reveal-delay="150">
               <p className="label label--accent">Happy hour</p>
