@@ -3,7 +3,7 @@ import { listSubmissions } from '@/lib/form-log';
 export const dynamic = 'force-dynamic';
 
 const FORM_NAMES: Record<string, string> = { careers: 'Careers application', 'request-to-play': 'Request to play', 'wedding-date': 'Wedding: ask about a date' };
-const HIDE = new Set(['website', 'attest']);
+const HIDE = new Set(['website', 'attest', '_emailed']);
 
 // Every send of every website form, exactly as typed (site/supabase/no_drops.sql): the ones that were saved,
 // the ones sent back to fix something, and the ones that looked like a bot. Nothing is ever dropped.
@@ -12,7 +12,7 @@ export default async function Submissions() {
   return (
     <>
       <h1>Every submission</h1>
-      <p className="help">Every send of the Careers and Request to play forms, newest first, including ones that were sent back to fix something and ones that looked like a bot. Saved ones also appear under Applications or Band requests. The Wall’s stories arrive by email.</p>
+      <p className="help">Every send of the Careers, Request to play and Weddings “Ask about your date” forms, newest first, including ones that were sent back to fix something and ones that looked like a bot. Saved applications and band requests also appear under Applications or Band requests. Wedding asks live here and are emailed to events@; reply to the couple from that email. The Wall’s stories arrive by email.</p>
       {list.length === 0 && <p className="help">Nothing logged yet.</p>}
       {list.map((s) => (
         <div key={s.id} className="adm-card">
@@ -20,6 +20,8 @@ export default async function Submissions() {
             <h2 style={{ margin: 0 }}>{FORM_NAMES[s.form] ?? s.form}</h2>
             <span>
               {s.maybeBot && <span className="tag" style={{ marginRight: 6, background: '#fde2e2', color: '#a33' }} title={s.maybeBot}>maybe bot</span>}
+              {s.fields._emailed === 'no' && <span className="tag" style={{ marginRight: 6, background: '#fff1cc', color: '#7a5200' }}>not emailed: reply from here</span>}
+              {s.fields._emailed === 'yes' && <span className="tag" style={{ marginRight: 6 }}>emailed to events@</span>}
               <span className="tag">{s.saved ? 'saved' : 'not saved: needed fixing'}</span>
             </span>
           </div>

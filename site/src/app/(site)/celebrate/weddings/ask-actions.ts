@@ -55,7 +55,9 @@ export async function askAboutDate(_prev: AskState, f: FormData): Promise<AskSta
     }
   }
   const ok = 'Thank you. The events team will check the calendar for your date and email you the wedding packet.';
-  const logged = await logSubmission({ form: 'wedding-date', outcome: mailed ? ok : `${ok} (not emailed: staff must reply from the form log)`, saved: mailed, maybeBot, fields });
+  // The log is this request's home in /admin (Every submission). `_emailed` isn't something they typed: it tells
+  // staff whether events@ got it, so one that wasn't emailed can still be answered from here.
+  const logged = await logSubmission({ form: 'wedding-date', outcome: ok, saved: true, maybeBot, fields: { ...fields, _emailed: mailed ? 'yes' : 'no' } });
   if (mailed || logged) return { ok: true, message: ok };
   return { ok: false, message: `That didn’t go through. Please call us at ${business.phone} or email ${business.email.events}.` };
 }
