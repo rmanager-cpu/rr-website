@@ -1,4 +1,4 @@
-import type { CSSProperties, ElementType, ReactNode } from 'react';
+import { Fragment, type CSSProperties, type ElementType, type ReactNode } from 'react';
 
 type Props = {
   /** One entry per visual line. Use <em> inside a line for the italic accent. */
@@ -22,12 +22,17 @@ type Props = {
 export function Lines({ lines, as: Tag = 'h2', className, id, delay, still }: Props) {
   return (
     <Tag className={className} id={id} data-reveal={still ? undefined : 'lines'} data-reveal-delay={delay !== undefined ? String(delay) : undefined}>
+      {/* A plain space between lines: .rl is a block, so it never shows, but without it the heading's text reads
+          "Wake upon the river." to search engines, AI crawlers and screen readers. */}
       {lines.map((line, i) => (
-        <span key={i} className="rl">
-          <span className="rl-i" style={{ '--i': i } as CSSProperties}>
-            {line}
+        <Fragment key={i}>
+          {i > 0 && ' '}
+          <span className="rl">
+            <span className="rl-i" style={{ '--i': i } as CSSProperties}>
+              {line}
+            </span>
           </span>
-        </span>
+        </Fragment>
       ))}
     </Tag>
   );
