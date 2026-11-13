@@ -3,6 +3,7 @@
 import { business } from '@/content/site';
 import { formFields, logSubmission } from '@/lib/form-log';
 import { mailReady, sendStaffMail } from '@/lib/mail';
+import { sendToVenio } from '@/lib/venio-leads';
 
 export type AskState = { ok: boolean; message: string } | null;
 
@@ -10,8 +11,9 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const s = (f: FormData, k: string, max: number) => String(f.get(k) ?? '').trim().slice(0, max);
 
 // "Ask about your date" on /celebrate/weddings: the way to the wedding packet until Venio's wedding calendar and
-// packet form are embedded. Each send is emailed to events@ (reply goes straight to the couple) and recorded in
-// the form log (/admin/submissions). Nothing is dropped: a filled hidden box only labels it "maybe bot".
+// packet form are embedded. Each send becomes a lead in Venio by itself (lib/venio-leads.ts), is emailed to events@
+// (reply goes straight to the couple) and is recorded in the form log (/admin/submissions). Nothing is dropped: a
+// filled hidden box only labels it "maybe bot", and each of the three works without the others.
 export async function askAboutDate(_prev: AskState, f: FormData): Promise<AskState> {
   const maybeBot = s(f, 'website', 10) ? 'hidden box filled' : null;
   const fields = formFields(f);
@@ -30,6 +32,9 @@ export async function askAboutDate(_prev: AskState, f: FormData): Promise<AskSta
   if (!email && !phone) return no('Please add an email or a phone number so we can send the packet.');
   if (email && !EMAIL.test(email)) return no('That email doesn’t look right. Please check it.');
 
+  // Venio first: the lead is there before anyone opens the email.
+  const venioLead = await sendToVenio({ form: 'wedding-date', name, email, phone, date, guests, message, maybeBot });
+
   let mailed = false;
   if (mailReady()) {
     try {
@@ -42,6 +47,7 @@ export async function askAboutDate(_prev: AskState, f: FormData): Promise<AskSta
         `Guests: ${guests || '(not given)'}`,
         message ? `\n${message}` : null,
         '\nThey asked about their date on the Weddings page and were told the events team will email the wedding packet.',
+        venioLead ? 'It’s a lead in Venio already.' : 'It isn’t in Venio: add it from this email.',
       ].filter(Boolean);
       await sendStaffMail({
         to: [business.email.events],
@@ -57,7 +63,7 @@ export async function askAboutDate(_prev: AskState, f: FormData): Promise<AskSta
   const ok = 'Thank you. The events team will check the calendar for your date and email you the wedding packet.';
   // The log is this request's home in /admin (Every submission). `_emailed` isn't something they typed: it tells
   // staff whether events@ got it, so one that wasn't emailed can still be answered from here.
-  const logged = await logSubmission({ form: 'wedding-date', outcome: ok, saved: true, maybeBot, fields: { ...fields, _emailed: mailed ? 'yes' : 'no' } });
-  if (mailed || logged) return { ok: true, message: ok };
+  const logged = await logSubmission({ form: 'wedding-date', outcome: ok, saved: true, maybeBot, fields: { ...fields, _emailed: mailed ? 'yes' : 'no', _venio: venioLead ? 'yes' : 'no' } });
+  if (venioLead || mailed || logged) return { ok: true, message: ok };
   return { ok: false, message: `That didn’t go through. Please call us at ${business.phone} or email ${business.email.events}.` };
 }
