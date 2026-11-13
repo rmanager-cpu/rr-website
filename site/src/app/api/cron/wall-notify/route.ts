@@ -62,8 +62,12 @@ export async function GET(req: Request) {
     const email = r.contact && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.contact) ? r.contact : undefined;
     const label = frameLabel(r.frame_id);
     const photo = await framePhoto(r.frame_id);
+    // The Wall saves everything, even what looks automated, and labels it at the front of `page`.
+    const maybeBot = r.page?.match(/^\[maybe bot: ([^\]]*)\]/)?.[1] ?? null;
+    const botLine = maybeBot ? `MAYBE A BOT (${maybeBot}). Saved anyway, since phone autofill can do this too.` : '';
 
     const text = [
+      ...(botLine ? [botLine, ''] : []),
       `Someone told us about a photo on The Wall (${when}).`,
       '',
       `Photo: ${label} (frame ${r.frame_id}, section ${r.section_id})`,
@@ -80,6 +84,7 @@ export async function GET(req: Request) {
 
     const p = 'margin:0 0 14px';
     const html = `<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1d1d1b;max-width:600px">
+${maybeBot ? `<p style="${p};color:#a33"><strong>Maybe a bot</strong> (${esc(maybeBot)}). Saved anyway, since phone autofill can do this too.</p>` : ''}
 <p style="${p}">Someone told us about a photo on The Wall (${esc(when)}).</p>
 ${photo ? `<p style="${p}"><img src="cid:${photo.cid}" alt="${esc(label)} on The Wall" style="display:block;max-width:100%;height:auto;border:1px solid #ddd"></p>` : ''}
 <p style="${p}"><strong>Photo:</strong> ${esc(label)} <span style="color:#777">(frame ${esc(r.frame_id)}, section ${esc(r.section_id)})</span><br><strong>From:</strong> ${esc(who)}</p>
@@ -92,7 +97,7 @@ ${email ? `<p style="${p}">Reply to this email to answer them.</p>` : ''}
     try {
       await sendStaffMail({
         to: STAFF_INBOXES,
-        subject: `The Wall: someone knows ${label}`,
+        subject: `The Wall: someone knows ${label}${maybeBot ? ' (maybe bot)' : ''}`,
         replyTo: email,
         text,
         html,

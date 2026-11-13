@@ -35,7 +35,8 @@ export function supabaseAdapter(projectUrl: string, publishableKey: string): Sub
           story: s.text,
           name: s.name ?? null,
           contact: s.contact ?? null,
-          page: location.href.slice(0, 500),
+          // A "maybe bot" label rides at the front of `page` (no new column needed); the site's alert email reads it.
+          page: `${s.maybeBot ? `[maybe bot: ${s.maybeBot}] ` : ''}${location.href}`.slice(0, 500),
         }),
       });
       if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
@@ -50,7 +51,7 @@ export function endpointAdapter(url: string): SubmissionAdapter {
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...s, page: location.href }),
+        body: JSON.stringify({ ...s, page: location.href }), // maybeBot travels in the body
       });
       if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
     },

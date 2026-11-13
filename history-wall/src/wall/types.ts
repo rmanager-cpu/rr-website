@@ -73,6 +73,8 @@ export interface Submission {
   text: string;
   name?: string;
   contact?: string;
+  /** Why this might be a bot (the hidden box was filled). It's still saved and sent, just labelled. */
+  maybeBot?: string;
 }
 
 export interface SubmissionAdapter {

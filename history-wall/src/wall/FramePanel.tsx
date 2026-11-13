@@ -176,7 +176,9 @@ function AskForm({ frame, section, adapter, lead, onNext, onDone }: AskFormProps
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    if (data.get('website')) return setStatus('sent'); // honeypot: bots fill hidden fields
+    // Nothing is ever dropped (management's rule). Bots fill the hidden box, but so does phone autofill, so
+    // a filled box only labels the submission "maybe bot"; it is still saved and staff are still told.
+    const hidden = String(data.get('website') ?? '').trim();
     setStatus('sending');
     try {
       await adapter.submit({
@@ -185,6 +187,7 @@ function AskForm({ frame, section, adapter, lead, onNext, onDone }: AskFormProps
         text: text.trim(),
         name: String(data.get('name') ?? '').trim() || undefined,
         contact: String(data.get('contact') ?? '').trim() || undefined,
+        maybeBot: hidden ? 'hidden box filled' : undefined,
       });
       setStatus('sent');
     } catch {
