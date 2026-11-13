@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Lines } from '@/components/fl/Lines';
 import { SiteHeader } from '@/components/SiteHeader';
+import { AskAboutDate } from './AskAboutDate';
 import { business } from '@/content/site';
 import type { Photo } from '@/content/photos';
 import { besideCalendar, chapters, storyClose, storyOpen, type Chapter } from '@/content/wedding-story';
@@ -11,20 +11,23 @@ import '../celebrate.css';
 
 // One real wedding as a short story, in ten photos, around the open-date calendar for wedding season
 // and "Get the packet". Both are Venio's, displayed here. Until Venio serves the calendar,
-// NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL stays unset and a short "call us" line shows. The owner wants dates only
+// NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL stays unset and the "Ask about your date" form takes the calendar's place. The owner wants dates only
 // here, no pricing (Nov 12): Venio's wedding calendar must be a calendar-only view, not the private-dining widget. "Get the packet" is the
-// way into Venio's forms: for now it opens the wedding inquiry; once Venio's packet form is embedded it
+// way into Venio's forms: for now it goes to that form (emailed to events@, kept in the form log); once Venio's packet form is embedded it
 // becomes that form (fill it in, get the packet, land in Leads).
 
 export const metadata: Metadata = {
   title: 'Riverside Weddings in Tahoe City',
   description:
-    'Riverside weddings at River Ranch in Tahoe City: get ready at the lodge, say your vows on the patio under the pines, portraits on the Truckee, then dinner and dancing under the lanterns. See open dates and get the wedding packet.',
+    'Riverside weddings at River Ranch in Tahoe City: get ready at the lodge, say your vows on the patio under the pines, portraits on the Truckee, then dinner and dancing under the lanterns. Ask about your date and get the wedding packet.',
   alternates: { canonical: '/celebrate/weddings' },
 };
 
 const CALENDAR_URL = process.env.NEXT_PUBLIC_VENIO_WEDDING_CALENDAR_URL;
-const PACKET_HREF = '/celebrate/plan#request';
+// Until Venio's wedding calendar is embedded, both buttons go to the "Ask about your date" form in the Open dates
+// section: it's the wedding-specific way in, and the events team emails the packet back.
+const ASK_HREF = '#ask';
+const DATES_LABEL = CALENDAR_URL ? 'See open dates' : 'Ask about your date';
 
 function Shot({ photo, sizes }: { photo: Photo; sizes: string }) {
   return (
@@ -73,8 +76,8 @@ export default function WeddingsPage() {
             Vows under the pines, dinner on the patio and dancing under the lanterns, with the Truckee running past all evening.
           </p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
-            <Link href={PACKET_HREF} className="btn">Get the packet</Link>
-            <a href="#dates" className="btn btn--ghost-cream">See open dates</a>
+            <a href={ASK_HREF} className="btn">Get the packet</a>
+            <a href={CALENDAR_URL ? '#dates' : ASK_HREF} className="btn btn--ghost-cream">{DATES_LABEL}</a>
           </div>
         </div>
       </section>
@@ -93,18 +96,14 @@ export default function WeddingsPage() {
               <Image src={besideCalendar.src} alt={besideCalendar.alt} fill sizes="(max-width: 860px) 100vw, 25vw" />
               <figcaption>Leashed dogs welcome on the patio, ceremonies included.</figcaption>
             </figure>
-            <div className="cel-cal__slot">
-              {CALENDAR_URL ? (
-                <iframe src={CALENDAR_URL} title="Open wedding dates" loading="lazy" />
-              ) : (
-                <p className="cel-cal__soon">Open wedding dates show here soon. Until then, call us and we’ll read you the calendar.</p>
-              )}
+            <div className={`cel-cal__slot${CALENDAR_URL ? '' : ' cel-cal__slot--ask'}`} id={CALENDAR_URL ? undefined : 'ask'}>
+              {CALENDAR_URL ? <iframe src={CALENDAR_URL} title="Open wedding dates" loading="lazy" /> : <AskAboutDate />}
             </div>
             <div className="cel-packet stack" data-reveal data-reveal-delay="150">
               <p className="label label--accent">The wedding packet</p>
               <h3 className="cel-packet__title">Get the packet</h3>
-              <p>Spaces, menus and pricing, all in one place. Tell us a little about your day and it’s yours.</p>
-              <Link href={PACKET_HREF} className="btn">Get the packet</Link>
+              <p>Spaces, menus and pricing, all in one place. Tell us your date and guest count, and the events team emails it to you.</p>
+              {CALENDAR_URL && <div id="ask"><AskAboutDate /></div>}
               <p className="small">
                 Or call <a href={`tel:${business.phoneE164}`}>{business.phone}</a>.
               </p>
@@ -124,8 +123,8 @@ export default function WeddingsPage() {
           <p className="label label--accent" data-reveal>Your turn</p>
           <Lines id="end-h" className="display-l" lines={['Tell us', <em key="e">your date.</em>]} />
           <div className="btn-row" data-reveal data-reveal-delay="200">
-            <Link href={PACKET_HREF} className="btn">Get the packet</Link>
-            <a href="#dates" className="btn btn--ghost-cream">See open dates</a>
+            <a href={ASK_HREF} className="btn">Get the packet</a>
+            <a href={CALENDAR_URL ? '#dates' : ASK_HREF} className="btn btn--ghost-cream">{DATES_LABEL}</a>
           </div>
         </div>
       </section>

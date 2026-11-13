@@ -2,7 +2,7 @@ import { listSubmissions } from '@/lib/form-log';
 
 export const dynamic = 'force-dynamic';
 
-const FORM_NAMES: Record<string, string> = { careers: 'Careers application', 'request-to-play': 'Request to play' };
+const FORM_NAMES: Record<string, string> = { careers: 'Careers application', 'request-to-play': 'Request to play', 'wedding-date': 'Wedding: ask about a date' };
 const HIDE = new Set(['website', 'attest']);
 
 // Every send of every website form, exactly as typed (site/supabase/no_drops.sql): the ones that were saved,

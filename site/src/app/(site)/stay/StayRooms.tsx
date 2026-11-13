@@ -53,9 +53,27 @@ function RoomName({ name }: { name: string }) {
   );
 }
 
-/** The room types on /stay as Fireside rows on the dark band, with filters that dim what doesn't match. */
+/** The room types on /stay as Fireside rows on the dark band. A filter moves the matching rooms to the top
+ *  with a count; the rest stay below an "Other rooms" line, dimmed, so the whole list is still there. */
 export function StayRooms() {
   const [filter, setFilter] = useState<Filter>('');
+  const shown = filter ? roomTypes.filter((r) => matches(r, filter)) : roomTypes;
+  const rest = filter ? roomTypes.filter((r) => !matches(r, filter)) : [];
+
+  const row = (r: RoomType, on: boolean) => (
+    <li key={r.code} className={on ? undefined : 'is-out'} data-reveal>
+      <h3 className="row__title">
+        <RoomName name={r.name} />
+        {!on && <span className="sr-only"> (does not match this filter)</span>}
+      </h3>
+      <span className="row__note">{r.line}</span>
+      <span className="sty-rows__chips">
+        {chips(r).map((c) => (
+          <span key={c.label} className={`chip chip--${c.tone}`}>{c.label}</span>
+        ))}
+      </span>
+    </li>
+  );
 
   return (
     <>
@@ -66,24 +84,17 @@ export function StayRooms() {
           </button>
         ))}
       </div>
+      <p className="sty-count" role="status">
+        {filter ? `${shown.length} of ${roomTypes.length} room types match` : ''}
+      </p>
       <ul className="rows sty-rows" data-filter={filter || undefined}>
-        {roomTypes.map((r) => {
-          const on = matches(r, filter);
-          return (
-            <li key={r.code} className={on ? undefined : 'is-out'} data-reveal>
-              <h3 className="row__title">
-                <RoomName name={r.name} />
-                {!on && <span className="sr-only"> (does not match this filter)</span>}
-              </h3>
-              <span className="row__note">{r.line}</span>
-              <span className="sty-rows__chips">
-                {chips(r).map((c) => (
-                  <span key={c.label} className={`chip chip--${c.tone}`}>{c.label}</span>
-                ))}
-              </span>
-            </li>
-          );
-        })}
+        {shown.map((r) => row(r, true))}
+        {rest.length > 0 && (
+          <li className="sty-rows__divider" aria-hidden="true">
+            <span className="label">Other rooms</span>
+          </li>
+        )}
+        {rest.map((r) => row(r, false))}
       </ul>
     </>
   );

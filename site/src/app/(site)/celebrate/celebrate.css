@@ -182,3 +182,7 @@
 
 /* On phones the widget runs edge to edge, so its calendar has room for the nightly prices. */
 @media (max-width: 600px) { .cel-planpage__widget, .cel-plan__widget { margin-inline: calc(var(--gutter) * -1); } }
+
+/* "Ask about your date" in the calendar's place until Venio's wedding calendar is embedded */
+.cel-cal__slot--ask { display: block; align-self: start; min-height: 0; border: 0; scroll-margin-top: 96px; }
+.cel-cal__slot--ask .cel-ask { margin: 0; }

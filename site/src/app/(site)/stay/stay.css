@@ -55,6 +55,9 @@ html.fl-motion .sty-curtain .sty-curtain__morning { opacity: 0; }
 .sty-rows .row__title { margin: 0; font-weight: 400; transition: color 900ms var(--ease); }
 .sty-rows__chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .sty-rows > li.is-out { opacity: 0.28; }
+.sty-count { min-height: 1.4em; margin: -12px 0 12px; font-size: 0.85rem; opacity: 0.75; }
+.sty-count:empty { display: none; }
+.sty-rows > li.sty-rows__divider { display: block; padding: 28px 0 10px; border-bottom: 0; opacity: 0.6; }
 @media (hover: hover) {
   .sty-rows > li:not(.is-out):hover { padding-left: 14px; }
   .sty-rows > li:not(.is-out):hover .row__title { color: var(--amber); }
