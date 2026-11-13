@@ -68,7 +68,7 @@ export default async function Applications() {
               {apps.map((a) => (
                 <tr key={a.id}>
                   <td>{new Date(a.createdAt).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'short', day: 'numeric' })}</td>
-                  <td><div style={{ fontWeight: 700 }}>{a.name}</div><Details a={a} /></td>
+                  <td><div style={{ fontWeight: 700 }}>{a.name}{a.details?.maybeBot && <span className="tag" style={{ marginLeft: 8, background: '#fde2e2', color: '#a33' }} title={a.details.maybeBot}>maybe bot</span>}</div><Details a={a} /></td>
                   <td>{a.department}</td>
                   <td>{a.email && <div><a href={`mailto:${a.email}`}>{a.email}</a></div>}{a.phone && <div><a href={`tel:${a.phone}`}>{a.phone}</a></div>}</td>
                   <td>

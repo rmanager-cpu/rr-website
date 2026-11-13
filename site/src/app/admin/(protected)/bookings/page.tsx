@@ -22,7 +22,10 @@ export default async function Bookings() {
         <div key={b.id} className="adm-card">
           <div className="row-actions" style={{ justifyContent: 'space-between' }}>
             <h2>{b.actName}</h2>
-            <span className="tag">{b.status}</span>
+            <span>
+              {b.message?.startsWith('[maybe bot') && <span className="tag" style={{ marginRight: 6, background: '#fde2e2', color: '#a33' }}>maybe bot</span>}
+              <span className="tag">{b.status}</span>
+            </span>
           </div>
           <p className="help">
             {new Date(b.createdAt).toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', month: 'short', day: 'numeric' })} · {b.contact}

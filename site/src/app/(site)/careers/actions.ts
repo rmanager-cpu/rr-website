@@ -30,7 +30,9 @@ function sniff(b: Buffer): string | null {
 }
 
 export async function apply(_prev: ApplyState, form: FormData): Promise<ApplyState> {
-  if (str(form, 'website', 10)) return { ok: true, message: 'Thanks. We’ll be in touch.' }; // honeypot
+  // Nothing is ever dropped (management's rule). Bots fill the hidden box, but so does phone autofill, so a
+  // filled box only labels the application "maybe bot" in /admin; it is still saved.
+  const maybeBot = str(form, 'website', 10) ? 'hidden box filled' : undefined;
 
   const name = str(form, 'name', 120);
   const email = str(form, 'email', 160) || null;
@@ -59,6 +61,7 @@ export async function apply(_prev: ApplyState, form: FormData): Promise<ApplySta
     pay: str(form, 'pay', 80),
     town: str(form, 'town', 80),
     heard: str(form, 'heard', 120),
+    ...(maybeBot ? { maybeBot } : {}),
   };
 
   if (!details.seasons?.length) return { ok: false, message: 'Which seasons can you work? Pick at least one.' };

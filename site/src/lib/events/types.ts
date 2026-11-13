@@ -86,6 +86,8 @@ export type ApplicationDetails = {
   pay?: string;
   town?: string;
   heard?: string;
+  /** Why it might be a bot (the hidden box was filled). Saved anyway: phone autofill does this too. */
+  maybeBot?: string;
 };
 
 export type JobApplication = {
