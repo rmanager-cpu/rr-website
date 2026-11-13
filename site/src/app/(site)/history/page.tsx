@@ -39,8 +39,6 @@ export default function HistoryPage() {
       <SiteHeader />
 
       <WallStage
-        wallUrl={business.links.theWall}
-        src={`${business.links.theWall}/?embed`}
         intro={
           <>
             <p className="label label--accent">History</p>

@@ -1,13 +1,14 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight, Close } from '@/components/Icons';
 
+// The Wall itself, built into the site (components/wall). It draws with the browser's own measurements,
+// so it renders in the browser only; the dimmed photo behind it shows while it loads.
+const WallApp = dynamic(() => import('@/components/wall/WallApp'), { ssr: false });
+
 type Props = {
-  /** The wall app's address (it opens full screen there). */
-  wallUrl: string;
-  /** What the iframe loads. */
-  src: string;
   /** The intro: eyebrow, title and one line. */
   intro: ReactNode;
   /** The approved history paragraph. */
@@ -17,31 +18,25 @@ type Props = {
 const PHONE = '(max-width: 999px)';
 
 /**
- * The Wall as the page: the wall app fills the screen under the header and the visitor moves along it
+ * The Wall as the page: the wall fills the screen under the header and the visitor moves along it
  * (drag, swipe, trackpad, arrow keys once it has focus). The story sits on a placard: beside the wall
  * on a wide screen (it can tuck away to a slim rail), floating over it on phones, where it tucks itself
  * into a small pill as soon as the visitor touches the wall.
  */
-export function WallStage({ wallUrl, src, intro, story }: Props) {
+export function WallStage({ intro, story }: Props) {
   const [open, setOpen] = useState(true);
   const [more, setMore] = useState(false);
-  const frameRef = useRef<HTMLIFrameElement>(null);
   const hideRef = useRef<HTMLButtonElement>(null);
   const pillRef = useRef<HTMLButtonElement>(null);
   const moved = useRef(false);
 
   // On phones the placard covers part of the wall: tuck it away once the visitor reaches into the wall.
-  useEffect(() => {
-    const onBlur = () =>
-      window.setTimeout(() => {
-        if (document.activeElement === frameRef.current && window.matchMedia(PHONE).matches) {
-          moved.current = false; // leave focus in the wall
-          setOpen(false);
-        }
-      }, 0);
-    window.addEventListener('blur', onBlur);
-    return () => window.removeEventListener('blur', onBlur);
-  }, []);
+  const reachIn = () => {
+    if (open && window.matchMedia(PHONE).matches) {
+      moved.current = false; // leave focus in the wall
+      setOpen(false);
+    }
+  };
 
   // Move focus with the toggle buttons (not on the first render, and not when the wall tucked it away).
   useEffect(() => {
@@ -70,12 +65,9 @@ export function WallStage({ wallUrl, src, intro, story }: Props) {
           {more ? 'Show less' : 'Read the story'}
         </button>
         <div className="hx-card__foot">
-          <a className="chip chip--music hx-chip" href={wallUrl} target="_blank" rel="noopener">
-            Know one of these photos? Tell us
-          </a>
-          <a className="link-arrow hx-full" href={wallUrl} target="_blank" rel="noopener">
-            Open The Wall full screen
-          </a>
+          <button type="button" className="chip chip--music hx-chip" onClick={() => toggle(false)}>
+            Know one of these photos? Tap it and tell us
+          </button>
         </div>
       </aside>
 
@@ -83,15 +75,10 @@ export function WallStage({ wallUrl, src, intro, story }: Props) {
         <span>Our story</span> <ChevronRight size={16} />
       </button>
 
-      <div className="hx-wall__stage">
-        <iframe
-          ref={frameRef}
-          className="hx-wall__frame"
-          src={src}
-          title="The Wall: the old River Ranch photographs by the host stand. Drag or swipe to move along it, and tap any photo to see it up close."
-          allow="fullscreen"
-          allowFullScreen
-        />
+      <div className="hx-wall__stage" onPointerDownCapture={reachIn} onFocusCapture={reachIn}>
+        <div className="hx-wall__app">
+          <WallApp />
+        </div>
       </div>
     </section>
   );

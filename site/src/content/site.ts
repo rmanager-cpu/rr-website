@@ -31,7 +31,8 @@ export const business = {
     reserveTable: 'https://www.opentable.com/river-ranch-lodge-and-restaurant',
     // Our date picker, which hands off to BookingCenter with the dates applied (lib/bookingcenter.ts).
     bookRoom: '/stay#book',
-    theWall: 'https://the-wall-river-ranch.vercel.app',
+    // The Wall lives on the History page itself (built in on 2026-11-12; the old separate app is retired).
+    theWall: '/history#the-wall',
     // Toast: River Ranch Rewards (loyalty, live 2026-11-10) and restaurant eGift cards. Plain links,
     // never iframed: Toast's pages are meant to open on their own.
     rewards: 'https://www.toasttab.com/river-ranch-lodge-restaurant-2285-river-rd/rewardsLookup',

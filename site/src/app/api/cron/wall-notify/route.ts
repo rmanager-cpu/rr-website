@@ -31,7 +31,7 @@ const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&
 async function framePhoto(frameId: string): Promise<InlineImage | null> {
   if (!/^[a-z0-9-]+$/i.test(frameId)) return null;
   try {
-    const res = await fetch(`${business.links.theWall}/frames/${frameId}.webp`, { signal: AbortSignal.timeout(8000) });
+    const res = await fetch(`${SITE_URL}/the-wall/frames/${frameId}.webp`, { signal: AbortSignal.timeout(8000) });
     if (!res.ok) return null;
     const jpeg = await sharp(Buffer.from(await res.arrayBuffer()))
       .resize({ width: 900, height: 900, fit: 'inside', withoutEnlargement: true })
