@@ -5,11 +5,11 @@ import { business, fullAddress } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 
 // The privacy policy, written from what the site actually does (Nov 2026): forms that save to the database,
-// no analytics or ad trackers, staff-only cookies, and hand-offs to BookingCenter, OpenTable and Toast.
+// cookieless visit counts (Vercel Web Analytics, public pages only) and no ad trackers, staff-only cookies, and hand-offs to BookingCenter, OpenTable and Toast.
 // It covers what California's CalOPPA asks for (what we collect, who gets it, how to review or change it, how
 // changes are announced, an effective date, Do Not Track). Update EFFECTIVE and the matching section whenever
 // the site starts collecting something new (analytics, a newsletter sign-up, payments).
-const EFFECTIVE = 'November 11, 2026';
+const EFFECTIVE = 'November 13, 2026';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -49,6 +49,10 @@ export default function PrivacyPage() {
             <p>
               <strong>What your browser sends on its own.</strong> Like any website, our hosting provider receives your IP address, browser type and the
               pages you request, and keeps them in short-lived server logs for security and to keep the site running. We don’t use them to build a profile of you.
+            </p>
+            <p>
+              <strong>Visit counts.</strong> We count visits with Vercel Web Analytics, which records the page, where the visit came from, the
+              country and the kind of device, without cookies and without identifying you. We use the counts only to see which pages people find useful.
             </p>
             <p>
               <strong>Cookies.</strong> The public site sets no advertising or analytics cookies. The only cookie we set is a sign-in cookie for staff using our
