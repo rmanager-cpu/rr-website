@@ -194,16 +194,30 @@ export function HistoryWall({ sections, frames, adapter, assetBase = '/', initia
 
           <svg className="hw-svg" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden={false}>
             <defs>
-              <filter id={`hw-shadow-${section.id}`} x="-25%" y="-25%" width="150%" height="150%">
-                <feDropShadow dx="0" dy={W * 0.004} stdDeviation={W * 0.006} floodColor="#000" floodOpacity="0.55" />
-              </filter>
               {lifts.map(({ id }) => {
                 const p = byFrame.get(id);
-                return p ? (
-                  <clipPath id={`hw-clip-${section.id}-${id}`} key={id}>
-                    <polygon points={p.px.map((q) => q.join(',')).join(' ')} />
-                  </clipPath>
-                ) : null;
+                if (!p) return null;
+                // The shadow's region is the lifted frame plus room for the blur, never the whole wall:
+                // iPhone Safari keeps a buffer the size of a filter's region, and one the size of the
+                // 10,150-pixel wall ran it out of memory ("A problem repeatedly occurred").
+                const pad = W * 0.03;
+                return (
+                  <g key={id}>
+                    <clipPath id={`hw-clip-${section.id}-${id}`}>
+                      <polygon points={p.px.map((q) => q.join(',')).join(' ')} />
+                    </clipPath>
+                    <filter
+                      id={`hw-shadow-${section.id}-${id}`}
+                      filterUnits="userSpaceOnUse"
+                      x={p.box.x - pad}
+                      y={p.box.y - pad}
+                      width={p.box.w * 1.06 + pad * 2}
+                      height={p.box.h * 1.06 + pad * 2}
+                    >
+                      <feDropShadow dx="0" dy={W * 0.004} stdDeviation={W * 0.006} floodColor="#000" floodOpacity="0.55" />
+                    </filter>
+                  </g>
+                );
               })}
             </defs>
 
@@ -217,7 +231,7 @@ export function HistoryWall({ sections, frames, adapter, assetBase = '/', initia
                   key={id}
                   className={`hw-lift${leaving ? ' is-leaving' : ''}`}
                   style={{ transformOrigin: `${p.center[0]}px ${p.center[1]}px` }}
-                  filter={`url(#hw-shadow-${section.id})`}
+                  filter={`url(#hw-shadow-${section.id}-${id})`}
                 >
                   <image href={liftSrc} width={W} height={H} clipPath={`url(#hw-clip-${section.id}-${id})`} />
                 </g>

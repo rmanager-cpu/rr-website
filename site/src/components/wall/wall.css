@@ -177,12 +177,12 @@
   gap: 1px;
   padding: 8px 14px 9px;
   border-radius: 10px;
-  background: rgba(20, 16, 12, 0.9);
+  /* Solid, no backdrop blur: the teaser sits inside the wall's huge zoomed layer, and a blur there
+     costs iPhone Safari memory the size of that layer. */
+  background: rgba(20, 16, 12, 0.94);
   border: 1px solid var(--hw-line);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   white-space: nowrap;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
 }
 .hw-teaser-title {
   font-family: var(--hw-serif);
