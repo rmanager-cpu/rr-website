@@ -136,8 +136,9 @@ outlines have been edited on the stitched wall in the mapper, or they'll be over
 Database: `supabase/wall_submissions.sql`, then `supabase/wall_submissions_02_one_reward.sql`
 (one reward code per email or phone). Paste each into the Supabase SQL editor as the owner.
 
-Spam: a hidden honeypot field on the form; in the database, the same story for the same frame within
-a day is dropped, and past 300 submissions an hour inserts are refused.
+Spam: nothing is ever dropped (management's rule, 2026-11-12). A filled hidden honeypot box (phone
+autofill does this too) and, after site/supabase/no_drops.sql, anything past 300 an hour are saved
+with a "[maybe bot: …]" label at the front of `page`; the staff alert shows it.
 
 ## Deploying
 

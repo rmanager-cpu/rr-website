@@ -3,6 +3,7 @@
 import { dbReady } from '@/lib/db/pool';
 import { addApplication } from '@/lib/events/store';
 import { DEPARTMENTS, type ApplicationDetails } from '@/lib/events/types';
+import { formFields, logSubmission } from '@/lib/form-log';
 import { CERTS, DAYS, SEASONS, SHIFTS } from './options';
 
 export type ApplyState = { ok: boolean; message: string } | null;
@@ -29,19 +30,26 @@ function sniff(b: Buffer): string | null {
   return null;
 }
 
+// Nothing anyone sends is ever dropped (management's rule, 2026-11-12). Every send is recorded in the form
+// log (/admin/submissions) exactly as typed, including one sent back to fix something. Bots fill the hidden
+// box, but so does phone autofill, so a filled box only labels the application "maybe bot"; it is still saved.
 export async function apply(_prev: ApplyState, form: FormData): Promise<ApplyState> {
-  // Nothing is ever dropped (management's rule). Bots fill the hidden box, but so does phone autofill, so a
-  // filled box only labels the application "maybe bot" in /admin; it is still saved.
   const maybeBot = str(form, 'website', 10) ? 'hidden box filled' : undefined;
+  const r = await check(form, maybeBot);
+  await logSubmission({ form: 'careers', outcome: r.message, saved: r.saved, maybeBot, fields: formFields(form) });
+  return { ok: r.ok, message: r.message };
+}
 
+async function check(form: FormData, maybeBot: string | undefined): Promise<{ ok: boolean; message: string; saved: boolean }> {
+  const no = (message: string) => ({ ok: false, message, saved: false });
   const name = str(form, 'name', 120);
   const email = str(form, 'email', 160) || null;
   const phone = str(form, 'phone', 40) || null;
   const department = str(form, 'department', 40);
-  if (!name) return { ok: false, message: 'Please add your name.' };
-  if (!email && !phone) return { ok: false, message: 'Please add an email or a phone number so we can reach you.' };
-  if (email && !EMAIL.test(email)) return { ok: false, message: 'That email doesn’t look right. Please check it.' };
-  if (!(DEPARTMENTS as readonly string[]).includes(department)) return { ok: false, message: 'Please choose a department.' };
+  if (!name) return no('Please add your name.');
+  if (!email && !phone) return no('Please add an email or a phone number so we can reach you.');
+  if (email && !EMAIL.test(email)) return no('That email doesn’t look right. Please check it.');
+  if (!(DEPARTMENTS as readonly string[]).includes(department)) return no('Please choose a department.');
 
   const details: ApplicationDetails = {
     role: str(form, 'role', 140),
@@ -64,31 +72,31 @@ export async function apply(_prev: ApplyState, form: FormData): Promise<ApplySta
     ...(maybeBot ? { maybeBot } : {}),
   };
 
-  if (!details.seasons?.length) return { ok: false, message: 'Which seasons can you work? Pick at least one.' };
-  if (!details.days?.length) return { ok: false, message: 'Which days can you work? Pick at least one.' };
-  if (!details.over18) return { ok: false, message: 'Please tell us whether you’re 18 or older.' };
-  if (!details.authorized) return { ok: false, message: 'Please tell us whether you can work in the U.S.' };
-  if (details.refs!.some((r) => !r.name || !r.contact)) return { ok: false, message: 'Please add three references, each with a name and a phone or email.' };
-  if ((details.about ?? '').length < 20) return { ok: false, message: 'Tell us a little about yourself, a couple of sentences is plenty.' };
-  if (form.get('attest') !== 'yes') return { ok: false, message: 'Please confirm that everything here is true.' };
+  if (!details.seasons?.length) return no('Which seasons can you work? Pick at least one.');
+  if (!details.days?.length) return no('Which days can you work? Pick at least one.');
+  if (!details.over18) return no('Please tell us whether you’re 18 or older.');
+  if (!details.authorized) return no('Please tell us whether you can work in the U.S.');
+  if (details.refs!.some((r) => !r.name || !r.contact)) return no('Please add three references, each with a name and a phone or email.');
+  if ((details.about ?? '').length < 20) return no('Tell us a little about yourself, a couple of sentences is plenty.');
+  if (form.get('attest') !== 'yes') return no('Please confirm that everything here is true.');
 
   let resume: { bytes: Buffer; filename: string; mime: string } | null = null;
   const file = form.get('resume');
   if (file instanceof File && file.size > 0) {
-    if (file.size > MAX_RESUME) return { ok: false, message: 'That resume is over 4 MB. Try a PDF, or a smaller photo of it.' };
+    if (file.size > MAX_RESUME) return no('That resume is over 4 MB. Try a PDF, or a smaller photo of it.');
     const bytes = Buffer.from(await file.arrayBuffer());
     const mime = sniff(bytes);
-    if (!mime) return { ok: false, message: 'Resumes can be a PDF, a Word file, or a photo (JPG, PNG or HEIC).' };
+    if (!mime) return no('Resumes can be a PDF, a Word file, or a photo (JPG, PNG or HEIC).');
     const filename = (file.name || 'resume').replace(/[^\w.\- ()]/g, '_').slice(0, 200);
     resume = { bytes, filename, mime };
   }
 
-  if (!(await dbReady())) return { ok: false, message: 'Applications open here very soon. For now, email info@riverranchlodge.com with the department you’re applying for.' };
+  if (!(await dbReady())) return no('Applications open here very soon. For now, email info@riverranchlodge.com with the department you’re applying for.');
   try {
     await addApplication({ name, email, phone, department, details, resume });
-    return { ok: true, message: 'Thanks for applying. We read every one, and we’ll be in touch.' };
+    return { ok: true, message: 'Thanks for applying. We read every one, and we’ll be in touch.', saved: true };
   } catch (e) {
     console.error('apply failed', e instanceof Error ? e.message : e);
-    return { ok: false, message: 'That didn’t go through. Please try again, or email info@riverranchlodge.com.' };
+    return no('That didn’t go through. Please try again, or email info@riverranchlodge.com.');
   }
 }
