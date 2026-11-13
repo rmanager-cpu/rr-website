@@ -149,7 +149,7 @@ export default async function DinePage() {
             <div>
               <p className="label label--accent">From the kitchen</p>
               <h2 id="plates-h" className="display-m">A few <em>plates.</em></h2>
-              <p className="dn-plates__lede">Mountain cooking with its shirt tucked in. <span className="placeholder">[One line from the kitchen about this winter’s menu]</span></p>
+              <p className="dn-plates__lede">Classic mountain cooking, generous portions, because we know you got after it.</p>
             </div>
             <p className="label">Keep scrolling. Dessert is at the end.</p>
           </div>
