@@ -10,7 +10,7 @@ everything lives.
   commit; never bypass a pre-commit hook.
 - Never copy a client's personal details (names, emails, phones from inquiries or estimates) into the repo.
 - Public pages never name staff; anything staff-facing says "management", never "Alex".
-- AI features use Anthropic models only (no OpenAI).
+- AI features use Anthropic or OpenAI models (Alex, 2026-11-13: both, so models can be benchmarked against each other). No other providers without Alex.
 - Supabase: the shared hub project is `river-ranch-office` (ref `wldjocyzgxtnnhxziduq`). Changes to it
   ship as one-transaction paste files for Alex to run in the SQL editor (the MCP's confirmations
   auto-decline in VS Code); read-only queries are fine.
