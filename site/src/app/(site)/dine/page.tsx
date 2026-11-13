@@ -104,7 +104,7 @@ export default async function DinePage() {
           <p className="label label--accent">Dine</p>
           <Lines as="h1" className="display-xl" lines={['Dinner on', <em key="r">the river.</em>]} />
           <p className="lede" data-reveal data-reveal-delay="300">
-            Classic mountain comfort food, and plenty of it. We know you got after it today.
+            Classic mountain comfort food and generous portions. We know you got after it today.
           </p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#reserve" className="btn">Reserve a table</a>
@@ -149,7 +149,6 @@ export default async function DinePage() {
             <div>
               <p className="label label--accent">From the kitchen</p>
               <h2 id="plates-h" className="display-m">A few <em>plates.</em></h2>
-              <p className="dn-plates__lede">Classic mountain cooking, generous portions, because we know you got after it.</p>
             </div>
             <p className="label">Keep scrolling. Dessert is at the end.</p>
           </div>

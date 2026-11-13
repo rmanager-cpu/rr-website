@@ -77,7 +77,6 @@ html.fl-motion .dn-dayline:not([data-revealed]) .dn-dayline__seg { clip-path: in
 .dn-plates__stage { position: relative; padding: var(--section) 0; overflow: hidden; }
 .dn-plates__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 32px; margin-bottom: clamp(22px, 3.4vh, 40px); }
 .dn-plates__head h2 { margin-top: 10px; }
-.dn-plates__lede { margin: 12px 0 0; max-width: 40em; color: var(--muted); font-size: 0.98rem; }
 .dn-plates__bar { position: relative; height: 1px; margin: 0 var(--gutter) clamp(22px, 3.4vh, 40px); background: var(--rule); }
 .dn-plates__bar i { position: absolute; inset: 0; background: var(--amber); transform: scaleX(0); transform-origin: left; will-change: transform; }
 .dn-plates__scroller { overflow-x: auto; scrollbar-width: none; }
