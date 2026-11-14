@@ -11,9 +11,22 @@ import { loadFrames, loadSections, WALL_ASSETS } from './data';
 const sections = loadSections();
 const frames = loadFrames();
 
-const URL_ = process.env.NEXT_PUBLIC_WALL_SUPABASE_URL;
-const KEY = process.env.NEXT_PUBLIC_WALL_SUPABASE_KEY;
-const adapter = URL_ && KEY ? supabaseAdapter(URL_, KEY) : localAdapter;
+// trim() also strips a byte-order mark (U+FEFF). On Nov 12 both values went into Vercel with one at the
+// front, and the browser refused every send ("Cannot convert argument to a ByteString"): no story saved.
+const URL_ = process.env.NEXT_PUBLIC_WALL_SUPABASE_URL?.trim();
+const KEY = process.env.NEXT_PUBLIC_WALL_SUPABASE_KEY?.trim();
+// The browser-only adapter says "Thank you" and keeps nothing: never on the live site. There, missing
+// settings make every send fail out loud (the guest sees "That didn't go through"), not vanish.
+const adapter =
+  URL_ && KEY
+    ? supabaseAdapter(URL_, KEY)
+    : process.env.NODE_ENV === 'production'
+      ? {
+          async submit() {
+            throw new Error('The Wall is missing NEXT_PUBLIC_WALL_SUPABASE_URL or NEXT_PUBLIC_WALL_SUPABASE_KEY');
+          },
+        }
+      : localAdapter;
 
 export default function WallApp() {
   return <HistoryWall sections={sections} frames={frames} adapter={adapter} assetBase={WALL_ASSETS} initialSectionId="wall" />;
