@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 // mailbox and SMTP_PASS a Google app password for it (myaccount.google.com/apppasswords). Both live only in
 // .env.local and Vercel. Without them nothing is sent, and the alert waits for the next run.
 
-/** Every role mailbox at River Ranch: Wall submissions go to all of them. */
+/** Every role mailbox at River Ranch. */
 export const STAFF_INBOXES = [
   'rmanager@riverranchlodge.com',
   'lodgemanager@riverranchlodge.com',
@@ -14,6 +14,9 @@ export const STAFF_INBOXES = [
   'events@riverranchlodge.com',
   'info@riverranchlodge.com',
 ];
+
+/** Who gets The Wall's alerts. For now only rmanager@ (Alex, 2026-11-14); swap in STAFF_INBOXES to tell everyone. */
+export const WALL_ALERT_INBOXES = ['rmanager@riverranchlodge.com'];
 
 export const mailReady = () => Boolean(process.env.SMTP_USER && process.env.SMTP_PASS);
 

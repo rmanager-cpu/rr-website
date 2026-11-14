@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { business, SITE_URL } from '@/content/site';
 import { db } from '@/lib/db/pool';
-import { mailReady, sendStaffMail, STAFF_INBOXES, type InlineImage } from '@/lib/mail';
+import { mailReady, sendStaffMail, WALL_ALERT_INBOXES, type InlineImage } from '@/lib/mail';
 
-// Emails every staff inbox when someone tells us about a photo on The Wall. Vercel Cron calls this every
+// Emails WALL_ALERT_INBOXES (lib/mail.ts) when someone tells us about a photo on The Wall. Vercel Cron calls this every
 // ten minutes (vercel.json) with "Authorization: Bearer <CRON_SECRET>". Each new submission gets its own
 // email, and notified_at is stamped once it has gone out, so nothing is sent twice. If mail isn't set up
 // or a send fails, the rows wait for the next run.
@@ -96,7 +96,7 @@ ${email ? `<p style="${p}">Reply to this email to answer them.</p>` : ''}
 
     try {
       await sendStaffMail({
-        to: STAFF_INBOXES,
+        to: WALL_ALERT_INBOXES,
         subject: `The Wall: someone knows ${label}${maybeBot ? ' (maybe bot)' : ''}`,
         replyTo: email,
         text,
