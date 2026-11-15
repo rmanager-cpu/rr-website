@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { RoomFinder } from '@/components/RoomBooking';
 import { SiteHeader } from '@/components/SiteHeader';
 import { Lines } from '@/components/fl/Lines';
+import { fetchRoomPhotos } from '@/lib/bookingcenter-api';
 import { photos } from '@/content/photos';
 import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
@@ -41,7 +42,11 @@ const GALLERY = [
   { photo: photos.balconyChairs, tall: true },
 ];
 
-export default function RoomsPage() {
+// Room photos from BookingCenter are refreshed hourly, and the page still works without them.
+export const revalidate = 3600;
+
+export default async function RoomsPage() {
+  const roomPhotos = await fetchRoomPhotos();
   return (
     <>
       <JsonLd data={breadcrumbSchema('Rooms', '/stay/rooms')} />
@@ -91,7 +96,7 @@ export default function RoomsPage() {
             <Lines id="types-h" className="display-l" lines={['Choose your', <>dates <em>and room.</em></>]} />
             <p className="lede" data-reveal data-reveal-delay="150">Pick your nights, then any room’s button opens live rates with that room at the top.</p>
           </div>
-          <RoomFinder />
+          <RoomFinder photos={roomPhotos} />
         </div>
       </section>
 

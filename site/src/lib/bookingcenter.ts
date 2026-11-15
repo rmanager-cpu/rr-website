@@ -1,5 +1,5 @@
-// Until the API keys arrive, booking is a redirect: our date picker opens BookingCenter's results page
-// with the dates applied. Rates, availability and minimum stays all live there, so none are kept here.
+// Booking itself is a redirect: our date picker opens BookingCenter's results page
+// with the dates applied. Live rates come from lib/bookingcenter-api.ts; nothing about them is kept here.
 const RESULTS_URL = 'https://book.bookingcenter.com/02/chk_availability.php';
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
