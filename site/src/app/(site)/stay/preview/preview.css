@@ -1,0 +1,48 @@
+/* Staff preview of BookingCenter's answers (/stay/preview). Plain and dense: it's a test bench. */
+.pv-top { padding-block: clamp(40px, 6vw, 80px); }
+.pv-top h1 { margin: 0; }
+.pv-sec { padding-block: clamp(36px, 5vw, 64px); }
+.pv-sec .display-m em { font-size: 0.7em; }
+
+.pv-settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 24px; margin: 0; }
+.pv-settings dt { font-size: var(--fs-label); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.pv-settings dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.pv-problem { margin: 0; padding: 12px 14px; border-left: 3px solid var(--amber); background: var(--white); }
+
+.pv-form { gap: 16px; }
+.pv-form__grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+.pv-call { margin: 0; font-size: var(--fs-small); color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.pv-call--bad { color: var(--gold-ink); }
+.pv-call b { color: var(--ink); font-weight: 600; }
+
+.pv-rooms { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.pv-room { min-width: 0; }
+.pv-room .card__body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: start; }
+.pv-room .link-arrow { justify-self: start; white-space: normal; }
+.pv-rates, .pv-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pv-rates li, .pv-list li { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.pv-rates b, .pv-list b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pv-promo { margin: 0; font-weight: 600; color: var(--forest); }
+
+.pv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); background: var(--white); }
+.pv-grid { border-collapse: collapse; font-size: var(--fs-small); font-variant-numeric: tabular-nums; min-width: 100%; }
+.pv-grid th, .pv-grid td { padding: 8px 10px; border-bottom: 1px solid var(--rule); text-align: center; white-space: nowrap; }
+.pv-grid thead th { font-weight: 600; line-height: 1.2; }
+.pv-grid tbody th, .pv-grid tfoot th { text-align: left; position: sticky; left: 0; background: var(--white); font-weight: 500; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.pv-grid td.pv-open { background: color-mix(in srgb, var(--forest) 14%, transparent); font-weight: 600; }
+.pv-grid td.pv-x { color: var(--gold-ink); }
+.pv-grid tfoot th, .pv-grid tfoot td { font-weight: 600; border-bottom: 0; }
+
+.pv-fit { margin: 0; font-size: var(--fs-lede); }
+.pv-mix { border-collapse: collapse; width: 100%; max-width: 640px; font-variant-numeric: tabular-nums; }
+.pv-mix th, .pv-mix td { padding: 8px 0; border-bottom: 1px solid var(--rule); text-align: right; }
+.pv-mix th { text-align: left; font-weight: 500; }
+.pv-mix tfoot th, .pv-mix tfoot td { border-bottom: 0; }
+
+.pv-entry .card__body { display: grid; gap: 6px; }
+.pv-attrs { margin: 0; font-size: 0.8rem; color: var(--muted); overflow-wrap: anywhere; }
+
+.pv-raw summary { cursor: pointer; font-size: var(--fs-small); font-weight: 600; }
+.pv-raw pre { max-height: 420px; overflow: auto; padding: 12px; background: var(--char); color: var(--cream); font-size: 12px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.pv-tags { font-size: 0.8rem; color: var(--muted); overflow-wrap: anywhere; }

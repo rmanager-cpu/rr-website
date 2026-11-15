@@ -8,7 +8,7 @@ import { gunzipSync } from 'node:zlib';
 // Settings: BOOKINGCENTER_API_URL, BOOKINGCENTER_API_KEY, BOOKINGCENTER_SITE_ID. Going to production means
 // changing those three. On a production build, a test-system URL counts as not set up, so guests never see
 // test rates; BOOKINGCENTER_ALLOW_TEST_RATES=true lifts that for a preview.
-const CHAIN_AND_AGENT = 'BC'; // BookingCenter's own chain, and its public-website agent.
+export const CHAIN_AND_AGENT = 'BC'; // BookingCenter's own chain, and its public-website agent.
 const TIMEOUT_MS = 12_000;
 const RATES_CACHE_MS = 5 * 60_000; // Searches are watched against bookings, so repeats don't go back to them.
 const RATES_CACHE_MAX = 500;
@@ -27,34 +27,78 @@ export type LiveRoom = {
 
 export type LiveRates = { rooms: LiveRoom[]; test: boolean };
 
-type Config = { base: string; key: string; site: string; test: boolean };
+export type Config = { base: string; key: string; site: string; test: boolean };
 
-function config(): Config | null {
+/** What the settings say, and why live calls are on or off. Never carries the key. */
+export type SettingsReport = {
+  host: string | null;
+  test: boolean;
+  keySet: boolean;
+  site: string | null;
+  allowTestFlag: boolean;
+  guestPages: boolean; // the Stay pages (live list, or the handoff to BookingCenter when off)
+  preview: boolean; // the staff preview page, which may use the test system on any build
+  problem: string | null;
+};
+
+function readSettings(): { config: Config | null; problem: string | null; host: string | null } {
   const { BOOKINGCENTER_API_URL: url, BOOKINGCENTER_API_KEY: key, BOOKINGCENTER_SITE_ID: site } = process.env;
-  if (!url || !key || !site) return null;
+  if (!url) return { config: null, problem: 'BOOKINGCENTER_API_URL isn’t set.', host: null };
   let parsed: URL;
   try {
     parsed = new URL(url);
   } catch {
-    return null;
+    return { config: null, problem: 'BOOKINGCENTER_API_URL isn’t a web address.', host: null };
   }
+  const host = parsed.hostname;
   // The key only ever goes to BookingCenter, over https.
-  if (parsed.protocol !== 'https:' || !parsed.hostname.endsWith('.bookingcenter.com')) return null;
-  const test = parsed.hostname.includes('-test');
-  if (test && process.env.NODE_ENV === 'production' && process.env.BOOKINGCENTER_ALLOW_TEST_RATES !== 'true') return null;
-  return { base: parsed.href.endsWith('/') ? parsed.href : `${parsed.href}/`, key, site, test };
+  if (parsed.protocol !== 'https:') return { config: null, problem: 'BOOKINGCENTER_API_URL has to start with https://', host };
+  if (!host.endsWith('.bookingcenter.com')) return { config: null, problem: 'BOOKINGCENTER_API_URL has to be a bookingcenter.com address.', host };
+  if (!key) return { config: null, problem: 'BOOKINGCENTER_API_KEY isn’t set.', host };
+  if (!site) return { config: null, problem: 'BOOKINGCENTER_SITE_ID isn’t set.', host };
+  const base = parsed.href.endsWith('/') ? parsed.href : `${parsed.href}/`;
+  return { config: { base, key, site, test: host.includes('-test') }, problem: null, host };
+}
+
+// On a production build (Vercel previews included), a test-system URL counts as not set up for the guest
+// pages unless BOOKINGCENTER_ALLOW_TEST_RATES=true. `allowTest` is for the staff preview page only.
+const testBlocked = (c: Config) =>
+  c.test && process.env.NODE_ENV === 'production' && process.env.BOOKINGCENTER_ALLOW_TEST_RATES !== 'true';
+
+export function config(opts: { allowTest?: boolean } = {}): Config | null {
+  const { config: c } = readSettings();
+  if (!c) return null;
+  if (!opts.allowTest && testBlocked(c)) return null;
+  return c;
+}
+
+export function settingsReport(): SettingsReport {
+  const { config: c, problem, host } = readSettings();
+  const blocked = c ? testBlocked(c) : false;
+  return {
+    host,
+    test: c?.test ?? Boolean(host?.includes('-test')),
+    keySet: Boolean(process.env.BOOKINGCENTER_API_KEY),
+    site: process.env.BOOKINGCENTER_SITE_ID || null,
+    allowTestFlag: process.env.BOOKINGCENTER_ALLOW_TEST_RATES === 'true',
+    guestPages: Boolean(c) && !blocked,
+    preview: Boolean(c),
+    problem:
+      problem ??
+      (blocked ? 'Test system on a production build: the Stay pages need BOOKINGCENTER_ALLOW_TEST_RATES=true, so they hand off to BookingCenter.' : null),
+  };
 }
 
 export function liveRatesConfigured(): boolean {
   return config() !== null;
 }
 
-const xmlEscape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const xmlEscape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const envelope = (body: string) =>
   `<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body>${body}</soap:Body></soap:Envelope>`;
 
-const pos = (c: Config) =>
+export const pos = (c: Config) =>
   `<POS><Source ISOCurrency="USD"/><RequestorID OTA_CodeType="10" ID="${xmlEscape(c.site)}" MessagePassword="${xmlEscape(c.key)}"/></POS>`;
 
 /** The reply as text. It can carry PHP warnings ahead of the XML, and be gzipped despite what was asked. */
@@ -69,7 +113,7 @@ function replyText(raw: Buffer): string {
 }
 
 /** One call. `init` lets the caller set caching. Errors never carry the request, so never the key. */
-async function call(c: Config, path: string, action: string, body: string, init: RequestInit & { next?: { revalidate: number } } = { cache: 'no-store' }): Promise<string> {
+export async function call(c: Config, path: string, action: string, body: string, init: RequestInit & { next?: { revalidate: number } } = { cache: 'no-store' }): Promise<string> {
   const res = await fetch(c.base + path, {
     ...init,
     method: 'POST',
@@ -81,7 +125,7 @@ async function call(c: Config, path: string, action: string, body: string, init:
   return replyText(Buffer.from(await res.arrayBuffer()));
 }
 
-const decode = (s: string) =>
+export const decode = (s: string) =>
   s
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
     .replace(/&lt;/g, '<')
