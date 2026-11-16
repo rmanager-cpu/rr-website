@@ -1,6 +1,7 @@
 // Menu data + theme -> print-ready PDF. Every page is fitted in a real browser; a page that can't fit
 // at the minimum type size returns no PDF and says how many items to cut.
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, rmSync, statfsSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 import { PDFDocument, rgb, degrees } from 'pdf-lib';
@@ -11,16 +12,51 @@ export const THEME_IDS = Object.keys(THEMES);
 
 const WINDOWS_CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 
+// On Vercel a warm server keeps its /tmp (512 MB) between prints, and serves several requests at once.
+// Chromium unpacks itself into /tmp on first use, and every launch leaves a profile and caches there.
+// Two prints at once (the preview frame plus "Open PDF") could launch a half-unpacked browser, and the
+// leftovers filled /tmp until every print failed ("ENOSPC: no space left on device"). So: one print at
+// a time per server, and each one starts by clearing what earlier prints left behind.
+let queue = Promise.resolve();
+
+/** What earlier prints leave in /tmp. Chromium's own unpacked files (chromium, al2023, fonts, the
+ * swiftshader libraries) don't match, so they're kept and never unpacked twice. */
+export const LEFTOVER = /^(playwright|\.org\.chromium\.|\.com\.google\.Chrome|core\.|\.cache$|\.config$|\.local$|\.pki$|\.fontconfig$)/;
+
+export function clearLeftovers(dir = os.tmpdir()) {
+  for (const name of readdirSync(dir)) if (LEFTOVER.test(name)) rmSync(path.join(dir, name), { recursive: true, force: true });
+}
+
+const freeMb = (dir) => {
+  try {
+    const s = statfsSync(dir);
+    return Math.round((s.bavail * s.bsize) / 1048576);
+  } catch {
+    return null;
+  }
+};
+
 async function launch() {
   if (process.env.VERCEL) {
+    const tmp = os.tmpdir();
+    clearLeftovers(tmp);
+    const free = freeMb(tmp);
+    if (free !== null && free < 200) console.warn(`[print] /tmp has ${free} MB free after clearing leftovers: ${readdirSync(tmp).join(', ')}`);
     const { default: sparticuz } = await import('@sparticuz/chromium');
     return chromium.launch({ executablePath: await sparticuz.executablePath(), args: sparticuz.args, headless: true });
   }
   return chromium.launch({ executablePath: process.env.CHROME_PATH || (process.platform === 'win32' ? WINDOWS_CHROME : '/usr/bin/google-chrome') });
 }
 
-/** Build one menu in one theme. Returns { ok, report, floorPt, pdf?, printPdf?, printCopiesPdf? }. */
-export async function buildMenu(menu, themeId) {
+/** Build one menu in one theme. Returns { ok, report, floorPt, pdf?, printPdf?, printCopiesPdf? }.
+ * Prints wait their turn: only one browser runs at a time on a server. */
+export function buildMenu(menu, themeId) {
+  const run = queue.then(() => buildMenuNow(menu, themeId));
+  queue = run.catch(() => {}); // a failed print never blocks the next one
+  return run;
+}
+
+async function buildMenuNow(menu, themeId) {
   const theme = getTheme(themeId);
   const size = SIZES[menu.size];
   const floorPt = menu.minTypePt ?? theme.floorPt[menu.size]; // a menu can set its own minimum
