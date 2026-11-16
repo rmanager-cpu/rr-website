@@ -64,8 +64,11 @@ const nextConfig = {
     // The Careers form posts a resume of up to 4 MB.
     serverActions: { bodySizeLimit: '5mb' },
     serverComponentsExternalPackages: ['@sparticuz/chromium', 'playwright-core', 'pdf-lib'],
-    // Read at run time by the menu PDF route.
-    outputFileTracingIncludes: { '/admin/print/menus/*/pdf': ['./print-fonts/**', './src/lib/print-menu/fit.js'] },
+    // Read at run time by the menu PDF route. Chromium's bin/ (the compressed browser) is loaded by path, so the
+    // tracer never sees it: without this line every print on Vercel failed with "…/chromium/bin does not exist".
+    outputFileTracingIncludes: {
+      '/admin/print/menus/*/pdf': ['./print-fonts/**', './src/lib/print-menu/fit.js', './node_modules/@sparticuz/chromium/bin/**'],
+    },
   },
   trailingSlash: false,
   images: {
