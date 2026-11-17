@@ -9,6 +9,7 @@ import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 import { StayBook } from '../StayBook';
 import { GroupPackage } from '@/components/booking/GroupPackage';
+import { DemoPromotions } from '@/components/booking/DemoPromotions';
 import { isBookingDemo } from '@/lib/demo/mode';
 import { addDays, todayInTahoe } from '@/lib/demo/package';
 import '../stay.css';
@@ -101,6 +102,7 @@ export default async function RoomsPage() {
             <p className="label label--accent">Group ski deal</p>
             <h2 id="group-h" className="display-l">Stay together. <em>Ski together.</em></h2>
           </div>
+          <DemoPromotions />
           <GroupPackage today={today} initialCheckIn={addDays(today, 14)} initialCheckOut={addDays(today, 17)} />
         </div>
       </section>}

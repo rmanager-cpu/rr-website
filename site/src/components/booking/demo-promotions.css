@@ -1,0 +1,128 @@
+.demo-promos {
+  margin: 0 0 32px;
+}
+
+.demo-promos__closed {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 18px;
+  color: var(--forest);
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 750;
+  letter-spacing: .2em;
+  line-height: 1.6;
+}
+
+.demo-promos__signal {
+  flex: 0 0 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 5px rgb(224 145 58 / .13);
+}
+
+.demo-promos__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.demo-promos__deal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  padding: clamp(25px, 4vw, 52px);
+  border: 1px solid var(--pine);
+  background: var(--pine);
+  color: var(--snow);
+}
+
+.demo-promos__deal::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  z-index: -1;
+  border: 1px solid rgb(224 145 58 / .45);
+  pointer-events: none;
+}
+
+.demo-promos__headline {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 940px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(33px, 5vw, 70px);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.demo-promos__spark {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 clamp(42px, 6vw, 76px);
+  width: clamp(42px, 6vw, 76px);
+  height: auto;
+  color: var(--amber);
+}
+
+.demo-promos__shine {
+  position: absolute;
+  inset: -30% -50%;
+  z-index: 0;
+  background: linear-gradient(110deg, transparent 40%, rgb(224 145 58 / .14) 50%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The existing Fireside reveal observer starts these once as the banner enters view. */
+@media (prefers-reduced-motion: no-preference) {
+  .demo-promos__closed[data-revealed] .demo-promos__signal {
+    animation: demo-promo-signal 2.4s var(--ease) 1;
+  }
+  .demo-promos__deal[data-revealed] .demo-promos__spark {
+    animation: demo-promo-turn 1.8s var(--ease) 1;
+  }
+  .demo-promos__deal[data-revealed] .demo-promos__shine {
+    animation: demo-promo-shine 1.3s var(--ease) .1s 1;
+  }
+}
+
+@keyframes demo-promo-signal {
+  0% { box-shadow: 0 0 0 0 rgb(224 145 58 / .4); }
+  70%, 100% { box-shadow: 0 0 0 12px rgb(224 145 58 / 0); }
+}
+@keyframes demo-promo-turn {
+  from { transform: rotate(-50deg) scale(.85); }
+  to { transform: rotate(0) scale(1); }
+}
+@keyframes demo-promo-shine {
+  0% { transform: translateX(-45%); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translateX(45%); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .demo-promos__closed { letter-spacing: .13em; gap: 10px; }
+  .demo-promos__deal { gap: 18px; padding: 28px 23px; }
+  .demo-promos__spark { flex-basis: 34px; width: 34px; }
+  .demo-promos__headline { font-size: clamp(29px, 7.7vw, 44px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-promos [data-reveal],
+  .demo-promos [data-reveal] * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .demo-promos__shine { display: none; }
+}
