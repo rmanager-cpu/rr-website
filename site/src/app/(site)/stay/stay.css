@@ -131,3 +131,6 @@ html.fl-motion .sty-curtain .sty-curtain__morning { opacity: 0; }
 
 /* .rows and .facts reset their own margins; keep the stack rhythm above them */
 .stack-l > :is(.sty-amenities, .facts) { margin-top: 2.4rem; }
+
+/* Sandbox inventory indicators on the isolated booking preview. */
+.rb-availability{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #ffffff24;font-size:11px;color:#b6bbb5;width:fit-content;margin-top:15px}.rb-availability span{font-size:8px}.rb-availability.is-open{color:#b9d9c2;border-color:#8fb69d70;background:#29433655}

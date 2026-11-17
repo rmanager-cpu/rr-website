@@ -59,3 +59,13 @@ test('fresh lower inventory invalidates a previously complete group selection', 
   assert.doesNotThrow(() => packageTotal(sampleAvailability(query).rooms, mix, query, 0, 1));
   assert.throws(() => packageTotal(sampleAvailability({ ...query, scenario: 'limited' }).rooms, mix, query, 0, 1), /no longer available/);
 });
+
+test('eight sample rooms accommodate a six-room group and reject a nine-room group', () => {
+  const q = { ...query, rooms: 6 };
+  const inventory = sampleAvailability(q).rooms;
+  assert.equal(inventory.reduce((sum, r) => sum + r.available, 0), 8);
+  const result = packageTotal(inventory, { RIVDD: 3, RIVQ: 2, KVIEW: 1 }, q, 12, 2);
+  assert.equal(result.rooms, 6);
+  assert.equal(result.total, 741045);
+  assert.throws(() => packageTotal(inventory, { RIVDD: 3, RIVQ: 2, KVIEW: 1, '2Q': 1, K: 1 }, { ...q, rooms: 9 }, 0, 1), /all 9 rooms/);
+});

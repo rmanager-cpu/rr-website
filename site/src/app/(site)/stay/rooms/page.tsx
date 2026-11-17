@@ -8,6 +8,9 @@ import { photos } from '@/content/photos';
 import { business } from '@/content/site';
 import { breadcrumbSchema, JsonLd } from '@/lib/schema';
 import { StayBook } from '../StayBook';
+import { GroupPackage } from '@/components/booking/GroupPackage';
+import { isBookingDemo } from '@/lib/demo/mode';
+import { addDays, todayInTahoe } from '@/lib/demo/package';
 import '../stay.css';
 
 export const metadata: Metadata = {
@@ -46,7 +49,9 @@ const GALLERY = [
 export const revalidate = 3600;
 
 export default async function RoomsPage() {
-  const roomPhotos = await fetchRoomPhotos();
+  const demo = isBookingDemo();
+  const today = todayInTahoe();
+  const roomPhotos = demo ? {} : await fetchRoomPhotos();
   return (
     <>
       <JsonLd data={breadcrumbSchema('Rooms', '/stay/rooms')} />
@@ -62,6 +67,7 @@ export default async function RoomsPage() {
           <p className="lede" data-reveal data-reveal-delay="300">Log beds, quilts and old skis on the walls. Most rooms look right at the Truckee.</p>
           <div className="btn-row" data-reveal data-reveal-delay="450">
             <a href="#finder" className="btn">Choose your dates</a>
+            {demo && <a href="#group-booking" className="btn btn--ghost">Group ski deal</a>}
           </div>
         </div>
       </section>
@@ -89,14 +95,24 @@ export default async function RoomsPage() {
         </div>
       </section>
 
+      {demo && <section className="section section--snow" id="group-booking" aria-labelledby="group-h">
+        <div className="container">
+          <div className="section-head">
+            <p className="label label--accent">Group ski deal</p>
+            <h2 id="group-h" className="display-l">Stay together. <em>Ski together.</em></h2>
+          </div>
+          <GroupPackage today={today} initialCheckIn={addDays(today, 14)} initialCheckOut={addDays(today, 17)} />
+        </div>
+      </section>}
+
       <section className="section section--dark" id="finder" aria-labelledby="types-h">
         <div className="container">
           <div className="section-head">
             <p className="label label--accent" data-reveal>Room types</p>
             <Lines id="types-h" className="display-l" lines={['Choose your', <>dates <em>and room.</em></>]} />
-            <p className="lede" data-reveal data-reveal-delay="150">Pick your nights, then any room’s button opens live rates with that room at the top.</p>
+            {!demo && <p className="lede" data-reveal data-reveal-delay="150">Pick your nights, then any room’s button opens live rates with that room at the top.</p>}
           </div>
-          <RoomFinder photos={roomPhotos} />
+          <RoomFinder photos={roomPhotos} demo={demo} />
         </div>
       </section>
 

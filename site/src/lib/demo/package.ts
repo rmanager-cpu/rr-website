@@ -70,11 +70,11 @@ export function packageTotal(available: Room[], selection: Selection, q: Search,
 export function sampleAvailability(q: Search): Availability {
   const nights = dayNumber(q.checkOut)! - dayNumber(q.checkIn)!;
   const list = [
-    { code: 'RIVDD', available: 4, sleeps: 4, rate: 260 },
-    { code: 'RIVQ', available: 4, sleeps: 2, rate: 240 },
-    { code: 'KVIEW', available: 3, sleeps: 2, rate: 225 },
-    { code: '2Q', available: 4, sleeps: 4, rate: 215 },
-    { code: 'K', available: 4, sleeps: 2, rate: 195 },
+    { code: 'RIVDD', available: 3, sleeps: 4, rate: 260 },
+    { code: 'RIVQ', available: 2, sleeps: 2, rate: 240 },
+    { code: 'KVIEW', available: 1, sleeps: 2, rate: 225 },
+    { code: '2Q', available: 1, sleeps: 4, rate: 215 },
+    { code: 'K', available: 1, sleeps: 2, rate: 195 },
   ];
   return { source: 'sample', checkedAt: new Date().toISOString(), nights, rooms: list.filter(r => r.sleeps >= q.guests).map((r, i) => ({ code: r.code, sleeps: r.sleeps, available: q.scenario === 'sold-out' ? 0 : q.scenario === 'limited' ? (i < 2 ? 1 : 0) : r.available, plan: 'SAMPLE', beforeCents: r.rate * nights * 100, taxCents: r.rate * nights * 10 })).filter(r => r.available > 0) };
 }

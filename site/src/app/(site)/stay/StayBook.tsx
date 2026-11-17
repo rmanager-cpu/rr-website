@@ -2,6 +2,7 @@ import { StayDates } from '@/components/RoomBooking';
 import { Lines } from '@/components/fl/Lines';
 import { business, lodging } from '@/content/site';
 import './stay.css';
+import { isBookingDemo } from '@/lib/demo/mode';
 
 /** "3 PM" becomes a big 3 with an italic "pm". */
 function Time({ value }: { value: string }) {
@@ -32,7 +33,7 @@ export function StayBook() {
           </p>
         </div>
         <div className="sty-book__panel" data-reveal data-reveal-delay="150">
-          <StayDates />
+          <StayDates demo={isBookingDemo()} />
         </div>
       </div>
     </section>

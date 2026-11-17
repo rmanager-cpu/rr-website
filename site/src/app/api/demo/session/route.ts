@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   if (!sameOrigin(req)) return new NextResponse(null, { status: 403 });
   const form = await req.formData();
   const origin = req.headers.get('origin')!;
-  const response = NextResponse.redirect(new URL('/demo', origin), 303);
+  const response = NextResponse.redirect(new URL(form.get('action') === 'logout' ? '/demo' : '/stay/rooms#group-booking', origin), 303);
   response.headers.set('Cache-Control', 'no-store');
   if (form.get('action') === 'logout') { response.cookies.delete(DEMO_COOKIE); return response; }
   if (!configured()) return new NextResponse('Demo access is not configured.', { status: 503 });

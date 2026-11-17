@@ -4,9 +4,9 @@ This is demo-only work on `bookingcenter-demo`. Do not merge it into `main`, pro
 
 ## Experience
 
-`/demo` contains a password gate and a guest-facing group package widget: dates, a complete room mix, optional lift-ticket people/days, and one itemized total. `/api/demo/review` repeats the availability checks and recalculates on the server. Nothing creates a reservation, inventory hold, ticket, payment, email, or guest record.
+`/demo` is the password gate. The existing `/stay/rooms` page contains the group package widget: dates, a complete room mix, optional lift-ticket people/days, and one itemized total. `/api/demo/review` repeats the availability checks and recalculates on the server. Nothing creates a reservation, inventory hold, ticket, payment, email, or guest record.
 
-The `bookingcenter-demo` deployment serves only the demo and its public assets. Other application pages and APIs, including inquiry and admin routes, return 404. Production routing is unchanged; the new demo page and APIs independently deny production access.
+The `bookingcenter-demo` deployment serves the password-protected Stay pages and demo APIs. Other application pages and APIs, including inquiry and admin routes, return 404. The original room finder shows fresh sandbox counts and rates without handing reviewers into production checkout. Production routing is unchanged; the new demo page and APIs independently deny production access.
 
 ## Configuration
 
@@ -23,14 +23,14 @@ Create these values as **Preview environment variables restricted to `bookingcen
 
 The verified SOAP base URL is `https://ws-server-test.bookingcenter.com/`. The `ws-client-test` host in the setup email is the documentation/test-console login, not the SOAP endpoint. The emailed API key was truncated; the complete sandbox key was recovered from the authenticated test console and verified with a read-only `OTA_HotelAvailRQ`. Keep that key in the branch-scoped Preview environment only.
 
-Keep Vercel Deployment Protection enabled. A Vercel share link also needs the demo password; issuing a link is a separate access decision. Sessions expire after eight hours. Rotating the password or signing key invalidates existing sessions. Login throttling is per process, not a distributed abuse-prevention service; hosting protection remains in place.
+Keep Vercel Deployment Protection enabled. The stable preview alias uses a non-expiring share link, as requested, and still requires the separate demo password. The password itself has no expiry. Sessions expire after eight hours. Rotating the password or signing key invalidates existing sessions. Login throttling is per process, not a distributed abuse-prevention service; hosting protection remains in place.
 
 For local development only, put these values in ignored `.env.local`. `npm run dev` runs on port 3100. The local UI uses no database or third-party analytics.
 
 ## Data and pricing boundaries
 
-- Default mode is an actual BookingCenter **sandbox** read. It is not live production inventory. Missing credentials, wrong property, a production endpoint, failed responses, or unknown nightly rates block the offer. There is no automatic sample fallback.
-- The explicitly selected sample walkthrough uses fictional room counts and rates. It includes enough-room, two-room, sold-out and outage scenarios.
+- The existing room listings use actual BookingCenter **sandbox** reads. The group widget also offers this source. It is not live production inventory. Missing credentials, wrong property, a production endpoint, failed responses, or unknown nightly rates block the offer. There is no automatic sample fallback.
+- The group widget starts with six rooms selected and eight fictional rooms available across five room types. Sample pricing and inventory are labeled. It also includes two-room, sold-out and outage scenarios.
 - A whole-stay search and every one-night search must agree on a room type and usable rate plan. Capacity must accommodate the requested guests. The smallest count across all searches limits the selection. One-night amounts are summed; whole-stay `Base` values are not assumed to be totals.
 - Sample discount: 10% at five rooms. Sample ticket price: $125 per person-day, all-in. Discounted taxes are a proportional estimate. These rules are **not approved commercial terms** and imply no resort partnership.
 - Availability is a snapshot, not a hold. Even a successful recheck cannot guarantee against a competing reservation. Production needs confirmed atomic booking/hold behavior, API response semantics, reconciled totals/taxes, payment processing, and lift-ticket inventory/fulfillment.

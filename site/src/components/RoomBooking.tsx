@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { roomTypes } from '@/content/rooms';
 import { business, lodging } from '@/content/site';
 import { bookingCenterUrl, cleanPromo, nextDay } from '@/lib/bookingcenter';
+import { addDays, type Availability } from '@/lib/demo/package';
 
 const MAX_GUESTS = 4; // The most any one room sleeps.
 const SEARCH_TIMEOUT_MS = 15_000;
@@ -21,19 +22,25 @@ type LiveRoom = {
 type LiveRates = { rooms: LiveRoom[]; test: boolean; nights: number };
 
 /** Live rooms for a stay, or null for "use the handoff": not set up, or BookingCenter can't be reached. */
-async function searchRates(q: { checkIn: string; checkOut: string; guests: number }, signal?: AbortSignal): Promise<LiveRates | null> {
+async function searchRates(q: { checkIn: string; checkOut: string; guests: number }, signal?: AbortSignal, demo = false): Promise<LiveRates | null> {
   try {
     const params = new URLSearchParams({ checkIn: q.checkIn, checkOut: q.checkOut, guests: String(q.guests) });
+    if (demo) { params.set('mode', 'sandbox'); params.set('rooms', '5'); }
     const timeout = AbortSignal.timeout(SEARCH_TIMEOUT_MS);
-    const res = await fetch(`/api/stay/availability?${params}`, { signal: signal ? AbortSignal.any([signal, timeout]) : timeout });
+    const res = await fetch(`${demo ? '/api/demo/availability' : '/api/stay/availability'}?${params}`, { signal: signal ? AbortSignal.any([signal, timeout]) : timeout });
     const data = await res.json();
+    if (demo) {
+      if (!res.ok) return null;
+      const availability = data as Availability;
+      return { test: true, nights: availability.nights, rooms: availability.rooms.map(room => ({ code: room.code, name: room.code, unitsLeft: room.available, beforeTax: room.beforeCents / 100, afterTax: (room.beforeCents + room.taxCents) / 100, deposit: null, policy: null })) };
+    }
     return data.status === 'ok' ? data : null;
   } catch {
     return null;
   }
 }
 
-function useStayDates() {
+function useStayDates(demo = false) {
   const [today, setToday] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
@@ -48,13 +55,16 @@ function useStayDates() {
     const t = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     setToday(t);
     const q = new URLSearchParams(window.location.search);
-    setPromo(cleanPromo(q.get('promo')));
+    setPromo(demo ? '' : cleanPromo(q.get('promo')));
     const asked = q.get('checkin');
     if (asked && /^\d{4}-\d{2}-\d{2}$/.test(asked) && asked >= t) {
       setCheckIn(asked);
       setCheckOut(nextDay(asked));
+    } else if (demo) {
+      setCheckIn(addDays(t, 14));
+      setCheckOut(addDays(t, 17));
     }
-  }, []);
+  }, [demo]);
 
   const pickCheckIn = (value: string) => {
     setCheckIn(value);
@@ -105,7 +115,7 @@ const money = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigi
 const nightsWord = (n: number) => `${n} ${n === 1 ? 'night' : 'nights'}`;
 
 function TestNotice({ show }: { show: boolean }) {
-  return show ? <p className="live-test" role="status">BookingCenter test system: these are not real rates.</p> : null;
+  return show ? <p className="live-test" role="status">Live availability · BookingCenter sandbox</p> : null;
 }
 
 function NoRooms() {
@@ -137,11 +147,12 @@ const siteName = (room: LiveRoom) => roomTypes.find((r) => r.code === room.code)
 
 /** The date picker (a Fireside bark panel). It lists live rooms when it can, and otherwise opens BookingCenter's
  *  results for those dates. A promo code skips the live list: only BookingCenter's page applies the code. */
-export function StayDates() {
-  const dates = useStayDates();
+export function StayDates({ demo = false }: { demo?: boolean } = {}) {
+  const dates = useStayDates(demo);
   const checkInId = useId();
   const [searching, setSearching] = useState(false);
   const [found, setFound] = useState<(LiveRates & { checkIn: string; checkOut: string }) | null>(null);
+  const [unavailable, setUnavailable] = useState(false);
 
   return (
     <div className="panel rb-panel">
@@ -156,16 +167,19 @@ export function StayDates() {
             return;
           }
           setSearching(true);
-          const rates = await searchRates({ checkIn, checkOut, guests });
+          setFound(null); setUnavailable(false);
+          const rates = await searchRates({ checkIn, checkOut, guests }, undefined, demo);
           setSearching(false);
           if (rates) setFound({ ...rates, checkIn, checkOut });
+          else if (demo) setUnavailable(true);
           else window.location.href = bookingCenterUrl({ checkIn, checkOut });
         }}
       >
         <DateFields dates={dates} checkInId={checkInId} />
         {dates.promo && <p className="planner__note">Promo code <b>{dates.promo.toUpperCase()}</b> is applied.</p>}
         <button type="submit" className="btn rb-panel__go" disabled={searching}>{searching ? 'Checking…' : 'See rooms and rates'}</button>
-        <p className="planner__note">{NOTE}</p>
+        <p className="planner__note">{demo ? <a href="/stay/rooms#group-booking">Group ski deal →</a> : NOTE}</p>
+        {unavailable && <p className="planner__note" role="alert">Availability unavailable. Try again.</p>}
         <p className="planner__note">Check-in is {lodging.checkIn}. Check-out is {lodging.checkOut}. Bringing the dog? Tell us ahead.</p>
         {found && (
           <div className="live-list" aria-live="polite">
@@ -175,10 +189,10 @@ export function StayDates() {
               <div key={room.code} className="live-list__room">
                 <p className="live-list__name">{roomName(siteName(room))}</p>
                 <RateLines room={room} nights={found.nights} />
-                <a href={bookingCenterUrl({ checkIn: found.checkIn, checkOut: found.checkOut, roomType: room.code })} className="btn btn--sm" rel="noopener">Book this room</a>
+                {demo ? <p className="planner__note">{room.unitsLeft} available · Preview only</p> : <a href={bookingCenterUrl({ checkIn: found.checkIn, checkOut: found.checkOut, roomType: room.code })} className="btn btn--sm" rel="noopener">Book this room</a>}
               </div>
             ))}
-            <a href={bookingCenterUrl({ checkIn: found.checkIn, checkOut: found.checkOut })} className="link-arrow live-list__all" rel="noopener">See all rooms on our booking page</a>
+            {!demo && <a href={bookingCenterUrl({ checkIn: found.checkIn, checkOut: found.checkOut })} className="link-arrow live-list__all" rel="noopener">See all rooms on our booking page</a>}
           </div>
         )}
       </form>
@@ -206,8 +220,8 @@ function MorePhotos({ name, primary, urls }: { name: string; primary: string | n
  * room's button opens the results with that type on top. A room with no live rate isn't called sold out:
  * BookingCenter's page has the last word.
  */
-export function RoomFinder({ photos = {} }: { photos?: Record<string, string[]> }) {
-  const dates = useStayDates();
+export function RoomFinder({ photos = {}, demo = false }: { photos?: Record<string, string[]>; demo?: boolean }) {
+  const dates = useStayDates(demo);
   const checkInId = useId();
   const { checkIn, checkOut, guests } = dates;
   const hasDates = Boolean(checkIn && checkOut && checkOut > checkIn);
@@ -216,12 +230,12 @@ export function RoomFinder({ photos = {} }: { photos?: Record<string, string[]> 
 
   useEffect(() => {
     setRates(null);
-    if (!hasDates || dates.promo) return;
+    if (!hasDates || dates.promo) { setSearching(false); return; }
     const stop = new AbortController();
     setSearching(true);
     // A short wait, so typing a date doesn't send a search for each keystroke.
     const wait = setTimeout(async () => {
-      const found = await searchRates({ checkIn, checkOut, guests }, stop.signal);
+      const found = await searchRates({ checkIn, checkOut, guests }, stop.signal, demo);
       if (!stop.signal.aborted) {
         setRates(found);
         setSearching(false);
@@ -231,7 +245,7 @@ export function RoomFinder({ photos = {} }: { photos?: Record<string, string[]> 
       stop.abort();
       clearTimeout(wait);
     };
-  }, [checkIn, checkOut, guests, hasDates, dates.promo]);
+  }, [checkIn, checkOut, guests, hasDates, dates.promo, demo]);
 
   const askForDates = () => {
     const input = document.getElementById(checkInId);
@@ -244,7 +258,7 @@ export function RoomFinder({ photos = {} }: { photos?: Record<string, string[]> 
       <div className="panel rb-finder__dates">
         <h3 className="panel__title">Your dates <em>first</em></h3>
         <DateFields dates={dates} checkInId={checkInId} />
-        <p className="planner__note">{hasDates && searching ? 'Checking rooms and rates…' : NOTE}</p>
+        <p className="planner__note" role="status">{hasDates && searching ? 'Checking rooms and rates…' : demo ? rates ? `${rates.rooms.reduce((sum, room) => sum + room.unitsLeft, 0)} rooms available for your stay` : hasDates ? 'Availability unavailable. Try different dates.' : 'Choose your dates.' : NOTE}</p>
         {rates && <TestNotice show={rates.test} />}
         {rates?.rooms.length === 0 && <NoRooms />}
       </div>
@@ -270,7 +284,7 @@ export function RoomFinder({ photos = {} }: { photos?: Record<string, string[]> 
                 </div>
                 <MorePhotos name={r.name} primary={r.photo} urls={photos[r.code] ?? []} />
                 {live && rates && <RateLines room={live} nights={rates.nights} />}
-                {hasDates ? (
+                {demo ? <p className={`rb-availability${live ? ' is-open' : ''}`} role="status"><span aria-hidden="true">●</span> {searching ? 'Checking availability…' : live ? `${live.unitsLeft} available` : rates ? 'Unavailable for these dates' : 'Availability not verified'}</p> : hasDates ? (
                   <a href={bookingCenterUrl({ checkIn, checkOut, roomType: r.code, promo: dates.promo })} className="btn btn--sm rb-room__go" rel="noopener">{live ? 'Book this room' : 'See rates'}</a>
                 ) : (
                   <button type="button" className="btn btn--ghost btn--sm rb-room__go" onClick={askForDates}>Choose dates</button>
