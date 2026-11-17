@@ -21,6 +21,8 @@ Create these values as **Preview environment variables restricted to `bookingcen
 | `BOOKINGCENTER_SITE_ID` | `RIVERR` |
 | `BOOKINGCENTER_API_KEY` | The sandbox API key, distinct from the WSDL documentation password. |
 
+The verified SOAP base URL is `https://ws-server-test.bookingcenter.com/`. The `ws-client-test` host in the setup email is the documentation/test-console login, not the SOAP endpoint. The emailed API key was truncated; the complete sandbox key was recovered from the authenticated test console and verified with a read-only `OTA_HotelAvailRQ`. Keep that key in the branch-scoped Preview environment only.
+
 Keep Vercel Deployment Protection enabled. A Vercel share link also needs the demo password; issuing a link is a separate access decision. Sessions expire after eight hours. Rotating the password or signing key invalidates existing sessions. Login throttling is per process, not a distributed abuse-prevention service; hosting protection remains in place.
 
 For local development only, put these values in ignored `.env.local`. `npm run dev` runs on port 3100. The local UI uses no database or third-party analytics.
