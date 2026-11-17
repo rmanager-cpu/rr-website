@@ -4,6 +4,8 @@ import { fontFaceCss } from './fonts.mjs';
 
 export const SIZES = {
   letter: { w: '8.5in', h: '11in', z: 1, cls: 'size-letter' },
+  // The wine list prints on legal paper. Same margins and type as letter, three more inches of page.
+  legal: { w: '8.5in', h: '14in', z: 1, cls: 'size-letter' },
   // corner: depth of the menu-book corner pockets (in). Text may not sit under them.
   'half-letter': { w: '5.5in', h: '8.5in', z: 1, cls: 'size-half', corner: 1.2 },
 };
@@ -28,8 +30,13 @@ const legendEntry = (menu, key) => {
 };
 const markFor = (menu, key) => legendEntry(menu, key)?.mark ?? DEFAULT_MARKS[key] ?? '';
 
+// The print fonts are Latin-only, so "⅓" would print as an empty box. Write these the way staff type them.
+// (½ ¼ ¾ are in the fonts and print as they are.)
+const FRACTIONS = { '⅓': '1/3', '⅔': '2/3', '⅕': '1/5', '⅖': '2/5', '⅗': '3/5', '⅘': '4/5', '⅙': '1/6', '⅚': '5/6', '⅛': '1/8', '⅜': '3/8', '⅝': '5/8', '⅞': '7/8' };
+
 const esc = (s = '') =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  String(s).replace(/[⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/g, (c) => FRACTIONS[c])
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function markers(tags = [], menu) {
   const m = tags.map((t) => markFor(menu, t)).filter(Boolean).join('');
@@ -128,17 +135,40 @@ function footer(menu, page) {
   return lines ? `<footer class="pf">${lines}</footer>` : '';
 }
 
+// Guest copies (the website's Download PDF) carry the logo on the first page and a contact line on the
+// last, each a plain link: no colour, no underline, nothing that runs when the file opens.
+//   menu.guest = { logo: 'data:image/png;base64,…', home: 'https://…', contact: [{ text, href }] }
+const isLink = (href) => /^(https:\/\/|tel:\+?\d+$)/.test(href ?? '');
+
+function guestLogo(menu) {
+  const g = menu.guest;
+  if (!g?.logo || !/^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(g.logo)) return '';
+  const img = `<img class="g-logo-img" src="${g.logo}" alt="River Ranch Lodge">`;
+  return isLink(g.home) ? `<a class="g-logo" href="${esc(g.home)}">${img}</a>` : `<span class="g-logo">${img}</span>`;
+}
+
+function guestContact(menu) {
+  const parts = (menu.guest?.contact ?? []).filter((c) => c?.text);
+  if (!parts.length) return '';
+  return `<footer class="g-contact">${parts
+    .map((c) => (isLink(c.href) ? `<a href="${esc(c.href)}">${esc(c.text)}</a>` : `<span>${esc(c.text)}</span>`))
+    .join('<span class="sep">&nbsp;· </span>')}</footer>`;
+}
+
 export function renderHtml(menu, theme) {
   const size = SIZES[menu.size];
-  if (!size) throw new Error(`Unknown size "${menu.size}" (use letter or half-letter)`);
+  if (!size) throw new Error(`Unknown size "${menu.size}" (use letter, legal or half-letter)`);
+  const last = menu.pages.length - 1;
 
   const pages = menu.pages
     .map((page, i) => {
       const cols = page.columns ?? 1;
       const label = `${menu.name} p${i + 1}${page.title ? ` (${page.title})` : ''}`;
-      return `<section class="page ${size.cls} cols-${cols}" data-label="${esc(label)}" data-corner-in="${size.corner ?? 0}"${page.minTypePt ? ` data-min-type-pt="${page.minTypePt}"` : ''}>
+      const logo = i === 0 ? guestLogo(menu) : '';
+      return `<section class="page ${size.cls} cols-${cols}" data-label="${esc(label)}" data-corner-in="${menu.guest ? 0 : size.corner ?? 0}"${page.minTypePt ? ` data-min-type-pt="${page.minTypePt}"` : ''}>
   <div class="frame">
-    ${page.title || menu.brand ? `<header class="ph">
+    ${page.title || menu.brand || logo ? `<header class="ph">
+      ${logo}
       ${menu.brand && i === 0 ? `<div class="brand">${esc(menu.brand)}</div>` : ''}
       ${page.title ? `<h1 class="ptitle">${esc(page.title)}</h1>` : ''}
       ${page.subtitle ? `<div class="snote">${esc(page.subtitle)}</div>` : ''}
@@ -147,6 +177,7 @@ export function renderHtml(menu, theme) {
       ${page.sections.map((sec) => section(sec, menu)).join('\n')}
     </div></div>
     ${footer(menu, page)}
+    ${i === last ? guestContact(menu) : ''}
   </div>
 </section>`;
     })
@@ -181,6 +212,12 @@ html, body { margin: 0; padding: 0; background: #fff; }
 .sep { white-space: normal; }
 .il, .pl, .op { white-space: nowrap; }
 h1, h2, p { margin: 0; font-weight: inherit; }
+a { color: inherit; text-decoration: none; }
+.g-logo { display: inline-block; line-height: 0; margin-bottom: calc(var(--g) * var(--s) * var(--z) * 6pt); }
+.g-logo-img { display: block; height: calc(var(--z) * 0.62in); width: auto; }
+.size-half .g-logo-img { height: calc(var(--z) * 0.5in); }
+.g-contact { flex: none; margin-top: calc(var(--g) * var(--s) * var(--z) * 8pt); text-align: center;
+  font-size: calc(var(--s) * var(--z) * 8.5pt); line-height: 1.3; color: #333; }
 ${theme.css}
 </style></head>
 <body>

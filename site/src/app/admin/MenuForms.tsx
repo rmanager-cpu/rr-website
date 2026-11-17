@@ -70,9 +70,10 @@ export function SectionHead({ action, name, note, sort }: { action: (p: FormStat
   );
 }
 
-export type MenuInit = { name: string; intro: string; servingNote: string; footer: string; active: boolean; showUntil: string; theme: string; kind: 'regular' | 'holiday' | 'banquet'; hours: { days: number[]; start: string; end: string; label: string }[] };
+export type MenuInit = { name: string; intro: string; servingNote: string; footer: string; active: boolean; showUntil: string; theme: string; size: string; kind: 'regular' | 'holiday' | 'banquet'; hours: { days: number[]; start: string; end: string; label: string }[] };
 
 const THEMES = [['classic', 'Classic'], ['fireside', 'Fireside'], ['trailhead', 'Trailhead'], ['band', 'Band']];
+const PAPERS = [['letter', 'Letter (8.5 × 11)'], ['legal', 'Legal (8.5 × 14)'], ['half-letter', 'Half sheet (5.5 × 8.5)']];
 
 /** Heading and subheading for a new holiday or banquet menu, copied from that kind's template. */
 export function NewEventMenu({ action, label }: { action: (p: FormState, f: FormData) => Promise<FormState>; label: string }) {
@@ -98,6 +99,7 @@ export function MenuSettings({ action, init }: { action: (p: FormState, f: FormD
       <div className="adm-grid">
         <label className="f">{event ? 'Heading' : 'Menu name'}<input type="text" name="name" defaultValue={init.name} required maxLength={80} /></label>
         <label className="f">Print style<select name="theme" defaultValue={init.theme}>{THEMES.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
+        <label className="f">Paper<select name="size" defaultValue={init.size}>{PAPERS.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>
         {banquet ? (
           <input type="hidden" name="active" value="no" />
         ) : (

@@ -8,7 +8,7 @@
 const T = (pt) => `calc(var(--s) * var(--z) * ${pt}pt)`;
 const G = (pt) => `calc(var(--g) * var(--s) * var(--z) * ${pt}pt)`;
 
-const FLOOR = { letter: 9, 'half-letter': 9 };
+const FLOOR = { letter: 9, legal: 9, 'half-letter': 9 };
 
 // Pieces every theme shares.
 const common = `
@@ -84,7 +84,7 @@ const fireside = {
   id: 'fireside',
   label: 'Fireside',
   bodyPt: 12.5,
-  floorPt: { letter: 10, 'half-letter': 10 }, // Cormorant runs small; its floor sits a point higher
+  floorPt: { letter: 10, legal: 10, 'half-letter': 10 }, // Cormorant runs small; its floor sits a point higher
   faces: [
     ['Cormorant Garamond', 500], ['Cormorant Garamond', 500, 'italic'],
     ['Cormorant Garamond', 600], ['Cormorant Garamond', 700],

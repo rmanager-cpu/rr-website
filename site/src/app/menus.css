@@ -78,6 +78,7 @@
 .mn-page__body { padding-top: clamp(28px, 4vw, 56px); }
 .mn-page__head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .mn-page__crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.mn-page__links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
 .mn-last .lede { color: var(--cream); }
 
 /* ---------- Classic: the web menus dressed like the printed ones (print theme "classic") ----------

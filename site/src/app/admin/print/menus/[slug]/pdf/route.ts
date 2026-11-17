@@ -1,10 +1,12 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { isSignedIn } from '@/lib/admin/session';
+import { pdfMeta } from '@/lib/menus/pdf';
 import { defaultTheme, toPrintMenu } from '@/lib/menus/print';
 import { menuBySlug } from '@/lib/menus/store';
 import { buildMenu, THEME_IDS } from '@/lib/print-menu/build.mjs';
 
-// The print-ready PDF for one menu, built fresh from the editor's data. Staff-only.
+// The print-ready PDF for one menu, built fresh from the editor's data. Staff-only. A page that runs over
+// is tried in two columns before this gives up (the print page only offers styles that fit).
 //   ?theme=classic|fireside|trailhead|band   defaults to the menu's saved style
 //   ?layout=copies|cut                       half-sheet menus only: 2 copies per sheet, or one page per half
 export const dynamic = 'force-dynamic';
@@ -19,7 +21,7 @@ export async function GET(req: NextRequest, { params }: { params: { slug: string
 
   const asked = req.nextUrl.searchParams.get('theme') ?? '';
   const theme = THEME_IDS.includes(asked) ? asked : defaultTheme(menu);
-  const result = await buildMenu(toPrintMenu(menu), theme);
+  const result = await buildMenu(toPrintMenu(menu), theme, { meta: pdfMeta(menu) });
 
   if (!result.ok || !result.pdf) {
     const lines = result.report.filter((p) => !p.fits).map((p) =>

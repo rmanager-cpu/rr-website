@@ -56,18 +56,26 @@ const moved = [
 // No other domains forward here (Alex, 2026-11-12): rrbanquets.com and rrweddings.com were Popmenu-era
 // workarounds and are being let go.
 
+// Read at run time by everything that lays out a menu PDF. Chromium's bin/ (the compressed browser) is loaded by
+// path, so the tracer never sees it: without it every print on Vercel failed with "…/chromium/bin does not exist".
+const PRINT_FILES = ['./print-fonts/**', './print-assets/**', './src/lib/print-menu/fit.js', './node_modules/@sparticuz/chromium/bin/**'];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Menu PDFs are remembered per build (lib/menus/pdf.ts), so a new build never serves an old layout.
+  env: { MENU_PDF_BUILD: String(Date.now()) },
   experimental: {
     // The Careers form posts a resume of up to 4 MB.
     serverActions: { bodySizeLimit: '5mb' },
     serverComponentsExternalPackages: ['@sparticuz/chromium', 'playwright-core', 'pdf-lib'],
-    // Read at run time by the menu PDF route. Chromium's bin/ (the compressed browser) is loaded by path, so the
-    // tracer never sees it: without this line every print on Vercel failed with "…/chromium/bin does not exist".
+    // Keys match route names that contain them ("?" is any one character, standing in for the brackets):
+    //   /admin/print/menus/[slug] and its /pdf   (staff: which styles fit, the print PDF)
+    //   /dine/menus/[slug] and its /pdf          (guests: is there a PDF, Download PDF)
     outputFileTracingIncludes: {
-      '/admin/print/menus/*/pdf': ['./print-fonts/**', './src/lib/print-menu/fit.js', './node_modules/@sparticuz/chromium/bin/**'],
+      '/admin/print/menus/?slug?': PRINT_FILES,
+      '/dine/menus/?slug?': PRINT_FILES,
     },
   },
   trailingSlash: false,

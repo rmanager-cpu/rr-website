@@ -184,11 +184,11 @@ export async function addSection(menuId: string, name: string) {
   await db().query('insert into site_menu_sections (menu_id, name, sort) values ($1,$2,(select coalesce(max(sort),0)+1 from site_menu_sections where menu_id=$1))', [menuId, name]);
 }
 
-export async function saveMenu(id: string, v: { name: string; intro: string | null; servingNote: string | null; footer: string | null; active: boolean; showUntil: string | null; hours: Hours[]; theme: string }) {
+export async function saveMenu(id: string, v: { name: string; intro: string | null; servingNote: string | null; footer: string | null; active: boolean; showUntil: string | null; hours: Hours[]; theme: string; size: string }) {
   await need();
   await db().query(
-    `update site_menus set name=$1, intro=$2, serving_note=$3, footer=$4, active=$5, show_until=$6, hours=$7, print=coalesce(print, '{}'::jsonb) || jsonb_build_object('theme', $9::text), updated_at=now() where id=$8`,
-    [v.name, v.intro, v.servingNote, v.footer, v.active, v.showUntil, JSON.stringify(v.hours), id, v.theme],
+    `update site_menus set name=$1, intro=$2, serving_note=$3, footer=$4, active=$5, show_until=$6, hours=$7, print=coalesce(print, '{}'::jsonb) || jsonb_build_object('theme', $9::text, 'size', $10::text), updated_at=now() where id=$8`,
+    [v.name, v.intro, v.servingNote, v.footer, v.active, v.showUntil, JSON.stringify(v.hours), id, v.theme, v.size],
   );
 }
 

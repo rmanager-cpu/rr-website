@@ -60,7 +60,7 @@ export default async function EditMenu({ params }: { params: { slug: string } })
 
       <MenuSettings
         action={saveMenuAction.bind(null, menu.id, menu.slug)}
-        init={{ name: menu.name, intro: menu.intro ?? '', servingNote: menu.servingNote ?? '', footer: menu.footer ?? '', active: menu.active, showUntil: menu.showUntil ?? '', theme: menu.print?.theme ?? 'classic', kind: menu.kind, hours: menu.hours }}
+        init={{ name: menu.name, intro: menu.intro ?? '', servingNote: menu.servingNote ?? '', footer: menu.footer ?? '', active: menu.active, showUntil: menu.showUntil ?? '', theme: menu.print?.theme ?? 'classic', size: menu.print?.size ?? 'letter', kind: menu.kind, hours: menu.hours }}
       />
 
       {menu.kind !== 'regular' && !template && (

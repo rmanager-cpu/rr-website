@@ -4,9 +4,12 @@ import { notFound } from 'next/navigation';
 import { hoursText, MenuTabs, MenuView } from '@/components/menus/MenuView';
 import { SiteHeader } from '@/components/SiteHeader';
 import { breadcrumbSchema, JsonLd, menuSchema } from '@/lib/schema';
+import { guestPdfPath, guestPdfReady } from '@/lib/menus/pdf';
 import { listMenus } from '@/lib/menus/store';
 
 export const revalidate = 300;
+// A refresh may lay out the menu's PDF to see whether it fits (then it's remembered until the menu changes).
+export const maxDuration = 60;
 
 export async function generateStaticParams() {
   return (await listMenus()).map((m) => ({ slug: m.slug }));
@@ -28,6 +31,7 @@ export default async function MenuPage({ params }: { params: { slug: string } })
   const menus = await listMenus();
   const menu = menus.find((m) => m.slug === params.slug);
   if (!menu) notFound();
+  const pdf = await guestPdfReady(menu);
   return (
     <>
       <JsonLd data={breadcrumbSchema(`${menu.name} menu`, `/dine/menus/${menu.slug}`)} />
@@ -38,7 +42,11 @@ export default async function MenuPage({ params }: { params: { slug: string } })
           <div className="container mn-page__head">
             <div className="mn-page__crumbs">
               <p className="label label--accent" data-reveal>Menus</p>
-              <Link href="/dine/menus" className="link-arrow" data-reveal>All the menus</Link>
+              <div className="mn-page__links">
+                <Link href="/dine/menus" className="link-arrow" data-reveal>All the menus</Link>
+                {/* A plain link (no prefetch): the PDF is only fetched when someone asks for it. */}
+                {pdf && <a href={guestPdfPath(menu.slug)} className="link-arrow" data-reveal>Download PDF</a>}
+              </div>
             </div>
             <h1 className="sr-only">{menu.name} menu at River Ranch, Tahoe City</h1>
             <MenuTabs menus={menus} current={menu.slug} />

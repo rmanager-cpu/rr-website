@@ -324,7 +324,8 @@ export async function saveMenuAction(menuId: string, menuSlug: string, _prev: Fo
     const showUntil = opt(f, 'show_until');
     if (showUntil && !DATE.test(showUntil)) throw new Invalid('show_until', 'Check the “show until” date.');
     const theme = ['classic', 'fireside', 'trailhead', 'band'].includes(str(f, 'theme')) ? str(f, 'theme') : 'classic';
-    await saveMenu(menuId, { name: str(f, 'name') || 'Menu', intro: opt(f, 'intro'), servingNote: opt(f, 'serving_note'), footer: opt(f, 'footer'), active: str(f, 'active') === 'yes', showUntil, hours, theme });
+    const size = ['letter', 'legal', 'half-letter'].includes(str(f, 'size')) ? str(f, 'size') : 'letter';
+    await saveMenu(menuId, { name: str(f, 'name') || 'Menu', intro: opt(f, 'intro'), servingNote: opt(f, 'serving_note'), footer: opt(f, 'footer'), active: str(f, 'active') === 'yes', showUntil, hours, theme, size });
   } catch (e) {
     return { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
   }
