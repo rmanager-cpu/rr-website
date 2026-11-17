@@ -120,7 +120,7 @@ function run<T>(c: Config, name: string, path: string, action: string, body: str
 
 // ---------- availability: OTA_HotelAvailRQ, the message the Stay pages already use ----------
 
-function parseRooms(xml: string): PreviewRoom[] {
+export function parsePreviewRooms(xml: string): PreviewRoom[] {
   const byCode = new Map<string, PreviewRoom>();
   for (const stay of elements(xml, 'RoomStay')) {
     const type = attrsOf(elements(stay, 'RoomType')[0] ?? '');
@@ -183,7 +183,7 @@ function availBody(c: Config, q: AvailQuery): string {
 export function previewAvailability(q: AvailQuery): Promise<CallResult<PreviewRoom[]>> | null {
   const c = config({ allowTest: true });
   if (!c) return null;
-  return run(c, 'OTA_HotelAvailRQ', 'hotel_availability.php', 'HotelAvailIn', availBody(c, q), parseRooms);
+  return run(c, 'OTA_HotelAvailRQ', 'hotel_availability.php', 'HotelAvailIn', availBody(c, q), parsePreviewRooms);
 }
 
 /** One-night searches for each night from `start`, a few at a time. */
