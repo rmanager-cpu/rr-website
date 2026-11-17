@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import './group-package.css';
+import { DemoCalendarBanner } from './DemoPromotions';
 import { roomTypes } from '@/content/rooms';
 import { DEAL, dayNumber, money, packageTotal, type Availability, type PackageTotal, type Search, type Selection } from '@/lib/demo/package';
 
@@ -66,6 +67,7 @@ export function GroupPackage({ today, initialCheckIn, initialCheckOut }: { today
   }
   return (
     <div className="rd-demo rd-builder">
+      <DemoCalendarBanner />
       <div className="rd-source-bar">
         <span className={'rd-source-dot ' + (q.mode === 'sample' ? 'is-sample' : '')} />
         <strong>{q.mode === 'sample' ? 'Sample availability' : 'Live sandbox availability'}</strong>

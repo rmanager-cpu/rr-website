@@ -1,8 +1,8 @@
 .demo-promos {
-  margin: 0 0 32px;
+  margin: 0 0 18px;
 }
 
-.demo-promos__closed {
+.demo-promos__eyebrow {
   display: flex;
   align-items: center;
   gap: 13px;
@@ -51,7 +51,7 @@
   pointer-events: none;
 }
 
-.demo-promos__headline {
+.demo-promos__deal .demo-promos__headline {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -84,7 +84,7 @@
 
 /* The existing Fireside reveal observer starts these once as the banner enters view. */
 @media (prefers-reduced-motion: no-preference) {
-  .demo-promos__closed[data-revealed] .demo-promos__signal {
+  .demo-promos__eyebrow[data-revealed] .demo-promos__signal {
     animation: demo-promo-signal 2.4s var(--ease) 1;
   }
   .demo-promos__deal[data-revealed] .demo-promos__spark {
@@ -110,15 +110,17 @@
 }
 
 @media (max-width: 600px) {
-  .demo-promos__closed { letter-spacing: .13em; gap: 10px; }
+  .demo-promos__eyebrow { letter-spacing: .13em; gap: 10px; }
   .demo-promos__deal { gap: 18px; padding: 28px 23px; }
   .demo-promos__spark { flex-basis: 34px; width: 34px; }
-  .demo-promos__headline { font-size: clamp(29px, 7.7vw, 44px); }
+  .demo-promos__deal .demo-promos__headline { font-size: clamp(29px, 7.7vw, 44px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .demo-promos [data-reveal],
-  .demo-promos [data-reveal] * {
+  .demo-promos [data-reveal] *,
+  .demo-promos__deal,
+  .demo-promos__deal * {
     animation: none !important;
     transition: none !important;
     transform: none !important;
@@ -126,3 +128,6 @@
   }
   .demo-promos__shine { display: none; }
 }
+
+.demo-booking-top { padding-top: 28px; padding-bottom: 48px; }
+@media (max-width: 600px) { .demo-booking-top { padding-top: 20px; padding-bottom: 32px; } }

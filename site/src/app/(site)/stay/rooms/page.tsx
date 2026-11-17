@@ -56,7 +56,14 @@ export default async function RoomsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema('Rooms', '/stay/rooms')} />
-      <SiteHeader variant="overlay" />
+      <SiteHeader variant={demo ? 'solid' : 'overlay'} />
+
+      {demo && <section className="section section--snow demo-booking-top" id="group-booking" aria-label="Group ski booking">
+        <div className="container">
+          <DemoPromotions />
+          <GroupPackage today={today} initialCheckIn={addDays(today, 14)} initialCheckOut={addDays(today, 17)} />
+        </div>
+      </section>}
 
       <section className="page-hero page-hero--short sty-hero--rooms">
         <div className="page-hero__media">
@@ -95,17 +102,6 @@ export default async function RoomsPage() {
           </div>
         </div>
       </section>
-
-      {demo && <section className="section section--snow" id="group-booking" aria-labelledby="group-h">
-        <div className="container">
-          <div className="section-head">
-            <p className="label label--accent">Group ski deal</p>
-            <h2 id="group-h" className="display-l">Stay together. <em>Ski together.</em></h2>
-          </div>
-          <DemoPromotions />
-          <GroupPackage today={today} initialCheckIn={addDays(today, 14)} initialCheckOut={addDays(today, 17)} />
-        </div>
-      </section>}
 
       <section className="section section--dark" id="finder" aria-labelledby="types-h">
         <div className="container">
