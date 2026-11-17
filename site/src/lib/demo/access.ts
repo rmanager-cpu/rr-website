@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 export const DEMO_COOKIE = 'rr_booking_demo';
 export const DEMO_HOURS = 8;
 export const enabled = () => process.env.VERCEL_ENV !== 'production';
-export const configured = () => enabled() && (process.env.DEMO_PASSWORD?.length ?? 0) >= 16 && (process.env.DEMO_SESSION_SECRET?.length ?? 0) >= 32;
+export const configured = () => enabled() && (process.env.DEMO_PASSWORD?.length ?? 0) >= 12 && (process.env.DEMO_SESSION_SECRET?.length ?? 0) >= 32;
 const equal = (a: string, b: string) => timingSafeEqual(createHash('sha256').update(a).digest(), createHash('sha256').update(b).digest());
 const sign = (expiry: string) => createHmac('sha256', process.env.DEMO_SESSION_SECRET ?? '').update(`booking-demo:${expiry}:${process.env.DEMO_PASSWORD ?? ''}`).digest('hex');
 export function checkDemoPassword(password: string) { return configured() && equal(password, process.env.DEMO_PASSWORD!); }

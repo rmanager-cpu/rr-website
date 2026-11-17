@@ -14,7 +14,7 @@ Create these values as **Preview environment variables restricted to `bookingcen
 
 | Variable | Purpose |
 | --- | --- |
-| `DEMO_PASSWORD` | Separate review password, at least 16 characters. Do not reuse the staff password. |
+| `DEMO_PASSWORD` | Separate review password, at least 12 characters. Do not reuse the staff password. |
 | `DEMO_SESSION_SECRET` | Random signing key, at least 32 characters. |
 | `BOOKING_DEMO_ONLY` | `true`, to explicitly isolate the preview routes. |
 | `BOOKINGCENTER_API_URL` | Jeff's HTTPS sandbox endpoint. |
