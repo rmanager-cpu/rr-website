@@ -1,0 +1,76 @@
+/* Alpenglow dressing for the staff pages (Alex, 2026-11-17: "light alpenglow touches around the edges, with
+   the main thing looking like the main thing", then "a little punchier, with orange accents").
+   Venio's Alpenglow look (rr-events src/lib/widget/looks.ts): plum dusk, a coral glow, a little glacier
+   teal, Bricolage Grotesque; the orange is Venio's Ember.
+   Everything hangs off .adm--alpenglow on the admin root (admin/layout.tsx). Take that class off and the
+   staff pages are exactly as they were. Forms, tables and buttons keep their own look. */
+
+.adm--alpenglow {
+  --ag-dusk: #17141b;
+  --ag-dusk-2: #2a1f2c;
+  --ag-coral: #ff8d6b;
+  --ag-orange: #ff7a3d;
+  --ag-teal: #7fd6cb;
+  --ag-snow: #f4efe9;
+  --ag-sunset: linear-gradient(90deg, var(--ag-orange), var(--ag-coral) 55%, #e86a8a);
+  /* Last light on the snow: orange-coral glow from the top corner, cool teal in the far one, the page
+     itself warmed. Fixed, so it stays at the edges of the window while the work scrolls past. */
+  background:
+    radial-gradient(65% 48% at 100% 0%, rgba(255, 122, 61, 0.26), transparent 70%),
+    radial-gradient(40% 30% at 70% 0%, rgba(232, 106, 138, 0.12), transparent 70%),
+    radial-gradient(50% 42% at 0% 100%, rgba(127, 214, 203, 0.22), transparent 70%),
+    linear-gradient(180deg, #f8efea 0%, #f4f1f4 45%, #f1f4f6 100%);
+  background-attachment: fixed;
+}
+
+/* The top bar: plum dusk with the sun going down behind the peaks on the right, a sunset rule under it. */
+.adm--alpenglow .adm-top {
+  position: relative;
+  background:
+    radial-gradient(70% 220% at 100% 0%, rgba(255, 122, 61, 0.55), transparent 60%),
+    radial-gradient(45% 200% at 72% 0%, rgba(232, 106, 138, 0.28), transparent 65%),
+    linear-gradient(90deg, var(--ag-dusk), var(--ag-dusk-2));
+  color: var(--ag-snow);
+  box-shadow: 0 12px 30px -14px rgba(255, 122, 61, 0.7);
+}
+.adm--alpenglow .adm-top::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ag-teal), var(--ag-coral) 40%, var(--ag-orange));
+  pointer-events: none;
+}
+.adm--alpenglow .adm-brand {
+  font-family: var(--font-alpen), var(--font-sans), system-ui, sans-serif;
+  font-weight: 780;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--ag-snow);
+}
+.adm--alpenglow .adm-brand-dot { color: var(--ag-orange); }
+.adm--alpenglow .adm-top a { color: var(--ag-snow); text-underline-offset: 7px; text-decoration-thickness: 3px; }
+.adm--alpenglow .adm-top nav a:hover,
+.adm--alpenglow .adm-top nav a:focus-visible { color: #fff; text-decoration: underline; text-decoration-color: var(--ag-orange); outline: none; }
+.adm--alpenglow .adm-top form button:hover,
+.adm--alpenglow .adm-top form button:focus-visible { border-color: var(--ag-orange) !important; color: #fff !important; box-shadow: 0 0 18px -4px rgba(255, 122, 61, 0.8); }
+
+/* Orange accents on the edges of the work, never in it. */
+.adm--alpenglow .adm-main > h1:first-child,
+.adm--alpenglow .row-actions > h1 { position: relative; padding-bottom: 10px; }
+.adm--alpenglow .adm-main > h1:first-child::after,
+.adm--alpenglow .row-actions > h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--ag-sunset);
+}
+.adm--alpenglow .adm-card { border-top: 3px solid var(--ag-orange); box-shadow: 0 10px 28px -22px rgba(255, 122, 61, 0.55); }
+.adm--alpenglow .adm-step b { background: var(--ag-orange); color: var(--ag-dusk); }
+.adm--alpenglow :is(input[type='checkbox'], input[type='radio']) { accent-color: var(--ag-orange); }
+.adm--alpenglow :is(input, select, textarea):focus-visible { outline: 2px solid var(--ag-orange); outline-offset: 1px; }
+.adm--alpenglow ::selection { background: rgba(255, 122, 61, 0.28); }

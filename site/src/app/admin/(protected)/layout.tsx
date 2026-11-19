@@ -7,7 +7,7 @@ export default function Protected({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header className="adm-top">
-        <span className="adm-brand">River Ranch · Staff</span>
+        <span className="adm-brand">River Ranch <span className="adm-brand-dot">·</span> Staff</span>
         <nav aria-label="Staff">
           <Link href="/admin">Calendar</Link>
           <Link href="/admin/events/new">Add to Calendar</Link>
