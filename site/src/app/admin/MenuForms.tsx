@@ -1,7 +1,27 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import type { FormState } from './actions';
+
+/** A tap-to-open row: the summary is the tidy line, the editor opens underneath. Rows sharing a group open
+    one at a time; when one closes above the row you tapped, the page jumps, so the tapped row is scrolled
+    back into view. */
+export function Fold({ summary, children, className, group = 'mi-open' }: { summary: React.ReactNode; children: React.ReactNode; className?: string; group?: string }) {
+  return (
+    <details
+      className={`mi-fold${className ? ` ${className}` : ''}`}
+      name={group}
+      onToggle={(e) => {
+        const d = e.currentTarget;
+        if (d.open) d.querySelector(':scope > summary')?.scrollIntoView({ block: 'nearest' });
+      }}
+    >
+      <summary>{summary}</summary>
+      <div className="mi-panel">{children}</div>
+    </details>
+  );
+}
 
 const TAGS = ['GF', 'GM', 'DF', 'V', 'VG', 'CG'];
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -23,7 +43,7 @@ export type ItemInit = { name: string; description: string; tags: string[]; raw:
 export function ItemRow({ action, init, noPrices }: { action: (p: FormState, f: FormData) => Promise<FormState>; init: ItemInit; noPrices?: boolean }) {
   const [state, run] = useFormState(action, null);
   return (
-    <form action={run} className="mi-row" style={init.hidden ? { opacity: 0.55 } : undefined}>
+    <form action={run} className="mi-row">
       <div className="mi-grid">
         <label className="f">Dish<input type="text" name="name" defaultValue={init.name} required maxLength={160} /></label>
         {!noPrices && <label className="f">Price<input type="text" name="prices" defaultValue={init.prices} placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>}
@@ -46,8 +66,11 @@ export function ItemRow({ action, init, noPrices }: { action: (p: FormState, f: 
 
 export function AddItem({ action, noPrices }: { action: (p: FormState, f: FormData) => Promise<FormState>; noPrices?: boolean }) {
   const [state, run] = useFormState(action, null);
+  const form = useRef<HTMLFormElement>(null);
+  // Clear the boxes once a dish is added, so the next one starts fresh.
+  useEffect(() => { if (state?.ok) form.current?.reset(); }, [state]);
   return (
-    <form action={run} className="mi-row mi-add">
+    <form ref={form} action={run} className="mi-row mi-add">
       <div className="mi-grid">
         <label className="f">New dish<input type="text" name="name" required maxLength={160} /></label>
         {!noPrices && <label className="f">Price<input type="text" name="prices" placeholder="18 or Half 12 / Full 17" maxLength={120} /></label>}
@@ -93,9 +116,8 @@ export function MenuSettings({ action, init }: { action: (p: FormState, f: FormD
   const event = init.kind !== 'regular';
   const banquet = init.kind === 'banquet';
   return (
-    <form action={run} className="adm-card">
-      <h2>{event ? 'Heading and settings' : 'Menu settings'}</h2>
-      {state && <p className={state.ok ? 'ok' : 'err'}>{state.message}</p>}
+    <form action={run} className="mi-settings">
+      {state &&<p className={state.ok ? 'ok' : 'err'}>{state.message}</p>}
       <div className="adm-grid">
         <label className="f">{event ? 'Heading' : 'Menu name'}<input type="text" name="name" defaultValue={init.name} required maxLength={80} /></label>
         <label className="f">Print style<select name="theme" defaultValue={init.theme}>{THEMES.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select></label>

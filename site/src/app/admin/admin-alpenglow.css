@@ -74,3 +74,8 @@
 .adm--alpenglow :is(input[type='checkbox'], input[type='radio']) { accent-color: var(--ag-orange); }
 .adm--alpenglow :is(input, select, textarea):focus-visible { outline: 2px solid var(--ag-orange); outline-offset: 1px; }
 .adm--alpenglow ::selection { background: rgba(255, 122, 61, 0.28); }
+
+/* Menu editor: the dish you're editing gets the sunset edge. */
+.adm--alpenglow .mi-fold[open] > summary { background: #fff3ec; box-shadow: inset 3px 0 0 var(--ag-orange); }
+.adm--alpenglow .mi-fold > summary:focus-visible { outline-color: var(--ag-orange); }
+.adm--alpenglow .mi-fold--add:hover { border-color: var(--ag-orange); }
