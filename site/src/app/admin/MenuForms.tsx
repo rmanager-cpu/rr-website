@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import type { FormState } from './actions';
+import { shrink } from './EventMedia';
 
 /** A tap-to-open row: the summary is the tidy line, the editor opens underneath. Rows sharing a group open
     one at a time; when one closes above the row you tapped, the page jumps, so the tapped row is scrolled
@@ -37,9 +39,49 @@ function Btn({ label, small }: { label: string; small?: boolean }) {
 
 const Msg = ({ s }: { s: FormState }) => (s ? <span className={s.ok ? 'tag' : 'err'} role={s.ok ? 'status' : 'alert'} style={s.ok ? undefined : { padding: '4px 10px' }}>{s.message}</span> : null);
 
-export type ItemInit = { name: string; description: string; tags: string[]; raw: boolean; prices: string; priceNote: string; hidden: boolean; sort: number; elsewhere: string; mismatch: boolean };
+export type ItemInit = {
+  name: string; description: string; tags: string[]; raw: boolean; prices: string; priceNote: string; hidden: boolean; sort: number; elsewhere: string; mismatch: boolean;
+  slug: string; page: boolean; story: string; photo: string; pageLive: boolean;
+};
 
-/** One dish on one menu. Name, description and tags are the dish's (shared by every menu); prices are this menu's. */
+/** One photo for a dish's own page, uploaded the same way as event photos (shrunk first, location data stripped). */
+function DishPhoto({ initial }: { initial: string }) {
+  const [photo, setPhoto] = useState(initial);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  async function pick(file: File | undefined) {
+    if (!file) return;
+    setError(null);
+    setBusy(true);
+    try {
+      const body = await shrink(file).catch(() => { throw new Error('That file couldn’t be read as a photo. Try a JPG or PNG.'); });
+      const res = await fetch('/admin/photo', { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.url) throw new Error(data.error ?? 'That photo didn’t save. Please try again.');
+      setPhoto(data.url);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'That photo didn’t save. Please try again.');
+    }
+    setBusy(false);
+  }
+  return (
+    <div className="mi-photo">
+      <input type="hidden" name="photo" value={photo} />
+      {photo && <Image src={photo} alt="" width={132} height={99} className="mi-photo__img" />}
+      <div className="row-actions">
+        <label className="ph-btn mi-photo__pick">
+          {busy ? 'Uploading…' : photo ? 'Change photo' : 'Add a photo'}
+          <input type="file" accept="image/*" disabled={busy} onChange={(e) => { pick(e.target.files?.[0]); e.target.value = ''; }} />
+        </label>
+        {photo && !busy && <button type="button" className="ph-btn" onClick={() => setPhoto('')}>Remove photo</button>}
+      </div>
+      {error && <p className="err" role="alert" style={{ margin: 0 }}>{error}</p>}
+    </div>
+  );
+}
+
+/** One dish on one menu. Name, description, tags and the dish's own page are the dish's (shared by every
+    menu); prices are this menu's. Banquet menus pass noPrices and never show the page fields. */
 export function ItemRow({ action, init, noPrices }: { action: (p: FormState, f: FormData) => Promise<FormState>; init: ItemInit; noPrices?: boolean }) {
   const [state, run] = useFormState(action, null);
   return (
@@ -51,6 +93,18 @@ export function ItemRow({ action, init, noPrices }: { action: (p: FormState, f: 
         <label className="f mi-order">Order<input type="text" name="sort" defaultValue={String(init.sort)} inputMode="numeric" maxLength={4} /></label>
       </div>
       <label className="f">Description<textarea name="description" defaultValue={init.description} rows={2} maxLength={2000} /></label>
+      {!noPrices && (
+        <fieldset className="mi-page">
+          <input type="hidden" name="page_fields" value="yes" />
+          <label className="mi-page__toggle"><input type="checkbox" name="page" value="yes" defaultChecked={init.page} /> Give this dish its own page</label>
+          <div className="mi-page__more">
+            <p className="help">For signature dishes people search for by name. The page goes live once the story has words in it, and the dish’s name links to it on every menu it’s on.</p>
+            <label className="f">Page story<textarea name="story" defaultValue={init.story} rows={5} maxLength={4000} placeholder="A few lines only this page has: where it comes from, how it’s made, why people order it." /></label>
+            <DishPhoto initial={init.photo} />
+            {init.pageLive && <a href={`/dine/menus/dishes/${init.slug}`} target="_blank" rel="noopener">See the page →</a>}
+          </div>
+        </fieldset>
+      )}
       <div className="row-actions" style={{ justifyContent: 'space-between' }}>
         <div className="choices">
           {TAGS.map((t) => <label key={t} className="choice" style={{ minHeight: 36, padding: '0 10px' }}><input type="checkbox" name="tags" value={t} defaultChecked={init.tags.includes(t)} /> {t}</label>)}

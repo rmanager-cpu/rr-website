@@ -7,7 +7,7 @@ import { db, dbReady } from '@/lib/db/pool';
 
 export type Price = { label: string | null; price: number };
 export type Hours = { days: number[]; start: string; end: string; label: string };
-export type Dish = { id: string; slug: string; name: string; description: string | null; tags: string[]; raw: boolean; photo: string | null; signature: boolean };
+export type Dish = { id: string; slug: string; name: string; description: string | null; tags: string[]; raw: boolean; photo: string | null; signature: boolean; story: string | null };
 export type MenuItem = { id: string; sectionId: string; dish: Dish; sort: number; prices: Price[]; priceNote: string | null; description: string | null; hidden: boolean; print?: ItemPrint };
 export type MenuSection = { id: string; name: string; note: string | null; sort: number; items: MenuItem[]; print?: SectionPrint };
 // regular: on the website. holiday: on the website while switched on, with its own prices. banquet: staff-only, never priced.
@@ -32,7 +32,7 @@ type SeedSection = { name: string; note: string | null; items: SeedItem[]; print
 type SeedMenu = { slug: string; name: string; sort: number; intro: string | null; hours: unknown; serving_note: string | null; footer: string | null; active?: boolean; kind?: MenuKind; sections: SeedSection[]; print?: MenuPrint };
 
 function seedMenus(): Menu[] {
-  const dishes = new Map(seed.dishes.map((d) => [d.slug, { id: `dish-${d.slug}`, slug: d.slug, name: d.name, description: d.description, tags: d.tags, raw: d.raw, photo: null, signature: false } as Dish]));
+  const dishes = new Map(seed.dishes.map((d) => [d.slug, { id: `dish-${d.slug}`, slug: d.slug, name: d.name, description: d.description, tags: d.tags, raw: d.raw, photo: null, signature: false, story: null } as Dish]));
   return (seed.menus as unknown as SeedMenu[]).map((m) => ({
     id: `menu-${m.slug}`, slug: m.slug, name: m.name, sort: m.sort, intro: m.intro, hours: m.hours as Hours[], servingNote: m.serving_note,
     footer: m.footer, active: m.active ?? true, showUntil: null, kind: m.kind ?? 'regular', print: m.print,
@@ -73,14 +73,14 @@ async function readMenus(opts: { includeInactive?: boolean }): Promise<Menu[]> {
   const [menus, sections, items] = await Promise.all([
     pool.query('select * from site_menus order by sort, name'),
     pool.query('select * from site_menu_sections order by sort'),
-    pool.query('select i.*, d.slug as d_slug, d.name as d_name, d.description as d_description, d.tags as d_tags, d.raw as d_raw, d.photo as d_photo, d.signature as d_signature from site_menu_items i join site_dishes d on d.id = i.dish_id order by i.sort'),
+    pool.query('select i.*, d.slug as d_slug, d.name as d_name, d.description as d_description, d.tags as d_tags, d.raw as d_raw, d.photo as d_photo, d.signature as d_signature, d.story as d_story from site_menu_items i join site_dishes d on d.id = i.dish_id order by i.sort'),
   ]);
   const today = new Date().toISOString().slice(0, 10);
   const bySection = new Map<string, MenuItem[]>();
   for (const r of items.rows) {
     const it: MenuItem = {
       id: r.id, sectionId: r.section_id, sort: r.sort, prices: r.prices ?? [], priceNote: r.price_note, description: r.description, hidden: r.hidden, print: r.print ?? undefined,
-      dish: { id: r.dish_id, slug: r.d_slug, name: r.d_name, description: r.d_description, tags: r.d_tags ?? [], raw: r.d_raw, photo: r.d_photo, signature: r.d_signature },
+      dish: { id: r.dish_id, slug: r.d_slug, name: r.d_name, description: r.d_description, tags: r.d_tags ?? [], raw: r.d_raw, photo: r.d_photo, signature: r.d_signature, story: r.d_story },
     };
     bySection.set(r.section_id, [...(bySection.get(r.section_id) ?? []), it]);
   }
@@ -94,6 +94,9 @@ async function readMenus(opts: { includeInactive?: boolean }): Promise<Menu[]> {
     }))
     .filter((m) => opts.includeInactive || isPublic(m, today));
 }
+
+/** A dish gets its own page once staff mark it signature and write its story, so no bare pages go up. */
+export const dishHasPage = (d: Dish) => d.signature && !!d.story?.trim();
 
 export async function menuBySlug(slug: string, opts: { includeInactive?: boolean } = {}) {
   return (await listMenus(opts)).find((m) => m.slug === slug) ?? null;
@@ -128,7 +131,7 @@ async function need() {
   if (!(await dbReady())) throw new Error('The menu database is not connected yet, so changes cannot be saved.');
 }
 
-export async function saveItem(itemId: string, v: { name: string; description: string | null; tags: string[]; raw: boolean; prices: Price[]; priceNote: string | null; hidden: boolean; sort: number }) {
+export async function saveItem(itemId: string, v: { name: string; description: string | null; tags: string[]; raw: boolean; prices: Price[]; priceNote: string | null; hidden: boolean; sort: number; page?: { signature: boolean; story: string | null; photo: string | null } }) {
   await need();
   const c = await db().connect();
   try {
@@ -147,6 +150,8 @@ export async function saveItem(itemId: string, v: { name: string; description: s
     const { rows } = await c.query('update site_menu_items set prices=$1, price_note=$2, hidden=$3, sort=$4, description=$5 where id=$6 returning dish_id', [JSON.stringify(v.prices), v.priceNote, v.hidden, v.sort, ownWording ? v.description ?? '' : null, itemId]);
     await c.query('update site_dishes set name=$1, tags=$2, raw=$3, updated_at=now() where id=$4', [v.name, tags, v.raw, rows[0].dish_id]);
     if (!ownWording) await c.query('update site_dishes set description=$1 where id=$2', [v.description, rows[0].dish_id]);
+    // The dish's own page belongs to the dish, like its name: shared by every menu it's on.
+    if (v.page) await c.query('update site_dishes set signature=$1, story=$2, photo=$3 where id=$4', [v.page.signature, v.page.story, v.page.photo, rows[0].dish_id]);
     await c.query('update site_menus m set updated_at=now() from site_menu_sections s, site_menu_items i where i.id=$1 and s.id=i.section_id and m.id=s.menu_id', [itemId]);
     await c.query('commit');
   } catch (e) {

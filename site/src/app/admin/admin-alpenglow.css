@@ -79,3 +79,5 @@
 .adm--alpenglow .mi-fold[open] > summary { background: #fff3ec; box-shadow: inset 3px 0 0 var(--ag-orange); }
 .adm--alpenglow .mi-fold > summary:focus-visible { outline-color: var(--ag-orange); }
 .adm--alpenglow .mi-fold--add:hover { border-color: var(--ag-orange); }
+.adm--alpenglow .mi-page__toggle input { accent-color: var(--ag-orange); }
+.adm--alpenglow .mi-tag--page { background: #ffe6d8; }

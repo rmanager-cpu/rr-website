@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/content/site';
 import { listPages } from '@/lib/events/store';
-import { listMenus } from '@/lib/menus/store';
+import { dishHasPage, listMenus } from '@/lib/menus/store';
 
 // Indexable pages only: placeholders (Wine, Order online, Spaces, empty event pages) are left out until
 // they have content, matching their noindex tags.
@@ -27,8 +27,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const pages = (await listPages()).filter((p) => p.layout !== 'standard' || p.body?.trim() || p.summary?.trim());
   const menus = await listMenus();
+  // Signature dish pages: only dishes with a page (ticked and with a story), once each, on a menu on the site.
+  const dishes = new Set(menus.filter((m) => m.kind !== 'banquet').flatMap((m) => m.sections.flatMap((s) => s.items.filter((i) => !i.hidden && dishHasPage(i.dish)).map((i) => i.dish.slug))));
   return [
     ...menus.map((m) => ({ url: `${SITE_URL}/dine/menus/${m.slug}`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.8 })),
+    ...[...dishes].map((slug) => ({ url: `${SITE_URL}/dine/menus/dishes/${slug}`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.6 })),
     ...fixed.map(([path, priority, changeFrequency]) => ({ url: `${SITE_URL}${path}`, lastModified: now, changeFrequency, priority })),
     ...pages.map((p) => ({ url: `${SITE_URL}/dine/happening/${p.slug}`, lastModified: p.updatedAt ? new Date(p.updatedAt) : now, changeFrequency: 'weekly' as const, priority: 0.6 })),
   ];

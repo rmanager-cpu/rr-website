@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { dbReady } from '@/lib/db/pool';
-import { appearances, listMenus, priceText } from '@/lib/menus/store';
+import { appearances, dishHasPage, listMenus, priceText } from '@/lib/menus/store';
 import { addMenuItemAction, addSectionAction, deleteEventMenuAction, saveMenuAction, saveMenuItemAction, saveSectionAction } from '../../../actions';
 import { AddItem, Fold, ItemRow, MenuSettings, SectionHead } from '../../../MenuForms';
 
@@ -64,6 +64,8 @@ export default async function EditMenu({ params }: { params: { slug: string } })
                           <span className="mi-sum__side">
                             {tags.length > 0 && <span className="mi-sum__tags">{tags.join(' ')}</span>}
                             {i.hidden && <span className="tag">Hidden</span>}
+                            {!banquet && dishHasPage(i.dish) && <span className="tag mi-tag--page">Own page</span>}
+                            {!banquet && i.dish.signature && !dishHasPage(i.dish) && <span className="tag tag--warn">Page needs a story</span>}
                             {!banquet && mine && <span className="mi-sum__price">{mine}</span>}
                           </span>
                         </>
@@ -83,6 +85,11 @@ export default async function EditMenu({ params }: { params: { slug: string } })
                           sort: i.sort,
                           elsewhere: others.map((o) => `${o.menu} ${priceText(o.prices, o.priceNote)}`).join(' · '),
                           mismatch,
+                          slug: i.dish.slug,
+                          page: i.dish.signature,
+                          story: i.dish.story ?? '',
+                          photo: i.dish.photo ?? '',
+                          pageLive: dishHasPage(i.dish),
                         }}
                       />
                     </Fold>

@@ -16,7 +16,8 @@ create table if not exists public.site_dishes (
   tags        text[] not null default '{}',          -- GF, V, VG, DF, GM, CG …
   raw         boolean not null default false,        -- served raw/undercooked: shows the advisory mark
   photo       text check (photo is null or char_length(photo) <= 400),
-  signature   boolean not null default false,        -- gets its own page at /menus/dishes/<slug>
+  signature   boolean not null default false,        -- gets its own page at /dine/menus/dishes/<slug> once it has a story
+  story       text check (story is null or char_length(story) <= 4000), -- that page's own words
   updated_at  timestamptz not null default now()
 );
 
@@ -58,6 +59,7 @@ alter table public.site_menus add column if not exists kind text not null defaul
 alter table public.site_menus add column if not exists print jsonb;
 alter table public.site_menu_sections add column if not exists print jsonb;
 alter table public.site_menu_items add column if not exists print jsonb;
+alter table public.site_dishes add column if not exists story text check (story is null or char_length(story) <= 4000);
 
 create index if not exists site_menu_items_section_idx on public.site_menu_items (section_id, sort);
 create index if not exists site_menu_sections_menu_idx on public.site_menu_sections (menu_id, sort);

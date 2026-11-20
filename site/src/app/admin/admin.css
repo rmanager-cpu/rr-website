@@ -89,3 +89,14 @@
   .mi-sum__tags, .mi-sum__count { display: none; }
   .mi-sec__name { font-size: 18px; }
 }
+/* A dish's own page, inside its editor: one tick box, the rest only once it's ticked. */
+.mi-page { border: 0; margin: 0; padding: 12px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.mi-page__toggle { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; font-size: 15px; font-weight: 700; cursor: pointer; }
+.mi-page__toggle input { width: 18px; height: 18px; accent-color: var(--navy); }
+.mi-page:not(:has(input[name='page']:checked)) .mi-page__more { display: none; }
+.mi-page__more { display: flex; flex-direction: column; gap: 10px; }
+.mi-photo { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.mi-photo__img { width: 132px; height: 99px; object-fit: cover; border-radius: 6px; }
+.mi-photo__pick { display: inline-flex; align-items: center; }
+.mi-photo__pick input { display: none; }
+.adm .mi-tag--page { background: #e8f4ec; }

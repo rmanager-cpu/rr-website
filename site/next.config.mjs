@@ -25,6 +25,8 @@ const oldSite = [
   r('/dine/menus/tuesday-dinner-menu', '/dine/menus/dinner'),
   r('/items/lodge-gift-certificate', '/loyalty-and-gift-cards'),
   r('/items/restaurant-gift-card', '/loyalty-and-gift-cards'),
+  // Popmenu listed the rooms as menu items too (/items/2-queens-over-patio?menu=our-rooms).
+  { source: '/items/:slug', has: [{ type: 'query', key: 'menu', value: 'our-rooms' }], destination: '/stay/rooms', statusCode: 301 },
   ...Object.entries(itemRedirects).map(([dish, menu]) => r(`/items/${dish}`, `/dine/menus/${menu}`)),
   r('/items/:slug', '/dine/menus'),
   r('/live-music', '/dine/happening/summer-concert-series'),

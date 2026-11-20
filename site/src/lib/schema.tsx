@@ -134,9 +134,8 @@ export function eventSchema(e: {
 export function menuSchema(m: {
   slug: string;
   name: string;
-  sections: { name: string; items: { hidden: boolean; description: string | null; prices: { label: string | null; price: number }[]; dish: { name: string; description: string | null; tags: string[] } }[] }[];
+  sections: { name: string; items: { hidden: boolean; description: string | null; prices: SchemaPrice[]; dish: SchemaDish }[] }[];
 }) {
-  const diet: Record<string, string> = { GF: 'https://schema.org/GlutenFreeDiet', V: 'https://schema.org/VegetarianDiet', VG: 'https://schema.org/VeganDiet' };
   return {
     '@context': 'https://schema.org',
     '@type': 'Menu',
@@ -151,16 +150,45 @@ export function menuSchema(m: {
         .filter((i) => !i.hidden)
         .map((i) => {
           const d = i.description ?? i.dish.description;
-          const diets = i.dish.tags.filter((t) => diet[t]).map((t) => diet[t]);
+          const page = dishPagePath(i.dish);
           return {
             '@type': 'MenuItem',
+            ...(page ? { '@id': `${abs(page)}#dish`, url: abs(page) } : {}),
             name: i.dish.name,
             ...(d ? { description: d } : {}),
-            ...(i.prices.length ? { offers: i.prices.filter((p) => typeof p.price === 'number').map((p) => ({ '@type': 'Offer', price: p.price.toFixed(2), priceCurrency: 'USD', ...(p.label ? { name: p.label } : {}) })) } : {}),
-            ...(diets.length ? { suitableForDiet: diets } : {}),
+            ...itemOffers(i.prices),
+            ...itemDiets(i.dish.tags),
           };
         }),
     })),
+  };
+}
+
+type SchemaDish = { name: string; description: string | null; tags: string[]; slug?: string; signature?: boolean; story?: string | null; photo?: string | null };
+type SchemaPrice = { label: string | null; price: number };
+const DIET: Record<string, string> = { GF: 'https://schema.org/GlutenFreeDiet', V: 'https://schema.org/VegetarianDiet', VG: 'https://schema.org/VeganDiet' };
+const itemDiets = (tags: string[]) => {
+  const diets = tags.filter((t) => DIET[t]).map((t) => DIET[t]);
+  return diets.length ? { suitableForDiet: diets } : {};
+};
+const itemOffers = (prices: SchemaPrice[]) =>
+  prices.length ? { offers: prices.filter((p) => typeof p.price === 'number').map((p) => ({ '@type': 'Offer', price: p.price.toFixed(2), priceCurrency: 'USD', ...(p.label ? { name: p.label } : {}) })) } : {};
+/** Same rule as dishHasPage in lib/menus/store: marked signature, with a story. */
+const dishPagePath = (d: SchemaDish) => (d.slug && d.signature && d.story?.trim() ? `/dine/menus/dishes/${d.slug}` : null);
+
+/** A signature dish's own page: the dish as a MenuItem, with the same @id its menus point at. */
+export function dishSchema(d: SchemaDish & { slug: string }, prices: SchemaPrice[], description: string) {
+  const path = `/dine/menus/dishes/${d.slug}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MenuItem',
+    '@id': `${abs(path)}#dish`,
+    url: abs(path),
+    name: d.name,
+    description,
+    ...(d.photo ? { image: [abs(d.photo)] } : {}),
+    ...itemOffers(prices),
+    ...itemDiets(d.tags),
   };
 }
 

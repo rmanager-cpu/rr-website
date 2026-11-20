@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { business } from '@/content/site';
 import { formatTime } from '@/lib/events/recurrence';
-import { priceText, TAG_LABEL, type Hours, type Menu } from '@/lib/menus/store';
+import { dishHasPage, priceText, TAG_LABEL, type Hours, type Menu } from '@/lib/menus/store';
 import { ServingNow } from './ServingNow';
 import { classicFonts } from './classicFonts';
 
@@ -50,7 +50,7 @@ export function MenuView({ menu }: { menu: Menu }) {
                   <li key={i.id} className="menu-item">
                     <div className="menu-item__top">
                       <span className="menu-item__name">
-                        {i.dish.signature ? <Link href={`/dine/menus/dishes/${i.dish.slug}`}>{i.dish.name}</Link> : i.dish.name}
+                        {dishHasPage(i.dish) ? <Link href={`/dine/menus/dishes/${i.dish.slug}`}>{i.dish.name}</Link> : i.dish.name}
                         {i.dish.raw && <sup className="menu-raw" aria-label="served raw or undercooked">^</sup>}
                       </span>
                       <span className="menu-item__dots" aria-hidden="true" />

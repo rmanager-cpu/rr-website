@@ -8,7 +8,7 @@ const MAX_PHOTOS = 8;
 const MAX_LINKS = 5;
 
 /** Phone photos are huge: shrink in the browser first, so the upload is quick and fits the server's limit. */
-async function shrink(file: File): Promise<Blob> {
+export async function shrink(file: File): Promise<Blob> {
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, 2000 / Math.max(bitmap.width, bitmap.height));
   const canvas = document.createElement('canvas');

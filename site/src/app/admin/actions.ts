@@ -257,9 +257,16 @@ const menuRefresh = (slug?: string) => {
 export async function saveMenuItemAction(itemId: string, menuSlug: string, _prev: FormState, f: FormData): Promise<FormState> {
   guard();
   const { saveItem, parsePrices } = await import('@/lib/menus/store');
+  const page = str(f, 'page_fields') === 'yes' ? { signature: str(f, 'page') === 'yes', story: opt(f, 'story'), photo: opt(f, 'photo') } : null;
   try {
     const name = str(f, 'name');
     if (!name) throw new Invalid('name', 'Give the dish a name.');
+    // The dish-page fields only come from editors that show them (never banquet menus), so a save from
+    // anywhere else leaves the page as it was.
+    if (page) {
+      if ((page.story ?? '').length > 4000) throw new Invalid('story', 'Keep the page story under 4,000 characters.');
+      if (page.photo && !/^\/event-photos\/[\w-]+$/.test(page.photo)) page.photo = null;
+    }
     await saveItem(itemId, {
       name,
       description: opt(f, 'description'),
@@ -269,11 +276,19 @@ export async function saveMenuItemAction(itemId: string, menuSlug: string, _prev
       priceNote: opt(f, 'price_note'),
       hidden: str(f, 'hidden') === 'yes',
       sort: Number(str(f, 'sort')) || 0,
+      ...(page ? { page } : {}),
     });
   } catch (e) {
     return e instanceof Invalid ? { ok: false, message: e.message } : { ok: false, message: e instanceof Error ? e.message : 'That didn’t save.' };
   }
   menuRefresh(menuSlug);
+  if (page) {
+    // The page, its links from every menu the dish is on, and the sitemap.
+    revalidatePath('/dine/menus/[slug]', 'page');
+    revalidatePath('/dine/menus/dishes/[slug]', 'page');
+    revalidatePath('/sitemap.xml');
+    if (page.signature && !page.story?.trim()) return { ok: true, message: 'Saved. The dish page goes live once it has a story.' };
+  }
   return { ok: true, message: 'Saved' };
 }
 
