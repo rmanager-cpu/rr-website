@@ -1,7 +1,7 @@
 // The home page's "Coming up": the next big events, one card each, picked by staff. In the events editor
 // (/admin) an event marked "Show on the home page" appears here on its next date, soonest first, three
-// at most. If staff haven't marked anything, the next few dated events (holidays, community nights and
-// the like) stand in, so the section is never empty. Pure: the page passes in the data and "today".
+// at most. When fewer than three are marked, the next few dated events (holidays, community nights and
+// the like) fill the spare spots, so the section is never empty. Pure: the page passes in the data and "today".
 import { homePhotos, photos } from '@/content/photos';
 import { addDays, formatDate, nextDate, timeRange, weekdaysPhrase } from '@/lib/events/recurrence';
 import type { Category, EventPage, EventSeries } from '@/lib/events/types';
@@ -62,14 +62,19 @@ export function buildComingUp(series: EventSeries[], pages: EventPage[], today: 
       .filter((x): x is { s: EventSeries; date: string } => x.date !== null && x.date <= addDays(today, horizon))
       .sort((a, b) => a.date.localeCompare(b.date) || (a.s.startTime ?? '99').localeCompare(b.s.startTime ?? '99'));
 
-  let picked = withDate(live.filter((s) => s.highlighted), HORIZON);
-  if (picked.length === 0) {
-    // Nothing marked: the next one-off events stand in (not the everyday happy hour).
-    picked = withDate(live.filter((s) => s.repeat === 'none' && s.category !== 'happy-hour'), FALLBACK_HORIZON);
-  }
+  // Marked events always get a card; the next one-off events (not the everyday happy hour) fill whatever
+  // spots are left, so marking one event adds it rather than pushing the others off (Alex, 2026-11-20).
+  const marked = withDate(live.filter((s) => s.highlighted), HORIZON).slice(0, COMING_UP_MAX);
+  const fill = withDate(
+    live.filter((s) => !s.highlighted && s.repeat === 'none' && s.category !== 'happy-hour'),
+    FALLBACK_HORIZON,
+  ).slice(0, COMING_UP_MAX - marked.length);
+  const picked = [...marked, ...fill].sort(
+    (a, b) => a.date.localeCompare(b.date) || (a.s.startTime ?? '99').localeCompare(b.s.startTime ?? '99'),
+  );
 
   const used = new Set<string>();
-  return picked.slice(0, COMING_UP_MAX).map(({ s, date }) => {
+  return picked.map(({ s, date }) => {
     const page = pageOf.get(s.pageId);
     const [chip, chipLabel] = CHIP[s.category];
     const time = spoken(timeRange(s));

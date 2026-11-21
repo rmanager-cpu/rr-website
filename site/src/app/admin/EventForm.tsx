@@ -130,7 +130,7 @@ export function EventForm({
       <section className="adm-card">
         <h2 className="adm-step"><b>4</b> Home page</h2>
         <label className="choice" style={{ alignSelf: 'flex-start' }}><input type="checkbox" name="highlighted" value="yes" defaultChecked={s?.highlighted} /> Show this on the home page</label>
-        <p className="help">The home page shows the next three events with this on, soonest first, each with its photo and a link here. A weekly event shows on its next date. Needs a photo. With none on, the next few dated events show instead.</p>
+        <p className="help">The home page shows the next three events with this on, soonest first, each with its photo and a link here. A weekly event shows on its next date. Needs a photo. If fewer than three have this on, the next dated events fill the spare spots.</p>
       </section>
 
       <section className="adm-card">
